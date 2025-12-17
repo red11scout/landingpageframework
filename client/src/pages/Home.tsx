@@ -1,7 +1,9 @@
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
+import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription } from "@/components/ui/dialog";
+import { Input } from "@/components/ui/input";
 import { motion, AnimatePresence } from "framer-motion";
-import { ArrowRight, BarChart3, BrainCircuit, ClipboardList, MessageSquare, Search, Sparkles, Zap, ExternalLink } from "lucide-react";
+import { ArrowRight, BarChart3, BrainCircuit, ClipboardList, MessageSquare, Search, Sparkles, Zap, Heart, Play, X } from "lucide-react";
 import { useState } from "react";
 
 // App Data
@@ -10,6 +12,7 @@ const apps = [
     id: 1,
     title: "AI Report",
     description: "Powerful Insights.",
+    longDescription: "Generate comprehensive reports with deep AI analysis. Uncover hidden patterns and actionable insights from your data in seconds.",
     icon: MessageSquare,
     link: "#",
     category: "Analysis",
@@ -19,6 +22,7 @@ const apps = [
     id: 2,
     title: "AI Workflows",
     description: "Remove the Friction.",
+    longDescription: "Streamline your business processes with intelligent automation. Connect your favorite tools and let AI handle the repetitive tasks.",
     icon: BarChart3,
     link: "#",
     category: "Automation",
@@ -28,6 +32,7 @@ const apps = [
     id: 3,
     title: "Cognitive Analytics",
     description: "Agentic Design Patterns.",
+    longDescription: "Leverage advanced cognitive models to understand user behavior. Predict trends and optimize your strategies with agentic intelligence.",
     icon: BrainCircuit,
     link: "#",
     category: "Analysis",
@@ -37,6 +42,7 @@ const apps = [
     id: 4,
     title: "AI Research",
     description: "Dive Deeper.",
+    longDescription: "Access a vast knowledge base with AI-powered search. Get summarized answers, source citations, and deep-dive research papers.",
     icon: Search,
     link: "#",
     category: "Research",
@@ -46,6 +52,7 @@ const apps = [
     id: 5,
     title: "Workshop Reports",
     description: "AI Priority.",
+    longDescription: "Collaborate effectively with AI-generated workshop summaries. Capture key takeaways, action items, and consensus points automatically.",
     icon: ClipboardList,
     link: "#",
     category: "Analysis",
@@ -55,6 +62,7 @@ const apps = [
     id: 6,
     title: "AI Power",
     description: "Deeper Context.",
+    longDescription: "Unlock the full potential of your data with context-aware AI. Integrate deep learning into your core business logic.",
     icon: Zap,
     link: "#",
     category: "Core",
@@ -66,10 +74,24 @@ const categories = ["All", "Analysis", "Automation", "Research", "Core"];
 
 export default function Home() {
   const [activeCategory, setActiveCategory] = useState("All");
+  const [searchQuery, setSearchQuery] = useState("");
+  const [selectedApp, setSelectedApp] = useState<typeof apps[0] | null>(null);
+  const [favorites, setFavorites] = useState<number[]>([]);
 
-  const filteredApps = activeCategory === "All" 
-    ? apps 
-    : apps.filter(app => app.category === activeCategory);
+  const toggleFavorite = (e: React.MouseEvent, id: number) => {
+    e.preventDefault();
+    e.stopPropagation();
+    setFavorites(prev => 
+      prev.includes(id) ? prev.filter(fid => fid !== id) : [...prev, id]
+    );
+  };
+
+  const filteredApps = apps.filter(app => {
+    const matchesCategory = activeCategory === "All" || app.category === activeCategory;
+    const matchesSearch = app.title.toLowerCase().includes(searchQuery.toLowerCase()) || 
+                          app.description.toLowerCase().includes(searchQuery.toLowerCase());
+    return matchesCategory && matchesSearch;
+  });
 
   return (
     <div className="relative min-h-screen w-full overflow-hidden bg-white font-sans selection:bg-blue-100 selection:text-blue-900">
@@ -117,27 +139,47 @@ export default function Home() {
             </p>
           </motion.div>
 
-          {/* Filter Tabs */}
-          <motion.div 
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.2, duration: 0.5 }}
-            className="mb-12 flex flex-wrap justify-center gap-2"
-          >
-            {categories.map((category) => (
-              <button
-                key={category}
-                onClick={() => setActiveCategory(category)}
-                className={`rounded-full px-4 py-2 text-sm font-medium transition-all duration-300 ${
-                  activeCategory === category
-                    ? "bg-slate-900 text-white shadow-md"
-                    : "bg-slate-50 text-slate-600 hover:bg-slate-100"
-                }`}
-              >
-                {category}
-              </button>
-            ))}
-          </motion.div>
+          {/* Search & Filter Section */}
+          <div className="mb-12 flex flex-col items-center gap-6 w-full max-w-2xl">
+            {/* Search Bar */}
+            <motion.div 
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.1, duration: 0.5 }}
+              className="relative w-full"
+            >
+              <Search className="absolute left-4 top-1/2 h-5 w-5 -translate-y-1/2 text-slate-400" />
+              <Input 
+                type="text" 
+                placeholder="Search tools..." 
+                className="h-12 w-full rounded-full border-slate-200 bg-white pl-12 pr-4 text-base shadow-sm transition-all focus:border-blue-500 focus:ring-2 focus:ring-blue-100"
+                value={searchQuery}
+                onChange={(e) => setSearchQuery(e.target.value)}
+              />
+            </motion.div>
+
+            {/* Filter Tabs */}
+            <motion.div 
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.2, duration: 0.5 }}
+              className="flex flex-wrap justify-center gap-2"
+            >
+              {categories.map((category) => (
+                <button
+                  key={category}
+                  onClick={() => setActiveCategory(category)}
+                  className={`rounded-full px-4 py-2 text-sm font-medium transition-all duration-300 ${
+                    activeCategory === category
+                      ? "bg-slate-900 text-white shadow-md"
+                      : "bg-slate-50 text-slate-600 hover:bg-slate-100"
+                  }`}
+                >
+                  {category}
+                </button>
+              ))}
+            </motion.div>
+          </div>
 
           {/* App Grid */}
           <motion.div 
@@ -155,7 +197,10 @@ export default function Home() {
                   transition={{ duration: 0.3 }}
                   className="group relative block"
                 >
-                  <a href={app.link} className="block h-full">
+                  <div 
+                    onClick={() => setSelectedApp(app)}
+                    className="block h-full cursor-pointer"
+                  >
                     <Card className="relative h-full overflow-hidden border border-slate-200 bg-white p-8 transition-all duration-300 hover:border-blue-500 hover:shadow-[0_0_20px_rgba(59,130,246,0.15)]">
                       {/* Status Badge */}
                       {app.status !== "Stable" && (
@@ -167,6 +212,14 @@ export default function Home() {
                           {app.status}
                         </div>
                       )}
+
+                      {/* Favorite Button */}
+                      <button 
+                        onClick={(e) => toggleFavorite(e, app.id)}
+                        className="absolute top-4 left-4 z-20 rounded-full p-2 text-slate-300 transition-colors hover:bg-slate-50 hover:text-red-500"
+                      >
+                        <Heart className={`h-5 w-5 ${favorites.includes(app.id) ? "fill-red-500 text-red-500" : ""}`} />
+                      </button>
 
                       {/* Shimmer Effect */}
                       <div className="absolute inset-0 -translate-x-full bg-gradient-to-r from-transparent via-white/40 to-transparent opacity-0 transition-all duration-1000 group-hover:animate-shimmer group-hover:opacity-100" />
@@ -192,7 +245,7 @@ export default function Home() {
                         </span>
                       </div>
                     </Card>
-                  </a>
+                  </div>
                 </motion.div>
               ))}
             </AnimatePresence>
@@ -204,6 +257,80 @@ export default function Home() {
           <p>&copy; 2025 AI Hub. Designed for the future.</p>
         </footer>
       </div>
+
+      {/* Detail Modal */}
+      <Dialog open={!!selectedApp} onOpenChange={(open) => !open && setSelectedApp(null)}>
+        <DialogContent className="sm:max-w-[600px] p-0 overflow-hidden border-0 shadow-2xl">
+          {selectedApp && (
+            <div className="flex flex-col">
+              {/* Modal Header / Video Placeholder */}
+              <div className="relative h-48 w-full bg-slate-900 flex items-center justify-center overflow-hidden">
+                <div className="absolute inset-0 bg-gradient-to-br from-blue-600/20 to-purple-600/20" />
+                <div className="relative z-10 flex flex-col items-center gap-2">
+                  <div className="rounded-full bg-white/10 p-4 backdrop-blur-sm transition-transform hover:scale-110 cursor-pointer">
+                    <Play className="h-8 w-8 text-white fill-white" />
+                  </div>
+                  <span className="text-xs font-medium text-white/80 tracking-wide uppercase">Watch Demo</span>
+                </div>
+              </div>
+              
+              {/* Modal Content */}
+              <div className="p-8">
+                <div className="flex items-start justify-between mb-6">
+                  <div className="flex items-center gap-4">
+                    <div className="flex h-14 w-14 items-center justify-center rounded-xl bg-blue-50 text-blue-600">
+                      <selectedApp.icon className="h-7 w-7" />
+                    </div>
+                    <div>
+                      <DialogTitle className="text-2xl font-semibold text-slate-900">
+                        {selectedApp.title}
+                      </DialogTitle>
+                      <div className="flex items-center gap-2 mt-1">
+                        <span className="text-sm text-slate-500">{selectedApp.category}</span>
+                        {selectedApp.status !== "Stable" && (
+                          <span className={`rounded-full px-2 py-0.5 text-[10px] font-bold uppercase tracking-wider ${
+                            selectedApp.status === "New" 
+                              ? "bg-blue-100 text-blue-700" 
+                              : "bg-amber-100 text-amber-700"
+                          }`}>
+                            {selectedApp.status}
+                          </span>
+                        )}
+                      </div>
+                    </div>
+                  </div>
+                  <button 
+                    onClick={() => setSelectedApp(null)}
+                    className="rounded-full p-2 text-slate-400 hover:bg-slate-100 hover:text-slate-600 transition-colors"
+                  >
+                    <X className="h-5 w-5" />
+                  </button>
+                </div>
+                
+                <DialogDescription className="text-base leading-relaxed text-slate-600 mb-8">
+                  {selectedApp.longDescription}
+                </DialogDescription>
+                
+                <div className="flex gap-3">
+                  <Button className="flex-1 bg-blue-600 hover:bg-blue-700 text-white h-12 rounded-lg text-base font-medium">
+                    Launch Tool
+                  </Button>
+                  <Button 
+                    variant="outline" 
+                    className="flex-1 border-slate-200 hover:bg-slate-50 text-slate-700 h-12 rounded-lg text-base font-medium"
+                    onClick={(e) => {
+                      toggleFavorite(e as any, selectedApp.id);
+                    }}
+                  >
+                    <Heart className={`mr-2 h-4 w-4 ${favorites.includes(selectedApp.id) ? "fill-red-500 text-red-500" : ""}`} />
+                    {favorites.includes(selectedApp.id) ? "Saved" : "Save to Favorites"}
+                  </Button>
+                </div>
+              </div>
+            </div>
+          )}
+        </DialogContent>
+      </Dialog>
     </div>
   );
 }
