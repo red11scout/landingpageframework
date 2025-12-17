@@ -7,8 +7,8 @@ import { ArrowRight, BarChart3, Code2, MessageSquare, Palette, Sparkles } from "
 const apps = [
   {
     id: 1,
-    title: "AI Chat",
-    description: "Intelligent conversation.",
+    title: "AI Report",
+    description: "Powerful Insights.",
     icon: MessageSquare,
     link: "#",
   },
