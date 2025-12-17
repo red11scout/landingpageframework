@@ -15,7 +15,7 @@ const apps = [
     description: "Powerful Insights.",
     longDescription: "Generate comprehensive reports with deep AI analysis. Uncover hidden patterns and actionable insights from your data in seconds.",
     icon: MessageSquare,
-    link: "#",
+    link: "https://reports.aiplatformsforscale.com",
     category: "Analysis",
     status: "Stable"
   },
