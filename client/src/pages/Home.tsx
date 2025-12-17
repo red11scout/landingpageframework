@@ -1,7 +1,7 @@
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { motion } from "framer-motion";
-import { ArrowRight, BarChart3, BrainCircuit, MessageSquare, Search, Sparkles } from "lucide-react";
+import { ArrowRight, BarChart3, BrainCircuit, ClipboardList, MessageSquare, Search, Sparkles, Zap } from "lucide-react";
 
 // App Data
 const apps = [
@@ -31,6 +31,20 @@ const apps = [
     title: "AI Research",
     description: "Dive Deeper.",
     icon: Search,
+    link: "#",
+  },
+  {
+    id: 5,
+    title: "Workshop Reports",
+    description: "AI Priority.",
+    icon: ClipboardList,
+    link: "#",
+  },
+  {
+    id: 6,
+    title: "AI Power",
+    description: "Deeper Context.",
+    icon: Zap,
     link: "#",
   },
 ];
@@ -83,7 +97,7 @@ export default function Home() {
           </motion.div>
 
           {/* App Grid */}
-          <div className="grid w-full max-w-5xl grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-4">
+          <div className="grid w-full max-w-6xl grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
             {apps.map((app, index) => (
               <motion.a
                 key={app.id}
