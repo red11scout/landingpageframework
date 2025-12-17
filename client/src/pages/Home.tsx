@@ -212,7 +212,7 @@ export default function Home() {
                   <div 
                     onClick={() => {
                       if (app.link && app.link !== "#") {
-                        window.location.href = app.link;
+                        window.open(app.link, "_blank", "noopener,noreferrer");
                       } else {
                         setSelectedApp(app);
                       }
