@@ -45,7 +45,7 @@ const apps = [
     description: "Dive Deeper.",
     longDescription: "Access a vast knowledge base with AI-powered search. Get summarized answers, source citations, and deep-dive research papers.",
     icon: Search,
-    link: "#",
+    link: "https://research.aiplatformsforscale.com",
     category: "Research",
     status: "Stable"
   },
@@ -55,7 +55,7 @@ const apps = [
     description: "AI Priority.",
     longDescription: "Collaborate effectively with AI-generated workshop summaries. Capture key takeaways, action items, and consensus points automatically.",
     icon: ClipboardList,
-    link: "#",
+    link: "https://workshops.aiplatformsforscale.com",
     category: "Analysis",
     status: "New"
   },
@@ -65,7 +65,7 @@ const apps = [
     description: "Deeper Context.",
     longDescription: "Unlock the full potential of your data with context-aware AI. Integrate deep learning into your core business logic.",
     icon: Zap,
-    link: "#",
+    link: "https://power.aiplatformsforscale.com",
     category: "Core",
     status: "Beta"
   },
