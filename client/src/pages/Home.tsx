@@ -14,8 +14,8 @@ const apps = [
   },
   {
     id: 2,
-    title: "Analytics",
-    description: "Deep data insights.",
+    title: "AI Workflows",
+    description: "Remove the Friction.",
     icon: BarChart3,
     link: "#",
   },
