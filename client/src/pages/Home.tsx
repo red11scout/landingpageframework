@@ -1,7 +1,7 @@
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { motion } from "framer-motion";
-import { ArrowRight, BarChart3, Code2, MessageSquare, Palette, Sparkles } from "lucide-react";
+import { ArrowRight, BarChart3, BrainCircuit, Code2, MessageSquare, Sparkles } from "lucide-react";
 
 // App Data
 const apps = [
@@ -21,9 +21,9 @@ const apps = [
   },
   {
     id: 3,
-    title: "Creative Studio",
-    description: "Generative art tools.",
-    icon: Palette,
+    title: "Cognitive Analytics",
+    description: "Agentic Design Patterns.",
+    icon: BrainCircuit,
     link: "#",
   },
   {
