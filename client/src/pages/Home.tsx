@@ -25,7 +25,7 @@ const apps = [
     description: "Remove the Friction.",
     longDescription: "Streamline your business processes with intelligent automation. Connect your favorite tools and let AI handle the repetitive tasks.",
     icon: BarChart3,
-    link: "#",
+    link: "https://workflows.aiplatformsforscale.com",
     category: "Automation",
     status: "Stable"
   },
@@ -35,7 +35,7 @@ const apps = [
     description: "Agentic Design Patterns.",
     longDescription: "Leverage advanced cognitive models to understand user behavior. Predict trends and optimize your strategies with agentic intelligence.",
     icon: BrainCircuit,
-    link: "#",
+    link: "https://cognitive.aiplatformsforscale.com",
     category: "Analysis",
     status: "Stable"
   },
