@@ -210,7 +210,13 @@ export default function Home() {
                   className="group relative block"
                 >
                   <div 
-                    onClick={() => setSelectedApp(app)}
+                    onClick={() => {
+                      if (app.link && app.link !== "#") {
+                        window.location.href = app.link;
+                      } else {
+                        setSelectedApp(app);
+                      }
+                    }}
                     className="block h-full cursor-pointer"
                   >
                     <Card className="relative h-full overflow-hidden border border-slate-200 bg-white p-8 transition-all duration-300 hover:border-blue-500 hover:shadow-[0_0_20px_rgba(59,130,246,0.15)] dark:bg-slate-900 dark:border-slate-800 dark:hover:border-blue-500 dark:hover:shadow-[0_0_20px_rgba(59,130,246,0.1)]">
