@@ -14,10 +14,17 @@ export default function Login() {
   const [pin, setPin] = useState("");
   const [showReset, setShowReset] = useState(false);
 
+  const utils = trpc.useUtils();
+
   const loginMutation = trpc.customAuth.login.useMutation({
     onSuccess: () => {
       toast.success("Login successful!");
-      setLocation("/");
+      // Invalidate the me query to refetch user data
+      utils.customAuth.me.invalidate();
+      // Use hard redirect after a short delay to ensure cookie is set
+      setTimeout(() => {
+        window.location.href = "/";
+      }, 100);
     },
     onError: (error) => {
       toast.error(error.message || "Invalid email or PIN");
@@ -34,13 +41,18 @@ export default function Login() {
     },
   });
 
-  const handleLogin = (e: React.FormEvent) => {
-    e.preventDefault();
-    if (!email || !pin) {
+  const handleLogin = (e?: React.FormEvent | React.MouseEvent) => {
+    e?.preventDefault();
+    
+    // Read values directly from DOM as fallback
+    const emailValue = email || (document.getElementById('email') as HTMLInputElement)?.value || '';
+    const pinValue = pin || (document.getElementById('pin') as HTMLInputElement)?.value || '';
+    
+    if (!emailValue || !pinValue) {
       toast.error("Please enter both email and PIN");
       return;
     }
-    loginMutation.mutate({ email, pin });
+    loginMutation.mutate({ email: emailValue, pin: pinValue });
   };
 
   const handleReset = (e: React.FormEvent) => {
@@ -96,7 +108,8 @@ export default function Login() {
                   />
                 </div>
                 <Button
-                  type="submit"
+                  type="button"
+                  onClick={handleLogin}
                   className="w-full h-11 bg-blue-600 hover:bg-blue-700 text-white"
                   disabled={loginMutation.isPending}
                 >

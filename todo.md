@@ -28,3 +28,9 @@
 - Password reset tokens stored in reset_tokens table with 1-hour expiration
 - Session management uses HTTP-only cookies for security
 - TypeScript errors in _core/hooks/useAuth.ts are expected (file not used with custom auth)
+
+
+## Bug Fixes Completed
+- [x] Fix login redirect - login succeeds with toast but doesn't navigate to homepage
+  - Root cause: Missing cookie-parser middleware on Express server
+  - Solution: Added cookie-parser to server/_core/index.ts
