@@ -5,12 +5,10 @@ import { Route, Switch, Redirect } from "wouter";
 import ErrorBoundary from "./components/ErrorBoundary";
 import { ThemeProvider } from "./contexts/ThemeContext";
 import Home from "./pages/Home";
-import Login from "./pages/Login";
-import ResetPassword from "./pages/ResetPassword";
-import { useCustomAuth } from "./hooks/useCustomAuth";
+import { useAuth } from "./_core/hooks/useAuth";
 
 function ProtectedRoute({ component: Component }: { component: React.ComponentType }) {
-  const { isAuthenticated, loading } = useCustomAuth();
+  const { isAuthenticated, loading } = useAuth({ redirectOnUnauthenticated: true });
 
   if (loading) {
     return (
@@ -20,8 +18,13 @@ function ProtectedRoute({ component: Component }: { component: React.ComponentTy
     );
   }
 
+  // Redirect is handled by useAuth hook
   if (!isAuthenticated) {
-    return <Redirect to="/login" />;
+    return (
+      <div className="min-h-screen flex items-center justify-center">
+        <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-blue-600"></div>
+      </div>
+    );
   }
 
   return <Component />;
@@ -30,8 +33,6 @@ function ProtectedRoute({ component: Component }: { component: React.ComponentTy
 function Router() {
   return (
     <Switch>
-      <Route path="/login" component={Login} />
-      <Route path="/reset-password" component={ResetPassword} />
       <Route path="/" component={() => <ProtectedRoute component={Home} />} />
       <Route path="/404" component={NotFound} />
       {/* Final fallback route */}

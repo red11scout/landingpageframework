@@ -9,18 +9,18 @@ type UseAuthOptions = {
 };
 
 export function useAuth(options?: UseAuthOptions) {
-  const { redirectOnUnauthenticated = false, redirectPath = getLoginUrl() } =
+  const { redirectOnUnauthenticated = false, redirectPath = "/login" } =
     options ?? {};
   const utils = trpc.useUtils();
 
-  const meQuery = trpc.customAuth.me.useQuery(undefined, {
+  const meQuery = trpc.auth.me.useQuery(undefined, {
     retry: false,
     refetchOnWindowFocus: false,
   });
 
-  const logoutMutation = trpc.customAuth.logout.useMutation({
+  const logoutMutation = trpc.auth.logout.useMutation({
     onSuccess: () => {
-      utils.customAuth.me.setData(undefined, null);
+      utils.auth.me.setData(undefined, null);
     },
   });
 
@@ -36,8 +36,8 @@ export function useAuth(options?: UseAuthOptions) {
       }
       throw error;
     } finally {
-      utils.customAuth.me.setData(undefined, null);
-      await utils.customAuth.me.invalidate();
+      utils.auth.me.setData(undefined, null);
+      await utils.auth.me.invalidate();
     }
   }, [logoutMutation, utils]);
 

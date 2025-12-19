@@ -1,4 +1,4 @@
-import { useCustomAuth } from "@/hooks/useCustomAuth";
+import { useAuth } from "@/_core/hooks/useAuth";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription } from "@/components/ui/dialog";
@@ -75,7 +75,7 @@ const apps = [
 const categories = ["All", "Analysis", "Automation", "Research", "Core"];
 
 export default function Home() {
-  const { user, logout } = useCustomAuth();
+  const { user, logout } = useAuth();
 
   const { theme, setTheme } = useTheme();
   const [activeCategory, setActiveCategory] = useState("All");
