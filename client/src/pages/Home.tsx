@@ -1,3 +1,4 @@
+import { useCustomAuth } from "@/hooks/useCustomAuth";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription } from "@/components/ui/dialog";
@@ -74,6 +75,8 @@ const apps = [
 const categories = ["All", "Analysis", "Automation", "Research", "Core"];
 
 export default function Home() {
+  const { user, logout } = useCustomAuth();
+
   const { theme, setTheme } = useTheme();
   const [activeCategory, setActiveCategory] = useState("All");
   const [searchQuery, setSearchQuery] = useState("");
@@ -125,9 +128,15 @@ export default function Home() {
             >
               {theme === "dark" ? <Sun className="h-5 w-5" /> : <Moon className="h-5 w-5" />}
             </Button>
-            <Button variant="ghost" className="rounded-full px-6 text-slate-600 hover:bg-blue-50 hover:text-blue-700 dark:text-slate-300 dark:hover:bg-blue-900/30 dark:hover:text-blue-400">
-              Sign In
-            </Button>
+            {user && (
+              <Button 
+                variant="ghost" 
+                onClick={() => logout()}
+                className="rounded-full px-6 text-slate-600 hover:bg-blue-50 hover:text-blue-700 dark:text-slate-300 dark:hover:bg-blue-900/30 dark:hover:text-blue-400"
+              >
+                Sign Out
+              </Button>
+            )}
           </div>
         </header>
 
