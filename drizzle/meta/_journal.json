@@ -15,6 +15,13 @@
       "when": 1766013013545,
       "tag": "0001_flimsy_red_ghost",
       "breakpoints": true
+    },
+    {
+      "idx": 2,
+      "version": "5",
+      "when": 1766164765555,
+      "tag": "0002_workable_brood",
+      "breakpoints": true
     }
   ]
 }

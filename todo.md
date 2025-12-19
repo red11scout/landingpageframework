@@ -1,18 +1,20 @@
 # Project TODO
 
-## OAuth Migration
-- [x] Remove custom PIN authentication (Login.tsx, ResetPassword.tsx)
-- [x] Remove custom auth router and database tables
-- [x] Restore default Manus OAuth authentication
-- [x] Implement email-based access control (whitelist drewgodwin@outlook.com)
-- [x] Update App.tsx to use default OAuth flow
-- [x] Write and pass access control tests (7 tests passing)
-- [x] Test OAuth login on desktop (redirects to Manus OAuth portal)
-- [x] Test OAuth login on mobile (redirects to Manus OAuth portal)
+## Admin Dashboard
+- [x] Create database schema for authorized_emails table
+- [x] Migrate existing hardcoded email to database
+- [x] Create backend API for listing authorized emails
+- [x] Create backend API for adding new authorized emails
+- [x] Create backend API for removing authorized emails
+- [x] Build admin dashboard page UI
+- [x] Add admin-only route protection
+- [x] Update access control to check database instead of hardcoded list
+- [x] Write tests for email management API (10 tests passing)
+- [x] Test admin dashboard functionality
 
-## Previous Work (Completed)
-- [x] Basic homepage with 6 AI application cards
-- [x] Tabbed filtering system
+## Completed Work
+- [x] Manus OAuth authentication
+- [x] Email-based access control
+- [x] AI Hub homepage with 6 applications
+- [x] Tabbed filtering and search
 - [x] Dark mode toggle
-- [x] Responsive layout
-- [x] Upgraded to full-stack (web-db-user)

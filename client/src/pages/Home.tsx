@@ -4,7 +4,8 @@ import { Card } from "@/components/ui/card";
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription } from "@/components/ui/dialog";
 import { Input } from "@/components/ui/input";
 import { motion, AnimatePresence } from "framer-motion";
-import { ArrowRight, BarChart3, BrainCircuit, ClipboardList, MessageSquare, Search, Sparkles, Zap, Heart, Play, X, Moon, Sun } from "lucide-react";
+import { ArrowRight, BarChart3, BrainCircuit, ClipboardList, MessageSquare, Search, Sparkles, Zap, Heart, Play, X, Moon, Sun, Settings } from "lucide-react";
+import { Link } from "wouter";
 import { useState, useEffect } from "react";
 import { useTheme } from "@/contexts/ThemeContext";
 
@@ -129,13 +130,26 @@ export default function Home() {
               {theme === "dark" ? <Sun className="h-5 w-5" /> : <Moon className="h-5 w-5" />}
             </Button>
             {user && (
-              <Button 
-                variant="ghost" 
-                onClick={() => logout()}
-                className="rounded-full px-6 text-slate-600 hover:bg-blue-50 hover:text-blue-700 dark:text-slate-300 dark:hover:bg-blue-900/30 dark:hover:text-blue-400"
-              >
-                Sign Out
-              </Button>
+              <>
+                {user.email === "drewgodwin@outlook.com" && (
+                  <Link href="/admin">
+                    <Button 
+                      variant="ghost"
+                      className="rounded-full px-6 text-slate-600 hover:bg-blue-50 hover:text-blue-700 dark:text-slate-300 dark:hover:bg-blue-900/30 dark:hover:text-blue-400"
+                    >
+                      <Settings className="w-4 h-4 mr-2" />
+                      Admin
+                    </Button>
+                  </Link>
+                )}
+                <Button 
+                  variant="ghost" 
+                  onClick={() => logout()}
+                  className="rounded-full px-6 text-slate-600 hover:bg-blue-50 hover:text-blue-700 dark:text-slate-300 dark:hover:bg-blue-900/30 dark:hover:text-blue-400"
+                >
+                  Sign Out
+                </Button>
+              </>
             )}
           </div>
         </header>

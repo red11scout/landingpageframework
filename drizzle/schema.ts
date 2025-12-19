@@ -26,34 +26,15 @@ export type User = typeof users.$inferSelect;
 export type InsertUser = typeof users.$inferInsert;
 
 /**
- * Custom authentication table for PIN-based login
- * Supports email + 6-digit PIN authentication
+ * Authorized emails table for access control
+ * Only users with emails in this table can access the application
  */
-export const customAuth = mysqlTable("custom_auth", {
+export const authorizedEmails = mysqlTable("authorized_emails", {
   id: int("id").autoincrement().primaryKey(),
   email: varchar("email", { length: 320 }).notNull().unique(),
-  pin: varchar("pin", { length: 6 }).notNull(),
-  name: text("name"),
-  isActive: int("is_active").default(1).notNull(), // 1 = active, 0 = disabled
-  createdAt: timestamp("createdAt").defaultNow().notNull(),
-  updatedAt: timestamp("updatedAt").defaultNow().onUpdateNow().notNull(),
-  lastSignedIn: timestamp("lastSignedIn"),
-});
-
-export type CustomAuth = typeof customAuth.$inferSelect;
-export type InsertCustomAuth = typeof customAuth.$inferInsert;
-
-/**
- * Password reset tokens table
- */
-export const resetTokens = mysqlTable("reset_tokens", {
-  id: int("id").autoincrement().primaryKey(),
-  email: varchar("email", { length: 320 }).notNull(),
-  token: varchar("token", { length: 64 }).notNull().unique(),
-  expiresAt: timestamp("expiresAt").notNull(),
-  used: int("used").default(0).notNull(), // 0 = unused, 1 = used
+  addedBy: varchar("addedBy", { length: 320 }), // Email of admin who added this entry
   createdAt: timestamp("createdAt").defaultNow().notNull(),
 });
 
-export type ResetToken = typeof resetTokens.$inferSelect;
-export type InsertResetToken = typeof resetTokens.$inferInsert;
+export type AuthorizedEmail = typeof authorizedEmails.$inferSelect;
+export type InsertAuthorizedEmail = typeof authorizedEmails.$inferInsert;
