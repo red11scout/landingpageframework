@@ -284,7 +284,7 @@ export default function Home() {
 
         {/* Footer */}
         <footer className="container mx-auto py-8 text-center text-sm text-slate-400 dark:text-slate-600">
-          <p>&copy; 2025 AI Hub. Designed for the future.</p>
+          <p>&copy; 2026 AI Hub. Designed for the future.</p>
         </footer>
       </div>
 

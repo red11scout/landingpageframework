@@ -12,3 +12,6 @@
 - [x] AI Hub homepage with 6 applications
 - [x] Tabbed filtering and search
 - [x] Dark mode toggle
+
+## Footer Update
+- [x] Change footer year to 2026
