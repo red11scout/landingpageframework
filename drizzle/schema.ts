@@ -25,16 +25,3 @@ export const users = mysqlTable("users", {
 export type User = typeof users.$inferSelect;
 export type InsertUser = typeof users.$inferInsert;
 
-/**
- * Authorized emails table for access control
- * Only users with emails in this table can access the application
- */
-export const authorizedEmails = mysqlTable("authorized_emails", {
-  id: int("id").autoincrement().primaryKey(),
-  email: varchar("email", { length: 320 }).notNull().unique(),
-  addedBy: varchar("addedBy", { length: 320 }), // Email of admin who added this entry
-  createdAt: timestamp("createdAt").defaultNow().notNull(),
-});
-
-export type AuthorizedEmail = typeof authorizedEmails.$inferSelect;
-export type InsertAuthorizedEmail = typeof authorizedEmails.$inferInsert;

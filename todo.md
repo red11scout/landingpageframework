@@ -1,17 +1,18 @@
 # Project TODO
 
-## UI Updates
-- [x] Remove Sign Out button from homepage header
-- [x] Add BlueAlly favicon to the application
+## Remove Authentication
+- [x] Remove Admin page and route
+- [x] Remove Admin button from header
+- [x] Remove ProtectedRoute wrapper from App.tsx
+- [x] Remove useAuth hook usage
+- [x] Remove admin router from backend
+- [x] Remove access control middleware
+- [x] Remove authorized_emails database table
+- [x] Clean up authentication-related imports
 
 ## Completed Work
-- [x] Admin dashboard for managing authorized emails
-- [x] Database-backed email authorization
-- [x] Manus OAuth authentication
-- [x] Email-based access control
 - [x] AI Hub homepage with 6 applications
 - [x] Tabbed filtering and search
 - [x] Dark mode toggle
-
-## Footer Update
-- [x] Change footer year to 2026
+- [x] BlueAlly favicon
+- [x] Footer year updated to 2026

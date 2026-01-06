@@ -1,13 +1,11 @@
 import { systemRouter } from "./_core/systemRouter";
 import { authRouter } from "./_core/authRouter";
-import { adminRouter } from "./adminRouter";
 import { router } from "./_core/trpc";
 
 export const appRouter = router({
     // if you need to use socket.io, read and register route in server/_core/index.ts, all api should start with '/api/' so that the gateway can route correctly
   system: systemRouter,
   auth: authRouter,
-  admin: adminRouter,
 
   // TODO: add feature routers here, e.g.
   // todo: router({
