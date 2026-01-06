@@ -129,27 +129,16 @@ export default function Home() {
             >
               {theme === "dark" ? <Sun className="h-5 w-5" /> : <Moon className="h-5 w-5" />}
             </Button>
-            {user && (
-              <>
-                {user.email === "drewgodwin@outlook.com" && (
-                  <Link href="/admin">
-                    <Button 
-                      variant="ghost"
-                      className="rounded-full px-6 text-slate-600 hover:bg-blue-50 hover:text-blue-700 dark:text-slate-300 dark:hover:bg-blue-900/30 dark:hover:text-blue-400"
-                    >
-                      <Settings className="w-4 h-4 mr-2" />
-                      Admin
-                    </Button>
-                  </Link>
-                )}
+            {user && user.email === "drewgodwin@outlook.com" && (
+              <Link href="/admin">
                 <Button 
-                  variant="ghost" 
-                  onClick={() => logout()}
+                  variant="ghost"
                   className="rounded-full px-6 text-slate-600 hover:bg-blue-50 hover:text-blue-700 dark:text-slate-300 dark:hover:bg-blue-900/30 dark:hover:text-blue-400"
                 >
-                  Sign Out
+                  <Settings className="w-4 h-4 mr-2" />
+                  Admin
                 </Button>
-              </>
+              </Link>
             )}
           </div>
         </header>
