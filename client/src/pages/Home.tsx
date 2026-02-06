@@ -17,7 +17,7 @@ const apps = [
     description: "Powerful Insights.",
     longDescription: "Generate comprehensive reports with deep AI analysis. Uncover hidden patterns and actionable insights from your data in seconds.",
     icon: MessageSquare,
-    link: "https://reports.aiplatformsforscale.com",
+    link: "https://research.charmingthesouth.com/",
     category: "Analysis",
     status: "Stable"
   },
@@ -27,7 +27,7 @@ const apps = [
     description: "Remove the Friction.",
     longDescription: "Streamline your business processes with intelligent automation. Connect your favorite tools and let AI handle the repetitive tasks.",
     icon: BarChart3,
-    link: "https://workflows.aiplatformsforscale.com",
+    link: "https://workflows.aiplatformsforscale.com/",
     category: "Automation",
     status: "Stable"
   },
@@ -37,7 +37,7 @@ const apps = [
     description: "Agentic Design Patterns.",
     longDescription: "Leverage advanced cognitive models to understand user behavior. Predict trends and optimize your strategies with agentic intelligence.",
     icon: BrainCircuit,
-    link: "https://cognitive.aiplatformsforscale.com",
+    link: "https://cognitive.movefasterwithai.com/",
     category: "Analysis",
     status: "Stable"
   },
@@ -47,7 +47,7 @@ const apps = [
     description: "Dive Deeper.",
     longDescription: "Access a vast knowledge base with AI-powered search. Get summarized answers, source citations, and deep-dive research papers.",
     icon: Search,
-    link: "https://research.aiplatformsforscale.com",
+    link: "https://research.movefasterwithai.com/",
     category: "Research",
     status: "Stable"
   },
@@ -57,7 +57,7 @@ const apps = [
     description: "AI Priority.",
     longDescription: "Collaborate effectively with AI-generated workshop summaries. Capture key takeaways, action items, and consensus points automatically.",
     icon: ClipboardList,
-    link: "https://workshops.aiplatformsforscale.com",
+    link: "https://valuemaps.uploadandbuildreports.com/",
     category: "Analysis",
     status: "New"
   },
@@ -67,7 +67,7 @@ const apps = [
     description: "Deeper Context.",
     longDescription: "Unlock the full potential of your data with context-aware AI. Integrate deep learning into your core business logic.",
     icon: Zap,
-    link: "https://power.aiplatformsforscale.com",
+    link: "https://aeaframework.movefasterwithai.com/",
     category: "Core",
     status: "Beta"
   },

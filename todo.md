@@ -16,3 +16,11 @@
 - [x] Dark mode toggle
 - [x] BlueAlly favicon
 - [x] Footer year updated to 2026
+
+## Update Card Hyperlinks
+- [x] Update AI Report link to https://research.charmingthesouth.com/
+- [x] Update Cognitive Analytics link to https://cognitive.movefasterwithai.com/
+- [x] Update AI Research link to https://research.movefasterwithai.com/
+- [x] Update AI Workflows link to https://workflows.aiplatformsforscale.com/
+- [x] Update Workshop Reports link to https://valuemaps.uploadandbuildreports.com/
+- [x] Update AI Power link to https://aeaframework.movefasterwithai.com/
