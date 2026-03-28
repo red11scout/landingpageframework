@@ -1,0 +1,1289 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Architecture of Intelligence — Executive Briefing 2026</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+:root{
+--bg-dark:#0a0f1a;--bg-mid:#0f172a;--bg-card:rgba(15,23,42,0.8);
+--teal:#00d4aa;--blue:#3b82f6;--amber:#f59e0b;--coral:#ef4444;
+--text:#f8fafc;--text2:#94a3b8;--border:rgba(148,163,184,0.1);
+--font:'Inter','SF Pro Display',-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;
+}
+html,body{height:100%;overflow:hidden;background:var(--bg-dark);color:var(--text);font-family:var(--font)}
+/* Progress Bar */
+#progress{position:fixed;top:0;left:0;height:3px;background:linear-gradient(90deg,var(--teal),var(--blue));z-index:1000;transition:width .4s ease}
+/* Slide Counter */
+#counter{position:fixed;bottom:24px;right:32px;font-size:.85rem;color:var(--text2);z-index:1000;font-variant-numeric:tabular-nums}
+/* Navigation Hints */
+#nav-hint{position:fixed;bottom:24px;left:32px;font-size:.75rem;color:rgba(148,163,184,0.4);z-index:1000}
+/* Slides Container */
+#deck{width:100%;height:100%;position:relative}
+.slide{position:absolute;top:0;left:0;width:100%;height:100%;display:flex;align-items:center;justify-content:center;opacity:0;pointer-events:none;transition:opacity .4s ease,transform .4s ease;transform:translateY(12px);overflow-y:auto;background:linear-gradient(135deg,var(--bg-dark) 0%,var(--bg-mid) 100%)}
+.slide.active{opacity:1;pointer-events:all;transform:translateY(0)}
+.slide-inner{max-width:1200px;width:100%;padding:60px 48px;margin:auto}
+/* Typography */
+h1{font-size:3rem;font-weight:700;letter-spacing:-.02em;line-height:1.15;margin-bottom:12px}
+h2{font-size:2.2rem;font-weight:700;letter-spacing:-.02em;line-height:1.2;margin-bottom:16px}
+h3{font-size:1.5rem;font-weight:600;margin-bottom:12px}
+p,.body-text{font-size:1.05rem;font-weight:400;line-height:1.7;color:var(--text2);margin-bottom:16px}
+.subhead{font-size:1.4rem;font-weight:400;color:var(--text2);margin-bottom:24px}
+.insight{font-size:1rem;color:var(--teal);border-left:3px solid var(--teal);padding:12px 20px;margin-top:24px;background:rgba(0,212,170,0.05);border-radius:0 8px 8px 0;font-style:italic}
+.source{font-size:.8rem;color:rgba(148,163,184,0.5);margin-top:12px}
+.quote{font-size:1.15rem;font-style:italic;color:var(--text2);border-left:3px solid var(--amber);padding:16px 24px;margin:24px 0;background:rgba(245,158,11,0.04);border-radius:0 8px 8px 0}
+/* Stat Cards */
+.stat-grid{display:grid;gap:20px;margin:28px 0}
+.stat-grid.g2x2{grid-template-columns:1fr 1fr}
+.stat-grid.g4{grid-template-columns:repeat(4,1fr)}
+.stat-grid.g3{grid-template-columns:repeat(3,1fr)}
+.stat-grid.g2{grid-template-columns:1fr 1fr}
+.stat-card{background:var(--bg-card);backdrop-filter:blur(12px);border:1px solid var(--border);border-radius:16px;padding:28px 24px;text-align:center;transition:transform .2s ease}
+.stat-card:hover{transform:scale(1.02)}
+.stat-num{font-size:3rem;font-weight:700;color:var(--teal);line-height:1;margin-bottom:8px}
+.stat-num.coral{color:var(--coral)}
+.stat-num.amber{color:var(--amber)}
+.stat-num.blue{color:var(--blue)}
+.stat-label{font-size:.9rem;color:var(--text2);line-height:1.4}
+/* Tables */
+.data-table{width:100%;border-collapse:collapse;margin:20px 0;font-size:.95rem}
+.data-table th{text-align:left;padding:12px 16px;border-bottom:2px solid var(--teal);color:var(--teal);font-weight:600;font-size:.85rem;text-transform:uppercase;letter-spacing:.05em}
+.data-table td{padding:12px 16px;border-bottom:1px solid var(--border);color:var(--text2)}
+.data-table tr:hover td{background:rgba(0,212,170,0.03)}
+/* Cards Grid */
+.card-grid{display:grid;gap:16px;margin:24px 0}
+.card-grid.g2{grid-template-columns:1fr 1fr}
+.card-grid.g3{grid-template-columns:repeat(3,1fr)}
+.card-grid.g4{grid-template-columns:repeat(4,1fr)}
+.card{background:var(--bg-card);backdrop-filter:blur(12px);border:1px solid var(--border);border-radius:16px;padding:24px;transition:transform .2s ease}
+.card:hover{transform:scale(1.02)}
+.card h4{font-size:1.1rem;font-weight:600;margin-bottom:8px;color:var(--text)}
+.card p{font-size:.9rem;color:var(--text2);margin:0;line-height:1.5}
+.card .card-accent{width:40px;height:4px;border-radius:2px;margin-bottom:16px}
+/* Timeline */
+.timeline{position:relative;padding-left:32px;margin:24px 0}
+.timeline::before{content:'';position:absolute;left:8px;top:0;bottom:0;width:2px;background:linear-gradient(to bottom,var(--teal),var(--blue))}
+.tl-item{position:relative;margin-bottom:20px;padding-left:20px}
+.tl-item::before{content:'';position:absolute;left:-28px;top:6px;width:12px;height:12px;border-radius:50%;background:var(--teal);border:2px solid var(--bg-dark)}
+.tl-year{font-size:.85rem;font-weight:700;color:var(--teal);margin-bottom:2px}
+.tl-text{font-size:.95rem;color:var(--text2);line-height:1.5}
+/* Bars */
+.bar-container{margin:20px 0}
+.bar-row{display:flex;align-items:center;margin-bottom:12px}
+.bar-label{width:200px;font-size:.9rem;color:var(--text2);flex-shrink:0}
+.bar-track{flex:1;height:28px;background:rgba(148,163,184,0.08);border-radius:14px;overflow:hidden;position:relative}
+.bar-fill{height:100%;border-radius:14px;display:flex;align-items:center;padding-left:12px;font-size:.8rem;font-weight:600;color:var(--bg-dark);transition:width 1s ease}
+.bar-fill.teal{background:linear-gradient(90deg,var(--teal),#00b894)}
+.bar-fill.blue{background:linear-gradient(90deg,var(--blue),#60a5fa)}
+.bar-fill.amber{background:linear-gradient(90deg,var(--amber),#fbbf24)}
+.bar-fill.coral{background:linear-gradient(90deg,var(--coral),#f87171)}
+/* Stack Diagram */
+.stack{display:flex;flex-direction:column;gap:8px;margin:24px 0}
+.stack-layer{display:flex;align-items:center;padding:16px 24px;border-radius:12px;border:1px solid var(--border);background:var(--bg-card);backdrop-filter:blur(12px)}
+.stack-num{font-size:1.5rem;font-weight:700;color:var(--teal);margin-right:20px;min-width:36px}
+.stack-title{font-size:1rem;font-weight:600;color:var(--text);margin-right:12px}
+.stack-desc{font-size:.85rem;color:var(--text2)}
+/* Nested Circles */
+.circles-container{display:flex;justify-content:center;align-items:center;margin:32px 0;position:relative}
+.circle{border-radius:50%;display:flex;align-items:center;justify-content:center;border:2px solid;position:relative}
+.circle-label{position:absolute;font-weight:600;font-size:.85rem;text-align:center;white-space:nowrap}
+/* Flow Diagram */
+.flow{display:flex;align-items:center;gap:8px;margin:24px 0;flex-wrap:wrap;justify-content:center}
+.flow-step{background:var(--bg-card);border:1px solid var(--border);border-radius:12px;padding:16px 20px;text-align:center;min-width:120px}
+.flow-step h4{font-size:.9rem;font-weight:600;color:var(--teal);margin-bottom:4px}
+.flow-step p{font-size:.8rem;color:var(--text2);margin:0}
+.flow-arrow{color:var(--teal);font-size:1.5rem;flex-shrink:0}
+/* Ladder */
+.ladder{display:flex;flex-direction:column;gap:6px;margin:24px 0}
+.ladder-rung{display:flex;align-items:center;padding:14px 20px;border-radius:10px;border:1px solid var(--border);background:var(--bg-card)}
+.ladder-num{font-size:1.2rem;font-weight:700;color:var(--teal);margin-right:16px;min-width:28px}
+.ladder-text{font-size:.95rem;color:var(--text2)}
+/* Comparison Columns */
+.compare{display:grid;grid-template-columns:1fr 1fr;gap:24px;margin:24px 0}
+.compare-col{background:var(--bg-card);border:1px solid var(--border);border-radius:16px;padding:28px}
+.compare-col h4{font-size:1.1rem;font-weight:600;margin-bottom:16px}
+.compare-col ul{list-style:none;padding:0}
+.compare-col li{font-size:.9rem;color:var(--text2);padding:8px 0;border-bottom:1px solid var(--border);line-height:1.5}
+.compare-col li:last-child{border-bottom:none}
+/* Section Divider */
+.section-divider{text-align:center;display:flex;flex-direction:column;align-items:center;justify-content:center}
+.section-divider h1{font-size:3.5rem;margin-bottom:16px}
+.section-divider .big-num{font-size:8rem;font-weight:700;color:var(--teal);opacity:.15;position:absolute;z-index:0}
+.section-divider .subhead{max-width:700px}
+/* EPOCH */
+.epoch-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:12px;margin:24px 0}
+.epoch-card{background:var(--bg-card);border:1px solid var(--border);border-radius:12px;padding:20px;text-align:center}
+.epoch-letter{font-size:2.5rem;font-weight:700;color:var(--teal);margin-bottom:8px}
+.epoch-word{font-size:.9rem;font-weight:600;color:var(--text);margin-bottom:6px}
+.epoch-desc{font-size:.8rem;color:var(--text2)}
+/* Roadmap */
+.roadmap{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin:24px 0}
+.roadmap-phase{background:var(--bg-card);border:1px solid var(--border);border-radius:16px;padding:24px;position:relative;overflow:hidden}
+.roadmap-phase::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;border-radius:16px 16px 0 0}
+.roadmap-phase:nth-child(1)::before{background:var(--teal)}
+.roadmap-phase:nth-child(2)::before{background:var(--blue)}
+.roadmap-phase:nth-child(3)::before{background:var(--amber)}
+.roadmap-phase h4{font-size:1rem;font-weight:600;margin-bottom:4px}
+.roadmap-phase .phase-days{font-size:.8rem;color:var(--teal);margin-bottom:12px}
+.roadmap-phase ul{list-style:none;padding:0}
+.roadmap-phase li{font-size:.85rem;color:var(--text2);padding:4px 0;padding-left:16px;position:relative}
+.roadmap-phase li::before{content:'›';position:absolute;left:0;color:var(--teal)}
+/* Closing Pillars */
+.pillars{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;margin:32px 0}
+.pillar{background:var(--bg-card);border:1px solid var(--border);border-radius:16px;padding:32px 24px;text-align:center;position:relative;overflow:hidden}
+.pillar::before{content:'';position:absolute;top:0;left:0;right:0;height:4px}
+.pillar:nth-child(1)::before{background:var(--teal)}
+.pillar:nth-child(2)::before{background:var(--blue)}
+.pillar:nth-child(3)::before{background:var(--amber)}
+.pillar h4{font-size:1.2rem;font-weight:700;margin-bottom:12px}
+.pillar p{font-size:.9rem;color:var(--text2);line-height:1.6}
+/* Title Slide Particles */
+.particles{position:absolute;top:0;left:0;width:100%;height:100%;overflow:hidden;pointer-events:none}
+.particle{position:absolute;border-radius:50%;background:var(--teal);opacity:.04;animation:float linear infinite}
+@keyframes float{0%{transform:translateY(100vh) translateX(0)}25%{transform:translateY(75vh) translateX(30px)}50%{transform:translateY(50vh) translateX(-20px)}75%{transform:translateY(25vh) translateX(15px)}100%{transform:translateY(-10vh) translateX(-10px)}}
+/* Click Zones */
+.click-zone{position:fixed;top:0;width:15%;height:100%;z-index:500;cursor:pointer}
+.click-zone.left{left:0}
+.click-zone.right{right:0}
+/* Overview Mode */
+#overview{position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(10,15,26,0.97);z-index:2000;display:none;overflow-y:auto;padding:40px}
+#overview.active{display:block}
+.overview-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:16px;max-width:1400px;margin:0 auto}
+.overview-thumb{aspect-ratio:16/9;background:var(--bg-card);border:2px solid var(--border);border-radius:8px;cursor:pointer;display:flex;align-items:center;justify-content:center;padding:12px;transition:border-color .2s,transform .2s}
+.overview-thumb:hover{border-color:var(--teal);transform:scale(1.04)}
+.overview-thumb.current{border-color:var(--teal)}
+.overview-thumb span{font-size:.7rem;color:var(--text2);text-align:center;line-height:1.3}
+.overview-title{text-align:center;font-size:1.5rem;font-weight:600;margin-bottom:24px;color:var(--text)}
+/* Speaker Notes */
+#notes-panel{position:fixed;bottom:0;left:0;right:0;background:rgba(10,15,26,0.95);backdrop-filter:blur(12px);border-top:1px solid var(--border);padding:20px 40px;z-index:1500;display:none;max-height:200px;overflow-y:auto}
+#notes-panel.active{display:block}
+#notes-panel p{font-size:.9rem;color:var(--text2);line-height:1.6;max-width:1000px}
+/* Responsive */
+@media(max-width:1200px){
+.slide-inner{padding:40px 32px}
+h1{font-size:2.4rem}h2{font-size:1.8rem}
+.stat-grid.g4,.card-grid.g4{grid-template-columns:1fr 1fr}
+.overview-grid{grid-template-columns:repeat(4,1fr)}
+}
+@media(max-width:768px){
+.slide-inner{padding:28px 20px}
+h1{font-size:1.8rem}h2{font-size:1.4rem}h3{font-size:1.1rem}
+.stat-grid.g2x2,.stat-grid.g4,.stat-grid.g3,.stat-grid.g2,
+.card-grid.g2,.card-grid.g3,.card-grid.g4,
+.compare,.roadmap,.pillars,.epoch-grid{grid-template-columns:1fr}
+.stat-num{font-size:2.2rem}
+.overview-grid{grid-template-columns:repeat(3,1fr)}
+.bar-label{width:120px;font-size:.8rem}
+#counter{bottom:12px;right:16px;font-size:.75rem}
+#nav-hint{display:none}
+.flow{flex-direction:column}
+.flow-arrow{transform:rotate(90deg)}
+}
+/* Print */
+@media print{
+.slide{position:relative!important;opacity:1!important;pointer-events:all!important;transform:none!important;page-break-after:always;height:auto;min-height:100vh;background:#fff!important;color:#000!important}
+#progress,#counter,#nav-hint,.click-zone,#overview,#notes-panel{display:none!important}
+.stat-card,.card,.stack-layer,.pillar,.roadmap-phase,.epoch-card{background:#f5f5f5!important;border-color:#ddd!important}
+.stat-num,.teal,.tl-year{color:#0a7e6a!important}
+h1,h2,h3,h4,.card h4,.stack-title{color:#111!important}
+p,.body-text,.stat-label,.tl-text,.bar-label,td,.compare-col li,.ladder-text,.roadmap-phase li,.pillar p,.epoch-desc{color:#333!important}
+}
+</style>
+</head>
+<body>
+<div id="progress"></div>
+<div id="counter"></div>
+<div id="nav-hint">← → Navigate &nbsp;|&nbsp; O Overview &nbsp;|&nbsp; N Notes</div>
+<div class="click-zone left" onclick="navigate(-1)"></div>
+<div class="click-zone right" onclick="navigate(1)"></div>
+
+<div id="overview">
+<div class="overview-title">Slide Overview — Press O or click to close</div>
+<div class="overview-grid" id="overview-grid"></div>
+</div>
+
+<div id="notes-panel"><p id="notes-text"></p></div>
+
+<div id="deck">
+
+<!-- SLIDE 1: TITLE -->
+<section class="slide" data-notes="Welcome. This is not a technology briefing. This is a leadership briefing. We will cover seventy years of AI history, the architecture of modern systems, and the decisions you must make in the next ninety days. The material draws on the combined perspectives of MIT and Stanford researchers, the strategy practices at BCG, Bain, and McKinsey, and the frontier labs at Anthropic, DeepMind, and Meta.">
+<div class="particles" id="particles"></div>
+<div class="slide-inner" style="text-align:center;display:flex;flex-direction:column;align-items:center;justify-content:center;min-height:80vh">
+<h1 style="font-size:3.8rem;margin-bottom:8px">The Architecture of Intelligence</h1>
+<p class="subhead" style="font-size:1.35rem;max-width:700px;margin:0 auto 40px">From Primitives to Governance — A Holistic Executive Guide to AI</p>
+<div style="display:flex;gap:12px;justify-content:center;flex-wrap:wrap;margin-bottom:48px">
+<span style="background:rgba(0,212,170,0.1);border:1px solid rgba(0,212,170,0.3);padding:6px 16px;border-radius:20px;font-size:.85rem;color:var(--teal)">MIT &amp; Stanford Research</span>
+<span style="background:rgba(59,130,246,0.1);border:1px solid rgba(59,130,246,0.3);padding:6px 16px;border-radius:20px;font-size:.85rem;color:var(--blue)">BCG · Bain · McKinsey</span>
+<span style="background:rgba(245,158,11,0.1);border:1px solid rgba(245,158,11,0.3);padding:6px 16px;border-radius:20px;font-size:.85rem;color:var(--amber)">Anthropic · DeepMind · Meta</span>
+</div>
+<p style="font-size:1rem;color:var(--text2);max-width:600px;margin:0 auto">The tools are here. The patterns are proven. The path is clear.</p>
+<p style="font-size:.8rem;color:rgba(148,163,184,0.4);margin-top:32px">Executive Briefing &nbsp;|&nbsp; 2026</p>
+</div>
+</section>
+
+<!-- SLIDE 2: THE STAKES -->
+<section class="slide" data-notes="Eighty-eight percent of organizations use AI. Only six percent are leaders. That gap is not a technology problem. It is an architecture problem, a governance problem, and a leadership problem. Global AI spending reaches $2.52 trillion in 2026. The money is flowing. The question is whether it flows to value or to waste.">
+<div class="slide-inner">
+<h2>The Gap Between Using AI and Winning with AI</h2>
+<div class="stat-grid g2x2">
+<div class="stat-card"><div class="stat-num" data-count="88">0%</div><div class="stat-label">Organizations using AI<br><span class="source">McKinsey 2025</span></div></div>
+<div class="stat-card"><div class="stat-num" data-count="33">0%</div><div class="stat-label">Have scaled AI enterprise-wide</div></div>
+<div class="stat-card"><div class="stat-num" data-count="6">0%</div><div class="stat-label">True AI leaders (&gt;5% EBIT impact)</div></div>
+<div class="stat-card"><div class="stat-num amber" data-prefix="$" data-suffix="T" data-count="2.52" data-decimal="2">$0T</div><div class="stat-label">Global AI spending in 2026<br><span class="source">Gartner</span></div></div>
+</div>
+<div class="insight">Only 6% of firms are true AI leaders. The gap between experimenting and scaling is the defining challenge of 2026.</div>
+</div>
+</section>
+
+<!-- SLIDE 3: THE FAILURE RATE -->
+<section class="slide" data-notes="MIT's Project NANDA studied hundreds of enterprise AI initiatives. Ninety-five percent showed zero measurable P&L impact. Not because the technology failed — because the approach failed. Generic tools. No integration. No governance. No measurement from day one.">
+<div class="slide-inner">
+<h2>95% of GenAI Pilots Show Zero P&amp;L Impact</h2>
+<div style="text-align:center;margin:32px 0">
+<div class="stat-num coral" style="font-size:7rem;line-height:1" data-count="95" data-suffix="%">0%</div>
+<p style="font-size:1.1rem;color:var(--text2);margin-top:8px">of GenAI pilots show zero measurable P&amp;L impact</p>
+</div>
+<div class="bar-container">
+<div class="bar-row"><div class="bar-label">No tangible value</div><div class="bar-track"><div class="bar-fill coral" style="width:74%">74%</div></div></div>
+<div class="bar-row"><div class="bar-label">Avg. pilot-to-production</div><div class="bar-track"><div class="bar-fill amber" style="width:60%">9+ months</div></div></div>
+<div class="bar-row"><div class="bar-label">Cost per failed pilot</div><div class="bar-track"><div class="bar-fill blue" style="width:50%">$100K–$1M</div></div></div>
+</div>
+<p class="source">Source: MIT Media Lab Project NANDA, August 2025</p>
+<div class="insight">The technology works. The implementation does not.</div>
+</div>
+</section>
+
+<!-- SLIDE 4: THE OPPORTUNITY -->
+<section class="slide" data-notes="The opportunity is not theoretical. McKinsey quantified it at $4.4 trillion annually. Seventy-five percent is concentrated in four functions: customer operations, marketing, software engineering, and R&D. These are not moonshot applications. They are workflow automation, content generation, code assistance, and research acceleration.">
+<div class="slide-inner">
+<h2>$4.4 Trillion in Annual Value from Generative AI</h2>
+<div class="bar-container" style="margin-top:32px">
+<div class="bar-row"><div class="bar-label">Customer Operations</div><div class="bar-track"><div class="bar-fill teal" style="width:85%">$400B+</div></div></div>
+<div class="bar-row"><div class="bar-label">Marketing &amp; Sales</div><div class="bar-track"><div class="bar-fill teal" style="width:75%">$350B+</div></div></div>
+<div class="bar-row"><div class="bar-label">Software Engineering</div><div class="bar-track"><div class="bar-fill blue" style="width:65%">$300B+</div></div></div>
+<div class="bar-row"><div class="bar-label">R&amp;D</div><div class="bar-track"><div class="bar-fill blue" style="width:55%">$250B+</div></div></div>
+<div class="bar-row"><div class="bar-label">Other Functions</div><div class="bar-track"><div class="bar-fill amber" style="width:90%">$3.1T combined</div></div></div>
+</div>
+<p class="source">Source: McKinsey Global Institute, 2023</p>
+<div class="insight">75% of GenAI value is concentrated in four business functions. The value is in the work people already do.</div>
+</div>
+</section>
+
+<!-- SLIDE 5: SECTION DIVIDER — HISTORY -->
+<section class="slide" data-notes="To understand where AI is going, you must understand where it has been. Seventy years of history in three waves. Each wave solved a problem the previous wave could not.">
+<div class="slide-inner section-divider">
+<div class="big-num">70</div>
+<h1 style="position:relative;z-index:1">Seventy Years of AI</h1>
+<p class="subhead" style="position:relative;z-index:1">From Turing's Question to the Transformer Revolution</p>
+<div style="display:flex;gap:24px;justify-content:center;margin-top:32px;flex-wrap:wrap;position:relative;z-index:1">
+<div class="card" style="text-align:center;min-width:200px"><div class="card-accent" style="background:var(--teal);margin:0 auto 12px"></div><h4 style="color:var(--teal)">Symbolic AI</h4><p>1950s–1980s</p></div>
+<div class="card" style="text-align:center;min-width:200px"><div class="card-accent" style="background:var(--blue);margin:0 auto 12px"></div><h4 style="color:var(--blue)">Machine Learning</h4><p>1990s–2010s</p></div>
+<div class="card" style="text-align:center;min-width:200px"><div class="card-accent" style="background:var(--amber);margin:0 auto 12px"></div><h4 style="color:var(--amber)">Deep Learning &amp; GenAI</h4><p>2012–Present</p></div>
+</div>
+</div>
+</section>
+
+<!-- SLIDE 6: WAVE 1 -->
+<section class="slide" data-notes="The idea was elegant. Encode human knowledge as logical rules. For three decades, researchers built expert systems. The problem was that the real world is messy. Rules break. Edge cases multiply. Two AI winters followed when hype exceeded reality.">
+<div class="slide-inner">
+<h2>Wave 1: Teaching Machines to Think in Rules</h2>
+<p class="subhead" style="font-size:1rem">1950s–1980s — The Symbolic AI Era</p>
+<div class="timeline">
+<div class="tl-item"><div class="tl-year">1950</div><div class="tl-text">Alan Turing asks: "Can machines think?"</div></div>
+<div class="tl-item"><div class="tl-year">1956</div><div class="tl-text">Dartmouth Conference — "Artificial Intelligence" coined</div></div>
+<div class="tl-item"><div class="tl-year">1966</div><div class="tl-text">ELIZA chatbot at MIT — first conversational AI</div></div>
+<div class="tl-item"><div class="tl-year">1972</div><div class="tl-text">MYCIN expert system — medical diagnosis via rules</div></div>
+<div class="tl-item"><div class="tl-year">1974</div><div class="tl-text">First AI Winter — funding collapses</div></div>
+<div class="tl-item"><div class="tl-year">1980</div><div class="tl-text">Expert systems boom — $1B market</div></div>
+<div class="tl-item"><div class="tl-year">1987</div><div class="tl-text">Second AI Winter — hype exceeds reality again</div></div>
+</div>
+<div class="insight">Intelligence cannot be fully captured in hand-written rules.</div>
+</div>
+</section>
+
+<!-- SLIDE 7: WAVE 2 -->
+<section class="slide" data-notes="The breakthrough was simple. Stop writing rules. Show the machine examples. Let it find the patterns. Give a system ten thousand photos of cats and dogs. It learns to tell them apart. No one writes a rule for whiskers. The algorithm discovers what matters.">
+<div class="slide-inner">
+<h2>Wave 2: Letting Data Do the Teaching</h2>
+<p class="subhead" style="font-size:1rem">1990s–2010s — The Machine Learning Era</p>
+<div style="display:flex;gap:16px;margin:20px 0;flex-wrap:wrap;justify-content:center">
+<div class="card" style="text-align:center;flex:1;min-width:140px"><div class="stat-num" style="font-size:1.8rem">1997</div><p style="font-size:.85rem">Deep Blue defeats Kasparov</p></div>
+<div class="card" style="text-align:center;flex:1;min-width:140px"><div class="stat-num blue" style="font-size:1.8rem">2006</div><p style="font-size:.85rem">Hinton's deep learning revival</p></div>
+<div class="card" style="text-align:center;flex:1;min-width:140px"><div class="stat-num amber" style="font-size:1.8rem">2011</div><p style="font-size:.85rem">IBM Watson wins Jeopardy!</p></div>
+<div class="card" style="text-align:center;flex:1;min-width:140px"><div class="stat-num coral" style="font-size:1.8rem">2012</div><p style="font-size:.85rem">AlexNet wins ImageNet</p></div>
+</div>
+<h3 style="margin-top:24px">Three Types of Machine Learning</h3>
+<table class="data-table">
+<thead><tr><th>Type</th><th>Method</th><th>Use Cases</th></tr></thead>
+<tbody>
+<tr><td><strong>Supervised</strong></td><td>Learn from labeled examples</td><td>Spam detection, credit scoring</td></tr>
+<tr><td><strong>Unsupervised</strong></td><td>Find hidden structure</td><td>Customer segmentation, anomaly detection</td></tr>
+<tr><td><strong>Reinforcement</strong></td><td>Learn by trial and reward</td><td>Game playing, robotics, trading</td></tr>
+</tbody>
+</table>
+<div class="insight">The algorithm that learns from data will always beat the algorithm coded by hand.</div>
+</div>
+</section>
+
+<!-- SLIDE 8: WAVE 3 -->
+<section class="slide" data-notes="In 2012, AlexNet won an image recognition competition by a margin so large it stunned the field. Three forces converged: data, compute, and algorithms. In 2017, Google published Attention Is All You Need, introducing the Transformer. Every major LLM since is built on this foundation.">
+<div class="slide-inner">
+<h2>Wave 3: Three Forces Converge</h2>
+<p class="subhead" style="font-size:1rem">2012–Present — The Deep Learning &amp; Transformer Revolution</p>
+<div class="stat-grid g3" style="margin-bottom:28px">
+<div class="stat-card"><div class="stat-num" style="font-size:2rem">Data</div><p style="font-size:.85rem;color:var(--text2)">The internet created oceans of training data</p></div>
+<div class="stat-card"><div class="stat-num blue" style="font-size:2rem">Compute</div><p style="font-size:.85rem;color:var(--text2)">GPUs enabled parallel processing at scale</p></div>
+<div class="stat-card"><div class="stat-num amber" style="font-size:2rem">Algorithms</div><p style="font-size:.85rem;color:var(--text2)">New architectures unlocked impossible capabilities</p></div>
+</div>
+<div class="flow">
+<div class="flow-step"><h4>2012</h4><p>AlexNet</p></div><div class="flow-arrow">→</div>
+<div class="flow-step"><h4>2017</h4><p>Transformer</p></div><div class="flow-arrow">→</div>
+<div class="flow-step"><h4>2018</h4><p>BERT</p></div><div class="flow-arrow">→</div>
+<div class="flow-step"><h4>2020</h4><p>GPT-3</p></div><div class="flow-arrow">→</div>
+<div class="flow-step"><h4>2022</h4><p>ChatGPT</p></div><div class="flow-arrow">→</div>
+<div class="flow-step"><h4>2023</h4><p>GPT-4 / Claude</p></div><div class="flow-arrow">→</div>
+<div class="flow-step"><h4>2024-25</h4><p>AI Agents</p></div>
+</div>
+<div class="insight">The cost of authoring written content collapsed from ~$1,000 to $0.04 per thousand words.</div>
+</div>
+</section>
+
+<!-- SLIDE 9: SECTION DIVIDER — TAXONOMY -->
+<section class="slide" data-notes="Before we can build, we must define. The AI landscape is cluttered with terms that sound similar but mean very different things. This section provides the precise definitions executives need to make informed decisions.">
+<div class="slide-inner section-divider">
+<h1>The AI Taxonomy</h1>
+<p class="subhead">Definitions That Matter</p>
+<div class="quote" style="max-width:700px;margin:32px auto">"The words matter. Know them. Use them precisely. Confusion about terms costs companies millions."</div>
+</div>
+</section>
+
+<!-- SLIDE 10: THE NESTED HIERARCHY -->
+<section class="slide" data-notes="AI is a nesting doll. Each layer builds on the one below. Artificial Intelligence is the broadest category. Machine Learning is a subset that learns from data. Deep Learning uses neural networks. Generative AI creates new content. NLP bridges AI and human language. Every executive should be able to draw this diagram from memory.">
+<div class="slide-inner">
+<h2>AI Is a Stack of Capabilities</h2>
+<div class="circles-container" style="height:380px;margin:24px 0">
+<div class="circle" style="width:380px;height:380px;border-color:rgba(0,212,170,0.3);background:rgba(0,212,170,0.03)">
+<div class="circle-label" style="top:12px;left:50%;transform:translateX(-50%);color:var(--teal)">Artificial Intelligence</div>
+<div class="circle" style="width:290px;height:290px;border-color:rgba(59,130,246,0.3);background:rgba(59,130,246,0.03)">
+<div class="circle-label" style="top:10px;left:50%;transform:translateX(-50%);color:var(--blue)">Machine Learning</div>
+<div class="circle" style="width:200px;height:200px;border-color:rgba(245,158,11,0.3);background:rgba(245,158,11,0.03)">
+<div class="circle-label" style="top:10px;left:50%;transform:translateX(-50%);color:var(--amber)">Deep Learning</div>
+<div class="circle" style="width:110px;height:110px;border-color:rgba(239,68,68,0.3);background:rgba(239,68,68,0.06)">
+<div class="circle-label" style="top:50%;left:50%;transform:translate(-50%,-50%);color:var(--coral);font-size:.75rem">Generative AI</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div style="text-align:center;margin-top:16px">
+<span style="background:rgba(148,163,184,0.1);border:1px solid var(--border);padding:8px 20px;border-radius:20px;font-size:.9rem;color:var(--text2)">Cross-cutting: <strong style="color:var(--text)">NLP</strong> — Bridges AI and human communication</span>
+</div>
+</div>
+</section>
+
+<!-- SLIDE 11: THE AI SPECTRUM -->
+<section class="slide" data-notes="Every AI system in production today is Narrow AI. Exceptional at specific tasks. Unable to generalize beyond its training. Do not wait for AGI. The business case for Narrow AI is already enormous.">
+<div class="slide-inner">
+<h2>We Live in the Age of Narrow AI — And That Is Enough</h2>
+<div style="display:flex;gap:0;margin:32px 0;border-radius:16px;overflow:hidden;flex-wrap:wrap">
+<div style="flex:2;min-width:280px;background:rgba(0,212,170,0.1);border:2px solid var(--teal);padding:28px 24px;position:relative">
+<div style="position:absolute;top:8px;right:12px;background:var(--teal);color:var(--bg-dark);padding:2px 10px;border-radius:10px;font-size:.7rem;font-weight:700">YOU ARE HERE</div>
+<h4 style="color:var(--teal);margin-bottom:8px">Narrow AI (ANI)</h4>
+<p style="font-size:.9rem;color:var(--text2);margin:0">TODAY — Excels at specific tasks. Cannot generalize. All current AI systems including GPT-4, Claude, and Gemini.</p>
+</div>
+<div style="flex:1;min-width:200px;background:rgba(59,130,246,0.05);border:1px solid var(--border);padding:28px 24px">
+<h4 style="color:var(--blue);margin-bottom:8px">General AI (AGI)</h4>
+<p style="font-size:.9rem;color:var(--text2);margin:0">FUTURE — Human-level flexibility across domains. Active research. Not yet achieved.</p>
+</div>
+<div style="flex:1;min-width:200px;background:rgba(148,163,184,0.03);border:1px solid var(--border);padding:28px 24px">
+<h4 style="color:var(--text2);margin-bottom:8px">Superintelligence</h4>
+<p style="font-size:.9rem;color:var(--text2);margin:0">HYPOTHETICAL — Surpasses all human intelligence. Theoretical only.</p>
+</div>
+</div>
+<div class="insight">Even GPT-4, Gemini, and Claude are Narrow AI. The business opportunity is enormous precisely because Narrow AI, deployed well, can automate and augment at scale.</div>
+</div>
+</section>
+
+<!-- SLIDE 12: KEY ARCHITECTURES -->
+<section class="slide" data-notes="Not all models do the same job. The architecture family strongly shapes the business capability and the cost. CNNs see patterns in images. Transformers understand and generate language. Diffusion models create media. Mixture of Experts routes tasks to specialists.">
+<div class="slide-inner">
+<h2>Seven Architectures — Each Built for a Different Job</h2>
+<table class="data-table">
+<thead><tr><th>Architecture</th><th>Function</th><th>Best Enterprise Use Case</th></tr></thead>
+<tbody>
+<tr><td><strong>CNN</strong></td><td>Local spatial patterns</td><td>Visual inspection, defect detection</td></tr>
+<tr><td><strong>RNN / LSTM</strong></td><td>Sequential data</td><td>Time-series forecasting, anomaly detection</td></tr>
+<tr><td><strong>Transformer Encoder</strong></td><td>Bidirectional context</td><td>Document classification, semantic search</td></tr>
+<tr><td><strong>Transformer Decoder</strong></td><td>Next-token generation</td><td>Report drafting, chatbots, code generation</td></tr>
+<tr><td><strong>Vision Transformer</strong></td><td>Image-as-tokens</td><td>Image categorization, multimodal integration</td></tr>
+<tr><td><strong>Diffusion Models</strong></td><td>Noise-to-media generation</td><td>Marketing assets, synthetic data</td></tr>
+<tr><td><strong>Mixture of Experts</strong></td><td>Routed specialization</td><td>Efficient large-scale AI platforms</td></tr>
+</tbody>
+</table>
+<div class="insight">Knowing which architecture does what is the first step to making informed investment decisions.</div>
+</div>
+</section>
+
+<!-- SLIDE 13: HOW LLMS WORK -->
+<section class="slide" data-notes="An LLM processes language in four steps. Tokenize, Embed, Attend, Generate. The Transformer processes all words simultaneously, not one at a time. This parallelism is what makes modern AI possible at scale.">
+<div class="slide-inner">
+<h2>Four Steps: Tokenize, Embed, Attend, Generate</h2>
+<div class="flow" style="margin:32px 0">
+<div class="flow-step" style="flex:1;min-width:160px">
+<h4>1. Tokenize</h4>
+<p>Break text into pieces<br><span style="color:var(--teal);font-size:.75rem">"Understanding" → ["under","stand","ing"]</span></p>
+</div>
+<div class="flow-arrow">→</div>
+<div class="flow-step" style="flex:1;min-width:160px">
+<h4>2. Embed</h4>
+<p>Convert to vectors<br><span style="color:var(--blue);font-size:.75rem">12,288 numbers capturing meaning</span></p>
+</div>
+<div class="flow-arrow">→</div>
+<div class="flow-step" style="flex:1;min-width:160px">
+<h4>3. Attend</h4>
+<p>See all words at once<br><span style="color:var(--amber);font-size:.75rem">Learn which relate to which</span></p>
+</div>
+<div class="flow-arrow">→</div>
+<div class="flow-step" style="flex:1;min-width:160px">
+<h4>4. Generate</h4>
+<p>Predict next token<br><span style="color:var(--coral);font-size:.75rem">Build coherent responses</span></p>
+</div>
+</div>
+<div class="stat-grid g3">
+<div class="stat-card"><div class="stat-num" style="font-size:1.8rem">175B</div><div class="stat-label">Parameters in GPT-3</div></div>
+<div class="stat-card"><div class="stat-num blue" style="font-size:1.8rem">96</div><div class="stat-label">Attention layers</div></div>
+<div class="stat-card"><div class="stat-num amber" style="font-size:1.8rem">50,257</div><div class="stat-label">Token vocabulary</div></div>
+</div>
+<div class="insight">The Transformer processes all tokens simultaneously. This parallelism is what makes modern AI possible at scale.</div>
+</div>
+</section>
+
+<!-- SLIDE 14: THE TRAINING PROCESS -->
+<section class="slide" data-notes="An LLM is trained in three stages. First, it reads vast amounts of text and learns to predict the next word. Second, human experts write high-quality examples to teach instruction-following. Third, humans rank model outputs to align behavior with human preferences.">
+<div class="slide-inner">
+<h2>From Raw Text to Aligned Intelligence</h2>
+<p class="subhead" style="font-size:1rem">Three stages transform raw data into a helpful, honest, harmless AI</p>
+<div class="stack" style="margin-top:24px">
+<div class="stack-layer" style="border-left:4px solid var(--teal)">
+<div class="stack-num">1</div>
+<div><div class="stack-title">Pre-Training</div><div class="stack-desc">300B+ tokens of internet text. Self-supervised next-word prediction. Learns language patterns, facts, reasoning.</div></div>
+</div>
+<div class="stack-layer" style="border-left:4px solid var(--blue)">
+<div class="stack-num">2</div>
+<div><div class="stack-title">Supervised Fine-Tuning</div><div class="stack-desc">~13,000 curated demonstrations. Human experts write high-quality instruction-response pairs.</div></div>
+</div>
+<div class="stack-layer" style="border-left:4px solid var(--amber)">
+<div class="stack-num">3</div>
+<div><div class="stack-title">RLHF — Reinforcement Learning from Human Feedback</div><div class="stack-desc">~33,000 human comparisons. Humans rank outputs. Reward model learns preferences. Aligns behavior.</div></div>
+</div>
+</div>
+<div style="display:flex;gap:12px;justify-content:center;margin-top:28px;flex-wrap:wrap">
+<span style="background:rgba(0,212,170,0.1);border:1px solid rgba(0,212,170,0.3);padding:8px 20px;border-radius:20px;font-size:.9rem;color:var(--teal);font-weight:600">Helpful</span>
+<span style="background:rgba(59,130,246,0.1);border:1px solid rgba(59,130,246,0.3);padding:8px 20px;border-radius:20px;font-size:.9rem;color:var(--blue);font-weight:600">Honest</span>
+<span style="background:rgba(245,158,11,0.1);border:1px solid rgba(245,158,11,0.3);padding:8px 20px;border-radius:20px;font-size:.9rem;color:var(--amber);font-weight:600">Harmless</span>
+</div>
+</div>
+</section>
+
+<!-- SLIDE 15: SECTION DIVIDER — DATA -->
+<section class="slide" data-notes="Before we can discuss AI systems, we must discuss data. AI is only as good as the data it can access. And eighty percent of enterprise data is unstructured. This section explains how modern AI unlocks that data.">
+<div class="slide-inner section-divider">
+<div class="big-num">80%</div>
+<h1 style="position:relative;z-index:1">The Data Foundation</h1>
+<p class="subhead" style="position:relative;z-index:1">Unlocking the 80% of Enterprise Data That Is Unstructured</p>
+<p style="position:relative;z-index:1;font-size:1rem;color:var(--text2);margin-top:16px">Growing 5x faster than structured data</p>
+</div>
+</section>
+
+<!-- SLIDE 16: DATA LANDSCAPE -->
+<section class="slide" data-notes="The 80-20 rule. Eighty percent of enterprise data is unstructured. Yet organizations spend sixty percent of their IT budget on structured data. The inverse investment ratio is the single largest data strategy gap in most enterprises.">
+<div class="slide-inner">
+<h2>Three Types of Corporate Data</h2>
+<div class="stat-grid g3" style="margin-top:28px">
+<div class="stat-card" style="border-top:4px solid var(--teal)">
+<div class="stat-num" style="font-size:2.5rem">20%</div>
+<h4 style="margin:8px 0 4px;font-size:.95rem">Structured</h4>
+<p style="font-size:.85rem;color:var(--text2);margin:0">Fixed schema, rows/columns<br>SQL databases<br><strong style="color:var(--teal)">60% of IT budget</strong></p>
+</div>
+<div class="stat-card" style="border-top:4px solid var(--blue)">
+<div class="stat-num blue" style="font-size:2.5rem">5-10%</div>
+<h4 style="margin:8px 0 4px;font-size:.95rem">Semi-Structured</h4>
+<p style="font-size:.85rem;color:var(--text2);margin:0">Flexible with metadata<br>JSON, XML, logs<br><strong style="color:var(--blue)">Moderate spend</strong></p>
+</div>
+<div class="stat-card" style="border-top:4px solid var(--amber)">
+<div class="stat-num amber" style="font-size:2.5rem">80%</div>
+<h4 style="margin:8px 0 4px;font-size:.95rem">Unstructured</h4>
+<p style="font-size:.85rem;color:var(--text2);margin:0">Documents, media, text<br>Emails, images, contracts<br><strong style="color:var(--amber)">40% of IT budget</strong></p>
+</div>
+</div>
+<div class="insight">Inverse investment ratio: 60% of IT spend on 20% of data (structured). 40% on 80% of data (unstructured).</div>
+</div>
+</section>
+
+<!-- SLIDE 17: VECTORIZATION & RAG -->
+<section class="slide" data-notes="A vector embedding converts any content into a list of numbers that captures its meaning. RAG is the most important enterprise AI architecture today. It solves the hallucination problem by grounding every answer in real data.">
+<div class="slide-inner">
+<h2>Vectorization + RAG: How AI Reads Your Enterprise</h2>
+<div class="compare">
+<div class="compare-col" style="border-top:3px solid var(--teal)">
+<h4 style="color:var(--teal)">Vectorization</h4>
+<ul>
+<li><strong>What:</strong> Convert any content into numerical vectors that capture meaning</li>
+<li><strong>How:</strong> Document → Embedding model → Vector [0.23, -0.87, 0.45...]</li>
+<li><strong>Result:</strong> Similar concepts cluster together in semantic space</li>
+<li><strong>Enables:</strong> Semantic search, auto-classify, compare, recommend</li>
+</ul>
+</div>
+<div class="compare-col" style="border-top:3px solid var(--blue)">
+<h4 style="color:var(--blue)">RAG Pipeline</h4>
+<ul>
+<li><strong>1. Ingest:</strong> Documents split into chunks, converted to embeddings</li>
+<li><strong>2. Store:</strong> Embeddings stored in vector database</li>
+<li><strong>3. Retrieve:</strong> Find relevant chunks by meaning, not keywords</li>
+<li><strong>4. Generate:</strong> LLM generates answers grounded in retrieved facts</li>
+</ul>
+</div>
+</div>
+<div class="insight">RAG solves hallucinations by grounding answers in actual enterprise data. It accesses private knowledge LLMs cannot know on their own.</div>
+</div>
+</section>
+
+<!-- SLIDE 18: RAG vs MCP -->
+<section class="slide" data-notes="RAG handles unstructured, historical data. MCP handles structured, real-time data. The hybrid approach provides comprehensive context. Historical knowledge plus current state.">
+<div class="slide-inner">
+<h2>RAG for History. MCP for Real-Time. Both for Complete Context.</h2>
+<table class="data-table" style="margin-top:28px">
+<thead><tr><th>Dimension</th><th style="color:var(--teal)">RAG</th><th style="color:var(--blue)">MCP (Model Context Protocol)</th></tr></thead>
+<tbody>
+<tr><td><strong>Best for</strong></td><td>Unstructured, static data</td><td>Structured, real-time data</td></tr>
+<tr><td><strong>Data types</strong></td><td>Documents, PDFs, wikis</td><td>Databases, APIs, SaaS</td></tr>
+<tr><td><strong>Method</strong></td><td>Vector embeddings + search</td><td>On-demand API invocation</td></tr>
+<tr><td><strong>Latency</strong></td><td>Low (pre-indexed)</td><td>Medium (API-dependent)</td></tr>
+<tr><td><strong>Freshness</strong></td><td>Periodic updates</td><td>Always current</td></tr>
+<tr><td><strong>Security</strong></td><td>Encrypted vector DBs</td><td>OAuth2, RBAC at runtime</td></tr>
+</tbody>
+</table>
+<div class="insight">Hybrid RAG + MCP provides comprehensive context: historical knowledge + current state.</div>
+</div>
+</section>
+
+<!-- SLIDE 19: SECTION DIVIDER — ARCHITECTURE -->
+<section class="slide" data-notes="This is the most important section of the briefing. Models alone do not create intelligence. Intelligence emerges from systems of components. Understanding this architecture is the key to making informed AI investment decisions.">
+<div class="slide-inner section-divider">
+<h1>The Architecture of Modern AI Systems</h1>
+<p class="subhead">Models Alone Do Not Create Intelligence — Systems Do</p>
+<div style="margin-top:32px;padding:20px 32px;background:var(--bg-card);border:1px solid var(--border);border-radius:12px;display:inline-block">
+<p style="font-size:1.1rem;color:var(--text);margin:0;font-weight:500">Intelligence = <span style="color:var(--teal)">Models</span> + <span style="color:var(--blue)">Tools</span> + <span style="color:var(--amber)">Memory</span> + <span style="color:var(--coral)">Planning</span> + <span style="color:var(--text)">Orchestration</span></p>
+</div>
+</div>
+</section>
+
+<!-- SLIDE 20: THE 7-LAYER STACK -->
+<section class="slide" data-notes="The enterprise AI stack has seven layers. Infrastructure at the bottom. Models above it. Knowledge, tools, reasoning, orchestration, and applications building upward. Each layer depends on the ones below. Miss one and the system fails.">
+<div class="slide-inner">
+<h2>Modern AI Is a Seven-Layer System</h2>
+<div class="stack" style="flex-direction:column-reverse">
+<div class="stack-layer" style="border-left:4px solid rgba(148,163,184,0.3)">
+<div class="stack-num" style="color:var(--text2)">1</div>
+<div><div class="stack-title">Infrastructure</div><div class="stack-desc">GPU clusters, cloud compute, distributed storage</div></div>
+</div>
+<div class="stack-layer" style="border-left:4px solid rgba(148,163,184,0.4)">
+<div class="stack-num" style="color:var(--text2)">2</div>
+<div><div class="stack-title">Models</div><div class="stack-desc">Language, vision, multimodal, embedding models</div></div>
+</div>
+<div class="stack-layer" style="border-left:4px solid var(--blue)">
+<div class="stack-num" style="color:var(--blue)">3</div>
+<div><div class="stack-title">Knowledge</div><div class="stack-desc">Vector databases, knowledge graphs, document stores</div></div>
+</div>
+<div class="stack-layer" style="border-left:4px solid var(--blue)">
+<div class="stack-num" style="color:var(--blue)">4</div>
+<div><div class="stack-title">Tools</div><div class="stack-desc">APIs, databases, code execution, web search, calculators</div></div>
+</div>
+<div class="stack-layer" style="border-left:4px solid var(--amber)">
+<div class="stack-num" style="color:var(--amber)">5</div>
+<div><div class="stack-title">Reasoning</div><div class="stack-desc">Planning, reflection, chain-of-thought, self-correction</div></div>
+</div>
+<div class="stack-layer" style="border-left:4px solid var(--amber)">
+<div class="stack-num" style="color:var(--amber)">6</div>
+<div><div class="stack-title">Agent Orchestration</div><div class="stack-desc">Workflow routing, agent collaboration, task decomposition</div></div>
+</div>
+<div class="stack-layer" style="border-left:4px solid var(--teal)">
+<div class="stack-num" style="color:var(--teal)">7</div>
+<div><div class="stack-title">Applications</div><div class="stack-desc">AI copilots, research assistants, automation workflows</div></div>
+</div>
+</div>
+</div>
+</section>
+
+
+<!-- SLIDE 21: FOUR SYSTEM ARCHITECTURES -->
+<section class="slide" data-notes="There are four fundamental ways to architect an AI system. Single agent for simple tasks. Workflow systems for repeatable pipelines. Multi-agent for complex problems requiring diverse expertise. Autonomous for long-horizon planning.">
+<div class="slide-inner">
+<h2>Four Ways to Architect an AI System</h2>
+<div class="card-grid g2" style="margin-top:28px">
+<div class="card" style="border-top:3px solid var(--teal)">
+<h4 style="color:var(--teal)">Single Agent</h4>
+<p style="font-size:1rem;margin-bottom:8px;color:var(--text)">User → AI → Answer</p>
+<p>Best for self-contained tasks. Simplest to build, debug, and pilot. The right starting point for most problems.</p>
+</div>
+<div class="card" style="border-top:3px solid var(--blue)">
+<h4 style="color:var(--blue)">Workflow Systems</h4>
+<p style="font-size:1rem;margin-bottom:8px;color:var(--text)">Research → Analyze → Write</p>
+<p>Best for structured, repeatable pipelines. Predictable. Lower complexity. Each step feeds the next.</p>
+</div>
+<div class="card" style="border-top:3px solid var(--amber)">
+<h4 style="color:var(--amber)">Multi-Agent</h4>
+<p style="font-size:1rem;margin-bottom:8px;color:var(--text)">Manager → Specialist Agents</p>
+<p>Best for complex, multi-domain problems. Hub-and-spoke coordination. Each agent brings expertise.</p>
+</div>
+<div class="card" style="border-top:3px solid var(--coral)">
+<h4 style="color:var(--coral)">Autonomous</h4>
+<p style="font-size:1rem;margin-bottom:8px;color:var(--text)">Goal → Plan → Execute → Adapt</p>
+<p>Best for long-horizon planning. Self-correcting loops. Highest capability, highest complexity.</p>
+</div>
+</div>
+<div class="insight">The right choice depends on the problem, not the technology. Start simple. Add complexity only when the simpler approach fails.</div>
+</div>
+</section>
+
+<!-- SLIDE 22: SECTION DIVIDER — PRIMITIVES -->
+<section class="slide" data-notes="Every AI system is built from a small set of fundamental capabilities — primitives. Understanding these primitives is like understanding the periodic table of chemistry. Once you know the elements, you can understand any compound.">
+<div class="slide-inner section-divider">
+<h1>AI Primitives</h1>
+<p class="subhead">The Atoms of Intelligence</p>
+<div class="quote" style="max-width:700px;margin:32px auto">"The primitives are the parts. The patterns are the craft. The system is the story. Know all three."</div>
+</div>
+</section>
+
+<!-- SLIDE 23: SEVEN TECHNICAL PRIMITIVES -->
+<section class="slide" data-notes="These seven primitives are the building blocks of every AI system. Tokenization breaks language into numbers. Embeddings capture meaning. Vector search finds similar content. RAG retrieves knowledge. Context windows provide working memory. Function calling delegates to tools. Structured output ensures machine-readable results.">
+<div class="slide-inner">
+<h2>Seven Building Blocks Power Every AI System</h2>
+<div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:12px;margin-top:24px">
+<div class="card" style="border-left:3px solid var(--teal)">
+<h4><span style="color:var(--teal);margin-right:8px">1</span> Tokenization</h4>
+<p>Breaking language into numerical units the model can process</p>
+</div>
+<div class="card" style="border-left:3px solid var(--teal)">
+<h4><span style="color:var(--teal);margin-right:8px">2</span> Embeddings</h4>
+<p>Converting meaning into mathematical vectors for computation</p>
+</div>
+<div class="card" style="border-left:3px solid var(--blue)">
+<h4><span style="color:var(--blue);margin-right:8px">3</span> Vector Search</h4>
+<p>Finding semantically similar content at scale in milliseconds</p>
+</div>
+<div class="card" style="border-left:3px solid var(--blue)">
+<h4><span style="color:var(--blue);margin-right:8px">4</span> RAG</h4>
+<p>Retrieving relevant knowledge before generating responses</p>
+</div>
+<div class="card" style="border-left:3px solid var(--amber)">
+<h4><span style="color:var(--amber);margin-right:8px">5</span> Context Windows</h4>
+<p>The working memory of a language model — what it can see at once</p>
+</div>
+<div class="card" style="border-left:3px solid var(--amber)">
+<h4><span style="color:var(--amber);margin-right:8px">6</span> Function Calling</h4>
+<p>Delegating tasks to external tools — calculators, APIs, databases</p>
+</div>
+<div class="card" style="border-left:3px solid var(--coral)">
+<h4><span style="color:var(--coral);margin-right:8px">7</span> Structured Output</h4>
+<p>Forcing responses into machine-readable formats (JSON, typed schemas)</p>
+</div>
+</div>
+</div>
+</section>
+
+<!-- SLIDE 24: THE FOUR-LAYER STACK -->
+<section class="slide" data-notes="Primitives compose into patterns. Patterns are implemented in frameworks. Frameworks deliver governed systems. This four-layer stack is the architecture of AI value. Each layer builds on the one below. Skip a layer and the system fails.">
+<div class="slide-inner">
+<h2>Primitives → Patterns → Frameworks → Governed Systems</h2>
+<div class="stack" style="margin-top:28px">
+<div class="stack-layer" style="border-left:4px solid var(--teal);background:rgba(0,212,170,0.05)">
+<div class="stack-num" style="color:var(--teal)">4</div>
+<div><div class="stack-title" style="color:var(--teal)">Governed AI Systems</div><div class="stack-desc">Observable, Explainable, Auditable, Trustworthy — End-to-end solutions delivering business value</div></div>
+</div>
+<div class="stack-layer" style="border-left:4px solid var(--amber)">
+<div class="stack-num" style="color:var(--amber)">3</div>
+<div><div class="stack-title">Frameworks &amp; Platforms</div><div class="stack-desc">LangChain, LangGraph, Azure AI Studio, Google Agent Framework, AWS Bedrock, CrewAI, Haystack</div></div>
+</div>
+<div class="stack-layer" style="border-left:4px solid var(--blue)">
+<div class="stack-num" style="color:var(--blue)">2</div>
+<div><div class="stack-title">Design Patterns</div><div class="stack-desc">Single-Agent, Sequential, Parallel, Loop/Critic, Hierarchical Multi-Agent</div></div>
+</div>
+<div class="stack-layer" style="border-left:4px solid rgba(148,163,184,0.4)">
+<div class="stack-num" style="color:var(--text2)">1</div>
+<div><div class="stack-title">AI Primitives</div><div class="stack-desc">Actors, Tools, Instructions, Coordination, Connections, Interactions</div></div>
+</div>
+</div>
+<div class="insight">Each layer builds on the one below. Skip a layer and the system fails. This is the architecture of AI value.</div>
+</div>
+</section>
+
+<!-- SLIDE 25: THE COMPLEXITY LADDER -->
+<section class="slide" data-notes="This is the most important slide in the primitives section. Start at the bottom. Prove each rung fails before climbing to the next. The most expensive mistake in AI is over-engineering. The second most expensive is under-engineering.">
+<div class="slide-inner">
+<h2>Climb the Ladder One Rung at a Time</h2>
+<div class="ladder" style="margin-top:24px">
+<div class="ladder-rung" style="background:rgba(0,212,170,0.08);border-color:rgba(0,212,170,0.2)">
+<div class="ladder-num">7</div>
+<div><strong style="color:var(--teal)">Multi-Agent Collaboration</strong><br><span class="ladder-text">Specialized agents coordinating on complex problems</span></div>
+</div>
+<div class="ladder-rung" style="background:rgba(0,212,170,0.06)">
+<div class="ladder-num">6</div>
+<div><strong style="color:var(--teal)">Agent + Planning</strong><br><span class="ladder-text">Task decomposition and strategic execution</span></div>
+</div>
+<div class="ladder-rung" style="background:rgba(59,130,246,0.06)">
+<div class="ladder-num" style="color:var(--blue)">5</div>
+<div><strong style="color:var(--blue)">Agent + Reflection</strong><br><span class="ladder-text">Iterative self-correction and quality improvement</span></div>
+</div>
+<div class="ladder-rung" style="background:rgba(59,130,246,0.04)">
+<div class="ladder-num" style="color:var(--blue)">4</div>
+<div><strong style="color:var(--blue)">Single Agent + Tools</strong><br><span class="ladder-text">Function calling to external systems</span></div>
+</div>
+<div class="ladder-rung">
+<div class="ladder-num" style="color:var(--amber)">3</div>
+<div><strong style="color:var(--amber)">RAG Pipeline</strong><br><span class="ladder-text">External knowledge retrieval before generation</span></div>
+</div>
+<div class="ladder-rung">
+<div class="ladder-num" style="color:var(--amber)">2</div>
+<div><strong style="color:var(--amber)">Prompt Engineering</strong><br><span class="ladder-text">Optimized instructions for better outputs</span></div>
+</div>
+<div class="ladder-rung">
+<div class="ladder-num" style="color:var(--text2)">1</div>
+<div><strong>Direct API Call</strong><br><span class="ladder-text">Single model, single prompt — the simplest approach</span></div>
+</div>
+</div>
+<div class="insight">Prove the simpler approach fails before adding complexity. The most expensive mistake is over-engineering.</div>
+</div>
+</section>
+
+<!-- SLIDE 26: SECTION DIVIDER — AGENTIC PATTERNS -->
+<section class="slide" data-notes="Agentic design patterns are the blueprints for building AI systems that act. This section covers the four foundational patterns, the decision framework for choosing the right one, and the critical distinction between agents and workflows.">
+<div class="slide-inner section-divider">
+<h1>Agentic Design Patterns</h1>
+<p class="subhead">Which Architecture Fits Your Problem?</p>
+<div class="quote" style="max-width:750px;margin:32px auto">"The future of AI isn't about perfect autonomous agents — it's about solving business workflows with the right level of autonomy." — Andrew Ng</div>
+</div>
+</section>
+
+<!-- SLIDE 27: FOUR FOUNDATIONAL PATTERNS -->
+<section class="slide" data-notes="Andrew Ng identified four foundational agentic design patterns. Reflection and tool use are highly reliable. Planning is moderately reliable. Multi-agent collaboration is variable. The central tension is the reliability-capability tradeoff.">
+<div class="slide-inner">
+<h2>Andrew Ng's Four Patterns That Drive AI Progress</h2>
+<div class="card-grid g2" style="margin-top:28px">
+<div class="card" style="border-top:3px solid var(--teal)">
+<h4 style="color:var(--teal)">1. Reflection</h4>
+<p style="margin-bottom:8px">AI reviews and refines its own output iteratively. Catches errors. Improves quality.</p>
+<div style="display:flex;align-items:center;gap:8px"><span style="font-size:.8rem;color:var(--text2)">Reliability:</span><span style="background:rgba(0,212,170,0.15);color:var(--teal);padding:2px 10px;border-radius:10px;font-size:.75rem;font-weight:600">HIGH</span></div>
+</div>
+<div class="card" style="border-top:3px solid var(--blue)">
+<h4 style="color:var(--blue)">2. Tool Use</h4>
+<p style="margin-bottom:8px">AI delegates tasks to external deterministic systems. Calculators, APIs, databases.</p>
+<div style="display:flex;align-items:center;gap:8px"><span style="font-size:.8rem;color:var(--text2)">Reliability:</span><span style="background:rgba(59,130,246,0.15);color:var(--blue);padding:2px 10px;border-radius:10px;font-size:.75rem;font-weight:600">HIGH</span></div>
+</div>
+<div class="card" style="border-top:3px solid var(--amber)">
+<h4 style="color:var(--amber)">3. Planning</h4>
+<p style="margin-bottom:8px">AI breaks complex tasks into step sequences. Goal decomposition. Task graphs.</p>
+<div style="display:flex;align-items:center;gap:8px"><span style="font-size:.8rem;color:var(--text2)">Reliability:</span><span style="background:rgba(245,158,11,0.15);color:var(--amber);padding:2px 10px;border-radius:10px;font-size:.75rem;font-weight:600">MEDIUM</span></div>
+</div>
+<div class="card" style="border-top:3px solid var(--coral)">
+<h4 style="color:var(--coral)">4. Multi-Agent</h4>
+<p style="margin-bottom:8px">Multiple specialized AIs collaborate. Manager-worker, debate, swarm patterns.</p>
+<div style="display:flex;align-items:center;gap:8px"><span style="font-size:.8rem;color:var(--text2)">Reliability:</span><span style="background:rgba(239,68,68,0.15);color:var(--coral);padding:2px 10px;border-radius:10px;font-size:.75rem;font-weight:600">VARIABLE</span></div>
+</div>
+</div>
+<div class="insight">The Reliability-Capability Tradeoff: find the minimum complexity that delivers the required capability at acceptable reliability.</div>
+</div>
+</section>
+
+<!-- SLIDE 28: PATTERN SELECTION -->
+<section class="slide" data-notes="This decision framework cuts through the complexity. Four questions. Four answers. The right pattern for every problem. Start simple. Add complexity only when the simpler pattern fails.">
+<div class="slide-inner">
+<h2>The Right Pattern Is the One That Solves the Problem</h2>
+<div style="background:var(--bg-card);border:1px solid var(--border);border-radius:16px;padding:24px;margin:24px 0">
+<div style="display:flex;flex-direction:column;gap:12px">
+<div style="display:flex;align-items:center;gap:12px;flex-wrap:wrap"><span style="color:var(--teal);font-weight:600;min-width:200px">Task well-defined?</span><span style="color:var(--text2)">→ YES:</span><span style="color:var(--text);font-weight:500">Single-Agent or Sequential</span></div>
+<div style="display:flex;align-items:center;gap:12px;flex-wrap:wrap"><span style="color:var(--blue);font-weight:600;min-width:200px">Subtasks independent?</span><span style="color:var(--text2)">→ YES:</span><span style="color:var(--text);font-weight:500">Parallel</span></div>
+<div style="display:flex;align-items:center;gap:12px;flex-wrap:wrap"><span style="color:var(--amber);font-weight:600;min-width:200px">Quality needs iteration?</span><span style="color:var(--text2)">→ YES:</span><span style="color:var(--text);font-weight:500">Loop / Critic</span></div>
+<div style="display:flex;align-items:center;gap:12px;flex-wrap:wrap"><span style="color:var(--coral);font-weight:600;min-width:200px">None of the above?</span><span style="color:var(--text2)">→</span><span style="color:var(--text);font-weight:500">Hierarchical Multi-Agent</span></div>
+</div>
+</div>
+<table class="data-table">
+<thead><tr><th>Pattern</th><th>Complexity</th><th>Speed</th><th>Quality</th><th>Best Use</th></tr></thead>
+<tbody>
+<tr><td><strong>Single-Agent</strong></td><td>Low</td><td>Fast</td><td>Good</td><td>Contained tasks</td></tr>
+<tr><td><strong>Sequential</strong></td><td>Low-Med</td><td>Medium</td><td>Good</td><td>Pipelines</td></tr>
+<tr><td><strong>Parallel</strong></td><td>High</td><td>Fast</td><td>High</td><td>Independent subtasks</td></tr>
+<tr><td><strong>Loop/Critic</strong></td><td>Med-High</td><td>Slower</td><td>Highest</td><td>Quality-critical work</td></tr>
+</tbody>
+</table>
+</div>
+</section>
+
+<!-- SLIDE 29: AGENTS VS. WORKFLOWS -->
+<section class="slide" data-notes="This is one of the most important distinctions in AI architecture. Agents explore. Workflows execute. The best systems use both. Choose agents when requirements are ambiguous. Choose workflows when processes are well-defined.">
+<div class="slide-inner">
+<h2>Agents Explore. Workflows Execute. The Best Systems Use Both.</h2>
+<div class="compare" style="margin-top:28px">
+<div class="compare-col" style="border-top:3px solid var(--teal)">
+<h4 style="color:var(--teal)">AI Agents</h4>
+<ul>
+<li><strong>Decision Making:</strong> Autonomous, adaptive</li>
+<li><strong>Flexibility:</strong> High — handles ambiguity</li>
+<li><strong>Predictability:</strong> Variable</li>
+<li><strong>Cost:</strong> Higher (reasoning overhead)</li>
+<li><strong>Debugging:</strong> Challenging</li>
+<li><strong>Best For:</strong> Research, exploration, complex problems</li>
+</ul>
+</div>
+<div class="compare-col" style="border-top:3px solid var(--blue)">
+<h4 style="color:var(--blue)">Workflows</h4>
+<ul>
+<li><strong>Decision Making:</strong> Predefined logic</li>
+<li><strong>Flexibility:</strong> Low — follows the path</li>
+<li><strong>Predictability:</strong> High</li>
+<li><strong>Cost:</strong> Lower (optimized paths)</li>
+<li><strong>Debugging:</strong> Straightforward</li>
+<li><strong>Best For:</strong> Data processing, compliance, reporting</li>
+</ul>
+</div>
+</div>
+<div class="insight">Agents call workflows for deterministic operations. Workflows invoke agents when flexibility is needed. The hybrid approach wins.</div>
+</div>
+</section>
+
+<!-- SLIDE 30: SECTION DIVIDER — DETERMINISTIC TOOLS -->
+<section class="slide" data-notes="AI thinks in probabilities. Business runs on certainties. This section explains how to bridge the gap with deterministic tools — and why the most reliable AI systems are hybrid systems.">
+<div class="slide-inner section-divider">
+<h1>Integrating Deterministic Tools</h1>
+<p class="subhead">The Bridge Between Probability and Certainty</p>
+<div style="display:flex;justify-content:center;gap:40px;margin-top:40px;flex-wrap:wrap">
+<div style="text-align:center">
+<div style="font-size:3rem;margin-bottom:8px">🎲</div>
+<p style="font-size:1rem;color:var(--coral);font-weight:600">Probabilistic</p>
+<p style="font-size:.85rem;color:var(--text2)">AI / LLMs</p>
+</div>
+<div style="display:flex;align-items:center"><span style="font-size:2rem;color:var(--teal)">⇌</span></div>
+<div style="text-align:center">
+<div style="font-size:3rem;margin-bottom:8px">⚙️</div>
+<p style="font-size:1rem;color:var(--teal);font-weight:600">Deterministic</p>
+<p style="font-size:.85rem;color:var(--text2)">Tools / Rules</p>
+</div>
+</div>
+</div>
+</section>
+
+
+<!-- SLIDE 31: THE FUNDAMENTAL TENSION -->
+<section class="slide" data-notes="This is the fundamental tension in enterprise AI. LLMs are probabilistic. Business requires deterministic precision. The solution is to combine both. The agent decides what to calculate. The tool decides how.">
+<div class="slide-inner">
+<h2>AI Thinks in Probabilities. Business Runs on Certainties.</h2>
+<div class="compare" style="margin-top:28px">
+<div class="compare-col" style="border-top:3px solid var(--coral)">
+<h4 style="color:var(--coral)">Probabilistic (LLMs)</h4>
+<ul>
+<li><strong>Output:</strong> Varied responses via sampling</li>
+<li><strong>Excellent at:</strong> Language, reasoning, creativity</li>
+<li><strong>Unreliable at:</strong> Arithmetic, exact retrieval</li>
+<li><strong>Example:</strong> "847 x 923?" — May give wrong answer</li>
+</ul>
+</div>
+<div class="compare-col" style="border-top:3px solid var(--teal)">
+<h4 style="color:var(--teal)">Deterministic (Tools)</h4>
+<ul>
+<li><strong>Output:</strong> Same input → same output, always</li>
+<li><strong>Excellent at:</strong> Math, queries, validation</li>
+<li><strong>Unreliable at:</strong> Understanding language</li>
+<li><strong>Example:</strong> 847 x 923 = 781,481. Always.</li>
+</ul>
+</div>
+</div>
+<div class="insight">The agent decides WHAT to calculate. The tool decides HOW. This division of labor is the architecture of trustworthy AI.</div>
+</div>
+</section>
+
+<!-- SLIDE 32: HYBRID WORKFLOW -->
+<section class="slide" data-notes="This is the canonical hybrid workflow architecture. Unstructured input enters the AI layer. The AI interprets and extracts structured data. The structured data flows to a deterministic rules engine. Every step is traceable.">
+<div class="slide-inner">
+<h2>The Hybrid Workflow: AI for Understanding, Rules for Precision</h2>
+<div class="flow" style="margin:32px 0">
+<div class="flow-step" style="border-top:3px solid var(--coral)"><h4>Unstructured Input</h4><p>Email, document, image, voice</p></div>
+<div class="flow-arrow">→</div>
+<div class="flow-step" style="border-top:3px solid var(--amber)"><h4>AI / LLM Layer</h4><p>Interprets, extracts, generates structured data</p></div>
+<div class="flow-arrow">→</div>
+<div class="flow-step" style="border-top:3px solid var(--blue)"><h4>Structured Data</h4><p>Type, severity, amount, intent</p></div>
+<div class="flow-arrow">→</div>
+<div class="flow-step" style="border-top:3px solid var(--teal)"><h4>Rules Engine</h4><p>Decision tables, policy, thresholds</p></div>
+<div class="flow-arrow">→</div>
+<div class="flow-step" style="border-top:3px solid var(--teal)"><h4>Outcome</h4><p>Approved / Flagged + Audit Log</p></div>
+</div>
+<h3 style="margin-top:24px">Three Proven Hybrid Patterns</h3>
+<div class="stat-grid g3">
+<div class="stat-card" style="text-align:left;padding:20px">
+<h4 style="font-size:.9rem;color:var(--teal);margin-bottom:6px">LLM + HyperFormula</h4>
+<p style="font-size:.85rem;color:var(--text2);margin:0">Verified financial calculations with spreadsheet-grade accuracy</p>
+</div>
+<div class="stat-card" style="text-align:left;padding:20px">
+<h4 style="font-size:.9rem;color:var(--blue);margin-bottom:6px">LLM + Decision Table</h4>
+<p style="font-size:.85rem;color:var(--text2);margin:0">Policy enforcement with complete audit trail</p>
+</div>
+<div class="stat-card" style="text-align:left;padding:20px">
+<h4 style="font-size:.9rem;color:var(--amber);margin-bottom:6px">LLM + Pydantic AI</h4>
+<p style="font-size:.85rem;color:var(--text2);margin:0">Validated structured output with type safety</p>
+</div>
+</div>
+</div>
+</section>
+
+<!-- SLIDE 33: CASE STUDY -->
+<section class="slide" data-notes="This case study demonstrates the architecture of responsible AI at enterprise scale. The AI handles the reading and writing. The rules handle the truth. The human handles the judgment. Fifty percent time reduction. One hundred percent accuracy.">
+<div class="slide-inner">
+<h2>Global Bank: 50% Faster Reports, 100% Accuracy</h2>
+<div class="stack" style="margin:28px 0">
+<div class="stack-layer" style="border-left:4px solid var(--teal)">
+<div class="stack-num">1</div>
+<div><div class="stack-title">AI Narrative Agent</div><div class="stack-desc">LLM drafts quarterly report, pulls live data from multiple sources</div></div>
+</div>
+<div class="stack-layer" style="border-left:4px solid var(--blue)">
+<div class="stack-num">2</div>
+<div><div class="stack-title">Deterministic Verification</div><div class="stack-desc">Python/Pandas cross-checks every figure against source databases</div></div>
+</div>
+<div class="stack-layer" style="border-left:4px solid var(--amber)">
+<div class="stack-num">3</div>
+<div><div class="stack-title">Compliance Review</div><div class="stack-desc">Second AI reviews for regulatory compliance and policy adherence</div></div>
+</div>
+<div class="stack-layer" style="border-left:4px solid var(--coral)">
+<div class="stack-num">4</div>
+<div><div class="stack-title">Human Sign-Off</div><div class="stack-desc">Full log of AI actions, flags, and changes — complete audit trail</div></div>
+</div>
+</div>
+<div class="stat-grid g4">
+<div class="stat-card"><div class="stat-num" style="font-size:2rem">↓50%</div><div class="stat-label">Report generation time</div></div>
+<div class="stat-card"><div class="stat-num" style="font-size:2rem;color:var(--teal)">100%</div><div class="stat-label">Data accuracy</div></div>
+<div class="stat-card"><div class="stat-num" style="font-size:2rem;color:var(--teal)">Zero</div><div class="stat-label">Compliance incidents</div></div>
+<div class="stat-card"><div class="stat-num blue" style="font-size:2rem">Freed</div><div class="stat-label">Analyst hours for interpretation</div></div>
+</div>
+</div>
+</section>
+
+<!-- SLIDE 34: SECTION DIVIDER — TRUST STACK -->
+<section class="slide" data-notes="Trust is not a feature. It is an architecture. This section covers the four layers of the trust stack and how they work together to make AI safe to scale.">
+<div class="slide-inner section-divider">
+<h1>Trust, Safety &amp; Governance</h1>
+<p class="subhead">Build Glass Boxes, Not Black Boxes</p>
+<div style="display:flex;flex-direction:column;gap:8px;margin-top:32px;max-width:500px;width:100%">
+<div style="background:rgba(0,212,170,0.08);border:1px solid rgba(0,212,170,0.2);border-radius:10px;padding:12px 20px;text-align:center;font-weight:500;color:var(--teal)">Governance</div>
+<div style="background:rgba(59,130,246,0.08);border:1px solid rgba(59,130,246,0.2);border-radius:10px;padding:12px 20px;text-align:center;font-weight:500;color:var(--blue)">Guardrails</div>
+<div style="background:rgba(245,158,11,0.08);border:1px solid rgba(245,158,11,0.2);border-radius:10px;padding:12px 20px;text-align:center;font-weight:500;color:var(--amber)">Explainability</div>
+<div style="background:rgba(239,68,68,0.08);border:1px solid rgba(239,68,68,0.2);border-radius:10px;padding:12px 20px;text-align:center;font-weight:500;color:var(--coral)">Observability</div>
+</div>
+</div>
+</section>
+
+<!-- SLIDE 35: THE FOUR LAYERS OF TRUST -->
+<section class="slide" data-notes="Each layer depends on the one below. You cannot explain what you cannot observe. You cannot guard what you cannot explain. You cannot govern what you cannot guard. Miss one layer and the entire trust stack collapses.">
+<div class="slide-inner">
+<h2>Four Layers — Each Depends on the One Below</h2>
+<div class="stack" style="margin-top:28px">
+<div class="stack-layer" style="border-left:4px solid var(--teal);background:rgba(0,212,170,0.04)">
+<div class="stack-num" style="color:var(--teal)">4</div>
+<div><div class="stack-title" style="color:var(--teal)">Governance</div><div class="stack-desc">"Who is accountable?" — Frameworks, committees, audit trails, NIST AI RMF, EU AI Act, ISO 42001</div></div>
+</div>
+<div class="stack-layer" style="border-left:4px solid var(--blue)">
+<div class="stack-num" style="color:var(--blue)">3</div>
+<div><div class="stack-title" style="color:var(--blue)">Guardrails</div><div class="stack-desc">"What is it prevented from doing?" — Input/output filters, policy limits, content safety, human approval gates</div></div>
+</div>
+<div class="stack-layer" style="border-left:4px solid var(--amber)">
+<div class="stack-num" style="color:var(--amber)">2</div>
+<div><div class="stack-title" style="color:var(--amber)">Explainability</div><div class="stack-desc">"Why did it decide that?" — SHAP, LIME, counterfactuals, feature attribution, interpretable models</div></div>
+</div>
+<div class="stack-layer" style="border-left:4px solid var(--coral)">
+<div class="stack-num" style="color:var(--coral)">1</div>
+<div><div class="stack-title" style="color:var(--coral)">Observability</div><div class="stack-desc">"What is the system doing?" — Telemetry, logging, performance monitoring, anomaly detection</div></div>
+</div>
+</div>
+<div class="insight">You cannot explain what you cannot observe. You cannot guard what you cannot explain. You cannot govern what you cannot guard.</div>
+</div>
+</section>
+
+<!-- SLIDE 36: OBSERVABILITY vs EXPLAINABILITY -->
+<section class="slide" data-notes="Observability and explainability are complementary, not interchangeable. Observability tells you what the system is doing right now. Explainability tells you why it made a particular decision. You need both.">
+<div class="slide-inner">
+<h2>Observability Watches. Explainability Explains.</h2>
+<table class="data-table" style="margin-top:28px">
+<thead><tr><th>Dimension</th><th style="color:var(--coral)">Observability</th><th style="color:var(--amber)">Explainability</th></tr></thead>
+<tbody>
+<tr><td><strong>Timing</strong></td><td>Real-time monitoring</td><td>Post-analysis</td></tr>
+<tr><td><strong>Focus</strong></td><td>What the AI is doing</td><td>Why the AI decided</td></tr>
+<tr><td><strong>Primary Benefit</strong></td><td>Early error detection, audit trail</td><td>Compliance, trust, bias detection</td></tr>
+<tr><td><strong>Key Tools</strong></td><td>LangSmith, Datadog, dashboards, logs</td><td>SHAP, LIME, counterfactuals, decision trees</td></tr>
+<tr><td><strong>Audience</strong></td><td>Operations, engineering</td><td>Regulators, auditors, stakeholders</td></tr>
+</tbody>
+</table>
+<div class="insight">Both are required. Observability for operations. Explainability for compliance and trust. Neither replaces the other.</div>
+</div>
+</section>
+
+<!-- SLIDE 37: FOUR GUARDRAIL LAYERS -->
+<section class="slide" data-notes="Guardrails are automated checks that prevent policy violations and unsafe outputs. They operate at four layers. Each layer catches different types of risk. Defense in depth means that if one layer fails, the next catches the problem.">
+<div class="slide-inner">
+<h2>Defense in Depth — Four Guardrail Layers</h2>
+<div class="stack" style="margin-top:28px">
+<div class="stack-layer" style="border-left:4px solid var(--teal)">
+<div style="min-width:120px"><span style="font-weight:700;color:var(--teal);font-size:1rem">Data</span></div>
+<div class="stack-desc">Quality assurance, privacy controls, bias prevention, de-identified training data, lineage tracking</div>
+</div>
+<div class="stack-layer" style="border-left:4px solid var(--blue)">
+<div style="min-width:120px"><span style="font-weight:700;color:var(--blue);font-size:1rem">Model</span></div>
+<div class="stack-desc">Confidence thresholds, drift monitoring, adversarial testing, robustness validation, fairness audits</div>
+</div>
+<div class="stack-layer" style="border-left:4px solid var(--amber)">
+<div style="min-width:120px"><span style="font-weight:700;color:var(--amber);font-size:1rem">Application</span></div>
+<div class="stack-desc">Banned topics, toxicity filters, human approval gates, action scope limits, content safety policies</div>
+</div>
+<div class="stack-layer" style="border-left:4px solid var(--coral)">
+<div style="min-width:120px"><span style="font-weight:700;color:var(--coral);font-size:1rem">Infrastructure</span></div>
+<div class="stack-desc">Identity verification, rate limiting, encryption at rest and in transit, network isolation, access controls</div>
+</div>
+</div>
+<div class="insight">Defense in depth: if one layer fails, the next catches the problem. No single guardrail is sufficient alone.</div>
+</div>
+</section>
+
+<!-- SLIDE 38: THE EPOCH FILTER -->
+<section class="slide" data-notes="MIT Sloan's EPOCH framework identifies five categories of tasks that require human judgment regardless of AI capability. If a task triggers any single letter, it must be designed with human oversight.">
+<div class="slide-inner">
+<h2>When Humans Must Stay in the Loop</h2>
+<p class="subhead" style="font-size:1rem">The EPOCH Framework — MIT Sloan Management Review, 2024</p>
+<div class="epoch-grid" style="margin-top:24px">
+<div class="epoch-card" style="border-top:3px solid var(--teal)">
+<div class="epoch-letter">E</div>
+<div class="epoch-word">Ethical</div>
+<div class="epoch-desc">Decisions with moral consequences — hiring, bias, fairness</div>
+</div>
+<div class="epoch-card" style="border-top:3px solid var(--blue)">
+<div class="epoch-letter" style="color:var(--blue)">P</div>
+<div class="epoch-word">Political</div>
+<div class="epoch-desc">Organizational capital required — budgets, stakeholders</div>
+</div>
+<div class="epoch-card" style="border-top:3px solid var(--amber)">
+<div class="epoch-letter" style="color:var(--amber)">O</div>
+<div class="epoch-word">Operational</div>
+<div class="epoch-desc">Edge cases outside training data — crisis, surgery</div>
+</div>
+<div class="epoch-card" style="border-top:3px solid var(--coral)">
+<div class="epoch-letter" style="color:var(--coral)">C</div>
+<div class="epoch-word">Creative</div>
+<div class="epoch-desc">True originality beyond pattern matching — brand, invention</div>
+</div>
+<div class="epoch-card" style="border-top:3px solid var(--text2)">
+<div class="epoch-letter" style="color:var(--text2)">H</div>
+<div class="epoch-word">Human</div>
+<div class="epoch-desc">Empathy and emotional intelligence — counseling, coaching</div>
+</div>
+</div>
+<div class="insight" style="text-align:center">If a task triggers ANY letter of EPOCH → Human-in-the-Loop. Never fully autonomous.</div>
+</div>
+</section>
+
+<!-- SLIDE 39: THE 90-DAY ROADMAP -->
+<section class="slide" data-notes="Ninety days. Three phases. Measurable outcomes. At the end of ninety days, you have two systems in production, twenty use cases mapped, one governance framework established, and ROI demonstrated to the board.">
+<div class="slide-inner">
+<h2>From Insight to Action — Your 90-Day AI Leadership Roadmap</h2>
+<div class="roadmap" style="margin-top:28px">
+<div class="roadmap-phase">
+<h4 style="color:var(--teal)">Phase 1: Foundation</h4>
+<div class="phase-days">Days 1–30</div>
+<ul>
+<li>Audit current AI usage and shadow AI</li>
+<li>Define AI principles and ethical guidelines</li>
+<li>Establish governance committee</li>
+<li>Identify 2–3 high-value opportunities</li>
+<li>Assess data readiness</li>
+</ul>
+</div>
+<div class="roadmap-phase">
+<h4 style="color:var(--blue)">Phase 2: Architecture</h4>
+<div class="phase-days" style="color:var(--blue)">Days 31–60</div>
+<ul>
+<li>Map target workflows end-to-end</li>
+<li>Select design patterns for each use case</li>
+<li>Evaluate frameworks and vendors</li>
+<li>Design hybrid AI + deterministic systems</li>
+<li>Build pilot architectures</li>
+</ul>
+</div>
+<div class="roadmap-phase">
+<h4 style="color:var(--amber)">Phase 3: Scale &amp; Govern</h4>
+<div class="phase-days" style="color:var(--amber)">Days 61–90</div>
+<ul>
+<li>Deploy observability and monitoring</li>
+<li>Implement guardrails and trust stack</li>
+<li>Launch training and change management</li>
+<li>Establish review cadence</li>
+<li>Demonstrate ROI to leadership</li>
+</ul>
+</div>
+</div>
+<div style="display:flex;gap:12px;justify-content:center;margin-top:24px;flex-wrap:wrap">
+<span style="background:rgba(0,212,170,0.1);border:1px solid rgba(0,212,170,0.3);padding:6px 16px;border-radius:20px;font-size:.85rem;color:var(--teal)">2 systems in production</span>
+<span style="background:rgba(59,130,246,0.1);border:1px solid rgba(59,130,246,0.3);padding:6px 16px;border-radius:20px;font-size:.85rem;color:var(--blue)">20+ use cases mapped</span>
+<span style="background:rgba(245,158,11,0.1);border:1px solid rgba(245,158,11,0.3);padding:6px 16px;border-radius:20px;font-size:.85rem;color:var(--amber)">1 governance framework</span>
+<span style="background:rgba(239,68,68,0.1);border:1px solid rgba(239,68,68,0.3);padding:6px 16px;border-radius:20px;font-size:.85rem;color:var(--coral)">ROI demonstrated</span>
+</div>
+</div>
+</section>
+
+<!-- SLIDE 40: CLOSING -->
+<section class="slide" data-notes="Three pillars. Build Right with primitives, patterns, and frameworks. Integrate Smart with hybrid AI and deterministic systems. Govern Well with the full trust stack. This is the architecture of AI leadership. Thank you.">
+<div class="slide-inner" style="text-align:center;display:flex;flex-direction:column;align-items:center;justify-content:center;min-height:80vh">
+<h1 style="font-size:2.8rem;margin-bottom:36px">Build Right. Integrate Smart. Govern Well.</h1>
+<div class="pillars" style="max-width:900px;width:100%">
+<div class="pillar">
+<h4 style="color:var(--teal)">Build Right</h4>
+<p>Primitives, patterns, frameworks. Architect for purpose, not complexity. Start simple. Scale deliberately.</p>
+</div>
+<div class="pillar">
+<h4 style="color:var(--blue)">Integrate Smart</h4>
+<p>AI + deterministic tools. Accuracy, auditability, speed. Let AI reason. Let rules verify.</p>
+</div>
+<div class="pillar">
+<h4 style="color:var(--amber)">Govern Well</h4>
+<p>Observability, explainability, guardrails. From day one. Trust is not a feature — it is an architecture.</p>
+</div>
+</div>
+<div class="quote" style="max-width:700px;margin:36px auto;border-left-color:var(--teal)">"The best AI systems are not the most complex. They are the most purposeful. Build them with clarity. Deploy them with care. Govern them with conviction."</div>
+<p style="font-size:1.1rem;color:var(--teal);font-weight:500;margin-top:16px">The tools are here. The patterns are proven. The path is clear.</p>
+</div>
+</section>
+
+
+</div><!-- end deck -->
+
+<script>
+// ===== PRESENTATION ENGINE =====
+let current = 0;
+const deck = document.getElementById('deck');
+const slides = deck.querySelectorAll('.slide');
+const total = slides.length;
+const progress = document.getElementById('progress');
+const counter = document.getElementById('counter');
+const overview = document.getElementById('overview');
+const overviewGrid = document.getElementById('overview-grid');
+const notesPanel = document.getElementById('notes-panel');
+const notesText = document.getElementById('notes-text');
+
+// Build overview thumbnails
+slides.forEach((s, i) => {
+  const thumb = document.createElement('div');
+  thumb.className = 'overview-thumb';
+  const h = s.querySelector('h1, h2');
+  thumb.innerHTML = '<span>' + (i + 1) + '. ' + (h ? h.textContent.substring(0, 50) : 'Slide ' + (i + 1)) + '</span>';
+  thumb.addEventListener('click', () => { goTo(i); toggleOverview(); });
+  overviewGrid.appendChild(thumb);
+});
+
+function goTo(n) {
+  if (n < 0 || n >= total) return;
+  slides[current].classList.remove('active');
+  current = n;
+  slides[current].classList.add('active');
+  progress.style.width = ((current + 1) / total * 100) + '%';
+  counter.textContent = (current + 1) + ' / ' + total;
+  notesText.textContent = slides[current].getAttribute('data-notes') || '';
+  animateSlide(current);
+  updateOverviewHighlight();
+}
+
+function navigate(dir) {
+  goTo(current + dir);
+}
+
+function toggleOverview() {
+  overview.classList.toggle('active');
+}
+
+function toggleNotes() {
+  notesPanel.classList.toggle('active');
+}
+
+function updateOverviewHighlight() {
+  const thumbs = overviewGrid.querySelectorAll('.overview-thumb');
+  thumbs.forEach((t, i) => t.classList.toggle('current', i === current));
+}
+
+// Animated stat counters
+function animateSlide(idx) {
+  const slide = slides[idx];
+  const nums = slide.querySelectorAll('.stat-num[data-count]');
+  nums.forEach(el => {
+    const target = parseFloat(el.getAttribute('data-count'));
+    const decimal = parseInt(el.getAttribute('data-decimal') || '0');
+    const prefix = el.getAttribute('data-prefix') || '';
+    const suffix = el.getAttribute('data-suffix') || '';
+    const isPercent = !suffix && el.textContent.includes('%');
+    const finalSuffix = suffix || (isPercent ? '%' : '');
+    let start = 0;
+    const duration = 1200;
+    const startTime = performance.now();
+    function tick(now) {
+      const elapsed = now - startTime;
+      const pct = Math.min(elapsed / duration, 1);
+      const eased = 1 - Math.pow(1 - pct, 3);
+      const val = start + (target - start) * eased;
+      el.textContent = prefix + val.toFixed(decimal) + finalSuffix;
+      if (pct < 1) requestAnimationFrame(tick);
+    }
+    requestAnimationFrame(tick);
+  });
+}
+
+// Keyboard navigation
+document.addEventListener('keydown', e => {
+  if (overview.classList.contains('active')) {
+    if (e.key === 'Escape' || e.key === 'o' || e.key === 'O') toggleOverview();
+    return;
+  }
+  switch(e.key) {
+    case 'ArrowRight': case ' ': e.preventDefault(); navigate(1); break;
+    case 'ArrowLeft': navigate(-1); break;
+    case 'o': case 'O': toggleOverview(); break;
+    case 'n': case 'N': toggleNotes(); break;
+    case 'Escape': if (notesPanel.classList.contains('active')) toggleNotes(); break;
+  }
+});
+
+// Touch navigation
+let touchStartX = 0;
+document.addEventListener('touchstart', e => { touchStartX = e.changedTouches[0].screenX; }, { passive: true });
+document.addEventListener('touchend', e => {
+  const diff = e.changedTouches[0].screenX - touchStartX;
+  if (Math.abs(diff) > 50) navigate(diff > 0 ? -1 : 1);
+}, { passive: true });
+
+// Create particles for title slide
+function createParticles() {
+  const container = document.getElementById('particles');
+  if (!container) return;
+  for (let i = 0; i < 25; i++) {
+    const p = document.createElement('div');
+    p.className = 'particle';
+    const size = Math.random() * 200 + 40;
+    p.style.width = size + 'px';
+    p.style.height = size + 'px';
+    p.style.left = Math.random() * 100 + '%';
+    p.style.animationDuration = (Math.random() * 20 + 15) + 's';
+    p.style.animationDelay = (Math.random() * 10) + 's';
+    container.appendChild(p);
+  }
+}
+
+// Initialize
+createParticles();
+goTo(0);
+</script>
+
+</body>
+</html>
