@@ -1,0 +1,29 @@
+flowchart LR
+    beginner([Beginner]):::person
+    cc[Claude Code\nTerminal coding partner]:::claude
+    repo[(Project folder\nGit repo)]:::repo
+    lf[Langflow\nVisual workflow builder]:::langflow
+    flow[(Flow JSON\nPrompts, components, settings)]:::data
+    api[Langflow API\n/run and /webhook]:::api
+    app[Your app, script, or website]:::app
+    mcp[MCP clients\nClaude Code, Cursor, etc.]:::mcp
+
+    beginner -->|asks, reviews, approves| cc
+    beginner -->|drags, connects, tests| lf
+    cc -->|creates docs, scripts, tests, components| repo
+    repo -->|custom components, env examples| lf
+    lf -->|exports| flow
+    flow --> repo
+    lf -->|serves| api
+    api --> app
+    lf -->|optional: expose flows as tools| mcp
+    mcp -->|calls safe, named tools| lf
+
+    classDef person fill:#F6F8FA,stroke:#24292F,stroke-width:2px,color:#24292F;
+    classDef claude fill:#EDE7FF,stroke:#6F42C1,stroke-width:2px,color:#2D1B69;
+    classDef langflow fill:#E6FFFB,stroke:#0E9384,stroke-width:2px,color:#064E3B;
+    classDef repo fill:#FFF8E6,stroke:#B54708,stroke-width:2px,color:#7A2E0E;
+    classDef data fill:#EFF6FF,stroke:#2563EB,stroke-width:2px,color:#1E3A8A;
+    classDef api fill:#ECFDF3,stroke:#039855,stroke-width:2px,color:#065F46;
+    classDef app fill:#FEF3F2,stroke:#D92D20,stroke-width:2px,color:#7A271A;
+    classDef mcp fill:#F4F3FF,stroke:#7A5AF8,stroke-width:2px,color:#3E1C96;

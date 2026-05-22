@@ -1,0 +1,13 @@
+sequenceDiagram
+    participant U as Beginner
+    participant CC as Claude Code
+    participant L as Langflow Server
+    participant F as Flow
+
+    U->>CC: "Create a Python script to run my flow"
+    CC->>CC: Reads .env.example and flow ID notes
+    CC->>L: POST /api/v1/run/{FLOW_ID}\nx-api-key + input_value
+    L->>F: Execute components
+    F-->>L: Chat output result
+    L-->>CC: JSON response
+    CC-->>U: Prints answer and saves script
