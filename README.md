@@ -1,6 +1,6 @@
 # Genesis Nations Integrated Scholarly Atlas
 
-This directory contains the integrated **Genesis Nations** educational website. It adds the [Ancient Temples of the World](https://templemap-c7mlfbq3.manus.space/?code=SZkkdocaAQRTr8pdSFmbb5) research instrument as a dedicated Temple Atlas tab within a unified editorial interface, while preserving direct access to the original [Genesis Nations](https://genesisnations-6t6jlssk.manus.space) study routes.
+This repository contains the integrated **Genesis Nations** educational website as its root application. It adds the [Ancient Temples of the World](https://templemap-c7mlfbq3.manus.space/?code=SZkkdocaAQRTr8pdSFmbb5) research instrument as a dedicated Temple Atlas tab within a unified editorial interface, while preserving direct access to the original [Genesis Nations](https://genesisnations-6t6jlssk.manus.space) study routes.
 
 ## Experience
 

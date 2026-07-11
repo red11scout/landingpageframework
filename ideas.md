@@ -1,129 +1,93 @@
-# Design Brainstorming for AI Hub Landing Page
+# Genesis Nations Integrated — Design Direction
 
-<response>
-<probability>0.08</probability>
-<text>
-## Idea 1: "The Glass Monolith"
+## Reference Ground Truth
 
-**Design Movement**: Neomorphism meets Glassmorphism (Apple Vision Pro OS inspired).
+The existing [Genesis Nations atlas](https://genesisnations-6t6jlssk.manus.space/) establishes the core identity: warm parchment ground, dark evergreen ink, restrained teal emphasis, editorial serif typography, engraved/illustrated imagery, compact scholarly navigation, and a plain-spoken evidentiary voice. The [Ancient Temples interactive atlas](https://templemap-c7mlfbq3.manus.space/?code=SZkkdocaAQRTr8pdSFmbb5) supplies the embedded research instrument: 118 sacred compounds, world-map browsing, search, faceted filters, an era timeline, day/night map modes, and item-level detail.
 
-**Core Principles**:
-1.  **Depth through Translucency**: Layers of frosted glass to create hierarchy without heavy borders.
-2.  **Light as a Material**: Use lighting effects to indicate interactivity and focus.
-3.  **Immersive Minimalism**: Content floats in a boundless space; the UI recedes to let the content shine.
-4.  **Fluid Physics**: Interactions feel weighted and natural, like moving physical objects in a zero-gravity environment.
+The integrated site must preserve Genesis Nations as the host identity. The Temple Map becomes a first-class **Temple Atlas** tab, framed by the host navigation and scholarly apparatus rather than presented as a visually unrelated external application.
 
-**Color Philosophy**:
-*   **Ethereal Greys & Whites**: A base of off-whites and soft greys to mimic light and glass.
-*   **Subtle Iridescence**: Very faint, shifting gradients (aurora borealis style) in the background to suggest "future" and "AI intelligence" without being loud.
-*   **Intent**: To evoke a sense of clarity, transparency, and advanced technology that feels weightless.
+## Three Stylistic Approaches
 
-**Layout Paradigm**:
-*   **Spatial Grid**: Instead of a flat list, icons float in a 3D-implied space.
-*   **Central Focus**: The hero section is a large, breathing visual. App icons orbit or float below in a non-rigid grid.
+### Theme Name: Illuminated Scholarly Atlas
+**Very Brief Intro:** A contemporary research atlas informed by early printed cartography, archival paper, engraved rules, and quiet museum-label precision. It carries the existing Genesis Nations identity into a denser interactive tool without sacrificing readability.
+**Probability:** 0.027
 
-**Signature Elements**:
-1.  **Frosted Glass Cards**: High blur, low opacity white backgrounds for app icons.
-2.  **Soft Glow Shadows**: Instead of black drop shadows, use colored glows to indicate active states.
-3.  **Thin, crisp typography**: San Francisco Pro Display (or similar system font) with tight tracking for headers.
+### Theme Name: Archaeological Field Ledger
+**Very Brief Intro:** A utilitarian field-research interface built from survey marks, accession labels, measured diagrams, and subdued mineral colors. The experience would feel highly technical and deliberately workmanlike.
+**Probability:** 0.064
 
-**Interaction Philosophy**:
-*   **Hover Levitation**: Elements gently lift and brighten when hovered.
-*   **Parallax Depth**: Background moves slightly slower than foreground elements on scroll.
+### Theme Name: Sacred Geography Codex
+**Very Brief Intro:** A darker, dramatic interpretation using illuminated-manuscript contrasts, deep stone hues, and gilded annotations. It would prioritize atmosphere and symbolic resonance over the host site's current light editorial character.
+**Probability:** 0.013
 
-**Animation**:
-*   **Slow, breathing pulses** for the background.
-*   **Staggered fade-ins** for content, moving upwards as if rising from mist.
+## Chosen Approach: Illuminated Scholarly Atlas
 
-**Typography System**:
-*   **Headers**: SF Pro Display (System UI), Light weight, large scale.
-*   **Body**: SF Pro Text, Regular weight, high legibility.
-*   **Pairing**: A purely utilitarian, system-native approach that feels "invisible."
-</text>
-</response>
+### Design Movement
 
-<response>
-<probability>0.05</probability>
-<text>
-## Idea 2: "The Obsidian Slate"
+**Contemporary antiquarian editorial design**, combining the disciplined hierarchy of a scholarly monograph with the tactile warmth of nineteenth-century atlases and museum collection catalogues.
 
-**Design Movement**: Dark Mode Industrial / High-End Consumer Electronics (iPhone Pro marketing).
+### Core Principles
 
-**Core Principles**:
-1.  **Cinematic Contrast**: Deep blacks and bright highlights to create drama.
-2.  **Precision Engineering**: Sharp lines, metallic textures, and mathematical precision in layout.
-3.  **Spotlight Focus**: Use lighting to guide the eye, like a product reveal on a dark stage.
-4.  **Tactile Reality**: Buttons and icons feel solid, premium, and crafted.
+1. **Evidence before ornament:** visual flourishes must clarify provenance, chronology, geography, or navigation.
+2. **Editorial hierarchy:** display serif headings, compact small-cap metadata, and highly legible reading text distinguish argument, annotation, and source.
+3. **Host continuity:** every route, including Temple Atlas, must feel authored by the same institution through shared shell, tokens, spacing, and terminology.
+4. **Research without friction:** advanced controls remain immediately usable, keyboard accessible, and responsive; complexity is organized rather than hidden.
 
-**Color Philosophy**:
-*   **True Black & Charcoal**: A foundation of deep darks to make colors pop.
-*   **Titanium & Silver Accents**: Metallic gradients for borders and text to suggest premium hardware.
-*   **Electric Blue/Purple Accents**: Used sparingly for "AI" energy, piercing through the darkness.
-*   **Intent**: To convey power, exclusivity, and professional-grade capability.
+### Color Philosophy
 
-**Layout Paradigm**:
-*   **Bento Box Grid**: A structured, modular layout where every pixel is accounted for.
-*   **Asymmetric Balance**: Large hero video/image on one side, tight grid of tools on the other.
+The palette should feel like **ink, oxidized copper, limestone, and aged vellum** rather than a generic software dashboard. Warm ivory reduces glare during long reading sessions; near-black green supplies scholarly authority; oxidized teal signals active states and links; clay-gold provides restrained chronological emphasis. Dark mode should feel like a conservation reading room—deep green-black, parchment text, and muted copper—not a color-inverted app.
 
-**Signature Elements**:
-1.  **Metallic Borders**: 1px gradients on borders that look like machined metal.
-2.  **Glossy Reflections**: Subtle top-down shines on icons to mimic glass surfaces.
-3.  **Hero Typography**: Massive, bold typography that bleeds off the edge.
+### Layout Paradigm
 
-**Interaction Philosophy**:
-*   **Snap & Click**: Interactions are instant and precise, with a satisfying visual "click."
-*   **Spotlight Reveal**: Cursor movement reveals borders or glows (like a flashlight in the dark).
+Use an **editorial frame around a full-bleed research instrument**. The global masthead and section navigator establish institutional context. On the Temple Atlas route, a compact orientation band introduces scope, method, and citation policy; the embedded map then occupies the remaining viewport inside a thin archival frame. Desktop navigation is horizontal and measured; mobile uses a compact drawer and gives the map maximal vertical space.
 
-**Animation**:
-*   **Fast, linear transitions**: No bounce, just precise movement.
-*   **Shimmer effects** across metallic surfaces on load.
+### Signature Elements
 
-**Typography System**:
-*   **Headers**: Inter (tightly tracked, Bold/Black weights).
-*   **Body**: Roboto Mono or a clean sans-serif for technical details.
-*   **Pairing**: Bold, impactful headers paired with technical, data-like subtext.
-</text>
-</response>
+1. **Atlas register marks:** small crosshair, coordinate, and folio details punctuate section edges.
+2. **Engraved rules:** hairline dividers with a short oxidized-teal segment create hierarchy without rounded-card repetition.
+3. **Source lozenges:** citation links use compact bracketed/reference styling with a visible external-link affordance and strong focus state.
 
-<response>
-<probability>0.07</probability>
-<text>
-## Idea 3: "The Canvas of Thought"
+### Interaction Philosophy
 
-**Design Movement**: Swiss Style / International Typographic Style meets Modern SaaS.
+Interactions should feel **precise, reversible, and scholarly**. Navigation reveals where the researcher is, filters explain their effect, links identify their destination, and no decorative motion competes with study. The Temple Atlas receives a full-view toggle and an explicit open-in-new-window escape route while remaining embedded in the host context.
 
-**Core Principles**:
-1.  **Content is King**: Extreme minimalism where the text and icons are the only decoration.
-2.  **Grid Systems**: Rigorous adherence to a mathematical grid.
-3.  **Asymmetry & Whitespace**: Using empty space to create tension and guide the eye.
-4.  **Humanist Touch**: Warmth introduced through photography and tone, balancing the cold tech.
+### Animation
 
-**Color Philosophy**:
-*   **Warm Off-White (Paper)**: A background that feels like high-quality cardstock (e.g., #F5F5F7).
-*   **Swiss Red or International Orange**: A single, bold accent color for calls to action.
-*   **Deep Navy/Ink**: For text, softer than pure black.
-*   **Intent**: To feel approachable, intellectual, and creative—a tool for the mind.
+Use 140–220 ms transform/opacity transitions with a crisp ease-out. Header underlines draw laterally; panels fade upward no more than 6 px; controls depress to 0.98 scale. Avoid parallax, looping motion, and large reveals. Respect `prefers-reduced-motion` and keep keyboard-triggered operations immediate.
 
-**Layout Paradigm**:
-*   **Split Screen**: Strong vertical division. One side for the manifesto (Hemingway style), one side for the tools.
-*   **Typographic Scale**: Using font size changes to denote hierarchy rather than boxes or lines.
+### Typography System
 
-**Signature Elements**:
-1.  **Oversized Iconography**: App icons are treated as art pieces, large and detailed.
-2.  **Rule Lines**: Thin, horizontal lines separating sections (editorial style).
-3.  **Serif Headlines**: A modern serif for headers to evoke the "literary" feel of Hemingway.
+Use **Cormorant Garamond** for major titles and pull quotations, **Source Serif 4** for long-form body text, and **IBM Plex Sans Condensed** for navigation, metadata, filters, labels, and citations. Display titles use 600 weight with tightly controlled line-height; body copy uses 400/450 at 1.65; metadata uses 600 uppercase with generous tracking. The system deliberately avoids Inter and preserves the existing atlas's literary character while improving technical density.
 
-**Interaction Philosophy**:
-*   **Smooth Scroll**: The whole page feels like a continuous sheet of paper.
-*   **Scale on Hover**: Images grow slightly within their frames.
+### Brand Essence
 
-**Animation**:
-*   **Mask Reveals**: Text slides up from behind invisible masks.
-*   **Image Parallax**: Images move within their containers.
+**A rigorous digital atlas for advanced readers who need Scripture, geography, chronology, and source criticism in one inspectable research environment.** Personality: **learned, exacting, humane**.
 
-**Typography System**:
-*   **Headers**: Playfair Display or a sharp, high-contrast Serif.
-*   **Body**: Helvetica Now or a clean, neutral Sans.
-*   **Pairing**: The classic Serif/Sans combination for editorial authority.
-</text>
-</response>
+### Brand Voice
+
+Headlines should make a precise intellectual claim; calls to action use verbs that describe the research action; microcopy names methods and limitations directly. Avoid promotional superlatives and generic onboarding language.
+
+Example headline: **“Sacred architecture, placed in geography and time.”**
+
+Example CTA: **“Open the comparative temple atlas”**
+
+### Wordmark & Logo
+
+The existing Genesis Nations circular mountain/atlas mark remains the institutional identifier. Refine it as a bold, text-free symbol combining a horizon arc, three ascending landforms, and a single meridian line; use the mark at a legible 34–40 px in the masthead and as the favicon. The wordmark pairs a custom two-line lockup—serif title over tracked condensed descriptor—rather than rendering the brand name in a default font.
+
+### Signature Brand Color
+
+**Oxidized Atlas Teal — `#0E6F68`**: dark enough for accessible links on parchment, historically suggestive without imitation, and distinctive across maps, citations, focus states, and active navigation.
+
+## Style Decisions
+
+- Treat the Temple Atlas as an embedded scholarly instrument, not a marketing feature card.
+- Keep the active navigation taxonomy compact: Atlas, Nations, Censuses, Levites, Temple Atlas, Revelation, Sources.
+- Every source mention must be a real clickable link; descriptive claims without a direct source are labeled as editorial context rather than presented as evidence.
+- Provide visible embed status, open-in-new-window access, and an iframe fallback link.
+- Preserve substantial map real estate at all breakpoints; supporting prose should never force the instrument below the fold on desktop.
+- Repeat the Temple Atlas's own dating caveat in the host frame and link its named source classes directly: [UNESCO World Heritage Centre](https://whc.unesco.org/), [Wikipedia](https://www.wikipedia.org/), and [Encyclopaedia Britannica](https://www.britannica.com/).
+- The Temple Atlas host frame inherits parchment and limestone surfaces, evergreen ink, oxidized-teal status states, clay-gold chronology accents, condensed scholarly labels, and hairline dividers; the cross-origin embedded instrument retains its own functional controls.
+- The Genesis Nations mark is a legible engraved circular atlas emblem with a horizon, compass point, and globe latitudes; it must remain readable at masthead and favicon scale without a placeholder square.
+- Secondary routes use restrained folio numbers, coordinate annotations, register labels, and short teal/gold rule segments as recurring scholarly punctuation.
+- All major imagery remains archival, engraved, cartographic, archaeological, or museum-catalogue in character; generic product illustration and modern dashboard art are excluded.
