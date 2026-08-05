@@ -1,0 +1,586 @@
+<!DOCTYPE html>
+<html lang="en" class="dark">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Cosmic Geography Time-Mapper — The 70 Principalities of Babel</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<script src="https://d3js.org/d3.v7.min.js"></script>
+<script src="https://unpkg.com/topojson-client@3"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400&family=IBM+Plex+Sans+Condensed:wght@400;500;600&display=swap" rel="stylesheet">
+<script>
+tailwind.config = {
+  darkMode: 'class',
+  theme: {
+    extend: {
+      colors: {
+        parchment: '#F5F0E8',
+        obsidian: '#0D0D0D',
+        gold: '#C9A84C',
+        goldMuted: '#8B7A3D',
+      },
+      fontFamily: {
+        display: ['Cormorant Garamond', 'serif'],
+        body: ['IBM Plex Sans Condensed', 'sans-serif'],
+      }
+    }
+  }
+}
+</script>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html, body { height: 100%; overflow: hidden; }
+  body { font-family: 'IBM Plex Sans Condensed', sans-serif; }
+  .font-display { font-family: 'Cormorant Garamond', serif; }
+
+  ::-webkit-scrollbar { width: 5px; }
+  ::-webkit-scrollbar-track { background: transparent; }
+  .dark ::-webkit-scrollbar-thumb { background: #333; border-radius: 3px; }
+  html:not(.dark) ::-webkit-scrollbar-thumb { background: #ccc; border-radius: 3px; }
+
+  /* Slider */
+  input[type="range"] { -webkit-appearance: none; appearance: none; height: 5px; border-radius: 3px; outline: none; cursor: pointer; }
+  .dark input[type="range"] { background: linear-gradient(to right, #1A1A1A, #2A2A2A); }
+  html:not(.dark) input[type="range"] { background: linear-gradient(to right, #D4CFC4, #C8C0B4); }
+  input[type="range"]::-webkit-slider-thumb { -webkit-appearance: none; width: 18px; height: 18px; border-radius: 50%; background: #C9A84C; border: 2px solid #0D0D0D; cursor: pointer; box-shadow: 0 0 10px rgba(201,168,76,0.6); }
+  input[type="range"]::-moz-range-thumb { width: 18px; height: 18px; border-radius: 50%; background: #C9A84C; border: 2px solid #0D0D0D; cursor: pointer; box-shadow: 0 0 10px rgba(201,168,76,0.6); }
+
+  .country-path { stroke-width: 0.4; cursor: pointer; transition: fill-opacity 0.15s ease, stroke-width 0.15s ease; }
+  .country-path:hover { fill-opacity: 1 !important; stroke-width: 1.2; }
+
+  .tooltip { position: absolute; pointer-events: none; opacity: 0; transition: opacity 0.12s ease; z-index: 1000; }
+  .tooltip.visible { opacity: 1; }
+
+  @keyframes pulseGold { 0%,100% { opacity: 0; } 50% { opacity: 0.25; } }
+  .pulse-active { animation: pulseGold 1.5s ease-in-out 3; }
+
+  .panel-slide { animation: panelIn 0.2s ease-out; }
+  @keyframes panelIn { from { transform: translateX(100%); opacity: 0; } to { transform: translateX(0); opacity: 1; } }
+  @media (max-width: 768px) {
+    .panel-slide { animation: panelUp 0.2s ease-out; }
+    @keyframes panelUp { from { transform: translateY(100%); opacity: 0; } to { transform: translateY(0); opacity: 1; } }
+  }
+
+  .disarming-dot { box-shadow: 0 0 8px rgba(201,168,76,0.8), 0 0 16px rgba(201,168,76,0.4); }
+</style>
+</head>
+<body class="dark:bg-obsidian bg-parchment transition-colors duration-200">
+
+<!-- GUIDANCE MODAL -->
+<div id="guidanceModal" class="fixed inset-0 z-[9999] flex items-center justify-center bg-black/70 backdrop-blur-sm">
+  <div class="dark:bg-zinc-900 bg-white border dark:border-gold/30 border-gold/20 rounded-xl max-w-md w-[92vw] p-5 md:p-7 shadow-2xl">
+    <h2 class="font-display text-2xl md:text-3xl font-bold dark:text-gold text-goldMuted mb-3">How to Read This Map</h2>
+    <div class="dark:text-gray-300 text-gray-700 text-sm leading-relaxed space-y-2.5">
+      <p>At Babel, God divided the 70 nations and assigned them to the Sons of God. They rebelled. They became the Princes — the Principalities — over the territories of the earth.</p>
+      <p>This map traces their stolen empires and Christ's reclamation.</p>
+      <hr class="dark:border-zinc-700 border-gray-200">
+      <p><strong class="dark:text-amber-400 text-amber-700">Deuteronomy 32:8–9</strong> — "When the Most High divided the nations, He set their boundaries according to the number of the sons of God. But the LORD's portion is His people."</p>
+      <hr class="dark:border-zinc-700 border-gray-200">
+      <div class="grid grid-cols-3 gap-2 text-center text-xs">
+        <div class="p-2 rounded dark:bg-amber-900/30 bg-amber-50 border dark:border-amber-700/30 border-amber-200"><span class="block font-bold dark:text-amber-400 text-amber-800">SHEM</span><span class="dark:text-gray-400 text-gray-500">Gold</span></div>
+        <div class="p-2 rounded dark:bg-red-900/30 bg-red-50 border dark:border-red-700/30 border-red-200"><span class="block font-bold dark:text-red-400 text-red-800">HAM</span><span class="dark:text-gray-400 text-gray-500">Crimson</span></div>
+        <div class="p-2 rounded dark:bg-cyan-900/30 bg-cyan-50 border dark:border-cyan-700/30 border-cyan-200"><span class="block font-bold dark:text-cyan-400 text-cyan-800">JAPHETH</span><span class="dark:text-gray-400 text-gray-500">Steel Blue</span></div>
+      </div>
+      <p class="text-xs dark:text-gray-500 text-gray-400 pt-1">Drag the timeline from 3000 BC to 2026 AD. Hover for quick info. Click for the full War Room briefing.</p>
+    </div>
+    <button onclick="document.getElementById('guidanceModal').classList.add('hidden')" class="mt-5 w-full py-2.5 rounded-lg font-body font-semibold text-sm dark:bg-gold/20 bg-gold/10 dark:text-gold text-goldMuted dark:hover:bg-gold/30 hover:bg-gold/20 border dark:border-gold/30 border-gold/20 transition-colors cursor-pointer">
+      Enter the Map
+    </button>
+  </div>
+</div>
+
+<!-- HEADER -->
+<header class="fixed top-0 left-0 right-0 z-50 dark:bg-obsidian/90 bg-parchment/90 backdrop-blur-sm border-b dark:border-zinc-800/60 border-gray-200/60 h-12 md:h-14">
+  <div class="flex items-center justify-between px-3 md:px-5 h-full">
+    <div class="flex items-center gap-2.5">
+      <div class="w-7 h-7 rounded-full dark:bg-gold/15 bg-gold/10 flex items-center justify-center flex-shrink-0">
+        <svg class="w-3.5 h-3.5 dark:text-gold text-goldMuted" fill="currentColor" viewBox="0 0 20 20"><path d="M10 2L2 10l8 8 8-8-8-8zm0 2.83L15.17 10 10 15.17 4.83 10 10 4.83z"/></svg>
+      </div>
+      <div class="leading-tight">
+        <h1 class="font-display text-sm md:text-base font-bold dark:text-parchment text-obsidian">Cosmic Geography</h1>
+        <p class="text-[9px] md:text-[10px] font-body tracking-[0.15em] uppercase dark:text-gold/60 text-goldMuted/60">Time-Mapper · 70 Principalities</p>
+      </div>
+    </div>
+    <div class="flex items-center gap-1.5">
+      <button id="themeToggle" onclick="toggleTheme()" class="p-2 rounded-lg dark:bg-zinc-800/60 bg-gray-100 dark:hover:bg-zinc-700 hover:bg-gray-200 transition-colors cursor-pointer" title="Toggle light/dark mode">
+        <svg class="w-4 h-4 dark:text-gold text-goldMuted dark:block hidden" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 2a1 1 0 011 1v1a1 1 0 11-2 0V3a1 1 0 011-1zm4 8a4 4 0 11-8 0 4 4 0 018 0zm-.464 4.95l.707.707a1 1 0 001.414-1.414l-.707-.707a1 1 0 00-1.414 1.414zm2.12-10.607a1 1 0 010 1.414l-.706.707a1 1 0 11-1.414-1.414l.707-.707a1 1 0 011.414 0zM17 11a1 1 0 100-2h-1a1 1 0 100 2h1zm-7 4a1 1 0 011 1v1a1 1 0 11-2 0v-1a1 1 0 011-1zM5.05 6.464A1 1 0 106.465 5.05l-.708-.707a1 1 0 00-1.414 1.414l.707.707zm1.414 8.486l-.707.707a1 1 0 01-1.414-1.414l.707-.707a1 1 0 011.414 1.414zM4 11a1 1 0 100-2H3a1 1 0 000 2h1z" clip-rule="evenodd"/></svg>
+        <svg class="w-4 h-4 dark:text-gold text-goldMuted dark:hidden block" fill="currentColor" viewBox="0 0 20 20"><path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z"/></svg>
+      </button>
+      <button onclick="document.getElementById('guidanceModal').classList.remove('hidden')" class="p-2 rounded-lg dark:bg-zinc-800/60 bg-gray-100 dark:hover:bg-zinc-700 hover:bg-gray-200 transition-colors cursor-pointer" title="How to read this map">
+        <svg class="w-4 h-4 dark:text-gray-400 text-gray-500" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 100-2v-3a1 1 0 00-1-1H9z" clip-rule="evenodd"/></svg>
+      </button>
+    </div>
+  </div>
+</header>
+
+<!-- MAIN LAYOUT -->
+<div class="flex h-full pt-12 md:pt-14 pb-[88px] md:pb-[80px]">
+  <!-- MAP -->
+  <div id="mapContainer" class="flex-1 relative overflow-hidden">
+    <svg id="worldMap" class="w-full h-full"></svg>
+    <!-- Tooltip -->
+    <div id="tooltip" class="tooltip dark:bg-zinc-900/95 bg-white/95 border dark:border-zinc-700 border-gray-200 rounded-lg px-3 py-2 shadow-xl max-w-[240px]">
+      <p id="tooltipModern" class="font-body font-semibold text-sm dark:text-parchment text-obsidian"></p>
+      <p id="tooltipAncient" class="font-body text-xs dark:text-gold text-goldMuted mt-0.5"></p>
+      <p id="tooltipPatriarch" class="font-body text-[10px] uppercase tracking-wider mt-1 dark:text-gray-500 text-gray-400"></p>
+    </div>
+    <!-- Pulse overlay for 33 AD -->
+    <div id="pulseOverlay" class="absolute inset-0 pointer-events-none bg-gold/20 opacity-0 hidden"></div>
+  </div>
+
+  <!-- WAR ROOM PANEL -->
+  <div id="warRoomPanel" class="hidden fixed md:static md:w-[360px] lg:w-[400px] w-full bottom-0 left-0 right-0 md:bottom-auto h-[55vh] md:h-full dark:bg-zinc-900/[0.98] bg-white/[0.98] border-t md:border-t-0 md:border-l dark:border-zinc-800 border-gray-200 overflow-y-auto z-40 panel-slide backdrop-blur-sm">
+    <div class="p-4 md:p-5 lg:p-6">
+      <button onclick="closePanel()" class="absolute top-2.5 right-2.5 p-1.5 rounded-lg dark:hover:bg-zinc-800 hover:bg-gray-100 transition-colors cursor-pointer z-10">
+        <svg class="w-4 h-4 dark:text-gray-400 text-gray-500" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clip-rule="evenodd"/></svg>
+      </button>
+      <p class="text-[9px] uppercase tracking-[0.2em] dark:text-gold/50 text-goldMuted/50 font-semibold">War Room Briefing</p>
+      <h2 id="panelTitle" class="font-display text-xl md:text-2xl font-bold dark:text-parchment text-obsidian mt-1 pr-6"></h2>
+      <p id="panelSubtitle" class="font-body text-[11px] dark:text-gray-500 text-gray-400 mt-0.5"></p>
+      <div id="panelBadge" class="inline-block px-2.5 py-0.5 rounded-full text-[9px] uppercase tracking-wider font-semibold mt-3 mb-3"></div>
+      <!-- Prince -->
+      <div class="mb-3">
+        <h3 class="font-body text-[9px] uppercase tracking-[0.15em] dark:text-gold/60 text-goldMuted/60 font-semibold mb-0.5">The Ancient Principality</h3>
+        <p id="panelPrince" class="font-display text-base md:text-lg dark:text-parchment text-obsidian font-semibold"></p>
+      </div>
+      <!-- Scripture -->
+      <div class="mb-3 p-3 rounded-lg dark:bg-zinc-800/40 bg-gray-50 border dark:border-zinc-700/40 border-gray-100">
+        <h3 class="font-body text-[9px] uppercase tracking-[0.15em] dark:text-gold/60 text-goldMuted/60 font-semibold mb-1">Key Scripture</h3>
+        <p id="panelScripture" class="font-display text-sm dark:text-gray-300 text-gray-600 italic leading-relaxed"></p>
+        <p id="panelScriptureRef" class="font-body text-[10px] dark:text-gold text-goldMuted mt-2 font-semibold"></p>
+      </div>
+      <!-- Narrative -->
+      <div class="mb-3">
+        <h3 class="font-body text-[9px] uppercase tracking-[0.15em] dark:text-gold/60 text-goldMuted/60 font-semibold mb-1">The Narrative</h3>
+        <p id="panelNarrative" class="font-body text-[13px] dark:text-gray-300 text-gray-600 leading-relaxed"></p>
+      </div>
+      <!-- Reclamation -->
+      <div class="p-3 rounded-lg dark:bg-gold/[0.04] bg-amber-50/50 border dark:border-gold/15 border-amber-100">
+        <h3 class="font-body text-[9px] uppercase tracking-[0.15em] dark:text-gold/60 text-goldMuted/60 font-semibold mb-1">The Reclamation</h3>
+        <p id="panelReclamation" class="font-body text-[13px] dark:text-gold/80 text-amber-800/80 leading-relaxed"></p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- TIMELINE FOOTER -->
+<footer class="fixed bottom-0 left-0 right-0 z-50 dark:bg-obsidian/95 bg-parchment/95 backdrop-blur-sm border-t dark:border-zinc-800/60 border-gray-200/60 px-3 md:px-5 py-2.5 md:py-3">
+  <div class="max-w-4xl mx-auto">
+    <div class="flex items-center justify-between mb-1">
+      <span class="font-body text-[9px] md:text-[10px] dark:text-gray-600 text-gray-400 uppercase tracking-wider">3000 BC</span>
+      <div class="text-center">
+        <span id="currentYear" class="font-display text-sm md:text-base font-bold dark:text-gold text-goldMuted">2026 AD</span>
+        <span id="currentEra" class="block font-body text-[8px] md:text-[9px] uppercase tracking-[0.15em] dark:text-gray-600 text-gray-400">The Present Age</span>
+      </div>
+      <span class="font-body text-[9px] md:text-[10px] dark:text-gray-600 text-gray-400 uppercase tracking-wider">2026 AD</span>
+    </div>
+    <div class="relative">
+      <input type="range" id="timelineSlider" min="-3000" max="2026" value="2026" step="1" class="w-full">
+      <div class="absolute top-1/2 -translate-y-1/2 pointer-events-none" style="left: calc((3033 / 5026) * 100%);">
+        <div class="w-2.5 h-2.5 rounded-full bg-gold disarming-dot -translate-x-1/2"></div>
+      </div>
+    </div>
+    <p class="text-center mt-0.5 font-body text-[8px] md:text-[9px] dark:text-gold/40 text-goldMuted/40 uppercase tracking-[0.2em]">✝ 33 AD — The Disarming (Col 2:15)</p>
+  </div>
+</footer>
+
+<script>
+// ============================================================
+// DATA
+// ============================================================
+const nationsData = {
+  "Iran": { patriarch:"Shem", root:"Elam", prince:"The Prince of Persia", ancientName:"Elam / Persia", historicalName:"Persian Empire",
+    scripture:"But the prince of the kingdom of Persia withstood me twenty-one days; and behold, Michael, one of the chief princes, came to help me, for I had been left alone there with the kings of Persia.",
+    scriptureRef:"Daniel 10:13",
+    narrative:"The angel fought for twenty-one days. The Prince of Persia held the line. It was not a battle of flesh. It was a war in the dark. Daniel prayed, and heaven moved. Today, this land is Iran. The borders changed. The ancient prince did not. But the Son of Man has broken his bow.",
+    reclamation:"The Prince of Persia was named in Scripture. He was powerful. He delayed angels. But he could not delay the Cross. Colossians 2:15 stripped him bare. The church in Iran grows underground — fierce, quiet, unstoppable." },
+  "Iraq": { patriarch:"Shem", root:"Asshur", prince:"The Prince of Assyria", ancientName:"Asshur / Babylon", historicalName:"Assyrian & Babylonian Empires",
+    scripture:"How you are fallen from heaven, O Day Star, son of Dawn! How you are cut down to the ground, you who laid the nations low!",
+    scriptureRef:"Isaiah 14:12",
+    narrative:"Babylon was the seat. The first rebellion after the Flood began here. The tower rose. God came down. He scattered the tongues and divided the nations among the Sons of God. Asshur built Nineveh. The prince over this land ruled empires that devoured Israel. But empires fall. Princes do not outlast the Lamb.",
+    reclamation:"Babylon fell to Persia. Persia fell to Greece. Greece fell to Rome. Every prince who sat over this land watched his empire crumble. The pattern is the point. Christ alone holds a kingdom that will not be shaken." },
+  "Syria": { patriarch:"Shem", root:"Aram", prince:"The Prince of Aram", ancientName:"Aram", historicalName:"Aramean Kingdoms",
+    scripture:"The LORD has broken the staff of the wicked, the scepter of rulers.", scriptureRef:"Isaiah 14:5",
+    narrative:"Aram was old. Its language outlived its borders. Jesus spoke Aramaic. The prince over Damascus warred against Israel for centuries. But the road to Damascus is where Saul fell blind and rose seeing. The prince lost his greatest weapon on his own road.",
+    reclamation:"Damascus is ancient. Its prince is ancient. But the Gospel that struck Saul down on that road has never stopped running. The prince of Aram watched his territory become the launching pad for the Gentile mission." },
+  "Israel": { patriarch:"Shem", root:"Eber", prince:"None — The LORD's Own Portion", ancientName:"Eber / Israel", historicalName:"Israel / Judah",
+    scripture:"For the LORD's portion is His people, Jacob His allotted heritage.", scriptureRef:"Deuteronomy 32:9",
+    narrative:"This is the exception. When God divided the nations at Babel and assigned them to the Sons of God, He kept one for Himself. Israel was not given to a prince. Israel belonged to YHWH. The land is small. The claim is total. Every war over this ground is a war over God's personal inheritance.",
+    reclamation:"There is no reclamation needed here — only fulfillment. The Son of Man was born in this land. He died in this land. He rose in this land. From here, the Kingdom spreads to reclaim every territory the princes stole." },
+  "Saudi Arabia": { patriarch:"Shem", root:"Joktan", prince:"The Prince of Arabia", ancientName:"Joktan / Sheba", historicalName:"Arabian Kingdoms",
+    scripture:"The kings of Tarshish and of the coastlands shall pay tribute; the kings of Sheba and Seba shall bring gifts.", scriptureRef:"Psalm 72:10",
+    narrative:"Joktan's sons spread across the Arabian peninsula. Sheba sent a queen to Solomon. The land held gold, frankincense, and ancient trade routes. The prince over Arabia kept the gospel at bay for centuries through law and sword. But prophecy says the kings of Sheba will bring gifts to the Son.",
+    reclamation:"The Magi came from the East. They brought gold and frankincense. It was a foretaste. The prince of Arabia guards his territory fiercely. But the underground church grows. Prophecy is patient." },
+  "Turkey": { patriarch:"Shem", root:"Lud / Togarmah", prince:"The Prince of Asia Minor", ancientName:"Lud / Togarmah", historicalName:"Lydia / Ottoman Empire",
+    scripture:"To the angel of the church in Ephesus write... To the angel of the church in Smyrna write...", scriptureRef:"Revelation 2:1, 8",
+    narrative:"Seven churches stood in this land. John wrote to them. The Spirit spoke to them. Asia Minor was the heartland of early Christianity. Then the prince reclaimed it. The Ottoman sword swept the churches away. Hagia Sophia became a mosque. But the letters in Revelation still stand. The lampstands can be restored.",
+    reclamation:"The seven churches fell. But the Word that addressed them did not. Turkey was Christian before it was Ottoman. The prince erased the churches from the land but not from the Book. What is written in heaven cannot be unwritten on earth." },
+  "India": { patriarch:"Shem", root:"Eastern Shemites", prince:"The Princes of the East", ancientName:"Eastern Shemites", historicalName:"Indus Valley / India",
+    scripture:"From beyond the rivers of Cush my worshipers, the daughter of my dispersed ones, shall bring my offering.", scriptureRef:"Zephaniah 3:10",
+    narrative:"The sons of Shem spread east. They crossed rivers and mountains. India became a land of a thousand gods — each one a mask for a prince who was not content with one name. Thomas the apostle came here. He preached. He died. The seed he planted still grows.",
+    reclamation:"Thomas brought the Gospel to India in the first century. The prince raised a thousand alternatives. But the church Thomas planted never died. Two thousand years later, it still stands. The prince has many masks. Christ has one face. It is enough." },
+  "China": { patriarch:"Shem", root:"Eastern Shemites", prince:"The Prince of the Far East", ancientName:"Sons of Shem (Eastern)", historicalName:"Chinese Dynasties",
+    scripture:"Behold, these shall come from afar, and behold, these from the north and from the west, and these from the land of Sinim.", scriptureRef:"Isaiah 49:12",
+    narrative:"The migrations went east until the land ended. The prince over this territory built walls — physical and spiritual. For millennia, the gospel could not penetrate. Then it did. The underground church in China may be the largest on earth. The prince built his wall. God went under it.",
+    reclamation:"The land of Sinim. Isaiah named it. The prince fortified it. Mao tried to burn every Bible. The church grew faster under persecution than it ever did under freedom. The prince miscalculated. Suffering does not kill the church. It multiplies it." },
+  "Egypt": { patriarch:"Ham", root:"Mizraim", prince:"The Prince of Egypt", ancientName:"Mizraim", historicalName:"Egyptian Empire",
+    scripture:"When Israel was a child, I loved him, and out of Egypt I called my son.", scriptureRef:"Hosea 11:1",
+    narrative:"Mizraim built pyramids to defy death. The prince over Egypt enslaved God's people for four hundred years. Ten plagues broke his grip. The Red Sea buried his army. But the pattern repeated — the infant Christ fled to Egypt and returned. God keeps calling His sons out of Egypt.",
+    reclamation:"The prince of Egypt held Israel in chains. God broke them with blood and water. The same prince held the infant Christ in exile. God called Him back. The Coptic church has endured two thousand years of persecution in this land. The prince cannot finish what he starts." },
+  "Ethiopia": { patriarch:"Ham", root:"Cush", prince:"The Prince of Cush", ancientName:"Cush", historicalName:"Kingdom of Aksum",
+    scripture:"Cush shall hasten to stretch out her hands to God.", scriptureRef:"Psalm 68:31",
+    narrative:"Cush was old. Older than most remember. The prince over this land held it in darkness for millennia. Then Philip met the Ethiopian eunuch on a desert road. One conversation. One baptism. The prince lost a continent. Ethiopia became Christian before most of Europe.",
+    reclamation:"The Ethiopian eunuch carried the gospel home. One man. One scroll of Isaiah. One baptism in desert water. The prince of Cush lost his grip in a single afternoon. Ethiopia stretched out her hands to God, exactly as David prophesied." },
+  "Sudan": { patriarch:"Ham", root:"Cush", prince:"The Prince of Cush (Southern)", ancientName:"Cush (Upper Nile)", historicalName:"Nubia / Kush",
+    scripture:"Woe to the land of whirring wings that is beyond the rivers of Cush.", scriptureRef:"Isaiah 18:1",
+    narrative:"The upper Nile. The land beyond the rivers of Cush. Isaiah saw it. The prince here ruled through isolation. But distance means nothing to the Spirit. The church came to Nubia. It flourished for a thousand years before the sword came.",
+    reclamation:"Nubian Christianity lasted a millennium. The prince eventually brought the sword. But a thousand years of faithfulness is not erased. The seed is in the ground. It waits." },
+  "Libya": { patriarch:"Ham", root:"Put", prince:"The Prince of Put", ancientName:"Put", historicalName:"Libya / Cyrenaica",
+    scripture:"Simon of Cyrene, the father of Alexander and Rufus, was passing by on his way in from the country, and they forced him to carry the cross.", scriptureRef:"Mark 15:21",
+    narrative:"Put settled the North African coast. The prince held this land quietly. Then a man from Cyrene was pulled from the crowd and forced to carry the cross of Christ. Simon of Cyrene. A Hamite. Carrying the instrument of cosmic victory.",
+    reclamation:"A man from this land carried the Cross. Not by choice — by providence. Simon of Cyrene bore the weight of redemption on his shoulders. The prince of Put could not stop his own citizen from serving the Son of Man." },
+  "Nigeria": { patriarch:"Ham", root:"Ham (West African)", prince:"The Prince of the West Coast", ancientName:"Sons of Ham (Western)", historicalName:"West African Kingdoms",
+    scripture:"And this gospel of the kingdom will be proclaimed throughout the whole world as a testimony to all nations.", scriptureRef:"Matthew 24:14",
+    narrative:"The sons of Ham spread west across Africa. The princes over these lands ruled through animism and fear. Then the gospel came. Nigeria now sends more missionaries than most Western nations. The prince who ruled through fear now faces a church that does not fear death.",
+    reclamation:"West Africa was the prince's stronghold. Animism. Fear. Blood sacrifice. The gospel did not tiptoe in. It came with power. Nigeria is now a sending nation. The prince's territory became a launching pad for the Kingdom." },
+  "South Africa": { patriarch:"Ham", root:"Ham (Southern)", prince:"The Prince of the South", ancientName:"Sons of Ham (Southern)", historicalName:"Southern African Kingdoms",
+    scripture:"He has put down the mighty from their thrones, and exalted the lowly.", scriptureRef:"Luke 1:52",
+    narrative:"The sons of Ham migrated south to the cape. The prince ruled through division — tribe against tribe, then colonizer against native. But the church grew on both sides of every divide.",
+    reclamation:"Apartheid was the prince's masterwork — division made law. But the church dismantled it. Not with weapons. With truth. The prince who divides always loses to the God who reconciles." },
+  "Russia": { patriarch:"Japheth", root:"Magog / Tubal", prince:"The Prince of Magog", ancientName:"Magog / Tubal / Meshech", historicalName:"Scythia / Russian Empire",
+    scripture:"Son of man, set your face against Gog, of the land of Magog, the chief prince of Meshech and Tubal, and prophesy against him.", scriptureRef:"Ezekiel 38:2",
+    narrative:"Ezekiel named him. Gog, of the land of Magog. The prince of Meshech and Tubal. The land is vast. It stretches from Moscow to the Pacific. The prince over this territory has always loved empire — Scythia, the Tsars, the Soviets. Each iteration falls. The prince remains. But he is named, and what is named can be bound.",
+    reclamation:"The Soviets burned churches and shot priests. The prince of Magog thought atheism would finish the job. It did not. The Russian Orthodox Church survived seventy years of state persecution. You cannot kill what God has decided will live." },
+  "Greece": { patriarch:"Japheth", root:"Javan", prince:"The Prince of Greece", ancientName:"Javan", historicalName:"Greek Empire",
+    scripture:"But the prince of Greece will come... and there is no one who contends by my side against these except Michael, your prince.", scriptureRef:"Daniel 10:20-21",
+    narrative:"The angel named two princes by territory: Persia and Greece. The Prince of Greece empowered Alexander. Philosophy. Beauty. Reason without revelation. The Greek mind conquered the world before the Greek sword did. But God used the Greek language to write the New Testament. The prince's own weapon became the vehicle of his defeat.",
+    reclamation:"The prince of Greece gave the world philosophy — a thousand questions with no final answers. Then God wrote the Answer in Greek. The New Testament. The prince's language became the gospel's language. His weapon was turned against him." },
+  "Italy": { patriarch:"Japheth", root:"Kittim", prince:"The Prince of Rome", ancientName:"Kittim", historicalName:"Roman Empire",
+    scripture:"For ships of Kittim shall come against him, and he shall be afraid and withdraw.", scriptureRef:"Daniel 11:30",
+    narrative:"Kittim. The ships from the west. Rome. The prince over this land built the greatest empire the world had seen. He crucified the Son of Man. It was his greatest victory and his final defeat in the same act. The cross was Rome's instrument. God made it heaven's throne.",
+    reclamation:"Rome crucified Christ. The prince thought he had won. Three days later, the tomb was empty. Within three centuries, the empire that killed Jesus bore His name. The prince of Rome watched his own empire kneel to the Nazarene." },
+  "Germany": { patriarch:"Japheth", root:"Gomer / Ashkenaz", prince:"The Prince of Ashkenaz", ancientName:"Gomer / Ashkenaz", historicalName:"Germanic Tribes / Holy Roman Empire",
+    scripture:"The LORD brings the counsel of the nations to nothing; He makes the plans of the peoples of no effect.", scriptureRef:"Psalm 33:10",
+    narrative:"Ashkenaz. Son of Gomer. The Germanic peoples. The prince over this land tried everything — pagan tribes, imperial religion, rationalist theology, and finally, genocide. Luther nailed his theses here. The Reformation shook the world from this soil.",
+    reclamation:"The prince of Ashkenaz provoked the Reformation and then tried to bury it in blood. Luther's hammer echoes still. The prince's darkest hour — the Holocaust — became the catalyst for Israel's rebirth. God turns the prince's worst into His best." },
+  "France": { patriarch:"Japheth", root:"Gomer (Gaul)", prince:"The Prince of Gaul", ancientName:"Gomer (Western)", historicalName:"Gaul / France",
+    scripture:"Where the Spirit of the Lord is, there is freedom.", scriptureRef:"2 Corinthians 3:17",
+    narrative:"The Gauls. Western sons of Gomer. The prince over France built cathedrals and then emptied them. The Revolution promised liberty without God. The Enlightenment promised reason without revelation. The prince's strategy here is sophistication — making the gospel seem unsophisticated.",
+    reclamation:"France built Notre-Dame. Then France built the guillotine. The prince offers culture without Christ. But the cathedrals still stand. The stones still preach. And the Huguenot blood still cries from the ground — not for vengeance, but for harvest." },
+  "United Kingdom": { patriarch:"Japheth", root:"Tarshish", prince:"The Prince of Tarshish", ancientName:"Tarshish (Coastlands)", historicalName:"Britannia / British Empire",
+    scripture:"The ships of Tarshish were carriers for your merchandise.", scriptureRef:"Ezekiel 27:25",
+    narrative:"Tarshish. The far coastlands. The ships. Britain became the maritime power that Ezekiel described. The prince of Tarshish used empire to spread commerce and control. But the same ships that carried slaves also carried Bibles. The same empire that colonized also evangelized.",
+    reclamation:"The British Empire was the prince's proudest work — dominion over a quarter of the earth. But Wilberforce broke the slave trade. The missionary movement launched from London. The prince built an empire. God used it as a postal service for the Gospel." },
+  "United States of America": { patriarch:"Japheth", root:"Tarshish / Kittim (Colonial)", prince:"The Prince of the New Coastlands", ancientName:"Japheth's Expansion (Coastlands)", historicalName:"Colonial America / United States",
+    scripture:"Enlarge the place of your tent, and let the curtains of your habitations be stretched out; do not hold back; lengthen your cords and strengthen your stakes.", scriptureRef:"Isaiah 54:2",
+    narrative:"Japheth was promised expansion. His sons took to the ships. They crossed the Atlantic. The spirits of the old world followed the sails. The prince of the new coastlands inherited the ambitions of Tarshish and Kittim — commerce, power, and the illusion of self-sufficiency. But the Puritans came with covenants. The Great Awakenings shook the land.",
+    reclamation:"The prince followed the ships to the New World. But so did the Gospel. Every revival — Edwards, Whitefield, Finney, Azusa Street — was a territorial reclamation. The prince has not given up. Neither has the Spirit. The war is not over. But the outcome was decided at Calvary." },
+  "Canada": { patriarch:"Japheth", root:"Tarshish / Kittim (Colonial)", prince:"The Prince of the Northern Coastlands", ancientName:"Japheth's Expansion (Northern)", historicalName:"British North America / Canada",
+    scripture:"Ask of me, and I will make the nations your heritage, and the ends of the earth your possession.", scriptureRef:"Psalm 2:8",
+    narrative:"Japheth was promised expansion. His sons took to the ships. They claimed the coastlands, and eventually, the oceans. The spirits of the old world followed the sails to Canada. The prince of the northern coastlands works through comfort — prosperity without purpose, tolerance without truth. But the Great Commission goes further than ancient ships. The cross claimed the new world before the maps were even drawn.",
+    reclamation:"Canada was built by Japhethite expansion — French and British. The prince here works through apathy, not persecution. Comfort is his weapon. But the remnant remains. The church in Canada is small and quiet. Small and quiet is how mustard seeds begin." },
+  "Australia": { patriarch:"Japheth", root:"Tarshish / Kittim (Colonial)", prince:"The Prince of the Southern Coastlands", ancientName:"Japheth's Expansion (Southern)", historicalName:"Colonial Australia",
+    scripture:"The coastlands have seen and are afraid; the ends of the earth tremble; they have drawn near and come.", scriptureRef:"Isaiah 41:5",
+    narrative:"Japheth was promised expansion. His sons took to the ships. They claimed the coastlands, and eventually, the oceans. The spirits of the old world followed the sails to Australia. A convict colony became a nation. The prince of the southern coastlands inherited the ends of the earth. But the ends of the earth are exactly where the Gospel was always headed.",
+    reclamation:"Australia is the end of the earth — literally, the coastlands of the coastlands. The prince thought distance would protect him. But the Great Commission has no border. The church in Australia carries the gospel to the Pacific Islands. The end of the earth became a new beginning." },
+  "Brazil": { patriarch:"Japheth", root:"Tarshish (Iberian)", prince:"The Prince of the Western Lands", ancientName:"Japheth's Expansion (Iberian)", historicalName:"Portuguese Colony / Brazil",
+    scripture:"For the earth will be filled with the knowledge of the glory of the LORD as the waters cover the sea.", scriptureRef:"Habakkuk 2:14",
+    narrative:"The Iberian sons of Japheth crossed the Atlantic going south. Portugal claimed this land. The prince followed. He mixed the gospel with syncretism — saints that were spirits, churches that were temples. But the Pentecostal fire came in the twentieth century. Brazil now has more evangelicals than most nations have people.",
+    reclamation:"The prince tried syncretism — blending truth with lies until no one could tell the difference. Then Pentecost came to Brazil. Fire does not blend. It burns away what is false. Brazil is now a sending nation." },
+  "Mexico": { patriarch:"Japheth", root:"Tarshish (Iberian)", prince:"The Prince of the Aztec Lands", ancientName:"Japheth's Expansion (Spanish)", historicalName:"New Spain / Mexico",
+    scripture:"He has delivered us from the domain of darkness and transferred us to the kingdom of his beloved Son.", scriptureRef:"Colossians 1:13",
+    narrative:"Spain brought the cross and the sword together. The prince over this land had demanded blood sacrifice for centuries — Aztec altars ran red. Then a different blood was proclaimed. The prince who demanded sacrifice met the God who provided it. The altars stopped.",
+    reclamation:"The Aztec prince demanded human blood. The Gospel proclaimed divine blood — freely given, not taken. The prince's economy of death was replaced by an economy of grace. Mexico is deeply Christian. The old altars are museums now." },
+  "Japan": { patriarch:"Japheth", root:"Javan (Eastern Maritime)", prince:"The Prince of the Eastern Islands", ancientName:"Coastland Peoples (Far East)", historicalName:"Japanese Empire",
+    scripture:"Let the coastlands keep silence before me; let the peoples renew their strength.", scriptureRef:"Isaiah 41:1",
+    narrative:"The island peoples. The eastern coastlands. The prince over Japan built a fortress of honor, shame, and self-sufficiency. For centuries, no gospel penetrated. The hidden Christians survived for two hundred years without priests or Bibles. The prince sealed the island. God kept a remnant inside.",
+    reclamation:"Twenty-six martyrs in Nagasaki. Two centuries of hidden faith. When Japan reopened, the missionaries found Christians waiting. The prince sealed the door. God preserved the seed inside." },
+  "Poland": { patriarch:"Japheth", root:"Gomer (Eastern)", prince:"The Prince of the Borderlands", ancientName:"Gomer (Eastern)", historicalName:"Poland-Lithuania",
+    scripture:"No weapon formed against you shall prosper.", scriptureRef:"Isaiah 54:17",
+    narrative:"Poland sits between Magog and Ashkenaz. The prince of the borderlands has used this land as a battlefield for centuries. Partitioned. Invaded. Occupied. But never erased. The faith of Poland survived partition, Nazism, and Communism. Three empires tried to kill it. Three empires are gone.",
+    reclamation:"The prince threw everything at Poland — partition, genocide, communism. The church survived all three. John Paul II came from this land and helped bring down the Soviet empire." },
+  "Ukraine": { patriarch:"Japheth", root:"Magog (Western)", prince:"The Prince of the Steppe", ancientName:"Magog (Western Edge)", historicalName:"Kievan Rus / Ukraine",
+    scripture:"The LORD is my rock and my fortress and my deliverer.", scriptureRef:"Psalm 18:2",
+    narrative:"The western edge of Magog's territory. Kiev was where the Rus were baptized. The prince of the steppe has contested this land for a thousand years. But the baptism of the Rus happened here. The spiritual birthplace of Eastern Christianity is Ukrainian soil.",
+    reclamation:"Vladimir was baptized in these waters. The prince has tried to erase that memory through empire after empire. But baptismal waters do not evaporate. The church in Ukraine endures because its roots go deeper than any invasion." },
+  "Spain": { patriarch:"Japheth", root:"Tarshish", prince:"The Prince of Tarshish (Iberian)", ancientName:"Tarshish", historicalName:"Hispania / Spanish Empire",
+    scripture:"For the ships of Tarshish first, to bring your children from afar, their silver and gold with them.", scriptureRef:"Isaiah 60:9",
+    narrative:"Tarshish. The ancient tin traders. The far western port. Spain became the maritime empire that launched the colonial age. The prince of Tarshish used gold and conquest. But the same ships carried missionaries.",
+    reclamation:"Spain sent conquistadors and friars on the same ships. The prince meant conquest. God meant mission. Latin America is the most Christian continent on earth. The prince of Tarshish funded his own defeat." },
+  "Sweden": { patriarch:"Japheth", root:"Gomer (Northern)", prince:"The Prince of the North", ancientName:"Gomer (Scandinavian)", historicalName:"Viking Kingdoms / Sweden",
+    scripture:"Their voice goes out through all the earth, and their words to the end of the world.", scriptureRef:"Psalm 19:4",
+    narrative:"The Vikings were Japheth's northern sons. They raided monasteries. The prince of the north loved violence and plunder. Then the Vikings converted. The raiders became missionaries.",
+    reclamation:"The Vikings raided Lindisfarne. A century later, their grandchildren were building churches. The prince of the north turned warriors into monks. That is not what he intended." },
+  "Norway": { patriarch:"Japheth", root:"Gomer (Northern)", prince:"The Prince of the Fjords", ancientName:"Gomer (Norse)", historicalName:"Viking Norway",
+    scripture:"If I take the wings of the morning and dwell in the uttermost parts of the sea, even there your hand shall lead me.", scriptureRef:"Psalm 139:9-10",
+    narrative:"The Norse sailed to the edges of the known world. Iceland. Greenland. Vinland. The prince of the fjords pushed his people to the uttermost parts. But the Psalmist already knew — even there, God's hand leads.",
+    reclamation:"Norway sent Vikings west. Then Norway sent missionaries everywhere. The prince who drove expansion for plunder watched that same restlessness become missionary zeal." }
+};
+
+// ISO numeric ID to country name
+const countryNames = {
+  4:"Afghanistan",8:"Albania",12:"Algeria",24:"Angola",32:"Argentina",36:"Australia",40:"Austria",50:"Bangladesh",56:"Belgium",64:"Bhutan",68:"Bolivia",70:"Bosnia and Herz.",72:"Botswana",76:"Brazil",100:"Bulgaria",854:"Burkina Faso",108:"Burundi",116:"Cambodia",120:"Cameroon",124:"Canada",140:"Central African Rep.",148:"Chad",152:"Chile",156:"China",170:"Colombia",178:"Rep. Congo",180:"Dem. Rep. Congo",188:"Costa Rica",384:"Côte d'Ivoire",191:"Croatia",192:"Cuba",196:"Cyprus",203:"Czechia",208:"Denmark",262:"Djibouti",214:"Dominican Rep.",218:"Ecuador",818:"Egypt",222:"El Salvador",226:"Eq. Guinea",232:"Eritrea",233:"Estonia",231:"Ethiopia",246:"Finland",250:"France",266:"Gabon",270:"Gambia",268:"Georgia",276:"Germany",288:"Ghana",300:"Greece",320:"Guatemala",324:"Guinea",624:"Guinea-Bissau",328:"Guyana",332:"Haiti",340:"Honduras",348:"Hungary",352:"Iceland",356:"India",360:"Indonesia",364:"Iran",368:"Iraq",372:"Ireland",376:"Israel",380:"Italy",392:"Japan",400:"Jordan",398:"Kazakhstan",404:"Kenya",408:"North Korea",410:"South Korea",414:"Kuwait",417:"Kyrgyzstan",418:"Laos",428:"Latvia",422:"Lebanon",426:"Lesotho",430:"Liberia",434:"Libya",440:"Lithuania",450:"Madagascar",454:"Malawi",458:"Malaysia",466:"Mali",478:"Mauritania",484:"Mexico",496:"Mongolia",499:"Montenegro",504:"Morocco",508:"Mozambique",104:"Myanmar",516:"Namibia",524:"Nepal",528:"Netherlands",554:"New Zealand",558:"Nicaragua",562:"Niger",566:"Nigeria",578:"Norway",512:"Oman",586:"Pakistan",591:"Panama",598:"Papua New Guinea",600:"Paraguay",604:"Peru",608:"Philippines",616:"Poland",620:"Portugal",634:"Qatar",642:"Romania",643:"Russia",646:"Rwanda",682:"Saudi Arabia",686:"Senegal",688:"Serbia",694:"Sierra Leone",703:"Slovakia",705:"Slovenia",706:"Somalia",710:"South Africa",728:"S. Sudan",724:"Spain",144:"Sri Lanka",729:"Sudan",740:"Suriname",748:"Eswatini",752:"Sweden",756:"Switzerland",760:"Syria",762:"Tajikistan",834:"Tanzania",764:"Thailand",768:"Togo",788:"Tunisia",792:"Turkey",795:"Turkmenistan",800:"Uganda",804:"Ukraine",784:"United Arab Emirates",826:"United Kingdom",840:"United States of America",858:"Uruguay",860:"Uzbekistan",862:"Venezuela",704:"Vietnam",887:"Yemen",894:"Zambia",716:"Zimbabwe"
+};
+
+// Default data for unlisted countries
+const hamCountries = new Set(["Dem. Rep. Congo","Rep. Congo","Kenya","Tanzania","Ghana","Cameroon","Niger","Mali","Senegal","Guinea","Côte d'Ivoire","Mozambique","Madagascar","Angola","Zambia","Zimbabwe","Malawi","Somalia","Eritrea","Djibouti","Chad","Central African Rep.","Gabon","Burkina Faso","Togo","Sierra Leone","Liberia","Mauritania","Gambia","Guinea-Bissau","Eq. Guinea","Eswatini","Lesotho","Botswana","Namibia","Rwanda","Burundi","Uganda","S. Sudan","Morocco","Tunisia","Algeria"]);
+const shemCountries = new Set(["Afghanistan","Pakistan","Bangladesh","Jordan","Lebanon","Kuwait","Qatar","United Arab Emirates","Oman","Yemen","Uzbekistan","Turkmenistan","Tajikistan","Kyrgyzstan","Kazakhstan","Azerbaijan","Georgia","Armenia","Nepal","Sri Lanka"]);
+
+function getCountryData(name) {
+  if (nationsData[name]) return nationsData[name];
+  if (hamCountries.has(name)) return { patriarch:"Ham", root:"Sons of Ham", prince:"A Prince of Ham's Line", ancientName:"Hamitic Territory", historicalName:name };
+  if (shemCountries.has(name)) return { patriarch:"Shem", root:"Sons of Shem", prince:"A Prince of Shem's Line", ancientName:"Shemitic Territory", historicalName:name };
+  return { patriarch:"Japheth", root:"Sons of Japheth", prince:"A Prince of Japheth's Line", ancientName:"Japhethite Territory", historicalName:name };
+}
+
+function getColor(patriarch, isDark) {
+  if (patriarch === "Shem") return isDark ? "#C9A84C" : "#A08030";
+  if (patriarch === "Ham") return isDark ? "#B83A2A" : "#8B2500";
+  return isDark ? "#3D8A9C" : "#2C6A7A";
+}
+
+function getEraLabel(year) {
+  if (year <= -2500) return "The Age of Babel";
+  if (year <= -2000) return "The Patriarchal Age";
+  if (year <= -1500) return "The Age of Egypt";
+  if (year <= -1000) return "The Age of Judges";
+  if (year <= -586) return "The Age of Kings";
+  if (year <= -333) return "The Babylonian Exile";
+  if (year <= -63) return "The Greek Age";
+  if (year <= 33) return "The Roman Age";
+  if (year <= 313) return "The Age of Martyrs";
+  if (year <= 600) return "The Church Fathers";
+  if (year <= 1054) return "Christendom United";
+  if (year <= 1453) return "The Crusader Age";
+  if (year <= 1517) return "The Late Medieval";
+  if (year <= 1648) return "The Reformation";
+  if (year <= 1800) return "The Colonial Age";
+  if (year <= 1914) return "The Missionary Age";
+  if (year <= 1945) return "The World Wars";
+  if (year <= 1991) return "The Cold War";
+  return "The Present Age";
+}
+
+// ============================================================
+// STATE
+// ============================================================
+let worldData = null;
+let currentYear = 2026;
+let currentTheme = 'dark';
+
+// ============================================================
+// THEME
+// ============================================================
+function toggleTheme() {
+  const html = document.documentElement;
+  if (html.classList.contains('dark')) { html.classList.remove('dark'); currentTheme = 'light'; }
+  else { html.classList.add('dark'); currentTheme = 'dark'; }
+  renderMap();
+}
+
+// ============================================================
+// PANEL
+// ============================================================
+function openPanel(name) {
+  const data = getCountryData(name);
+  const isDark = currentTheme === 'dark';
+  const panel = document.getElementById('warRoomPanel');
+
+  document.getElementById('panelTitle').textContent = name;
+  document.getElementById('panelSubtitle').textContent = `Ancient Root: ${data.root} · ${data.ancientName || ''}`;
+
+  const badge = document.getElementById('panelBadge');
+  badge.textContent = `${data.patriarch} · ${data.root}`;
+  const badgeColors = { Shem: isDark ? 'bg-amber-900/30 text-amber-400' : 'bg-amber-50 text-amber-800 border border-amber-200', Ham: isDark ? 'bg-red-900/30 text-red-400' : 'bg-red-50 text-red-800 border border-red-200', Japheth: isDark ? 'bg-cyan-900/30 text-cyan-400' : 'bg-cyan-50 text-cyan-800 border border-cyan-200' };
+  badge.className = `inline-block px-2.5 py-0.5 rounded-full text-[9px] uppercase tracking-wider font-semibold mt-3 mb-3 ${badgeColors[data.patriarch] || badgeColors.Japheth}`;
+
+  document.getElementById('panelPrince').textContent = data.prince || 'Unknown Prince';
+  document.getElementById('panelScripture').textContent = data.scripture || 'The record is silent on this territory.';
+  document.getElementById('panelScriptureRef').textContent = data.scriptureRef || '';
+  document.getElementById('panelNarrative').textContent = data.narrative || 'The record is silent on this territory. But silence does not mean absence. The Son of Man claims all nations.';
+  document.getElementById('panelReclamation').textContent = data.reclamation || 'The Cross was for all nations. This land is included in the promise. The prince here, named or unnamed, was disarmed at Calvary.';
+
+  panel.classList.remove('hidden');
+}
+
+function closePanel() { document.getElementById('warRoomPanel').classList.add('hidden'); }
+
+// ============================================================
+// MAP RENDERING
+// ============================================================
+function renderMap() {
+  if (!worldData) return;
+  const svg = d3.select('#worldMap');
+  svg.selectAll('*').remove();
+
+  const container = document.getElementById('mapContainer');
+  const width = container.clientWidth;
+  const height = container.clientHeight;
+  const isDark = currentTheme === 'dark';
+
+  svg.attr('viewBox', `0 0 ${width} ${height}`).attr('preserveAspectRatio', 'xMidYMid meet');
+
+  const projection = d3.geoMercator()
+    .scale(Math.min(width / 6.2, height / 3.8))
+    .translate([width / 2, height / 1.65]);
+  const path = d3.geoPath().projection(projection);
+
+  // Ocean
+  svg.append('rect').attr('width', width).attr('height', height).attr('fill', isDark ? '#0A0A0A' : '#EDE8DD');
+
+  // Graticule
+  svg.append('path').datum(d3.geoGraticule()())
+    .attr('d', path).attr('fill', 'none')
+    .attr('stroke', isDark ? '#161616' : '#DDD8CC').attr('stroke-width', 0.3);
+
+  // Countries
+  svg.selectAll('.country-path')
+    .data(worldData.features)
+    .enter().append('path')
+    .attr('class', 'country-path')
+    .attr('d', path)
+    .attr('fill', d => {
+      const name = countryNames[parseInt(d.id)] || '';
+      return getColor(getCountryData(name).patriarch, isDark);
+    })
+    .attr('fill-opacity', d => {
+      const name = countryNames[parseInt(d.id)] || '';
+      return nationsData[name] ? 0.75 : 0.35;
+    })
+    .attr('stroke', isDark ? '#0A0A0A' : '#EDE8DD')
+    .attr('stroke-width', 0.4)
+    .on('mouseenter', function(event, d) {
+      const name = countryNames[parseInt(d.id)] || 'Unknown';
+      const data = getCountryData(name);
+      d3.select(this).attr('fill-opacity', 1).attr('stroke', isDark ? '#C9A84C' : '#8B7A3D').attr('stroke-width', 1.2);
+
+      const tt = document.getElementById('tooltip');
+      document.getElementById('tooltipModern').textContent = name;
+      document.getElementById('tooltipAncient').textContent = `Root: ${data.root} · ${data.ancientName || ''}`;
+      document.getElementById('tooltipPatriarch').textContent = data.patriarch;
+      tt.classList.add('visible');
+      positionTooltip(event);
+    })
+    .on('mousemove', positionTooltip)
+    .on('mouseleave', function(event, d) {
+      const name = countryNames[parseInt(d.id)] || '';
+      d3.select(this).attr('fill-opacity', nationsData[name] ? 0.75 : 0.35).attr('stroke', isDark ? '#0A0A0A' : '#EDE8DD').attr('stroke-width', 0.4);
+      document.getElementById('tooltip').classList.remove('visible');
+    })
+    .on('click', function(event, d) {
+      const name = countryNames[parseInt(d.id)] || 'Unknown Territory';
+      openPanel(name);
+    });
+
+  // Labels on desktop
+  if (width > 700) {
+    const labelList = ["United States of America","Russia","China","Brazil","Australia","India","Iran","Egypt","Nigeria","United Kingdom","Germany","Canada"];
+    worldData.features.forEach(f => {
+      const name = countryNames[parseInt(f.id)] || '';
+      if (!labelList.includes(name)) return;
+      const c = path.centroid(f);
+      if (!c[0] || !c[1]) return;
+      const data = getCountryData(name);
+      let label = name;
+      if (currentYear <= -1000) label = (data.ancientName || '').split('/')[0].trim();
+      else if (currentYear <= 0) label = (data.historicalName || name).split('/')[0].trim();
+      if (name === "United States of America") label = currentYear > 0 ? "USA" : label;
+      if (name === "United Kingdom") label = currentYear > 0 ? "UK" : label;
+
+      svg.append('text').attr('x', c[0]).attr('y', c[1])
+        .attr('text-anchor', 'middle').attr('font-size', '7px')
+        .attr('font-family', 'IBM Plex Sans Condensed, sans-serif').attr('font-weight', '500')
+        .attr('fill', isDark ? 'rgba(245,240,232,0.5)' : 'rgba(13,13,13,0.4)')
+        .attr('pointer-events', 'none').text(label.length > 14 ? label.substring(0,12)+'…' : label);
+    });
+  }
+}
+
+function positionTooltip(event) {
+  const tt = document.getElementById('tooltip');
+  const container = document.getElementById('mapContainer');
+  const rect = container.getBoundingClientRect();
+  let x = event.clientX - rect.left + 12;
+  let y = event.clientY - rect.top - 10;
+  if (x + 240 > rect.width) x = x - 260;
+  if (y + 80 > rect.height) y = y - 80;
+  tt.style.left = x + 'px';
+  tt.style.top = y + 'px';
+}
+
+// ============================================================
+// TIMELINE
+// ============================================================
+const slider = document.getElementById('timelineSlider');
+function updateTimeline(val) {
+  currentYear = parseInt(val);
+  const display = currentYear < 0 ? `${Math.abs(currentYear)} BC` : `${currentYear} AD`;
+  document.getElementById('currentYear').textContent = display;
+  document.getElementById('currentEra').textContent = getEraLabel(currentYear);
+  if (currentYear === 33) triggerDisarming();
+  renderMap();
+}
+slider.addEventListener('input', e => updateTimeline(e.target.value));
+
+// ============================================================
+// THE DISARMING — 33 AD
+// ============================================================
+function triggerDisarming() {
+  const overlay = document.getElementById('pulseOverlay');
+  overlay.classList.remove('hidden');
+  overlay.classList.add('pulse-active');
+  overlay.style.opacity = '1';
+
+  document.getElementById('panelTitle').textContent = 'THE DISARMING';
+  document.getElementById('panelSubtitle').textContent = '33 AD · Golgotha · The Cosmic Turning Point';
+  const badge = document.getElementById('panelBadge');
+  badge.textContent = 'COLOSSIANS 2:15';
+  badge.className = 'inline-block px-2.5 py-0.5 rounded-full text-[9px] uppercase tracking-wider font-semibold mt-3 mb-3 bg-gold/20 text-gold border border-gold/30';
+  document.getElementById('panelPrince').textContent = 'All 70 Princes — Disarmed';
+  document.getElementById('panelScripture').textContent = 'He disarmed the rulers and authorities and put them to open shame, by triumphing over them in him.';
+  document.getElementById('panelScriptureRef').textContent = 'Colossians 2:15';
+  document.getElementById('panelNarrative').textContent = 'The Son of Man hung on wood. The princes watched. They thought it was their victory. It was their funeral. In that moment — blood and breath and darkness — He stripped them of every legal claim. Every territory. Every nation. Every soul they held in bondage. The keys changed hands. The princes are still here. They still fight. But they fight as dead men walking. The verdict was rendered at Calvary. The sentence will be executed at His return.';
+  document.getElementById('panelReclamation').textContent = 'This is the hinge of history. Before this moment, the princes ruled by right — God had assigned the nations to them at Babel. After this moment, they rule by usurpation only. They are squatters. The deed belongs to the Son. He is patient. He is not slow. Every church planted in every nation is an eviction notice served to an ancient prince.';
+  document.getElementById('warRoomPanel').classList.remove('hidden');
+
+  setTimeout(() => {
+    overlay.style.opacity = '0';
+    setTimeout(() => { overlay.classList.add('hidden'); overlay.classList.remove('pulse-active'); }, 500);
+  }, 5000);
+}
+
+// ============================================================
+// INIT
+// ============================================================
+async function init() {
+  try {
+    const response = await fetch('https://unpkg.com/world-atlas@2.0.2/countries-110m.json');
+    const topology = await response.json();
+    worldData = topojson.feature(topology, topology.objects.countries);
+    renderMap();
+    updateTimeline(slider.value);
+  } catch (e) {
+    console.error('Failed to load map data:', e);
+    document.getElementById('mapContainer').innerHTML = '<p class="text-center mt-20 dark:text-gray-500 text-gray-400 font-body">Failed to load map data. Please check your internet connection and reload.</p>';
+  }
+}
+
+// Wait for DOM + scripts
+if (document.readyState === 'loading') {
+  document.addEventListener('DOMContentLoaded', init);
+} else {
+  init();
+}
+
+// Resize handler
+let resizeTimer;
+window.addEventListener('resize', () => { clearTimeout(resizeTimer); resizeTimer = setTimeout(renderMap, 100); });
+
+// Keyboard
+document.addEventListener('keydown', e => {
+  if (e.key === 'Escape') { closePanel(); document.getElementById('guidanceModal').classList.add('hidden'); }
+});
+</script>
+</body>
+</html>
