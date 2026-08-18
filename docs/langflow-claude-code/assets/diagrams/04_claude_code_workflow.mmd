@@ -1,0 +1,9 @@
+flowchart LR
+    E[Explore\nAsk what exists] --> P[Plan\nAsk what should change]
+    P --> I[Implement\nLet Claude edit with approval]
+    I --> V[Verify\nRun tests, API call, screenshot]
+    V --> C[Commit\nDocument and version]
+    V -->|fails| P
+
+    classDef phase fill:#FFFFFF,stroke:#344054,stroke-width:2px,color:#101828;
+    class E,P,I,V,C phase;

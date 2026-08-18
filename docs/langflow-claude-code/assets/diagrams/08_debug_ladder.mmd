@@ -1,0 +1,10 @@
+flowchart TB
+    A[Symptom\nWhat went wrong?] --> B[Reproduce\nExact command or input]
+    B --> C[Locate layer\nInstall, env, flow, model, API, app]
+    C --> D[Test smallest part\nOne component or one request]
+    D --> E[Fix root cause\nDo not hide errors]
+    E --> F[Verify\nSame command now passes]
+    F --> G[Document\nAdd note to README or CLAUDE.md]
+
+    classDef item fill:#FFFFFF,stroke:#475467,stroke-width:2px,color:#101828;
+    class A,B,C,D,E,F,G item;

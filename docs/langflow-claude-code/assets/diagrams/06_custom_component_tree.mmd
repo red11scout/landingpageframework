@@ -1,0 +1,12 @@
+flowchart TB
+    root[/custom_components/] --> data[data/]
+    data --> init[__init__.py\nexports class]
+    data --> comp[dataframe_processor.py\nComponent subclass]
+    comp --> attrs[display_name, description, icon, name]
+    comp --> io[inputs + outputs]
+    comp --> method[method named by output]
+
+    classDef folder fill:#EEF4FF,stroke:#2E90FA,stroke-width:2px,color:#175CD3;
+    classDef file fill:#F9FAFB,stroke:#667085,stroke-width:2px,color:#344054;
+    classDef code fill:#ECFDF3,stroke:#12B76A,stroke-width:2px,color:#05603A;
+    class root,data folder; class init,comp file; class attrs,io,method code;

@@ -1,0 +1,20 @@
+flowchart LR
+    A[Chat Input\nuser message] --> B[Prompt\ntask instructions + variables]
+    B --> C[Anthropic / Claude Model\nreasoning + generation]
+    C --> D[Chat Output\nvisible answer]
+    E[(Optional data source\nfiles, vector DB, API)] --> F[Retriever or Tool]
+    F --> B
+
+    subgraph Beginner Mental Model
+      A
+      B
+      C
+      D
+    end
+
+    classDef input fill:#EEF4FF,stroke:#3538CD,stroke-width:2px,color:#1D2939;
+    classDef prompt fill:#FFF6ED,stroke:#E04F16,stroke-width:2px,color:#7A2E0E;
+    classDef model fill:#F4EBFF,stroke:#7F56D9,stroke-width:2px,color:#3E1C96;
+    classDef output fill:#ECFDF3,stroke:#12B76A,stroke-width:2px,color:#054F31;
+    classDef data fill:#F2F4F7,stroke:#667085,stroke-width:2px,color:#344054;
+    class A input; class B prompt; class C model; class D output; class E,F data;

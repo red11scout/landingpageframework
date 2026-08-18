@@ -1,0 +1,11 @@
+flowchart TB
+    s1[1. Install\nLangflow + Claude Code] --> s2[2. Create project folder\nand CLAUDE.md]
+    s2 --> s3[3. Build first flow\nInput → Prompt → Claude → Output]
+    s3 --> s4[4. Test in Playground\none component at a time]
+    s4 --> s5[5. Run through API\nPython or curl]
+    s5 --> s6[6. Version flow JSON\nand docs in Git]
+    s6 --> s7[7. Add custom component\nonly when needed]
+    s7 --> s8[8. Expose as MCP tool\nwith clear name + boundaries]
+
+    classDef step fill:#F8FAFC,stroke:#475467,stroke-width:2px,color:#101828;
+    class s1,s2,s3,s4,s5,s6,s7,s8 step;

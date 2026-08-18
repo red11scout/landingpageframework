@@ -1,0 +1,13 @@
+flowchart LR
+    flow[Langflow flow\nwith Chat Output] --> cfg[MCP Server tab\nselect flow as tool]
+    cfg --> name[Give tool a clear name\nand precise description]
+    name --> url[Streamable HTTP URL\n/api/v1/mcp/project/.../streamable]
+    url --> client[Claude Code MCP client\nclaude mcp add --transport http]
+    client --> ask[User asks a task]
+    ask --> choose[Claude chooses the tool\nonly if description matches]
+    choose --> flow
+
+    classDef lf fill:#E6FFFB,stroke:#0E9384,stroke-width:2px,color:#064E3B;
+    classDef mcp fill:#F4F3FF,stroke:#7A5AF8,stroke-width:2px,color:#3E1C96;
+    classDef warn fill:#FFF8E6,stroke:#DC6803,stroke-width:2px,color:#7A2E0E;
+    class flow,cfg lf; class url,client,choose mcp; class name,ask warn;
