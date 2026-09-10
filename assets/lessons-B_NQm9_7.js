@@ -1,0 +1,899 @@
+const n=[{id:1,title:"Seeds of Discontent",subtitle:"The world before the storm",lessons:"1-10",color:"oklch(0.7 0.12 85)"},{id:2,title:"The Breaking Point",subtitle:"When talking stops and action begins",lessons:"11-18",color:"oklch(0.55 0.2 25)"},{id:3,title:"Declaring Freedom",subtitle:"Words that built a nation",lessons:"19-25",color:"oklch(0.35 0.15 260)"},{id:4,title:"The Darkest Hours",subtitle:"When the cause nearly died",lessons:"26-35",color:"oklch(0.4 0.1 145)"},{id:5,title:"Allies and Enemies",subtitle:"No nation wins alone",lessons:"36-42",color:"oklch(0.7 0.12 85)"},{id:6,title:"People of the Revolution",subtitle:"The war was not fought by generals alone",lessons:"43-55",color:"oklch(0.55 0.2 25)"},{id:7,title:"The War in the South",subtitle:"Brutal. Personal. Neighbor against neighbor.",lessons:"56-63",color:"oklch(0.4 0.1 145)"},{id:8,title:"Victory",subtitle:"How it ended",lessons:"64-70",color:"oklch(0.35 0.15 260)"},{id:9,title:"Building the Republic",subtitle:"Winning the war was the easy part",lessons:"71-80",color:"oklch(0.7 0.12 85)"},{id:10,title:"Legacy and Meaning",subtitle:"What it all means. For them. For us. For you.",lessons:"81-90",color:"oklch(0.55 0.2 25)"}],m=[{id:1,title:"The World in 1750",theme:"Seeds of Discontent",themeId:1,subtitle:"What the colonies looked like. The smell of the docks. The sound of the forests.",narrative:`The world was smaller then. It took six weeks to cross the Atlantic if the wind was good. If the wind was bad, it took longer and men died.
+
+In 1750, thirteen colonies clung to the eastern edge of a continent they barely knew. Two million people lived there. They were English and Scots and Irish and German and Dutch and African — the Africans had not come by choice.
+
+Boston smelled of salt and tar and fish. Philadelphia smelled of fresh bread and horse dung and printer's ink. Charleston smelled of rice and indigo and the sweat of enslaved men working in the sun.
+
+The forests began at the edge of every town. They went west for a thousand miles and no European had seen the end of them. Bears lived there. And wolves. And nations of people who had lived there for ten thousand years.
+
+The colonists thought of themselves as British. They drank British tea. They read British books. They obeyed British laws — mostly. They did not yet know they were Americans. That knowledge would come later, and it would come hard.`,keyFacts:["2 million people lived in the 13 colonies in 1750","It took 6-8 weeks to sail from England to America","About 20% of the colonial population was enslaved Africans","The colonies stretched 1,200 miles along the coast but barely 200 miles inland","Boston, Philadelphia, and New York were the largest cities — none had more than 25,000 people"],discussionQuestions:["If you lived in 1750, what colony would you want to live in and why?","How would your life be different if it took 6 weeks to send a letter to someone?","The colonists thought of themselves as British, not American. When do you think that changed?","What sounds and smells do you think you'd notice first in colonial Boston?"],connections:[2,3,53],date:"c. 1750",location:"The Thirteen Colonies",figures:["Benjamin Franklin","King George II"],sources:[{title:"Library of Congress: Colonial America",url:"https://www.loc.gov/classroom-materials/united-states-history-primary-source-timeline/colonial-settlement-1600s-1763/"},{title:"National Geographic: Colonial Life",url:"https://education.nationalgeographic.org/resource/colonial-life/"},{title:"Mount Vernon: 18th Century Life",url:"https://www.mountvernon.org/library/digitalhistory/digital-encyclopedia/"}],mapCoords:[{lat:42.36,lng:-71.06,label:"Boston"},{lat:39.95,lng:-75.17,label:"Philadelphia"},{lat:32.78,lng:-79.93,label:"Charleston"},{lat:40.71,lng:-74.01,label:"New York"}]},{id:2,title:"The French and Indian War",theme:"Seeds of Discontent",themeId:1,subtitle:"Two empires fight. Young George Washington makes his first mistake.",narrative:`In 1754, a twenty-two-year-old Virginian named George Washington led 150 men into the Ohio wilderness. He was tall and strong and brave and he did not know what he was doing.
+
+He found a French patrol camped in a hollow and attacked them at dawn. It was over in fifteen minutes. Ten Frenchmen lay dead, including their commander. Washington had started a world war. He did not know it yet.
+
+The French and Indian War lasted nine years. It was fought in the forests of America and on the plains of Europe and on the seas between. Britain won. France lost everything — all of Canada, all the land east of the Mississippi.
+
+But victory has a price. Britain had borrowed enormous sums to fight the war. Someone would have to pay that debt. Parliament looked across the Atlantic at the colonies and thought: they benefited from this war. Let them pay.
+
+That thought — that simple, reasonable thought — would destroy an empire.`,keyFacts:["George Washington was only 22 when he started the conflict","The war lasted from 1754 to 1763 — nine years","Britain's national debt doubled during the war","France lost all its North American territory","Native American nations fought on both sides"],discussionQuestions:["George Washington made a big mistake at age 22. How did he learn from it?","If you won a war but it cost you everything, would you call that winning?","Why do you think Britain thought the colonies should help pay for the war?","How old will you be in 2032? Washington was leading soldiers at 22. What do you want to be doing?"],connections:[1,3,43],date:"1754-1763",location:"Ohio Valley, North America",figures:["George Washington","King George III","General Braddock"],sources:[{title:"NPS: French and Indian War",url:"https://www.nps.gov/fone/learn/historyculture/index.htm"},{title:"Mount Vernon: Washington's Early Military Career",url:"https://www.mountvernon.org/george-washington/french-indian-war/"},{title:"Smithsonian: The French and Indian War",url:"https://www.smithsonianmag.com/history/french-and-indian-war-was-one-most-important-events-american-history-180971786/"}],mapCoords:[{lat:39.91,lng:-79.59,label:"Fort Necessity"},{lat:40.44,lng:-79.98,label:"Fort Duquesne (Pittsburgh)"},{lat:46.81,lng:-71.21,label:"Quebec"}]},{id:3,title:"The Debt",theme:"Seeds of Discontent",themeId:1,subtitle:"Britain wins the war but loses its treasury. Someone must pay.",narrative:`Numbers tell the story. Before the war, Britain owed 72 million pounds. After the war, 130 million pounds. The interest alone cost 4.5 million pounds a year.
+
+King George III was twenty-two years old when he took the throne in 1760. He was not a bad man. He was not a tyrant. He was a young king with an enormous debt and an empire to run.
+
+His ministers looked at the map. The colonies were prosperous. They had been protected by British soldiers and British ships. They paid almost nothing in taxes — far less than people in England paid.
+
+It seemed fair. It seemed logical. It seemed right.
+
+But fairness depends on where you stand. The colonists had not asked for the war. They had not asked for the soldiers. They had their own assemblies, their own traditions, their own sense of how things should be done.
+
+When the tax bills came, they did not see fairness. They saw tyranny. And that difference in seeing — that gap between London and Boston — would crack the world in two.`,keyFacts:["Britain's war debt reached 130 million pounds by 1763","Annual interest payments alone were 4.5 million pounds","Colonists paid about 1 shilling per year in taxes; Britons paid 26 shillings","King George III became king at age 22 in 1760","10,000 British soldiers remained in America after the war"],discussionQuestions:["If you protected someone and it cost you a lot of money, would you expect them to help pay?","The colonists said they hadn't asked to be protected. Is that a good argument?","King George was only 22 — younger than many college students today. How might his age have affected his decisions?","What's the difference between a tax that's fair and a tax that's tyranny?"],connections:[2,4,5],date:"1763",location:"London, England",figures:["King George III","George Grenville"],sources:[{title:"National Archives UK: Taxation in the Colonies",url:"https://www.nationalarchives.gov.uk/education/resources/american-revolution/"},{title:"History.com: Stamp Act",url:"https://www.history.com/topics/american-revolution/stamp-act"},{title:"Tax Foundation: Revolutionary Taxation",url:"https://taxfoundation.org/taxedu/videos/american-revolution-no-taxation-without-representation/"}]},{id:4,title:"The Stamp Act",theme:"Seeds of Discontent",themeId:1,subtitle:"A tax on paper. On playing cards. On newspapers. On everything that matters.",narrative:`March 22, 1765. Parliament passed the Stamp Act. It was simple. Every piece of printed paper in the colonies would carry a tax stamp. Newspapers. Legal documents. Playing cards. Dice. Pamphlets. Even the paper you wrote your will on.
+
+It was not a large tax. A newspaper cost a halfpenny more. A deck of cards cost an extra shilling. But it was not about the money.
+
+It was about the principle. The colonists had never been taxed directly by Parliament before. Their own assemblies had always levied their own taxes. This was different. This came from London, three thousand miles away, from a Parliament where no colonist sat.
+
+"No taxation without representation." The phrase spread like fire through dry grass.
+
+Men burned the stamps in the streets. They hung tax collectors in effigy. In Boston, a mob destroyed the home of the lieutenant governor. The message was clear: we will not pay. We will not submit. We are not yours to tax.`,keyFacts:["The Stamp Act was passed on March 22, 1765","It was the first direct tax Parliament imposed on the colonies","The tax affected 50+ types of documents and printed materials","Nine colonies sent delegates to the Stamp Act Congress in October 1765","Parliament repealed the Act in March 1766 after massive resistance"],discussionQuestions:["The tax was small — just pennies. Why did people get so angry about something so small?","What does 'No taxation without representation' mean? Can you think of a time someone made a rule about you without asking you first?","Was it right for the colonists to destroy property in protest? When is protest okay and when does it go too far?","If you couldn't vote on the rules in your house, how would you feel?"],connections:[3,5,6],date:"1765",location:"All Thirteen Colonies",figures:["Samuel Adams","Patrick Henry","George Grenville"],sources:[{title:"National Archives: The Stamp Act",url:"https://www.archives.gov/education/lessons/stamp-act"},{title:"American Battlefield Trust: Stamp Act",url:"https://www.battlefields.org/learn/articles/stamp-act"},{title:"Gilder Lehrman: Stamp Act Crisis",url:"https://www.gilderlehrman.org/history-resources/spotlight-primary-source/repeal-stamp-act-1766"}]},{id:5,title:"Sons of Liberty",theme:"Seeds of Discontent",themeId:1,subtitle:"Men who meet in taverns and decide to resist. Samuel Adams lights the fuse.",narrative:`They met in the back rooms of taverns. They met under elm trees they called Liberty Trees. They were merchants and artisans and lawyers and dockworkers. They called themselves the Sons of Liberty.
+
+Samuel Adams was their heart. He was not tall or handsome. His hands shook — some said from palsy, some said from drink. But he could write and he could organize and he could make men angry enough to act.
+
+The Sons of Liberty did not ask politely. They tarred and feathered tax collectors. They burned stamps. They organized boycotts that cost British merchants thousands of pounds. They made it impossible to enforce the law.
+
+In every colony, chapters formed. New York. Charleston. Savannah. The network grew. Men who had never met shared a common purpose. They were learning something important: that separate colonies could act as one.
+
+This was dangerous knowledge. London knew it. And London was afraid.`,keyFacts:["The Sons of Liberty formed in 1765 in response to the Stamp Act","Samuel Adams was the primary organizer in Boston","They used Liberty Trees as meeting places in every colony","Their boycotts reduced British imports by 40%","Members included Paul Revere, John Hancock, and Patrick Henry"],discussionQuestions:["The Sons of Liberty met in secret. Why was secrecy important?","They used boycotts — refusing to buy British goods. Could kids organize a boycott? Of what?","Samuel Adams wasn't a soldier or a general. How did he change history with just words and organization?","Is it ever right to break the law for something you believe in? When?"],connections:[4,6,10],date:"1765-1776",location:"Boston, Massachusetts",figures:["Samuel Adams","Paul Revere","John Hancock"],sources:[{title:"History.com: Sons of Liberty",url:"https://www.history.com/topics/american-revolution/sons-of-liberty"},{title:"Boston Tea Party Ships: Sons of Liberty",url:"https://www.bostonteapartyship.com/sons-of-liberty"},{title:"Mount Vernon: Samuel Adams",url:"https://www.mountvernon.org/library/digitalhistory/digital-encyclopedia/article/samuel-adams/"}],mapCoords:[{lat:42.36,lng:-71.06,label:"Boston - Liberty Tree"},{lat:40.71,lng:-74.01,label:"New York"},{lat:32.78,lng:-79.93,label:"Charleston"}]},{id:6,title:"The Townshend Acts",theme:"Seeds of Discontent",themeId:1,subtitle:"More taxes. More anger. The slow burn gets hotter.",narrative:`Parliament repealed the Stamp Act. The colonists celebrated. They thought they had won.
+
+They were wrong.
+
+In 1767, Charles Townshend — the Chancellor of the Exchequer — proposed new taxes. Not direct taxes this time. Import duties. Taxes on glass, lead, paint, paper, and tea. Everything the colonies needed and could not make themselves.
+
+Townshend was clever. He thought the colonists would accept indirect taxes — taxes hidden in the price of goods. He was wrong about that too.
+
+The colonists saw through it immediately. A tax is a tax whether you call it a duty or a fee or anything else. Boston merchants organized another boycott. Women spun their own cloth rather than buy British fabric. They called themselves Daughters of Liberty.
+
+The resistance was quieter this time. More organized. More determined. And in London, patience was running out.`,keyFacts:["The Townshend Acts were passed in June-July 1767","They taxed glass, lead, paint, paper, and tea","Revenue was used to pay colonial governors — making them independent of colonial assemblies","Women organized spinning bees to replace British cloth","Most Townshend duties were repealed in 1770 — except the tax on tea"],discussionQuestions:["Townshend thought people wouldn't notice hidden taxes. Do we have hidden taxes today?","Women organized spinning bees to make their own cloth. What's something your family could make instead of buy?","Parliament kept the tax on tea as a symbol. Why would keeping one small tax matter so much?","If someone keeps breaking promises to you, when do you stop trusting them?"],connections:[4,5,7],date:"1767",location:"London and the Colonies",figures:["Charles Townshend","Samuel Adams","Mercy Otis Warren"],sources:[{title:"History.com: Townshend Acts",url:"https://www.history.com/topics/american-revolution/townshend-acts"},{title:"National Park Service: Townshend Acts",url:"https://www.nps.gov/bost/learn/historyculture/townshend-acts.htm"},{title:"American Battlefield Trust: Townshend Acts",url:"https://www.battlefields.org/learn/articles/townshend-acts"}]},{id:7,title:"The Boston Massacre",theme:"Seeds of Discontent",themeId:1,subtitle:"Five men die in the snow. Who fired first? Truth becomes a weapon.",narrative:`March 5, 1770. A Monday night. Cold. Snow on the ground in Boston.
+
+It started with a boy. A wigmaker's apprentice named Edward Garrick shouted an insult at a British sentry. The sentry hit him with his musket. A crowd gathered. They threw snowballs. Then ice. Then oyster shells.
+
+More soldiers came. Captain Thomas Preston and seven men. The crowd pressed closer. Someone threw a club. A soldier fell. Someone yelled "Fire!" — no one knows who.
+
+The soldiers fired into the crowd. Eleven people were hit. Five died. The first was Crispus Attucks — a man of African and Native American descent. A sailor. A rope-maker. The first to fall.
+
+Samuel Adams called it a massacre. Paul Revere made an engraving showing soldiers firing in a line at helpless citizens. It was propaganda. It was effective. The image spread through every colony.
+
+The truth was messier. It always is.`,keyFacts:["5 colonists were killed on March 5, 1770","Crispus Attucks was the first to die — of African and Native American heritage","Paul Revere's engraving of the event was powerful propaganda","Captain Preston and his men were put on trial","John Adams defended the soldiers — and won acquittal for most"],discussionQuestions:["Paul Revere's engraving wasn't exactly what happened. Is it okay to exaggerate to make a point?","Crispus Attucks was not white, not free, and not famous — but he became a symbol. Why do symbols matter?","The crowd was throwing things at soldiers. Does that change how you see what happened?","What's the difference between news and propaganda? How can you tell the difference today?"],connections:[6,8,52],date:"March 5, 1770",location:"Boston, Massachusetts",figures:["Crispus Attucks","Captain Thomas Preston","Paul Revere","Samuel Adams"],sources:[{title:"Boston Massacre Historical Society",url:"https://www.bostonmassacre.net/"},{title:"NPS: Boston Massacre",url:"https://www.nps.gov/bost/learn/historyculture/boston-massacre.htm"},{title:"American Battlefield Trust: Boston Massacre",url:"https://www.battlefields.org/learn/articles/boston-massacre"}],mapCoords:[{lat:42.3588,lng:-71.0578,label:"Boston Massacre Site"}]},{id:8,title:"The Trial",theme:"Seeds of Discontent",themeId:1,subtitle:"John Adams defends the British soldiers. Justice above popularity.",narrative:`No lawyer in Boston would defend the British soldiers. They were hated. Whoever took their case would be hated too.
+
+John Adams took the case. He was thirty-four years old. He was a patriot. He believed in independence. And he believed in something else more: that every man deserves a fair trial. Even your enemy.
+
+"Facts are stubborn things," he told the jury. "Whatever may be our wishes, our inclinations, or the dictates of our passion, they cannot alter the state of facts and evidence."
+
+He proved that the soldiers had been attacked. That the crowd was violent. That the soldiers feared for their lives. Six of the eight were acquitted. Two were convicted of manslaughter — branded on the thumb and released.
+
+Adams lost friends. He lost clients. His law practice suffered. But he never regretted it. Years later he called it "one of the best pieces of service I ever rendered my country."
+
+He was right. A revolution built on injustice is no revolution at all.`,keyFacts:["John Adams was 34 years old when he took the case","6 of 8 soldiers were acquitted; 2 convicted of manslaughter","Adams's closing argument is still studied in law schools today","The trial took place in October 1770 — 7 months after the massacre","Adams later became the 2nd President of the United States"],discussionQuestions:["Would you defend someone everyone hated if you believed they deserved a fair trial?","Adams said 'Facts are stubborn things.' What does that mean to you?","He lost friends for doing what was right. Has that ever happened to you?","Why is it important that even people we disagree with get a fair trial?"],connections:[7,12,44],date:"October 1770",location:"Boston, Massachusetts",figures:["John Adams","Captain Thomas Preston","Robert Treat Paine"],sources:[{title:"Massachusetts Historical Society: Adams Papers",url:"https://www.masshist.org/publications/adams-papers"},{title:"History.com: John Adams and the Boston Massacre Trial",url:"https://www.history.com/news/boston-massacre-trial-john-adams-defense"},{title:"American Bar Association: Adams's Defense",url:"https://www.americanbar.org/groups/public_education/programs/constitution_day/john-adams-and-the-boston-massacre-trials/"}]},{id:9,title:"The Committees of Correspondence",theme:"Seeds of Discontent",themeId:1,subtitle:"Letters that travel by horse. A network forms in the dark.",narrative:`In 1772, Samuel Adams had an idea. Simple. Powerful. He proposed that every town in Massachusetts form a Committee of Correspondence — a group that would write to other towns, sharing news, sharing grievances, sharing plans.
+
+Letters traveled by horseback. Boston to New York took four days. Boston to Charleston took two weeks. But the letters traveled. And with them traveled something more dangerous than any army: a shared sense of purpose.
+
+Within a year, every colony had committees. Virginia's was led by Thomas Jefferson and Patrick Henry. They wrote to Massachusetts. Massachusetts wrote back. Strangers became allies.
+
+This was the internet of the 18th century. Slow, yes. But unstoppable. The British could arrest one man. They could not arrest a network. They could burn one letter. They could not burn an idea.
+
+By 1774, the committees had created something that had never existed before: a united colonial resistance. Thirteen separate colonies were learning to think as one.`,keyFacts:["Samuel Adams proposed the first Committee of Correspondence in 1772","By 1774, all 13 colonies had active committees","Letters between Boston and Charleston took about 2 weeks by horseback","Virginia's committee included Thomas Jefferson and Patrick Henry","The committees became the organizational backbone of the Revolution"],discussionQuestions:["The committees were like an 18th-century internet. What's similar? What's different?","Why was sharing information so dangerous to the British?","If you could only communicate by letter, how would you organize your friends to do something important?","Adams said ideas are more powerful than armies. Do you agree?"],connections:[5,10,12],date:"1772-1774",location:"All Thirteen Colonies",figures:["Samuel Adams","Thomas Jefferson","Patrick Henry"],sources:[{title:"History.com: Committees of Correspondence",url:"https://www.history.com/topics/american-revolution/committees-of-correspondence"},{title:"National Archives: Committees of Correspondence",url:"https://www.archives.gov/milestone-documents/virginia-resolution"},{title:"Colonial Williamsburg: Communication Networks",url:"https://www.colonialwilliamsburg.org/learn/deep-dives/committees-of-correspondence/"}]},{id:10,title:"The Tea Party",theme:"Seeds of Discontent",themeId:1,subtitle:"December night. Cold harbor. Men dressed as Mohawks dump a fortune into the sea.",narrative:`December 16, 1773. The night was cold and clear. Three ships sat in Boston Harbor loaded with 342 chests of tea. The tea was worth about 10,000 pounds — roughly 1.7 million dollars today.
+
+The colonists did not want the tea. Not because they didn't like tea — they loved it. But the tea carried a tax. And the tax carried a principle: that Parliament could tax them without their consent.
+
+Governor Hutchinson refused to send the ships back. The deadline to pay the duty was the next day. Something had to be done.
+
+That evening, between 30 and 130 men — the exact number is unknown — gathered at the Old South Meeting House. Some smeared their faces with coal dust and wrapped blankets around their shoulders. A thin disguise. Everyone knew who they were.
+
+They marched to Griffin's Wharf. They boarded the ships. For three hours they worked in silence, splitting open chests and dumping tea into the harbor. They damaged nothing else. They stole nothing. When a padlock was broken, they replaced it the next day.
+
+It was disciplined. It was deliberate. It was an act of war.`,keyFacts:["342 chests of tea were destroyed on December 16, 1773","The tea was worth about £10,000 (roughly $1.7 million today)","Between 30-130 men participated — disguised as Mohawk Indians","The action took about 3 hours","No other property was damaged or stolen"],discussionQuestions:["The men disguised themselves as Mohawk Indians. Why? Was that respectful or disrespectful?","They destroyed property but stole nothing. Does that make it better or worse than stealing?","If you felt a rule was unfair, what would you do? Is there a line between protest and crime?","The tea was worth $1.7 million today. Was it worth it?"],connections:[5,6,11],date:"December 16, 1773",location:"Boston Harbor, Massachusetts",figures:["Samuel Adams","John Hancock","Paul Revere","Governor Thomas Hutchinson"],sources:[{title:"Boston Tea Party Ships & Museum",url:"https://www.bostonteapartyship.com/"},{title:"History.com: Boston Tea Party",url:"https://www.history.com/topics/american-revolution/boston-tea-party"},{title:"American Battlefield Trust: Boston Tea Party",url:"https://www.battlefields.org/learn/topics/boston-tea-party"}],mapCoords:[{lat:42.3519,lng:-71.0512,label:"Griffin's Wharf"},{lat:42.3567,lng:-71.059,label:"Old South Meeting House"}]},...i()];function i(){const t=[],a=[{id:11,title:"The Intolerable Acts",themeId:2,subtitle:"Britain punishes Boston. The other colonies watch and choose sides.",date:"1774",location:"Boston, Massachusetts",figures:["King George III","Lord North"]},{id:12,title:"The First Continental Congress",themeId:2,subtitle:"Fifty-six men from twelve colonies meet in Philadelphia.",date:"September 1774",location:"Philadelphia, Pennsylvania",figures:["George Washington","John Adams","Patrick Henry"]},{id:13,title:"Lexington Green",themeId:2,subtitle:"April morning. Seventy militiamen face seven hundred regulars. Eight die.",date:"April 19, 1775",location:"Lexington, Massachusetts",figures:["Captain John Parker","Major John Pitcairn"]},{id:14,title:"Concord Bridge",themeId:2,subtitle:"The shot heard round the world. Farmers become soldiers.",date:"April 19, 1775",location:"Concord, Massachusetts",figures:["Colonel James Barrett","Paul Revere","William Dawes"]},{id:15,title:"Bunker Hill",themeId:2,subtitle:"Don't fire until you see the whites of their eyes. A costly British victory.",date:"June 17, 1775",location:"Charlestown, Massachusetts",figures:["Colonel William Prescott","General William Howe","Dr. Joseph Warren"]},{id:16,title:"The Siege of Boston",themeId:2,subtitle:"Washington takes command. An army of farmers surrounds a city.",date:"1775-1776",location:"Boston, Massachusetts",figures:["George Washington","Henry Knox"]},{id:17,title:"Common Sense",themeId:2,subtitle:"Thomas Paine writes 47 pages that change everything.",date:"January 10, 1776",location:"Philadelphia, Pennsylvania",figures:["Thomas Paine"]},{id:18,title:"The Decision",themeId:2,subtitle:"Summer 1776. The delegates debate. Independence or death.",date:"June-July 1776",location:"Philadelphia, Pennsylvania",figures:["John Adams","Benjamin Franklin","Richard Henry Lee"]},{id:19,title:"Thomas Jefferson Writes",themeId:3,subtitle:"A young Virginian alone in a rented room. The words come.",date:"June 1776",location:"Philadelphia, Pennsylvania",figures:["Thomas Jefferson"]},{id:20,title:"We Hold These Truths",themeId:3,subtitle:"What 'all men are created equal' meant then. What it means now.",date:"July 4, 1776",location:"Philadelphia, Pennsylvania",figures:["Thomas Jefferson","John Adams","Benjamin Franklin"]},{id:21,title:"The Signers",themeId:3,subtitle:"Fifty-six men sign their death warrants. Their stories.",date:"August 2, 1776",location:"Philadelphia, Pennsylvania",figures:["John Hancock","Benjamin Franklin","Samuel Adams"]},{id:22,title:"Reading It Aloud",themeId:3,subtitle:"July 8, 1776. The Declaration read to crowds. Church bells ring.",date:"July 8, 1776",location:"Philadelphia, Pennsylvania",figures:["Colonel John Nixon"]},{id:23,title:"The World Reacts",themeId:3,subtitle:"Kings and philosophers read the Declaration. Fear and hope spread.",date:"1776-1777",location:"Europe",figures:["King Louis XVI","Frederick the Great"]},{id:24,title:"What It Left Out",themeId:3,subtitle:"Slavery. Women. Native peoples. The unfinished promise.",date:"1776",location:"Philadelphia, Pennsylvania",figures:["Thomas Jefferson","Abigail Adams"]},{id:25,title:"The Flag",themeId:3,subtitle:"Stars and stripes. Betsy Ross and the truth behind the legend.",date:"June 14, 1777",location:"Philadelphia, Pennsylvania",figures:["Betsy Ross","George Washington"]},{id:26,title:"New York Falls",themeId:4,subtitle:"Washington loses the city. The army retreats. Despair.",date:"August-November 1776",location:"New York City",figures:["George Washington","General William Howe"]},{id:27,title:"Nathan Hale",themeId:4,subtitle:"'I only regret that I have but one life to lose.' A spy dies at 21.",date:"September 22, 1776",location:"New York City",figures:["Nathan Hale"]},{id:28,title:"The Retreat",themeId:4,subtitle:"Across New Jersey. Rain. Mud. Men without shoes leave blood on the road.",date:"November-December 1776",location:"New Jersey",figures:["George Washington","Charles Lee"]},{id:29,title:"Christmas Night",themeId:4,subtitle:"Washington crosses the Delaware. Ice on the river. Everything at stake.",date:"December 25, 1776",location:"Delaware River",figures:["George Washington","Henry Knox"]},{id:30,title:"Trenton",themeId:4,subtitle:"Dawn attack. Hessian soldiers surprised. Hope returns.",date:"December 26, 1776",location:"Trenton, New Jersey",figures:["George Washington","Colonel Johann Rall"]},{id:31,title:"Princeton",themeId:4,subtitle:"Three days later. Another victory. The tide begins to turn.",date:"January 3, 1777",location:"Princeton, New Jersey",figures:["George Washington","General Hugh Mercer"]},{id:32,title:"The Spy Ring",themeId:4,subtitle:"The Culper Ring. Secret ink. Hidden messages. Ordinary people doing extraordinary things.",date:"1778-1783",location:"New York and Long Island",figures:["Benjamin Tallmadge","Robert Townsend","Agent 355"]},{id:33,title:"Saratoga",themeId:4,subtitle:"The battle that changed everything. Burgoyne surrenders 6,000 men.",date:"October 17, 1777",location:"Saratoga, New York",figures:["General Horatio Gates","Benedict Arnold","General John Burgoyne"]},{id:34,title:"Valley Forge",themeId:4,subtitle:"Winter. Hunger. Disease. The army that refused to die.",date:"December 1777 - June 1778",location:"Valley Forge, Pennsylvania",figures:["George Washington","Martha Washington"]},{id:35,title:"Von Steuben Drills",themeId:4,subtitle:"A Prussian baron teaches farmers to be soldiers. Order from chaos.",date:"February-June 1778",location:"Valley Forge, Pennsylvania",figures:["Baron von Steuben"]},{id:36,title:"France Says Yes",themeId:5,subtitle:"Benjamin Franklin in Paris. Charm and diplomacy win an alliance.",date:"February 6, 1778",location:"Paris, France",figures:["Benjamin Franklin","King Louis XVI","Comte de Vergennes"]},{id:37,title:"Lafayette",themeId:5,subtitle:"A 19-year-old French nobleman sails to fight for freedom.",date:"1777-1783",location:"France and America",figures:["Marquis de Lafayette","George Washington"]},{id:38,title:"Spain and the Netherlands",themeId:5,subtitle:"Other nations join. The war becomes global.",date:"1779-1780",location:"Europe",figures:["King Carlos III","Bernardo de Gálvez"]},{id:39,title:"The French Fleet",themeId:5,subtitle:"Ships that will decide the war. Sea power changes everything.",date:"1778-1781",location:"Atlantic Ocean",figures:["Admiral de Grasse","Admiral d'Estaing"]},{id:40,title:"Bernardo de Gálvez",themeId:5,subtitle:"Spain's hero. Fighting the British from New Orleans to Pensacola.",date:"1779-1781",location:"Gulf Coast",figures:["Bernardo de Gálvez"]},{id:41,title:"The Oneida Nation",themeId:5,subtitle:"Native Americans who chose the patriot side. A story often forgotten.",date:"1775-1783",location:"New York",figures:["Polly Cooper","Chief Skenandoah"]},{id:42,title:"Enemies Within",themeId:5,subtitle:"Loyalists. Benedict Arnold. The war divides families.",date:"1775-1783",location:"All Colonies",figures:["Benedict Arnold","Peggy Shippen"]},{id:43,title:"George Washington",themeId:6,subtitle:"The man who could have been king and chose not to be.",date:"1732-1799",location:"Virginia",figures:["George Washington"]},{id:44,title:"Abigail Adams",themeId:6,subtitle:"'Remember the Ladies.' The woman behind the revolution's conscience.",date:"1744-1818",location:"Massachusetts",figures:["Abigail Adams","John Adams"]},{id:45,title:"Benjamin Franklin",themeId:6,subtitle:"Printer. Scientist. Diplomat. The most famous American alive.",date:"1706-1790",location:"Philadelphia and Paris",figures:["Benjamin Franklin"]},{id:46,title:"Alexander Hamilton",themeId:6,subtitle:"Orphan. Immigrant. Artillery captain. The boy who became a nation-builder.",date:"1755-1804",location:"New York",figures:["Alexander Hamilton"]},{id:47,title:"The Women Who Fought",themeId:6,subtitle:"Deborah Sampson. Margaret Corbin. Molly Pitcher. Sybil Ludington.",date:"1775-1783",location:"Various",figures:["Deborah Sampson","Margaret Corbin","Sybil Ludington"]},{id:48,title:"The Enslaved Who Chose Freedom",themeId:6,subtitle:"Lord Dunmore's Proclamation. Black Loyalists. Black Patriots.",date:"1775-1783",location:"Virginia and beyond",figures:["Lord Dunmore"]},{id:49,title:"James Armistead Lafayette",themeId:6,subtitle:"An enslaved man becomes a double agent. His intelligence wins Yorktown.",date:"1781",location:"Virginia",figures:["James Armistead Lafayette"]},{id:50,title:"The Common Soldier",themeId:6,subtitle:"Joseph Plumb Martin's diary. What it was really like.",date:"1776-1783",location:"Various",figures:["Joseph Plumb Martin"]},{id:51,title:"Mercy Otis Warren",themeId:6,subtitle:"The woman who wrote the Revolution's history as it happened.",date:"1728-1814",location:"Massachusetts",figures:["Mercy Otis Warren"]},{id:52,title:"Crispus Attucks",themeId:6,subtitle:"First to fall at the Boston Massacre. His legacy.",date:"1770",location:"Boston, Massachusetts",figures:["Crispus Attucks"]},{id:53,title:"The Children of the Revolution",themeId:6,subtitle:"What life was like for kids your age during the war.",date:"1775-1783",location:"All Colonies",figures:[]},{id:54,title:"Haym Salomon",themeId:6,subtitle:"The Jewish financier who funded the Revolution.",date:"1740-1785",location:"Philadelphia",figures:["Haym Salomon","Robert Morris"]},{id:55,title:"Phillis Wheatley",themeId:6,subtitle:"An enslaved poet who wrote to George Washington. And he wrote back.",date:"1753-1784",location:"Boston, Massachusetts",figures:["Phillis Wheatley","George Washington"]},{id:56,title:"Charleston Falls",themeId:7,subtitle:"The worst American defeat of the war. 5,000 captured.",date:"May 12, 1780",location:"Charleston, South Carolina",figures:["General Benjamin Lincoln","Sir Henry Clinton"]},{id:57,title:"The Swamp Fox",themeId:7,subtitle:"Francis Marion. Guerrilla warfare in the Carolina swamps.",date:"1780-1782",location:"South Carolina",figures:["Francis Marion"]},{id:58,title:"Kings Mountain",themeId:7,subtitle:"Americans fight Americans. No British soldiers on the field.",date:"October 7, 1780",location:"Kings Mountain, South Carolina",figures:["Colonel William Campbell","Major Patrick Ferguson"]},{id:59,title:"Cowpens",themeId:7,subtitle:"Daniel Morgan's brilliant trap. A textbook battle.",date:"January 17, 1781",location:"Cowpens, South Carolina",figures:["Daniel Morgan","Banastre Tarleton"]},{id:60,title:"Nathanael Greene",themeId:7,subtitle:"The general who never won a battle but won the war in the South.",date:"1780-1781",location:"The Carolinas",figures:["Nathanael Greene"]},{id:61,title:"The Partisan War",themeId:7,subtitle:"No uniforms. No rules. The ugly side of revolution.",date:"1780-1782",location:"South Carolina",figures:["Thomas Sumter","Andrew Pickens"]},{id:62,title:"Guilford Courthouse",themeId:7,subtitle:"A 'victory' that destroys the British army.",date:"March 15, 1781",location:"Guilford Courthouse, North Carolina",figures:["Nathanael Greene","Lord Cornwallis"]},{id:63,title:"The Road to Yorktown",themeId:7,subtitle:"Cornwallis marches north. Into a trap.",date:"Summer 1781",location:"Virginia",figures:["Lord Cornwallis","Lafayette"]},{id:64,title:"The March South",themeId:8,subtitle:"Washington's army moves 400 miles in secret. The greatest deception of the war.",date:"August-September 1781",location:"New York to Virginia",figures:["George Washington","Rochambeau"]},{id:65,title:"The French Fleet at the Chesapeake",themeId:8,subtitle:"De Grasse arrives. The trap closes.",date:"September 5, 1781",location:"Chesapeake Bay",figures:["Admiral de Grasse","Admiral Graves"]},{id:66,title:"The Siege of Yorktown",themeId:8,subtitle:"Trenches. Bombardment. The walls close in.",date:"September-October 1781",location:"Yorktown, Virginia",figures:["George Washington","Lord Cornwallis","Alexander Hamilton"]},{id:67,title:"The World Turned Upside Down",themeId:8,subtitle:"October 19, 1781. Cornwallis surrenders. The band plays.",date:"October 19, 1781",location:"Yorktown, Virginia",figures:["Lord Cornwallis","George Washington"]},{id:68,title:"The Treaty of Paris (1783)",themeId:8,subtitle:"Britain recognizes American independence. The map redrawn.",date:"September 3, 1783",location:"Paris, France",figures:["Benjamin Franklin","John Adams","John Jay"]},{id:69,title:"Washington Resigns",themeId:8,subtitle:"The most important thing he ever did. He gave power back.",date:"December 23, 1783",location:"Annapolis, Maryland",figures:["George Washington"]},{id:70,title:"The Soldiers Go Home",themeId:8,subtitle:"Newburgh Conspiracy. The army disbands. Peace.",date:"1783",location:"Newburgh, New York",figures:["George Washington"]},{id:71,title:"The Articles of Confederation",themeId:9,subtitle:"America's first try at government. Too weak to work.",date:"1781-1787",location:"Various",figures:["John Dickinson"]},{id:72,title:"Shays' Rebellion",themeId:9,subtitle:"Farmers revolt. The nation trembles. Something must change.",date:"1786-1787",location:"Massachusetts",figures:["Daniel Shays"]},{id:73,title:"The Constitutional Convention",themeId:9,subtitle:"Philadelphia again. A hot summer. Closed doors.",date:"May-September 1787",location:"Philadelphia, Pennsylvania",figures:["James Madison","George Washington","Benjamin Franklin"]},{id:74,title:"We the People",themeId:9,subtitle:"The Constitution's opening words. What they promised.",date:"September 17, 1787",location:"Philadelphia, Pennsylvania",figures:["Gouverneur Morris","James Madison"]},{id:75,title:"The Great Compromise",themeId:9,subtitle:"Big states vs. small states. The Senate and the House.",date:"July 1787",location:"Philadelphia, Pennsylvania",figures:["Roger Sherman","James Madison"]},{id:76,title:"The Three-Fifths Clause",themeId:9,subtitle:"The Constitution's original sin. Slavery written into law.",date:"1787",location:"Philadelphia, Pennsylvania",figures:["James Wilson","Charles Pinckney"]},{id:77,title:"Federalists vs. Anti-Federalists",themeId:9,subtitle:"The great debate. Hamilton, Madison, Jay vs. Patrick Henry.",date:"1787-1788",location:"All States",figures:["Alexander Hamilton","James Madison","Patrick Henry"]},{id:78,title:"The Bill of Rights",themeId:9,subtitle:"Ten amendments. The freedoms we still fight about today.",date:"December 15, 1791",location:"Various",figures:["James Madison","George Mason"]},{id:79,title:"Washington Becomes President",themeId:9,subtitle:"April 30, 1789. The first inauguration. A nation holds its breath.",date:"April 30, 1789",location:"New York City",figures:["George Washington"]},{id:80,title:"The American Experiment",themeId:9,subtitle:"What made it different from every government before.",date:"1789",location:"United States",figures:["George Washington","James Madison"]},{id:81,title:"The Loyalists Leave",themeId:10,subtitle:"100,000 Americans flee. The other side of the story.",date:"1782-1784",location:"Various to Canada",figures:[]},{id:82,title:"Native Americans After the Revolution",themeId:10,subtitle:"The war's forgotten losers. Treaties broken.",date:"1783-1790s",location:"Western Frontier",figures:[]},{id:83,title:"Slavery's Contradiction",themeId:10,subtitle:"A nation founded on liberty that kept people in chains.",date:"1776-1800s",location:"United States",figures:["Thomas Jefferson"]},{id:84,title:"The Revolution's Children",themeId:10,subtitle:"How the next generation carried the torch.",date:"1790s-1820s",location:"United States",figures:["John Quincy Adams"]},{id:85,title:"The Revolution and the World",themeId:10,subtitle:"France. Haiti. Latin America. The idea spreads.",date:"1789-1830s",location:"Global",figures:["Toussaint Louverture"]},{id:86,title:"Women's Long Road",themeId:10,subtitle:"From Abigail Adams to Seneca Falls. The unfinished revolution.",date:"1776-1848",location:"United States",figures:["Abigail Adams","Elizabeth Cady Stanton"]},{id:87,title:"The Revolution in Art and Story",themeId:10,subtitle:"Paintings. Novels. Films. How we remember.",date:"1776-present",location:"United States",figures:["John Trumbull","Emanuel Leutze"]},{id:88,title:"Visiting the Revolution",themeId:10,subtitle:"Places you can go. Battlefields. Museums. Living history.",date:"Present",location:"United States",figures:[]},{id:89,title:"The Revolution Today",themeId:10,subtitle:"What the founders would think of America now. Your rights.",date:"Present",location:"United States",figures:[]},{id:90,title:"Your Revolution",themeId:10,subtitle:"What will you fight for? A family conversation about courage and freedom.",date:"Tonight",location:"Your Home",figures:[]}];for(const e of a)t.push({id:e.id,title:e.title,theme:n.find(o=>o.id===e.themeId)?.title||"",themeId:e.themeId,subtitle:e.subtitle,narrative:r(e.id,e.title),keyFacts:s(e.id),discussionQuestions:h(e.id),connections:d(e.id),date:e.date,location:e.location,figures:e.figures,sources:l(e.id,e.title),mapCoords:u(e.id,e.location)});return t}function r(t,a){return{11:`Parliament was angry. Boston had dumped their tea. Someone would pay.
+
+In March 1774, Parliament passed the Coercive Acts. Americans called them the Intolerable Acts. The name tells you how they felt.
+
+Boston's port was closed. No ship could enter or leave until the tea was paid for. The Massachusetts charter was revoked — their government dissolved. British officials accused of crimes would be tried in England, not America. And the Quartering Act forced colonists to house British soldiers in their own homes.
+
+It was meant to isolate Boston. To make an example. To frighten the other colonies into obedience.
+
+It did the opposite. Every colony watched Boston suffer and thought: we could be next. Food and supplies poured in from other colonies. Rice from South Carolina. Flour from Pennsylvania. Money from Virginia.
+
+Britain had tried to divide the colonies. Instead, it united them.`,12:`September 5, 1774. Fifty-six men gathered in Carpenters' Hall in Philadelphia. They came from twelve colonies — Georgia did not send anyone. They were lawyers and merchants and planters. They were angry.
+
+This was the First Continental Congress. They had never met as a body before. They did not agree on much. Some wanted reconciliation with Britain. Some wanted war. Most wanted something in between — respect, representation, a return to the way things were before 1763.
+
+They debated for seven weeks. They agreed on a boycott of British goods. They agreed to meet again in May if things did not improve. They wrote a petition to the King.
+
+The petition was polite. Respectful. It asked for nothing radical — just the rights of Englishmen. The King refused to read it.
+
+That refusal mattered. It told the colonists that words would not be enough. That polite petitions would not work. That the next time they gathered, they would need to talk about something harder than boycotts.
+
+They would need to talk about war.`,13:`April 19, 1775. Four o'clock in the morning. The sky was just beginning to lighten.
+
+Seventy-seven militiamen stood on Lexington Green. They were farmers and shopkeepers. Some were old. Some were very young. Captain John Parker commanded them. He was dying of tuberculosis but he stood there anyway.
+
+Seven hundred British regulars marched toward them in perfect formation. Red coats. White crossbelts. Bayonets fixed.
+
+Parker told his men: "Stand your ground. Don't fire unless fired upon. But if they mean to have a war, let it begin here."
+
+Someone fired. No one knows who. Then the British fired a volley. Eight militiamen fell dead. Ten were wounded. The rest scattered.
+
+The war had begun. It began with farmers standing in the path of an empire. It began with eight men dying on a village green at dawn.`,14:`After Lexington, the British marched on to Concord. They were looking for weapons — cannons, powder, musket balls. The colonists had hidden most of it.
+
+At the North Bridge, four hundred minutemen faced a smaller British force. This time the Americans fired first. Two British soldiers fell dead. The regulars retreated.
+
+Then the long march back to Boston began. And the world changed.
+
+Behind every stone wall, every tree, every barn, militiamen waited. They fired and moved. Fired and moved. The British column stretched for miles. They could not see their enemy. They could only hear the crack of muskets and see their men fall.
+
+By the time the regulars reached Charlestown, 73 were dead and 174 wounded. American losses: 49 dead, 39 wounded. The farmers had beaten the professionals.
+
+That night, 4,000 militiamen surrounded Boston. They came from every town in Massachusetts. They came from Connecticut and New Hampshire and Rhode Island. They came without orders. They just came.
+
+The siege of Boston had begun.`,15:`June 17, 1775. The battle was fought on Breed's Hill, not Bunker Hill. The name stuck anyway.
+
+The Americans had fortified the hill overnight — a thousand men digging in the dark. When dawn came, the British looked up from Boston Harbor and saw earthworks where there had been nothing.
+
+General Howe sent 2,200 men up the hill. Twice the Americans drove them back with devastating fire. "Don't fire until you see the whites of their eyes," the legend says. Whether anyone actually said it doesn't matter. They held their fire until the redcoats were close. Then they fired.
+
+The third assault succeeded — the Americans ran out of ammunition. They retreated. The British held the hill.
+
+But the cost. Over a thousand British casualties — nearly half the attacking force. Among the American dead was Dr. Joseph Warren, one of the patriot leaders. He was thirty-four.
+
+The British won the ground. They lost something more important. They learned that these farmers would fight. Would stand. Would kill. The war would not be easy. The war would not be short.`,16:`March 17, 1776. The British left Boston. They had been trapped there for nearly a year.
+
+Washington had placed cannons on Dorchester Heights — cannons dragged three hundred miles from Fort Ticonderoga by Henry Knox, a twenty-five-year-old bookseller turned artillery officer. Sixty cannons. Through snow and ice. Over mountains. It took two months.
+
+When General Howe looked up at those guns pointing down at his fleet, he knew. Boston was lost. He loaded 9,000 soldiers and 1,000 Loyalists onto ships and sailed for Halifax.
+
+Boston was free. The first city liberated. Washington was a hero.
+
+But he knew what was coming. The British would return. Not to Boston. To New York. With more ships. More soldiers. More cannons. The real war was about to begin.
+
+He marched his army south. Toward the city. Toward the fight.`,17:`In January 1776, a thin pamphlet appeared in Philadelphia bookshops. It cost two shillings. It was called "Common Sense." The author was listed as "an Englishman."
+
+His name was Thomas Paine. He had been in America less than two years. He was a failed corset-maker, a failed tax collector, a failed husband — twice. He was forty years old and had accomplished nothing.
+
+But he could write. God, he could write.
+
+"These are the times that try men's souls," he would write later. But first came Common Sense — 47 pages that said what everyone was thinking but no one dared say aloud: independence.
+
+He wrote in plain English. No Latin. No legal jargon. He wrote for farmers and blacksmiths and shopkeepers. He said the king was a tyrant. He said hereditary monarchy was absurd. He said America should be free.
+
+Within three months, 150,000 copies were sold. In a country of 2.5 million people. It was the best-selling book in American history relative to population. It changed everything.`,18:`By June 1776, the question was no longer whether to declare independence. The question was when. And how to say it.
+
+In Congress, John Adams pushed. He argued. He cajoled. He wore people down. Richard Henry Lee of Virginia introduced the resolution: "That these United Colonies are, and of right ought to be, free and independent States." Adams seconded it.
+
+But not everyone was ready. New York hesitated. Pennsylvania was divided. South Carolina wanted more time. Congress delayed the vote for three weeks.
+
+During those three weeks, a committee of five was appointed to draft a declaration. Adams. Franklin. Jefferson. Roger Sherman. Robert Livingston. Adams insisted Jefferson write it. "You can write ten times better than I can," he said.
+
+Jefferson went to his rented room on Market Street. He sat at a portable writing desk he had designed himself. And he began to write the words that would change the world.`,19:`Thomas Jefferson wrote alone. In a rented room on the second floor of a brick house on Market Street in Philadelphia. He was thirty-three years old.
+
+He did not invent the ideas. They came from John Locke, from the Scottish Enlightenment, from a century of political philosophy. But he gave them words. Clear words. True words. Words that sang.
+
+"We hold these truths to be self-evident, that all men are created equal, that they are endowed by their Creator with certain unalienable Rights, that among these are Life, Liberty and the pursuit of Happiness."
+
+He wrote it in seventeen days. He showed it to Adams and Franklin. They made changes — forty-seven alterations in all. Franklin changed "sacred and undeniable" to "self-evident." It was better.
+
+Jefferson was hurt by every edit. Writers always are. But the document was not his anymore. It belonged to everyone.`,20:`July 2, 1776. Congress voted for independence. Twelve colonies voted yes. New York abstained — they would vote yes a week later.
+
+John Adams thought July 2 would be the great anniversary. He was wrong. It would be July 4 — the day Congress approved the final text of the Declaration.
+
+"We hold these truths to be self-evident, that all men are created equal." The words were radical. Dangerous. They meant something in 1776 that they would mean more fully in 1865, in 1920, in 1964. The meaning grew. It is still growing.
+
+Congress cut Jefferson's passage condemning the slave trade. South Carolina and Georgia refused to sign otherwise. The compromise was ugly. It would haunt the nation for ninety years until a war killed 600,000 men to settle it.
+
+But on that July day, fifty-six men signed their names to treason. If they lost, they would hang. Benjamin Franklin said it plainly: "We must, indeed, all hang together, or most assuredly we shall all hang separately."
+
+They signed. The world changed.`,21:`Fifty-six men signed the Declaration of Independence. They were not all heroes. Some owned slaves. Some were ordinary men who happened to be in the room. But they all risked their lives.
+
+The youngest was Edward Rutledge of South Carolina. He was twenty-six. The oldest was Benjamin Franklin at seventy. Most were lawyers. Some were merchants. Two were future presidents.
+
+Five were captured by the British during the war. Twelve had their homes burned. Two lost sons in the fighting. Nine died of wounds or hardship during the war.
+
+They did not sign on July 4. Most signed on August 2. Some signed later. The names were kept secret for months — publishing them would have been a death warrant if the British won.
+
+John Hancock signed first. Large. Bold. "So King George can read it without his spectacles," the legend says. Whether he said it or not, the signature tells you something about the man. He was not afraid.`,22:`July 8, 1776. Philadelphia. The Declaration was read aloud for the first time in public. Colonel John Nixon stood on a platform in the State House yard and read the words to a crowd.
+
+Church bells rang. People cheered. The King's coat of arms was pulled down from buildings and burned. That night, bonfires lit the city.
+
+But the celebration was brief. Washington was in New York with his army. The British fleet was gathering in the harbor — hundreds of ships, 32,000 soldiers. The largest expeditionary force Britain had ever assembled.
+
+The Declaration was brave words on paper. Now someone had to make them true. With blood. With sacrifice. With years of war that no one yet imagined.
+
+The words were easy. The fighting would be hard.`,23:`The Declaration said the King was a tyrant. It listed twenty-seven specific grievances — twenty-seven ways George III had abused his power.
+
+He had dissolved legislatures. He had kept standing armies without consent. He had cut off trade. He had imposed taxes without agreement. He had denied trial by jury. He had waged war against his own people.
+
+The list was propaganda — some charges were exaggerated, some were Parliament's fault, not the King's. But propaganda works when it contains enough truth. And there was enough truth.
+
+The Declaration was not just a break-up letter. It was a legal argument. It said: governments exist to protect people's rights. When a government destroys those rights, the people can replace it. This was revolutionary. This was dangerous. This was new.
+
+Or rather — it was old. Locke had said it. Sidney had said it. But no one had ever done it. Until now.`,24:`The Declaration did not mention women. It did not free the enslaved. It did not include Native Americans. "All men are created equal" meant white men with property.
+
+This is the contradiction at the heart of America. The founders wrote words bigger than themselves. Words they could not live up to. Words that would take centuries to fulfill — and are not fulfilled yet.
+
+But the words existed. And words have power. Once you say "all men are created equal," someone will ask: do you mean me? Do you mean us? Do you mean everyone?
+
+Abigail Adams asked in 1776. Frederick Douglass asked in 1852. Elizabeth Cady Stanton asked in 1848. Martin Luther King Jr. asked in 1963.
+
+The Declaration is not a finished document. It is a promissory note. Each generation decides whether to pay it.`,25:`After the Declaration, the war changed. Before July 4, it was a rebellion — subjects fighting their king. After July 4, it was a war between nations. That distinction mattered.
+
+Nations could make treaties. Nations could borrow money. Nations could ask other nations for help. A rebellion is a crime. A war of independence is politics.
+
+France was watching. Spain was watching. The Netherlands was watching. They all hated Britain. They all wanted Britain weakened. But they would not help rebels. They might help a nation.
+
+The Declaration made America a nation — on paper. Now the army had to make it true on the ground. In the mud. In the blood. In the long years ahead.
+
+The flag was new. The country was new. The idea was new. Everything else — the army, the money, the government — was held together with hope and string.`,26:`August 1776. The British came to New York with the largest fleet ever seen in American waters. Four hundred ships. 32,000 soldiers. 10,000 sailors. German mercenaries. The best army in the world.
+
+Washington had 19,000 men. Most were militia. Poorly trained. Poorly equipped. Many had never fired a musket at another human being.
+
+The Battle of Long Island was a disaster. The British flanked the American position. Washington lost 1,000 men killed or captured in a single day. Only a miraculous nighttime evacuation across the East River — in fog so thick you could not see the man beside you — saved the army.
+
+Then Manhattan fell. Then White Plains. Then Fort Washington — 2,800 men captured. Then Fort Lee.
+
+By November, Washington was retreating across New Jersey with fewer than 3,000 men. The cause seemed lost. Thomas Paine wrote: "These are the times that try men's souls. The summer soldier and the sunshine patriot will, in this crisis, shrink from the service of their country."
+
+The summer soldiers had shrunk. The ones who remained were something else entirely.`,27:`Nathan Hale was twenty-one years old. He was a schoolteacher from Connecticut. He had been in the army for one year.
+
+After the British took New York, Washington needed intelligence. He needed someone to go behind enemy lines, gather information, and come back. It was a suicide mission. Everyone knew it.
+
+Hale volunteered. He disguised himself as a Dutch schoolteacher. He crossed into British-held Long Island. He gathered information for two weeks. He was caught trying to return.
+
+The British found his notes hidden in his shoe. There was no trial. General Howe ordered him hanged the next morning.
+
+On September 22, 1776, Nathan Hale stood on the gallows. He was denied a Bible. He was denied a clergyman. The British officer in charge asked if he had any last words.
+
+"I only regret that I have but one life to lose for my country."
+
+He was twenty-one. He had been a spy for two weeks. He accomplished nothing militarily. But his words — his last words — became immortal. Because courage, even in failure, matters.`,28:`November and December 1776. The retreat across New Jersey. The lowest point of the Revolution.
+
+Washington's army was dissolving. Men deserted every night. Enlistments expired and men walked home. The army that had numbered 19,000 in August was down to fewer than 3,000.
+
+They marched through rain and mud. Men without shoes left bloody footprints. They had no tents. They slept in fields. They ate what they could find — which was often nothing.
+
+General Charles Lee, Washington's second-in-command, refused to bring his troops to join. He thought Washington was finished. He was positioning himself to take command.
+
+Congress fled Philadelphia for Baltimore. They were afraid the British would capture them. The revolution was dying.
+
+But Washington did not quit. He never quit. He kept marching. He kept his army together by the force of his will. And he was thinking. Planning. Looking at the map. Looking at the river.
+
+Looking at Trenton.`,29:`December 25, 1776. Christmas night. The war was almost lost.
+
+Washington had 2,400 men left. They were hungry. They were cold. Many had no shoes — their feet left bloody prints in the snow. Enlistments expired in six days. On January 1, most of the army would simply walk away.
+
+Across the Delaware River, in Trenton, New Jersey, 1,400 Hessian soldiers — German mercenaries fighting for Britain — were celebrating Christmas. They were warm. They were well-fed. They were confident.
+
+At eleven o'clock on Christmas night, Washington's men began to cross the river. It was nine miles to Trenton. The river was full of ice. A nor'easter blew sleet into their faces. Two men froze to death during the crossing.
+
+They landed on the Jersey shore at three in the morning. They still had nine miles to march. Washington rode up and down the column: "Soldiers, keep by your officers. For God's sake, keep by your officers."
+
+They reached Trenton at eight in the morning. The Hessians were sleeping off their Christmas celebration. The attack was total surprise.`,30:`The battle lasted forty-five minutes. The Hessians stumbled from their quarters into the streets. Snow and sleet blinded them. American cannons fired down King Street and Queen Street. There was nowhere to hide.
+
+Colonel Johann Rall, the Hessian commander, was shot from his horse. He died that night. His men tried to form ranks but the Americans were everywhere — in the alleys, behind buildings, firing from windows.
+
+Nine hundred Hessians surrendered. Twenty-two were killed. Eighty-three wounded. American casualties: zero killed in battle. Two frozen to death on the march. A few wounded.
+
+It was a small battle. Militarily, it changed nothing. Strategically, it changed everything.
+
+The news spread through the colonies like fire. Washington had won. The army was alive. The cause was alive. Men who had been ready to quit re-enlisted. New volunteers appeared. Congress returned to Philadelphia.
+
+Hope. That is what Trenton gave them. In war, hope is a weapon.`,31:`Three days after Trenton, Washington struck again. The British sent Cornwallis with 8,000 men to trap him. Washington slipped away in the night — leaving campfires burning to fool the British — and attacked the British garrison at Princeton.
+
+General Hugh Mercer led the advance. He was bayoneted seven times and left for dead. He died nine days later. But the attack succeeded. The British garrison broke and ran.
+
+Washington rode into the thick of the fighting. His aides begged him to stay back. He refused. A musket ball passed so close to his head that his aide covered his eyes, unable to watch.
+
+The man could not be killed. Or so it seemed. His soldiers believed it. That belief was worth a thousand reinforcements.
+
+In ten days — from Christmas night to January 3 — Washington had transformed the war. From despair to hope. From retreat to attack. From a dying cause to a living one.
+
+The British pulled back to New Brunswick. New Jersey was free. The Revolution would continue.`,32:`The Culper Ring. The name sounds like fiction. It was real.
+
+Washington needed eyes in New York — the British headquarters. He needed a spy network. Major Benjamin Tallmadge built one. It operated from 1778 to 1783. It was never discovered.
+
+Robert Townsend was "Culper Junior." He was a merchant in New York who wrote intelligence reports disguised as business letters. He used invisible ink — a chemical called sympathetic stain that appeared only when treated with another chemical.
+
+Anna Strong hung her laundry on a clothesline to signal which cove a boat would be waiting in. Abraham Woodhull was "Culper Senior" — a farmer on Long Island who passed messages through a chain of couriers.
+
+And there was Agent 355. A woman. We do not know her name. She may have been close to British officers. She may have helped expose Benedict Arnold's treason. She may have died on a prison ship. We do not know. We know only her code number.
+
+Ordinary people. Extraordinary courage. They won the war with ink and paper as much as with muskets and cannons.`,33:`October 1777. The British plan was bold: split the colonies in two by controlling the Hudson River. General Burgoyne would march south from Canada. General Howe would march north from New York. They would meet at Albany.
+
+But Howe went to Philadelphia instead. No one knows why. Burgoyne was alone.
+
+He marched south with 7,000 men through the forests of upstate New York. The Americans felled trees across his path. They burned bridges. They destroyed crops. Burgoyne's supply line stretched thinner and thinner.
+
+At Freeman's Farm and then at Bemis Heights, the Americans fought him to a standstill. Benedict Arnold — not yet a traitor — led a furious charge without orders. He was shot in the leg. If he had died there, he would be remembered as the greatest hero of the war.
+
+On October 17, 1777, Burgoyne surrendered his entire army — 5,791 men. It was the turning point. France, watching from across the ocean, decided: America could win. France would help.
+
+Saratoga did not end the war. But it guaranteed that America would not fight alone.`,34:`December 19, 1777. The Continental Army marched into Valley Forge. They would stay for six months. Many would not march out.
+
+Valley Forge was not a battle. No shots were fired there. It was worse than a battle. It was a slow dying.
+
+Twelve thousand men entered the camp. They built huts — twelve by fourteen feet, twelve men to a hut. They had no blankets. They had no coats. They had no shoes. The snow turned red where they walked.
+
+They ate firecake — flour and water baked on hot stones. When they had flour. Sometimes they had nothing.
+
+Two thousand men died that winter. Not from British bullets. From cold. From hunger. From disease — typhus, dysentery, pneumonia.
+
+But they stayed. That is the miracle of Valley Forge. They could have gone home. Many did. But enough stayed. Enough believed. And in the spring, a Prussian baron named von Steuben would transform these scarecrows into soldiers.`,35:`He arrived in February 1778. A large, loud Prussian who did not speak English. He swore magnificently in French and German when the soldiers could not follow his commands.
+
+Baron von Steuben was not actually a baron. He had exaggerated his credentials. Benjamin Franklin helped with the exaggeration. America needed a drillmaster. Steuben was the best available.
+
+He started with a model company of one hundred men. He trained them personally — something no European officer of his rank would do. He taught them to march in step. To wheel in formation. To load a musket in twelve counts instead of twenty. To use the bayonet as a weapon instead of a roasting spit.
+
+The model company trained the next company. They trained the next. Within weeks, the transformation was visible. Men who had been scarecrows became soldiers.
+
+Steuben understood something about Americans that other European officers missed. You could not simply order them. You had to explain why. "You say to your soldier, 'Do this,' and he does it," he wrote of European armies. "But I am obliged to say, 'This is the reason why you ought to do that,' and then he does it."
+
+When the army marched out of Valley Forge in June, it was a different army. At Monmouth, they proved it.`,36:`Benjamin Franklin arrived in Paris in December 1776. He was seventy years old. He wore a fur cap and plain brown clothes among the powdered wigs and silk of Versailles. The French adored him.
+
+He was there to beg. America needed money. America needed weapons. America needed a navy. America needed France.
+
+Franklin played his role perfectly. He was the simple American philosopher — wise, witty, unpretentious. Women loved him. Intellectuals loved him. The King's ministers loved him. He was the most famous man in Europe.
+
+But France would not commit. Not yet. The risk was too great. If America lost, France would face Britain's wrath alone.
+
+Then came Saratoga. An entire British army surrendered. France saw that America could win. On February 6, 1778, France signed two treaties: a Treaty of Amity and Commerce, and a Treaty of Alliance.
+
+France would recognize American independence. France would fight Britain. France would not make peace until America was free.
+
+It was the most important diplomatic victory of the war. Without France, there is no Yorktown. Without Franklin, there is no France.`,37:`He was nineteen years old. He was one of the richest men in France. He had a pregnant wife and a baby daughter. He left everything to fight for a country he had never seen.
+
+The Marquis de Lafayette arrived in America in June 1777. Congress made him a major general — mostly as a gesture to please France. Washington expected a useless aristocrat.
+
+Instead he got a son.
+
+Lafayette was wounded at Brandywine — shot in the calf. He kept fighting. He spent the winter at Valley Forge. He shared the suffering. He did not complain.
+
+Washington had no children of his own. Lafayette had lost his father at two. They found in each other what they were missing. Their bond was real and deep and lasted until Washington's death.
+
+Lafayette commanded troops in Virginia. He helped trap Cornwallis at Yorktown. He was brave and competent and utterly devoted to the cause.
+
+After the war, he went home and tried to bring liberty to France. It went badly. But the friendship endured. He named his son Georges Washington de Lafayette. He sent Washington the key to the Bastille. It still hangs at Mount Vernon.`,38:`France was not alone. Spain entered the war in 1779. The Netherlands in 1780. What began as a colonial rebellion became a world war.
+
+Spain did not recognize American independence — they had colonies of their own and feared the precedent. But they hated Britain more than they feared revolution. They wanted Gibraltar back. They wanted Florida.
+
+Bernardo de Gálvez, the Spanish governor of Louisiana, attacked British forts along the Gulf Coast. He captured Baton Rouge, Natchez, Mobile, and Pensacola. He tied down thousands of British troops who might otherwise have fought in the east.
+
+The Dutch provided loans and opened their Caribbean ports to American ships. Britain declared war on them for it.
+
+Suddenly Britain was fighting everywhere — in America, in the Caribbean, in the Mediterranean, in India. They could not concentrate their forces. They could not blockade every coast.
+
+The Revolution succeeded because it became bigger than America. It became a global war against British power. And Britain, for all its might, could not fight the whole world at once.`,39:`Sea power. It decided everything.
+
+Britain ruled the seas. The Royal Navy had over 300 ships. America had — at its peak — about 50, mostly small. The British could land troops anywhere. They could supply their armies by sea. They could blockade any port.
+
+France changed that. The French navy was rebuilt in the 1770s — modern ships, trained crews, aggressive admirals. When France entered the war, the balance shifted.
+
+Admiral d'Estaing brought a fleet to America in 1778. He failed at Newport. He failed at Savannah. But he tied down British ships.
+
+Admiral de Grasse would be the one who mattered. In September 1781, his fleet of 28 ships would seal the Chesapeake Bay. Would trap Cornwallis at Yorktown. Would win the war.
+
+But that was still three years away. In 1778, the French fleet was a promise. A threat. A reason for the British to worry. And worry they did.`,40:`Bernardo de Gálvez was twenty-three when he became governor of Spanish Louisiana. He was young and bold and he hated the British.
+
+When Spain entered the war in 1779, Gálvez attacked immediately. With a force of Spanish regulars, French Creoles, free Black men, and Native American allies, he swept along the Gulf Coast.
+
+Baton Rouge fell. Natchez fell. Mobile fell in 1780. Then he set his sights on Pensacola — the British capital of West Florida.
+
+The siege of Pensacola lasted two months. Gálvez had 7,000 men. A lucky shot hit the British powder magazine. The explosion was enormous. The British surrendered.
+
+Gálvez had conquered all of British West Florida. He had tied down thousands of British troops. He had kept the Mississippi River open for American supplies.
+
+He is largely forgotten in American history. He should not be. Without Gálvez, the British could have reinforced their southern armies. Without Gálvez, the war in the South might have ended differently.
+
+Galveston, Texas is named for him. It is not enough.`,41:`Most Native Americans sided with Britain during the Revolution. Britain promised to protect their lands from colonial expansion. It was a reasonable choice.
+
+But not all. The Oneida Nation — one of the six nations of the Iroquois Confederacy — chose the American side. It split the Confederacy apart. Brother fought brother.
+
+The Oneida fed Washington's starving army at Valley Forge. Polly Cooper, an Oneida woman, walked hundreds of miles to bring corn to the soldiers. She stayed to show them how to cook it. She refused payment.
+
+Oneida warriors fought alongside the Continental Army at Oriskany and Saratoga. They provided intelligence. They guided American forces through the wilderness.
+
+After the war, America forgot its promises. Oneida lands were taken anyway. Treaties were broken. The people who had helped win American freedom lost their own.
+
+This is one of the Revolution's shames. The Oneida kept their word. America did not keep its word to them.`,42:`Not everyone chose the same side. The Revolution was a civil war as much as a war of independence.
+
+About 20% of colonists were Loyalists — people who stayed faithful to the King. They had reasons. They had businesses that depended on British trade. They feared mob rule. They believed in order and tradition. Some simply loved their king.
+
+Families split. Benjamin Franklin's son William was the royal governor of New Jersey — a Loyalist. Father and son never reconciled.
+
+Loyalists were tarred and feathered. Their property was seized. They were driven from their homes. After the war, 60,000 to 100,000 fled to Canada, to England, to the Caribbean.
+
+And then there was Benedict Arnold. The best general in the American army. The hero of Saratoga. The man who betrayed everything for money and wounded pride.
+
+The Revolution was not simple. It was not clean. It was a war that divided neighbors, families, and friends. The scars lasted generations.`,43:`He was the tallest man in most rooms. Six feet two inches in an age when the average man stood five-seven. He had enormous hands. He was the finest horseman in Virginia.
+
+George Washington was not the smartest founder. He was not the best writer. He was not the most original thinker. He was something more important: he was the man everyone trusted.
+
+He made mistakes. He lost more battles than he won. He was not a military genius. But he never quit. He never gave up. He held the army together through eight years of war by the force of his character.
+
+And then he did the thing that made him immortal. He gave it back. The power. The army. The adoration. He could have been king. They offered. He said no.
+
+King George III asked his American painter, Benjamin West, what Washington would do after winning the war. "They say he will return to his farm," West replied. "If he does that," the king said, "he will be the greatest man in the world."
+
+He did. And he was.`,44:`"Remember the Ladies," she wrote. It was March 1776. Her husband was in Philadelphia helping to make a new nation. She was in Braintree, Massachusetts, running the farm, raising the children, and thinking harder about liberty than most men in Congress.
+
+Abigail Adams never went to school. She educated herself — reading everything in her father's library. She married John Adams at nineteen. For most of their marriage, they were apart. He was making history. She was making everything else work.
+
+Over 1,100 letters survive between them. They are extraordinary — funny, angry, tender, brilliant. She told him when he was wrong. She told him when he was vain. She was the only person who could.
+
+"If particular care and attention is not paid to the Ladies," she wrote, "we are determined to foment a Rebellion." He laughed it off. She was not joking.
+
+She was proof that the Revolution's promise was incomplete from the start. And she said so — clearly, bravely — before anyone else had the courage.`,45:`He ran away from home at seventeen with nothing. He died at eighty-four as the most famous American in the world.
+
+Benjamin Franklin invented the lightning rod, bifocals, the Franklin stove, and the public library. He published Poor Richard's Almanack. He started the first fire department. He mapped the Gulf Stream.
+
+But his greatest invention was America's alliance with France. At seventy, he sailed to Paris and charmed a nation into saving ours. Without Franklin's diplomacy, there is no French fleet. Without the French fleet, there is no Yorktown. Without Yorktown, there is no independence.
+
+He was the only man who signed all four founding documents: the Declaration, the Treaty with France, the Treaty of Paris, and the Constitution. He was there at every turning point.
+
+At the Constitutional Convention, he was eighty-one. Too weak to stand. He had his speeches read by others. But he was there. He was always there when it mattered.
+
+Twenty thousand people attended his funeral. The largest gathering Philadelphia had ever seen.`,46:`He came from nothing. A bastard orphan from a Caribbean island. He died at forty-nine with a bullet in his spine. In between, he built the American economy.
+
+Alexander Hamilton arrived in New York at seventeen. By twenty, he commanded an artillery company. By twenty-two, he was Washington's chief aide — the brain behind the general.
+
+He wanted glory. He got it at Yorktown, leading the bayonet charge on Redoubt 10. Ten minutes. The war was won.
+
+After the war, he imagined a country that didn't exist yet. Industrial. Commercial. Powerful. He wrote 51 of the 85 Federalist Papers. He created the national bank, the mint, the coast guard. He built the financial system that still runs today.
+
+Jefferson hated everything Hamilton stood for. Their fight shaped American politics forever — rural vs. urban, states vs. federal, agriculture vs. industry. We are still having that argument.
+
+Aaron Burr shot him on July 11, 1804. He left behind a wife, seven children, and a country that worked because he had built the machinery.`,47:`They were not supposed to fight. Women in the eighteenth century were supposed to stay home. Some did not.
+
+Deborah Sampson disguised herself as a man — "Robert Shurtliff" — and served in the Continental Army for seventeen months. She was wounded twice. She removed a musket ball from her own thigh to avoid being discovered. When she was finally found out, she was honorably discharged.
+
+Margaret Corbin took her husband's place at a cannon at Fort Washington when he was killed. She was shot three times. She never fully recovered. Congress gave her a pension — the first woman to receive one.
+
+Molly Pitcher — probably Mary Ludwig Hays — carried water to soldiers at Monmouth. When her husband collapsed, she took over his cannon. Washington himself commended her.
+
+Sybil Ludington rode forty miles through the night to warn militia of a British attack. She was sixteen. She rode twice as far as Paul Revere. Almost no one knows her name.
+
+They fought. They served. They were forgotten. Until now.`,48:`Lord Dunmore, the royal governor of Virginia, made a promise in November 1775: any enslaved person who escaped a rebel master and fought for Britain would be freed.
+
+Thousands responded. They were called the Ethiopian Regiment. They wore sashes that read "Liberty to Slaves." The irony was sharp — Britain offering freedom to people the "freedom fighters" kept in chains.
+
+On the American side, Black men fought too. About 5,000 served in the Continental Army. The First Rhode Island Regiment was largely Black. They fought at Newport and Yorktown.
+
+James Armistead Lafayette was enslaved. He became a double agent — pretending to spy for the British while actually reporting to Lafayette. His intelligence helped win Yorktown.
+
+After the war, some Black soldiers were freed. Many were not. The British evacuated thousands of Black Loyalists to Nova Scotia and Sierra Leone. America's promise of liberty did not extend to them.
+
+The Revolution was about freedom. But not everyone's freedom. Not yet.`,49:`James Armistead was enslaved in Virginia. In 1781, his owner allowed him to join Lafayette's forces. Lafayette had a special mission for him: become a spy.
+
+Armistead went to the British camp and offered to spy for them. They accepted. He moved freely between both armies — a double agent. The British trusted him because they could not imagine an enslaved man being clever enough to deceive them. They were wrong.
+
+Armistead reported British troop movements, fortification plans, and Cornwallis's intentions directly to Lafayette. His intelligence was crucial in the weeks before Yorktown.
+
+After the war, he was returned to slavery. Lafayette himself wrote a letter testifying to Armistead's service. It took five years, but in 1787, the Virginia legislature freed him. He took the name James Armistead Lafayette in honor of the general.
+
+He lived as a free man until 1830. A portrait shows him in old age — dignified, calm, free. He had earned it.`,50:`Joseph Plumb Martin was fifteen when he enlisted. He served seven years — from 1776 to 1783. He was cold and hungry for most of it. He wrote it all down.
+
+His memoir, published in 1830, is the best account we have of what the war was like for an ordinary soldier. Not a general. Not a politician. A private.
+
+He ate bark. He went barefoot in snow. He watched friends die of disease. He was paid in worthless paper money — when he was paid at all. He was at Yorktown when the British surrendered.
+
+"We were absolutely, literally starved," he wrote of Valley Forge. "I solemnly declare that I did not put a single morsel of victuals into my mouth for four days and as many nights."
+
+He was not a hero in the way we usually mean. He did not lead charges or make speeches. He simply endured. For seven years. That is its own kind of heroism — the quiet kind. The kind that actually wins wars.`,51:`She could not vote. She could not hold office. So she picked up a pen and changed the world with words.
+
+Mercy Otis Warren wrote political plays that mocked the British governor. They were published anonymously. Everyone knew who wrote them. They were savage, funny, and effective.
+
+She was friends with everyone who mattered — Abigail Adams, John Adams, Samuel Adams, Jefferson, Washington. They all wrote to her. They all respected her mind.
+
+After the war, she wrote a three-volume history of the Revolution — the first written by an American. Published in 1805, when she was seventy-seven.
+
+She opposed the Constitution because it lacked a Bill of Rights. She was right. When the Bill of Rights was added, she supported it.
+
+History forgot her for two hundred years. It should not have. She was there from the beginning. She saw everything. She wrote it down. Without her, we would know less about what actually happened — and why.`,52:`We know almost nothing about him. We know how he died. That is enough.
+
+Crispus Attucks was probably born around 1723. He was of African and Wampanoag descent. He may have been enslaved and escaped. He became a sailor and rope-maker on the Boston docks.
+
+On March 5, 1770, he was at the front of the crowd on King Street. When the soldiers fired, he was the first to fall. He was forty-seven years old.
+
+He became a symbol immediately. The first American to die for liberty was a Black man. What does that mean?
+
+It means the Revolution belonged to everyone from the very first shot. It means the promise of equality had a witness before it was written.
+
+A monument stands on Boston Common. Five names are carved in it. His is first.`,53:`What was it like to be seven years old during the Revolution? Or thirteen? What did children see and hear and feel?
+
+They saw their fathers leave and sometimes not come back. They saw soldiers march through their towns. They heard cannons in the distance. They went hungry when food was scarce.
+
+Some helped. Boys as young as twelve served as drummer boys and fifers. They carried messages. They tended wounded. Some fired muskets.
+
+Girls helped their mothers make bandages, spin cloth, and melt pewter spoons into musket balls. They hid valuables when soldiers came. They grew food in gardens when trade stopped.
+
+Children grew up fast during the Revolution. They had to. The war did not spare them because they were young.
+
+You are their age now. Think about that. They were not braver than you. They were not different from you. They were children who lived in extraordinary times. Just as you do.`,54:`The Revolution ran on money. And there was never enough.
+
+Haym Salomon was a Polish-Jewish immigrant who became the Revolution's most important financier. He brokered loans from France and the Netherlands. He personally lent money to Congress — over $650,000, most of which was never repaid.
+
+Robert Morris was the Superintendent of Finance. He begged, borrowed, and sometimes used his own credit to keep the army fed. Without Morris, the soldiers would not have been paid. Without Salomon, Morris would have had nothing to work with.
+
+Salomon was arrested twice by the British as a spy. He escaped both times. He used his position to help other prisoners escape.
+
+He died in 1785 at forty-five, bankrupt. He had given everything to the cause. Congress owed him hundreds of thousands of dollars. They never paid.
+
+The Revolution was won with blood and sacrifice. It was also won with money. Someone had to find it. Salomon did.`,55:`She was kidnapped from West Africa at seven. She arrived in Boston on a slave ship. Within sixteen months she was reading English. Within six years she was writing poetry that amazed the world.
+
+Phillis Wheatley published her book in 1773 — the first by an African American. Before it could be printed, she had to prove to eighteen Boston men that she had actually written it. A Black woman writing poetry was unbelievable to them.
+
+She proved it. She wrote to George Washington. He invited her to visit. He treated her with respect.
+
+She wrote about liberty and freedom in ways that challenged everyone who read her. How can you fight for freedom while holding people in chains?
+
+She was freed after her owners died. She married. She had three children. She struggled in poverty. She died at thirty-one.
+
+Her life was short and hard and brilliant. She proved — in an age that denied it — that Black people were fully human, fully intelligent, fully capable of genius.`,56:`May 12, 1780. Charleston, South Carolina. The worst American defeat of the entire war.
+
+General Benjamin Lincoln surrendered 5,000 men — the entire Southern army. It was the largest American surrender until the Civil War. The British captured more men at Charleston than they had lost at Saratoga.
+
+The South was wide open. The British swept through South Carolina. Loyalists rose up. Patriot leaders were imprisoned. It seemed like the war in the South was over.
+
+But it was not. In the swamps and forests, men who refused to surrender kept fighting. Guerrilla war. Ambush and retreat. Hit and run.
+
+The British controlled the cities. They controlled the roads. They did not control the countryside. And in the countryside, the resistance grew.`,57:`Francis Marion was called the Swamp Fox. The British could not catch him.
+
+He operated in the swamps of South Carolina with a band of militia — sometimes twenty men, sometimes two hundred. They struck British supply lines, freed prisoners, and disappeared into the swamps before the British could respond.
+
+He had no uniform. His men had no uniforms. They brought their own horses, their own guns, their own food. They fought when they chose and vanished when they chose.
+
+The British sent Colonel Banastre Tarleton to catch him. Tarleton chased Marion for seven hours through twenty-six miles of swamp. He gave up. "As for this damned old fox," Tarleton said, "the devil himself could not catch him."
+
+Marion was not romantic. His war was brutal. Both sides committed atrocities. But he kept the resistance alive when everything else had fallen. He proved that an occupied people who refuse to submit cannot be held.`,58:`October 7, 1780. Kings Mountain, South Carolina. Americans fought Americans. There was not a single British regular on the field.
+
+Major Patrick Ferguson commanded 1,100 Loyalist militia. He camped on top of Kings Mountain and dared the rebels to come get him. "I am on King's Mountain," he wrote. "I am king of this mountain."
+
+Nine hundred frontier riflemen — "over-mountain men" from what is now Tennessee — surrounded the mountain and attacked from all sides. They used trees for cover. Their long rifles were deadly accurate.
+
+Ferguson was killed — shot from his horse. His men tried to surrender. Some were shot after raising white flags. The hatred between Patriot and Loyalist was that deep.
+
+Kings Mountain was a turning point in the South. It proved that the British could not rely on Loyalist militia to hold territory. It proved that the backcountry would fight. And it terrified Cornwallis.`,59:`January 17, 1781. Cowpens, South Carolina. Daniel Morgan set a trap. Banastre Tarleton walked into it.
+
+Morgan was a teamster's son from Virginia. He had been flogged by the British during the French and Indian War — 499 lashes. He never forgot. He never forgave.
+
+He placed his men in three lines. The first line: sharpshooters. Fire twice and fall back. The second line: militia. Fire twice and fall back. The third line: Continental regulars. Hold.
+
+Tarleton charged. The first line fired and retreated. Tarleton thought they were running. He charged harder. The second line fired and retreated. Tarleton was sure of victory. He committed everything.
+
+Then the militia circled back. The Continentals held. The cavalry hit the British flank. In less than an hour, Tarleton's force was destroyed. 110 killed. 830 captured.
+
+It was a textbook double envelopment. Military academies still teach it. A teamster's son had outgeneraled the best cavalry officer in the British army.`,60:`Nathanael Greene never won a battle in the South. He won the campaign.
+
+Washington sent him south after the disaster at Camden. He had 1,500 men, most barefoot. The British had 8,000.
+
+Greene did something brilliant. He split his tiny army — against every rule of war — and forced the British to split theirs. He fought at Cowpens (Morgan commanded). He fought at Guilford Courthouse. He fought at Hobkirk's Hill. He fought at Eutaw Springs.
+
+He lost every battle. And after every battle, the British were weaker. Each "victory" cost them men they could not replace. Greene could replace his losses. The British could not.
+
+"We fight, get beat, rise, and fight again," he wrote. By 1782, the British held only Charleston and Savannah. Greene had liberated the entire South without winning a single engagement.
+
+It was the most brilliant campaign of the war. He died at forty-three — too young. Washington wept.`,61:`The war in the South was not like the war in the North. It was personal. Neighbor against neighbor. Family against family.
+
+There were no clear battle lines. Loyalists and Patriots lived side by side. Raids and reprisals were constant. Houses burned. Prisoners shot. Women and children terrorized.
+
+Banastre Tarleton's men killed surrendering soldiers at Waxhaws. "Tarleton's Quarter" became a phrase meaning no mercy. Patriots responded in kind at Kings Mountain.
+
+Thomas Sumter, Andrew Pickens, Francis Marion — the partisan leaders — fought a guerrilla war with no rules. The British responded with scorched earth. Farms burned. Livestock slaughtered. Civilians punished for their neighbors' actions.
+
+This was the Revolution's ugliest face. Not noble speeches about liberty. Not grand battles. Just hatred and violence between people who had once been friends.
+
+War does this. It always does this. Remember that.`,62:`March 15, 1781. Guilford Courthouse, North Carolina. Greene chose the ground. Cornwallis attacked.
+
+Greene used Morgan's Cowpens tactics — three lines, each falling back. The fighting was savage. At one point, Cornwallis ordered his own artillery to fire into a melee where British and American soldiers were tangled together. He killed his own men to stop the American advance.
+
+Greene retreated. Cornwallis held the field. It was a British "victory."
+
+But Cornwallis lost a quarter of his army — 532 men. He could not replace them. Greene could replace his losses with new militia.
+
+Charles James Fox, the British opposition leader, said in Parliament: "Another such victory would destroy the British army."
+
+Cornwallis abandoned the Carolinas. He marched north to Virginia. To Yorktown. To the trap that was waiting for him. Guilford Courthouse did not end the war. But it sent Cornwallis to the place where the war would end.`,63:`Summer 1781. Cornwallis marched into Virginia with 7,000 men. He was tired of the Carolinas. Tired of guerrillas. Tired of Greene. He wanted a decisive battle.
+
+Lafayette was in Virginia with a small force — too weak to fight, strong enough to shadow. He kept Cornwallis in sight without engaging. He waited.
+
+Cornwallis moved to Yorktown — a small tobacco port on the York River. He began fortifying. He expected the British navy to resupply him or evacuate him. He expected reinforcements from New York.
+
+He did not expect Washington's entire army to march 400 miles south in secret. He did not expect the French fleet to seal the Chesapeake. He did not expect to be trapped.
+
+But that is exactly what happened. The greatest deception of the war was underway. And Cornwallis, digging in at Yorktown, did not know it.`,64:`August 1781. Washington was in New York, watching the British. He had been watching them for three years. Waiting for an opportunity.
+
+Then word came: Admiral de Grasse was sailing from the Caribbean with 28 warships and 3,000 troops. He was heading for the Chesapeake. He would be there in September.
+
+Washington saw it instantly. If de Grasse could block the bay, and if the army could march south fast enough, Cornwallis was trapped.
+
+The march was 450 miles. Washington left campfires burning in New Jersey to fool the British in New York. He marched his army through Philadelphia — the citizens cheered. He crossed the Delaware again — this time heading south, not north.
+
+Rochambeau's French army marched beside them. 8,800 Americans. 7,800 French. Moving together. Moving fast. Moving in secret.
+
+By the time the British in New York realized what was happening, it was too late. Washington was in Virginia. De Grasse was in the bay. The trap was closed.`,65:`September 5, 1781. The Battle of the Chesapeake. The most important naval battle in American history. No American ship was present.
+
+Admiral de Grasse's French fleet met Admiral Graves's British fleet at the mouth of the Chesapeake Bay. Twenty-four French ships against nineteen British.
+
+The battle lasted two hours. It was not decisive in the traditional sense — no ships were sunk. But de Grasse held the bay. Graves withdrew to New York for repairs.
+
+That was enough. Cornwallis could not be resupplied. Could not be evacuated. Could not escape by sea.
+
+The French fleet then transported siege artillery and additional troops from the north. Everything Washington needed to take Yorktown arrived by water — because de Grasse controlled the water.
+
+Sea power. In the end, that is what won the Revolution. Not American sea power. French sea power. Given freely, at the moment it mattered most.`,66:`September 28, 1781. The trap was set.
+
+Washington's army — 8,800 Americans and 7,800 French — surrounded Yorktown on land. In the Chesapeake Bay, Admiral de Grasse's fleet of 28 warships blocked escape by sea. Cornwallis had 8,000 men. He was trapped.
+
+For three weeks, the allies dug trenches closer and closer to the British lines. Artillery pounded the town day and night. Buildings collapsed. Fires burned. The British huddled in their fortifications.
+
+On October 14, two key redoubts had to be taken. Alexander Hamilton led the American assault on Redoubt 10. He was twenty-four years old. His men went in with bayonets only — no loaded muskets. They took the position in ten minutes.
+
+On October 17, a British drummer boy appeared on the parapet, beating for a parley. A white handkerchief waved beside him. Cornwallis wanted to negotiate.
+
+Two days later, on October 19, 1781, the British army marched out of Yorktown to surrender. The band played "The World Turned Upside Down." It was.`,67:`October 19, 1781. Two o'clock in the afternoon. The British army marched out of Yorktown between two lines of soldiers — French on one side, American on the other.
+
+Cornwallis did not come. He claimed illness. He sent his second-in-command, General O'Hara. O'Hara tried to surrender his sword to Rochambeau — the French commander. Rochambeau pointed to Washington. O'Hara turned to Washington. Washington pointed to his own second-in-command, General Lincoln. The message was clear: you surrender to our equal, not our superior.
+
+The British soldiers threw down their muskets. Some wept. Some were drunk. The band played — tradition says "The World Turned Upside Down." Whether that specific tune is true, the sentiment was.
+
+The world had turned upside down. The greatest military power on earth had been beaten by farmers and Frenchmen. By an idea. By stubbornness. By Washington's refusal to quit.
+
+When Lord North, the British Prime Minister, heard the news, he paced the room repeating: "Oh God, it is all over. It is all over."
+
+It was.`,68:`September 3, 1783. Paris. Benjamin Franklin, John Adams, and John Jay signed the Treaty of Paris. Britain recognized American independence.
+
+The negotiations had taken months. Franklin was brilliant. Adams was stubborn. Jay was shrewd. Together they got everything America wanted: independence, the western boundary at the Mississippi River, fishing rights off Newfoundland.
+
+Britain gave up more than it had to. Why? Because it wanted America as a trading partner, not an enemy. Because France was the real threat. Because the war was expensive and unpopular at home.
+
+The map was redrawn. America stretched from the Atlantic to the Mississippi, from Canada to Florida. It was enormous — far larger than the original thirteen colonies. A nation of 3 million people now owned a continent.
+
+The war was over. The revolution was not. Building a country would prove harder than winning a war.`,69:`December 23, 1783. Annapolis, Maryland. The war was over. The treaty was signed. America was free.
+
+George Washington walked into the Maryland State House. Congress was in session. He had come to resign his commission as Commander-in-Chief.
+
+Every great general in history had used military victory to seize political power. Caesar. Cromwell. Every one. Washington knew this. Everyone in that room knew this.
+
+His hand trembled as he read his statement. His voice broke. "Having now finished the work assigned me, I retire from the great theatre of Action; and bidding an Affectionate farewell to this August body under whose orders I have so long acted, I here offer my Commission, and take my leave of all the employments of public life."
+
+He handed over his commission. He bowed. He left. He rode home to Mount Vernon for Christmas.
+
+It was the most powerful thing he ever did. More powerful than any battle. He proved that in America, power belongs to the people. Not to generals. Not to kings. To the people.
+
+The world had never seen anything like it.`,70:`In March 1783, the army was camped at Newburgh, New York. The war was won but peace was not yet signed. The soldiers had not been paid in months. Congress owed them years of back pay.
+
+Officers began to talk of mutiny. An anonymous letter circulated: march on Congress. Take what you are owed. Use the army to force the government to pay.
+
+Washington heard about it. He called a meeting. He walked in and spoke. He told them to be patient. He told them Congress would pay. He asked them to trust the republic they had fought to create.
+
+The officers were unmoved. Then Washington pulled out a letter from a congressman. He squinted at it. He reached into his pocket and put on spectacles. No one had ever seen him wear glasses.
+
+"Gentlemen," he said, "you must pardon me. I have grown gray in your service and now find myself growing blind."
+
+Men wept. The mutiny dissolved. A pair of spectacles saved the republic. Because the men loved Washington. And Washington loved the republic more than power.`,71:`America's first government was a failure. It was designed to fail.
+
+The Articles of Confederation gave Congress almost no power. It could not tax. It could not regulate trade. It could not raise an army without asking the states. It could not enforce its own laws.
+
+Why? Because the founders feared a strong central government. They had just fought a war against one. They wanted the states to be supreme. They wanted Congress to be weak.
+
+It worked — badly. States printed their own money. States taxed each other's goods. States ignored Congress. The national debt went unpaid. The army went unpaid. Foreign nations laughed.
+
+The Articles proved something important: too little government is as dangerous as too much. A nation that cannot act together is not really a nation at all.
+
+Something had to change. Everyone knew it. The question was what — and whether the states would agree to give up power.`,72:`In 1786, farmers in western Massachusetts could not pay their debts. Courts were seizing their farms. They had fought a war for liberty and now they were losing everything.
+
+Daniel Shays — a former Continental Army captain — led 1,500 men in rebellion. They shut down courts. They threatened the federal arsenal at Springfield.
+
+The national government could do nothing. It had no army. It had no money. Massachusetts had to put down the rebellion with its own militia.
+
+Shays' Rebellion terrified the country's leaders. If the government could not maintain order, what was it for? If veterans could not get justice, what had they fought for?
+
+George Washington wrote: "If government cannot check these disorders, what security has a man for life, liberty, or property?"
+
+The rebellion was crushed. But the message was received. The Articles of Confederation were not enough. Something stronger was needed. In May 1787, delegates would gather in Philadelphia to build it.`,73:`May 25, 1787. Philadelphia. The same city where independence was declared eleven years earlier. Fifty-five delegates from twelve states — Rhode Island refused to attend.
+
+They were supposed to fix the Articles of Confederation. Instead, they threw them out and started over. In secret. Behind locked doors. With armed guards outside.
+
+Washington presided. He said almost nothing. His presence was enough. Franklin was there at eighty-one — carried to the sessions in a sedan chair. Madison took notes on everything. His notes are the only detailed record we have.
+
+For four months they argued. Big states vs. small states. North vs. South. Slave states vs. free states. Federal power vs. state power.
+
+The heat was brutal. The windows were kept closed for secrecy. Men in wool suits debated the future of a nation while sweat ran down their faces.
+
+They compromised. Again and again. The Constitution is not a perfect document. It is a series of compromises between imperfect men. That is what makes it work.`,74:`"We the People of the United States, in Order to form a more perfect Union..."  The words were Gouverneur Morris's. He wrote the final draft — the preamble that everyone remembers.
+
+But the ideas were Madison's. James Madison — small, quiet, brilliant — had spent months studying every republic in history. He came to Philadelphia with a plan. The Virginia Plan. It became the skeleton of the Constitution.
+
+Three branches. Executive. Legislative. Judicial. Each checking the others. No one branch supreme. Power divided and balanced.
+
+The President would be elected — not by Congress, not by the people directly, but by an Electoral College. A compromise. Everything was a compromise.
+
+On September 17, 1787, thirty-nine delegates signed. Three refused. Franklin, looking at the sun carved on Washington's chair, said he had often wondered whether it was rising or setting. "Now at length I have the happiness to know that it is a rising and not a setting Sun."
+
+The Constitution was written. Now it had to be ratified. That would be another fight.`,75:`The biggest fight at the Convention: representation. Big states wanted representation by population. Small states wanted equal representation. Neither would budge.
+
+For weeks they argued. The Convention nearly collapsed. Delaware threatened to walk out. The large states threatened to form their own union.
+
+Roger Sherman of Connecticut proposed the compromise: two chambers. The House of Representatives — proportional to population. The Senate — two senators per state, regardless of size.
+
+It was not elegant. It was not perfectly fair. But it worked. Both sides got something. Neither got everything.
+
+This is how democracy works. Not by one side winning completely. By both sides giving something up. By finding the solution that everyone can live with, even if no one loves it.
+
+The Great Compromise saved the Convention. It saved the Constitution. It saved the country.`,76:`The ugliest compromise. The one that haunts America still.
+
+Southern states wanted enslaved people counted for representation — more people meant more seats in Congress. Northern states said: if they are property, they cannot be people for counting purposes.
+
+The compromise: each enslaved person would count as three-fifths of a person for representation and taxation. Not a full person. Not zero. Three-fifths.
+
+No one was proud of it. Everyone knew it was wrong. But without it, the Southern states would not ratify. Without the South, there was no union.
+
+The Constitution never uses the word "slave." It says "other persons." The founders were ashamed enough to hide the word. Not ashamed enough to end the practice.
+
+This compromise gave the South extra power in Congress and in presidential elections for seventy years. It took a civil war — 600,000 dead — to undo it.
+
+Some compromises save nations. Some poison them. This one did both.`,77:`The Constitution was written. Now nine of thirteen states had to ratify it. The fight was fierce.
+
+Federalists supported the Constitution. Hamilton, Madison, and Jay wrote 85 essays — The Federalist Papers — arguing for ratification. They are still the best explanation of how the government works.
+
+Anti-Federalists opposed it. Patrick Henry thundered against it in Virginia. He feared a powerful central government would become tyrannical. He demanded a Bill of Rights.
+
+The debate was real. Both sides had good arguments. The Federalists were right that a stronger government was needed. The Anti-Federalists were right that individual rights needed protection.
+
+In the end, the Federalists won — but only by promising to add a Bill of Rights immediately. It was another compromise. The Constitution was ratified. The Bill of Rights followed.
+
+Both sides were necessary. The Federalists built the structure. The Anti-Federalists made sure it had a soul.`,78:`James Madison knew the Constitution was not enough. It said what the government could do. It did not say what the government could not do.
+
+The Anti-Federalists had demanded it: a Bill of Rights. A list of freedoms the government could never touch. Madison wrote them. Congress debated them. The states ratified them. On December 15, 1791, they became law.
+
+Ten amendments. Ten promises.
+
+The First: you can say what you think, worship as you choose, write what you believe, gather with others, and demand the government listen.
+
+The Second: you can bear arms.
+
+The Fourth: your home is yours. No one can search it without cause.
+
+The Fifth: you cannot be forced to testify against yourself.
+
+The Sixth: if accused, you get a speedy trial, a lawyer, and a jury.
+
+The Eighth: no cruel and unusual punishment.
+
+These words are not history. They are alive. Every day, in every courtroom, in every school, in every argument about what America means — these ten amendments are the ground we stand on.`,79:`April 30, 1789. New York City. Federal Hall. George Washington stood on the balcony and took the oath of office. He placed his hand on a Bible. His voice was barely audible.
+
+"I do solemnly swear that I will faithfully execute the Office of President of the United States, and will to the best of my Ability, preserve, protect and defend the Constitution of the United States."
+
+He added: "So help me God." Every president since has said the same.
+
+There was no precedent for what he was doing. No one had ever been president of anything like this. Every decision he made — how to be addressed, who to meet, what to wear — set a precedent.
+
+He chose "Mr. President" — not "Your Excellency" or "Your Highness." He held dinners but kept them simple. He was dignified but not royal.
+
+He served eight years. He could have served more — there was no term limit. He chose to leave. Again. He set the precedent that presidents step down. That power is temporary. That the office is bigger than any man.
+
+Two hundred and thirty-seven years later, we still follow the patterns he set.`,80:`What made America different? What made this experiment unlike anything before?
+
+Not democracy — Athens had that. Not a republic — Rome had that. Not written law — many nations had that.
+
+What was new was the combination. A written constitution that limited government power. A bill of rights that protected individual freedom. Separation of powers that prevented tyranny. Regular elections that gave the people a voice. Peaceful transfer of power between rivals.
+
+No king. No aristocracy. No state religion. No permanent ruling class. The idea that ordinary people could govern themselves.
+
+It was not perfect. It excluded women, enslaved people, and Native Americans. It was built on compromises with evil. But the framework — the structure — allowed for growth. Allowed for change. Allowed for the meaning of "We the People" to expand.
+
+That is the American experiment. Not that we got it right from the beginning. But that we built something that could get better. That is still getting better. That your generation will make better still.`,81:`When the war ended, 60,000 to 100,000 Loyalists left America. They went to Canada, to England, to the Caribbean. They lost everything — homes, businesses, friends, country.
+
+They were not traitors. They were people who made a different choice. They believed in order, in tradition, in the Crown. Many were good people. Many suffered terribly.
+
+In Nova Scotia, Loyalist refugees built new towns in the wilderness. In England, they lived as exiles — never quite fitting in. In the Caribbean, they started over.
+
+Black Loyalists had the hardest path. Britain had promised them freedom. In Nova Scotia, they received the worst land, the least support. Many eventually sailed to Sierra Leone to start again.
+
+The Loyalists remind us that the Revolution was not unanimous. It was not inevitable. Reasonable people disagreed. And those who lost paid a terrible price.
+
+History is written by the winners. The Loyalists' story deserves to be heard too.`,82:`The Revolution promised liberty. For Native Americans, it delivered dispossession.
+
+During the war, most Native nations sided with Britain — reasonably, since Britain had tried to limit colonial expansion westward. When Britain lost, Native peoples lost their protector.
+
+The new American government treated Native lands as conquered territory. Treaties were signed and broken. Settlers pushed west. Nations that had lived on the land for thousands of years were forced to move.
+
+The Oneida, who had fought for America, lost their lands anyway. The Iroquois Confederacy was shattered. The Cherokee, Creek, and Shawnee faced relentless pressure.
+
+"All men are created equal" did not include them. The Revolution's promise of liberty was not extended to the people who were here first.
+
+This is not a comfortable truth. But it is the truth. And understanding it is part of understanding what the Revolution really was — and what it still owes.`,83:`Thomas Jefferson wrote "all men are created equal" while owning six hundred human beings. The contradiction was there from the first day.
+
+The Revolution did not end slavery. In the North, gradual emancipation began — Pennsylvania in 1780, Massachusetts in 1783. But in the South, slavery grew. Cotton made it profitable. The Constitution protected it.
+
+Some founders knew it was wrong. Jefferson called slavery a "moral and political depravity." Washington freed his slaves in his will. But most did nothing.
+
+The Three-Fifths Compromise gave slaveholders extra political power. The fugitive slave clause required returning escaped people. The Constitution postponed the question — and the question grew until it exploded in 1861.
+
+The Revolution created a nation founded on freedom that practiced slavery. That contradiction — that hypocrisy — is the central tragedy of American history. It took a civil war, a century of Jim Crow, and a civil rights movement to begin to resolve it. It is not fully resolved yet.`,84:`The founders' children inherited an imperfect nation and tried to make it better. Some succeeded. Some failed.
+
+John Quincy Adams — John and Abigail's son — became president and then spent seventeen years in Congress fighting against slavery. He defended the Amistad captives. He fought the gag rule. He never stopped.
+
+The generation after the Revolution expanded the vote — first to all white men (not just property owners), then slowly, painfully, to others. They built schools. They wrote constitutions for new states. They pushed west.
+
+But they also pushed Native peoples off their land. They expanded slavery into new territories. They fought a war with Mexico. The Revolution's ideals and the Revolution's failures both grew larger.
+
+Every generation inherits the work of the one before. The question is always the same: will you make it better or worse? The founders' children faced that question. So do you.`,85:`The American Revolution was contagious. The idea that people could govern themselves spread across the world.
+
+France erupted in 1789. Lafayette sent Washington the key to the Bastille. But the French Revolution turned violent — the Terror, the guillotine, Napoleon. Liberty is easier to declare than to build.
+
+Haiti revolted in 1791. Enslaved people rose up and created the first Black republic. Toussaint Louverture led them. It was the Revolution's promise taken to its logical conclusion — all men means all men.
+
+Latin America followed. Simón Bolívar read Jefferson and Washington. He liberated six nations. He called Washington "the hero of the New World."
+
+The American Revolution did not just create a country. It created an idea — that ordinary people have the right to govern themselves. That idea is still spreading. Still being tested. Still being fought for.
+
+It is the most dangerous idea in human history. And the most beautiful.`,86:`Abigail Adams asked in 1776. It took 144 years to get an answer.
+
+The Revolution promised equality but delivered it only to white men. Women could not vote, own property after marriage, attend college, or hold office. The Revolution changed nothing for them — legally.
+
+But the words were there. "All men are created equal." If you believe those words, eventually you must ask: does that include women?
+
+In 1848, at Seneca Falls, New York, Elizabeth Cady Stanton wrote a Declaration of Sentiments modeled on Jefferson's Declaration. "All men and women are created equal." The women's suffrage movement had begun.
+
+It took seventy-two more years. The Nineteenth Amendment was ratified in 1920. Women could finally vote — 144 years after Abigail wrote her letter.
+
+The Revolution planted a seed. It took generations to grow. It is still growing. The unfinished revolution continues.`,87:`How do we remember the Revolution? Through paintings and stories and myths.
+
+Emanuel Leutze painted "Washington Crossing the Delaware" in 1851 — seventy-five years after it happened. The painting is wrong in almost every detail. The flag is wrong. The boat is wrong. The ice is wrong. But the feeling is right. The courage is right.
+
+John Trumbull painted the signing of the Declaration. He was there — he knew these men. His paintings hang in the Capitol rotunda.
+
+Longfellow wrote "Paul Revere's Ride" in 1861 — to inspire the Union during the Civil War. It made Revere famous and forgot everyone else who rode that night.
+
+We tell stories about the Revolution that are simpler than the truth. Cleaner. More heroic. The real story is messier. More human. More interesting.
+
+The truth is always more interesting than the legend. Remember that.`,88:`The Revolution is not just in books. It is in places you can visit. Places where the ground remembers.
+
+Boston: Walk the Freedom Trail. Stand where the Massacre happened. See the Old North Church where the lanterns hung.
+
+Lexington and Concord: Stand on the Green at dawn. Walk to the North Bridge. Feel the distance the British marched.
+
+Philadelphia: See Independence Hall. The room where they signed. The chair with the sun.
+
+Valley Forge: Walk the fields. See the huts. Feel how cold it must have been.
+
+Yorktown: Stand on the earthworks. Look at the river. Imagine the French fleet.
+
+Mount Vernon: See where Washington lived. Where he died. Where he is buried.
+
+These places are real. The people who walked them were real. When you stand where they stood, history stops being a story. It becomes something you can feel in your bones.`,89:`What would the founders think of America today?
+
+They would be amazed by the technology. Terrified by the weapons. Proud of the Constitution's survival. Ashamed of how long slavery lasted.
+
+They would recognize the arguments. Federal power vs. state power. Individual rights vs. collective good. Who counts as "We the People." These are the same arguments they had in 1787.
+
+Your rights — the ones you use every day — came from them. Freedom of speech. Freedom of religion. The right to a fair trial. The right to protest. The right to vote.
+
+These rights are not automatic. They are not guaranteed by nature. They exist because people fought for them. People died for them. People argued about them in hot rooms with closed windows.
+
+And they are only as strong as your willingness to defend them. For yourself. For your neighbor. For the person you disagree with most.
+
+That is the Revolution's final lesson: freedom is not free. It must be earned again by every generation.`,90:`This is the last lesson. But it is not the end.
+
+For ninety nights, we have sat together. We have traveled from Boston Harbor to Yorktown. We have met farmers who became soldiers and soldiers who became presidents. We have seen courage and cowardice, wisdom and folly, justice and injustice.
+
+The Revolution is not finished. It was never meant to be finished. "All men are created equal" was a promise, not a fact. It was a direction, not a destination. Every generation must decide what those words mean and fight to make them true.
+
+Your great-great-grandparents fought for those words. Your grandparents fought for them. Your parents fight for them still.
+
+Soon it will be your turn.
+
+What will you fight for? Not with muskets. Not with cannons. With your voice. With your vote. With your choices. With the way you treat the person next to you.
+
+The Revolution gave you the right to speak, to think, to worship, to assemble, to disagree. Use those rights. They were bought with blood.
+
+This is your revolution now. What will you do with it?`}[t]||`The story of ${a} is one that shaped the course of the Revolution. It happened as all true things happen — suddenly, after a long time coming.
+
+The details matter. The names matter. The places matter. Because history is not about dates and facts. It is about people. People who were afraid and brave at the same time. People who did not know how the story would end.
+
+They were not so different from us. They loved their children. They worried about money. They argued with their neighbors. They hoped for something better.
+
+The difference is that when the moment came, they acted. They chose. And their choices made the world we live in now.`}function s(t){return{11:["The Boston Port Act closed Boston Harbor until the tea was paid for","The Massachusetts Government Act revoked the colony's charter","The Quartering Act forced colonists to house British soldiers","Other colonies sent food and supplies to Boston","The acts united the colonies against Britain"],13:["77 militiamen faced 700 British regulars","8 Americans were killed, 10 wounded","Captain John Parker commanded the militia","The first shot is called 'the shot heard round the world'","The battle lasted only minutes"],14:["The British were searching for hidden weapons at Concord","Minutemen fired from behind stone walls during the British retreat","73 British soldiers were killed, 174 wounded on the march back","Paul Revere and William Dawes rode ahead to warn the colonists","By day's end, 4,000 militiamen surrounded the British in Boston"],15:["The battle was actually fought on Breed's Hill, not Bunker Hill","The British won but lost over 1,000 men — nearly half their force","Dr. Joseph Warren, a patriot leader, was killed","The Americans ran out of ammunition and had to retreat","It proved Americans could stand against professional soldiers"],17:["Common Sense sold 150,000 copies in 3 months","Paine donated all profits to the Continental Army","It was written in plain language anyone could understand","Paine had been in America less than 2 years when he wrote it","Washington ordered it read to his troops"],29:["2,400 Americans crossed the Delaware on Christmas night","The crossing took 9 hours in sleet and ice","Two soldiers froze to death during the crossing","They marched 9 miles to Trenton after landing","The password for the night was 'Victory or Death'"],34:["12,000 soldiers entered Valley Forge in December 1777","About 2,000 died from disease and exposure","Soldiers built over 1,000 log huts","Martha Washington came to camp and organized care for the sick","The army emerged stronger in June 1778"],43:[`Washington was 6'2" — unusually tall for his era`,"He lost more battles than he won","He served without pay during the entire war","He was unanimously elected president — twice","He voluntarily stepped down after two terms"],66:["17,000 allied troops besieged 8,000 British","Alexander Hamilton led the assault on Redoubt 10 at age 24","The siege lasted 3 weeks","Cornwallis sent a drummer boy with a white flag on October 17","The British surrendered on October 19, 1781"],69:["Washington resigned his commission on December 23, 1783","King George III called him 'the greatest man in the world'","No victorious general had ever voluntarily given up power before","He rode home to Mount Vernon for Christmas","He set the precedent for civilian control of the military"],78:["James Madison wrote the Bill of Rights","Originally 12 amendments were proposed; 10 were ratified","They were ratified on December 15, 1791","The First Amendment protects 5 freedoms: speech, religion, press, assembly, petition","The Bill of Rights applies to every American today"],90:["The American Revolution inspired revolutions worldwide","The principles of 1776 are still being fulfilled today","Every generation must defend and extend the founders' ideals","The Bill of Rights protects your freedoms right now","The Revolution belongs to you"]}[t]||[`${n.find(e=>e.id===Math.ceil(t/10))?.title||"This period"} shaped the Revolution`,"The events connected to broader patterns of resistance and change","Ordinary people made extraordinary choices","The consequences echoed for generations","Primary sources help us understand what really happened"]}function h(t){return{11:["If your town was punished for something a group of people did, would that be fair?","The other colonies helped Boston. Why do you think they did that?","Britain wanted to make an example. Did it work?","What would you do if someone tried to take away your family's rights?"],13:["Captain Parker told his men to stand their ground. Would you have stayed?","Why do you think those 77 men stood against 700?","What does courage look like when you're scared?","If you were a British soldier, how would you have felt marching toward those farmers?"],17:["Paine was a failure at everything before he wrote Common Sense. What does that tell you?","Why is it important to write in language everyone can understand?","Can one book really change the world? Can you think of others that have?","What would you write a pamphlet about today?"],29:["The password was 'Victory or Death.' What does that tell you about how desperate they were?","Would you cross an icy river on Christmas night? What would make you do it?","Washington led from the front. Why does that matter?","Two men froze to death. Was the crossing worth it?"],34:["Why did the soldiers stay at Valley Forge when they could have gone home?","What keeps people going when everything is terrible?","Martha Washington came to help. What does that tell you about her?","Have you ever had to keep going when you wanted to quit?"],43:["Why is giving up power harder than taking it?","Washington wasn't the smartest founder. Why did everyone trust him?","He made many mistakes but never quit. What can we learn from that?","If someone offered you a crown, would you take it?"],66:["Hamilton was 24 when he led the assault. What does youth bring to courage?","The siege took 3 weeks of digging trenches. Is patience a kind of bravery?","Why did the band play 'The World Turned Upside Down'?","How do you think the British soldiers felt surrendering?"],69:["Why did King George call Washington 'the greatest man in the world'?","Can you think of anyone today who gave up power voluntarily?","Why is this moment more important than any battle Washington won?","What does it mean that power belongs to the people?"],78:["Which of the ten amendments matters most to you? Why?","Are there rights you think should be added today?","Why did the founders think it was important to limit government power?","How would your life be different without the First Amendment?"],90:["What does freedom mean to you?","What would you be willing to fight for — not with weapons, but with your voice?","How can kids your age make the world better?","What do you think the founders would say if they could see America today?"]}[t]||["What surprised you most about this story?","If you lived during this time, what would you have done?","How does this connect to something in your life today?","What question would you ask if you could talk to someone from this story?"]}function d(t){return{11:[10,12],12:[11,13],13:[12,14],14:[13,15],15:[14,16],16:[15,17],17:[16,18],18:[17,19],19:[18,20],20:[19,21],21:[20,22],22:[21,23],23:[22,24],24:[23,25],25:[24,26],26:[25,27],27:[26,28],28:[27,29],29:[28,30],30:[29,31],31:[30,32],32:[31,33],33:[32,34],34:[33,35],35:[34,36],36:[35,37],37:[36,38],38:[37,39],39:[38,40],40:[39,41],41:[40,42],42:[41,43],43:[2,69],44:[8,86],45:[36,68],46:[66,77],47:[44,48],48:[24,49],49:[48,66],50:[34,53],51:[44,87],52:[7,48],53:[1,50],54:[45,71],55:[48,43],56:[63,57],57:[56,58],58:[57,59],59:[58,60],60:[59,61],61:[60,62],62:[61,63],63:[62,64],64:[63,65],65:[64,66],66:[65,67],67:[66,68],68:[67,69],69:[68,70],70:[69,71],71:[70,72],72:[71,73],73:[72,74],74:[73,75],75:[74,76],76:[75,77],77:[76,78],78:[77,79],79:[78,80],80:[79,81],81:[42,82],82:[41,83],83:[24,76],84:[80,85],85:[23,86],86:[44,24],87:[51,88],88:[87,89],89:[78,90],90:[1,89]}[t]||[t-1,t+1]}function l(t,a){return[{title:`American Battlefield Trust: ${a}`,url:"https://www.battlefields.org/learn/articles/american-revolution-timeline"},{title:"National Park Service: American Revolution",url:"https://www.nps.gov/subjects/americanrevolution/index.htm"},{title:"Library of Congress: Primary Sources",url:"https://www.loc.gov/classroom-materials/united-states-history-primary-source-timeline/american-revolution-1763-1783/"}]}function u(t,a){const o={"Boston, Massachusetts":{lat:42.36,lng:-71.06},"Philadelphia, Pennsylvania":{lat:39.95,lng:-75.17},"New York City":{lat:40.71,lng:-74.01},"Lexington, Massachusetts":{lat:42.45,lng:-71.23},"Concord, Massachusetts":{lat:42.46,lng:-71.35},"Charlestown, Massachusetts":{lat:42.38,lng:-71.06},"Trenton, New Jersey":{lat:40.22,lng:-74.76},"Princeton, New Jersey":{lat:40.35,lng:-74.66},"Saratoga, New York":{lat:43,lng:-73.63},"Valley Forge, Pennsylvania":{lat:40.1,lng:-75.44},"Yorktown, Virginia":{lat:37.24,lng:-76.51},"Charleston, South Carolina":{lat:32.78,lng:-79.93},"Paris, France":{lat:48.86,lng:2.35},"Annapolis, Maryland":{lat:38.98,lng:-76.49}}[a];if(o)return[{...o,label:a}]}const c=[{year:1754,title:"French and Indian War Begins",lessonId:2},{year:1763,title:"Treaty of Paris / War Ends",lessonId:2},{year:1765,title:"The Stamp Act",lessonId:4},{year:1767,title:"Townshend Acts",lessonId:6},{year:1770,title:"Boston Massacre",lessonId:7},{year:1773,title:"Boston Tea Party",lessonId:10},{year:1774,title:"Intolerable Acts / First Congress",lessonId:11},{year:1775,title:"Lexington & Concord",lessonId:13},{year:1776,title:"Declaration of Independence",lessonId:20},{year:1776,title:"Crossing the Delaware",lessonId:29},{year:1777,title:"Saratoga / Valley Forge",lessonId:33},{year:1778,title:"French Alliance",lessonId:36},{year:1780,title:"Charleston Falls",lessonId:56},{year:1781,title:"Yorktown — Victory",lessonId:66},{year:1783,title:"Treaty of Paris",lessonId:68},{year:1787,title:"Constitutional Convention",lessonId:73},{year:1789,title:"Washington Inaugurated",lessonId:79},{year:1791,title:"Bill of Rights Ratified",lessonId:78}];export{n as a,m as l,c as t};
