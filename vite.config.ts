@@ -4,6 +4,7 @@ import react from "@vitejs/plugin-react";
 import fs from "node:fs";
 import path from "node:path";
 import { defineConfig, type Plugin, type ViteDevServer } from "vite";
+import { VitePWA } from "vite-plugin-pwa";
 import { vitePluginManusRuntime } from "vite-plugin-manus-runtime";
 
 // =============================================================================
@@ -203,7 +204,77 @@ function vitePluginStorageProxy(): Plugin {
   };
 }
 
-const plugins = [react(), tailwindcss(), jsxLocPlugin(), vitePluginManusRuntime(), vitePluginManusDebugCollector(), vitePluginStorageProxy()];
+const plugins = [
+  react(),
+  tailwindcss(),
+  jsxLocPlugin(),
+  vitePluginManusRuntime(),
+  vitePluginManusDebugCollector(),
+  vitePluginStorageProxy(),
+  VitePWA({
+    registerType: "autoUpdate",
+    manifest: {
+      name: "Revolution Nights",
+      short_name: "Revolution",
+      description: "A 90-night family journey through the American Revolution.",
+      theme_color: "#071522",
+      background_color: "#071522",
+      display: "standalone",
+      start_url: "/",
+      scope: "/",
+      orientation: "portrait-primary",
+      categories: ["education", "books", "family"],
+      icons: [
+        {
+          src: "https://files.manuscdn.com/user_upload_by_module/session_file/90544947/RzamISePlbcgDwAH.png",
+          sizes: "1024x1024",
+          type: "image/png",
+          purpose: "any maskable",
+        },
+      ],
+    },
+    workbox: {
+      navigateFallback: "/index.html",
+      globPatterns: ["**/*.{js,css,html,svg,png,woff2}"],
+      cleanupOutdatedCaches: true,
+      clientsClaim: true,
+      skipWaiting: true,
+      runtimeCaching: [
+        {
+          urlPattern: /^https:\/\/files\.manuscdn\.com\//,
+          handler: "CacheFirst",
+          options: {
+            cacheName: "revolution-nights-artwork",
+            expiration: { maxEntries: 20, maxAgeSeconds: 60 * 60 * 24 * 180 },
+            cacheableResponse: { statuses: [0, 200] },
+          },
+        },
+        {
+          urlPattern: /\/manus-storage\//,
+          handler: "CacheFirst",
+          options: {
+            cacheName: "revolution-nights-media",
+            expiration: { maxEntries: 80, maxAgeSeconds: 60 * 60 * 24 * 90 },
+            cacheableResponse: { statuses: [0, 200] },
+          },
+        },
+        {
+          urlPattern: /^https:\/\/fonts\.(googleapis|gstatic)\.com\//,
+          handler: "StaleWhileRevalidate",
+          options: {
+            cacheName: "revolution-nights-fonts",
+            expiration: { maxEntries: 20, maxAgeSeconds: 60 * 60 * 24 * 365 },
+            cacheableResponse: { statuses: [0, 200] },
+          },
+        },
+      ],
+    },
+    devOptions: {
+      enabled: true,
+      navigateFallback: "index.html",
+    },
+  }),
+];
 
 export default defineConfig({
   plugins,

@@ -1,16 +1,24 @@
-# Genesis Nations Integrated Scholarly Atlas
+# Revolution Nights
 
-This repository contains the integrated **Genesis Nations** educational website as its root application. It adds the [Ancient Temples of the World](https://templemap-c7mlfbq3.manus.space/?code=SZkkdocaAQRTr8pdSFmbb5) research instrument as a dedicated Temple Atlas tab within a unified editorial interface, while preserving direct access to the original [Genesis Nations](https://genesisnations-6t6jlssk.manus.space) study routes.
+**Revolution Nights** is a responsive HTML application that turns the American Revolution into a 90-night family learning journey. It is built with React, TypeScript, Vite, Tailwind CSS, and semantic browser APIs. The interface is designed mobile-first and expands into a polished desktop reading experience without removing content or functionality.
 
 ## Experience
 
-The frontend uses an **Illuminated Scholarly Atlas** design system: warm vellum surfaces, evergreen ink, oxidized-teal citations, editorial serif typography, technical folio labels, engraved institutional imagery, and coordinated day/night modes. The Temple Atlas remains interactive inside a responsive, labeled iframe with a full-view option and a direct-link fallback.
+The application consolidates the curriculum into four primary areas. **Today** provides the next recommended night and a historical moment. **Learn** offers a searchable, theme-filtered catalog of all 90 lessons. **Discover** nests the timeline, places, people, glossary, and lesson connections into one focused exploration screen. **Journey** presents persistent progress, nested chapter checklists, the next-night action, and gated family quizzes.
 
-| Route | Purpose |
-|---|---|
-| `/` | Integrated scholarly landing page and research pathways |
-| `/temples` | Embedded comparative Temple Atlas workspace |
-| `/sources` | Source hierarchy, dating cautions, and citation policy |
+Every lesson includes Read, Explore, and Discuss modes, browser-native narration, primary-source excerpts, external references, key facts, people, places, connected lessons, progress controls, and browser-native printing. The study-pack builder can print one night, any custom selection, a full chapter, or the complete curriculum.
+
+## Mobile optimization
+
+The HTML uses viewport-safe layout rules, touch-sized controls, an adaptive bottom navigation dock, horizontally scrollable filters, responsive typography, mobile-specific hero artwork, reduced-motion support, keyboard focus states, and lazy-loaded routes. Desktop layouts use wider grids and top navigation while retaining the same features.
+
+## Install and offline use
+
+The production build is an installable Progressive Web App. Supported browsers surface an **Install app** control; iPhone and iPad users receive Safari-specific Add to Home Screen instructions. Workbox precaches the app shell, curriculum, route chunks, and interface styles. Fonts and durable CDN artwork are cached after first use. Once the app reports **Ready offline**, previously unseen application routes continue to work even when the origin is unavailable, while progress remains safely stored in the browser.
+
+## Share family progress
+
+Journey includes a **Share** action that opens the device share sheet when available and copies a link otherwise. The compact `/share?p=…` URL contains only completed night numbers—no names, account data, or private profile information. Recipients see a responsive read-only card with total progress, the next unfinished night, and chapter-by-chapter totals.
 
 ## Development
 
@@ -19,17 +27,12 @@ pnpm install
 pnpm dev
 ```
 
-The development server is provided by Vite. The project is a static React 19 frontend; the `server/` directory only supplies the template's production static-file wrapper.
-
 ## Verification
 
 ```bash
+pnpm test
 pnpm check
 pnpm build
 ```
 
-The implementation was reviewed at desktop and mobile breakpoints. External links open with safe rel attributes, the embedded atlas has an accessible title and loading state, and the day/night control exposes its current action to assistive technology.
-
-## Research-use note
-
-The atlas is a discovery and comparison instrument, not a substitute for primary archaeological publications, excavation reports, institutional catalogues, or site-level records. Dates marked **“c.”** are conventional approximations; researchers should verify the definition and evidentiary basis of a displayed date before formal citation.
+The regression suite verifies all 90 lesson identifiers, ten-theme coverage, connected-lesson integrity, selected print-pack output, safe HTML escaping, and deterministic progress-link encoding. Release verification also checks generated manifest and service-worker artifacts plus a server-offline navigation test.

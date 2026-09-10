@@ -1,0 +1,8 @@
+import type { Lesson } from "./lessons";
+
+const escapeHtml = (value: string) => value.replaceAll("&", "&amp;").replaceAll("<", "&lt;").replaceAll(">", "&gt;").replaceAll('"', "&quot;").replaceAll("'", "&#039;");
+
+export function buildPrintHtml(selected: Lesson[]) {
+  const sections = selected.map((lesson) => `<article><p class="night">Night ${lesson.id} · ${escapeHtml(lesson.theme)}</p><h1>${escapeHtml(lesson.title)}</h1><p class="meta">${escapeHtml(lesson.date)} · ${escapeHtml(lesson.location)}</p><p class="dek">${escapeHtml(lesson.subtitle)}</p>${lesson.narrative.split("\n\n").map((paragraph) => `<p>${escapeHtml(paragraph)}</p>`).join("")}<h2>Five things to remember</h2><ul>${lesson.keyFacts.map((fact) => `<li>${escapeHtml(fact)}</li>`).join("")}</ul><h2>Talk together</h2><ol>${lesson.discussionQuestions.map((question) => `<li>${escapeHtml(question)}</li>`).join("")}</ol><div class="notes"><strong>Family notes</strong></div></article>`).join("");
+  return `<!doctype html><html><head><meta charset="utf-8"><title>Revolution Nights Study Pack</title><style>@page{margin:42px}body{color:#172332;font:12pt/1.55 Georgia,serif}article{break-after:page}article:last-child{break-after:auto}h1{color:#7f2730;font-size:27pt;line-height:1.1;margin:8px 0 6px}h2{color:#173650;font-size:15pt;margin-top:24px;border-bottom:1px solid #cabda9;padding-bottom:5px}.night{color:#7f2730;font:700 9pt Arial,sans-serif;text-transform:uppercase;letter-spacing:2px}.meta{color:#51677b;font:600 9pt Arial,sans-serif}.dek{color:#51677b;font-style:italic;font-size:13pt}.notes{border:1px solid #cabda9;margin-top:24px;min-height:110px;padding:14px}li{margin-bottom:7px}</style></head><body>${sections}</body></html>`;
+}
