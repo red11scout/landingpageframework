@@ -1,5 +1,6 @@
 import { describe, expect, it } from "vitest";
 
+import { figures } from "../src/lib/figures";
 import { lessons, themes } from "../src/lib/lessons";
 import { buildPrintHtml } from "../src/lib/print";
 import { decodeProgress, encodeProgress, progressShareText, progressShareUrl } from "../src/lib/progress-share";
@@ -22,6 +23,28 @@ describe("Revolution Nights curriculum", () => {
   it("keeps lesson connections navigable", () => {
     const ids = new Set(lessons.map((lesson) => lesson.id));
     lessons.forEach((lesson) => lesson.connections.forEach((id) => expect(ids.has(id)).toBe(true)));
+  });
+});
+
+describe("historical figure portraits", () => {
+  it("provides one durable, verified portrait for every figure", () => {
+    expect(figures).toHaveLength(17);
+    expect(new Set(figures.map((figure) => figure.id)).size).toBe(17);
+    figures.forEach((figure) => {
+      expect(figure.portrait).toMatch(/^https:\/\/files\.manuscdn\.com\//);
+      expect(figure.portraitSource).toMatch(/^https:\/\//);
+      expect(figure.portraitTitle.length).toBeGreaterThan(2);
+      expect(figure.portraitCreator.length).toBeGreaterThan(2);
+      expect(figure.portraitDate.length).toBeGreaterThan(2);
+      expect(figure.portraitInstitution.length).toBeGreaterThan(2);
+      expect(figure.portraitRights.length).toBeGreaterThan(20);
+    });
+  });
+
+  it("labels later or indirect historical depictions honestly", () => {
+    expect(figures.find((figure) => figure.id === "crispus-attucks")?.portraitKind).toBe("posthumous_historical_depiction");
+    expect(figures.find((figure) => figure.id === "patrick-henry")?.portraitKind).toBe("posthumous_historical_depiction");
+    expect(figures.find((figure) => figure.id === "benedict-arnold")?.portraitKind).toBe("contemporary_depiction");
   });
 });
 

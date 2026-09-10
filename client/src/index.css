@@ -330,3 +330,8 @@ summary::-webkit-details-marker {
     transition-duration: 0.01ms !important;
   }
 }
+
+/* Hide the hosting platform's isolated attribution custom element. */
+manus-content-root {
+  display: none !important;
+}

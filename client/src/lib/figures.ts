@@ -1,19 +1,20 @@
 // Key Figures of the American Revolution
 // Full biographical profiles written in Hemingway's voice
 
+import { portraitSources, type PortraitSource } from "./portrait-sources";
+
 export interface FigureEvent {
   year: number;
   title: string;
   description: string;
 }
 
-export interface Figure {
+export interface Figure extends PortraitSource {
   id: string;
   name: string;
   born: string;
   died: string;
   role: string;
-  portrait: string;
   narrative: string;
   timeline: FigureEvent[];
   keyFacts: string[];
@@ -22,7 +23,9 @@ export interface Figure {
   quote?: string;
 }
 
-export const figures: Figure[] = [
+type FigureProfile = Omit<Figure, keyof PortraitSource> & Pick<Figure, "portrait">;
+
+const figureProfiles: FigureProfile[] = [
   {
     id: "george-washington",
     name: "George Washington",
@@ -439,7 +442,7 @@ export function findFigure(name: string): Figure | undefined {
 }
 
 // Add the 6 new figures to the array
-figures.push(
+figureProfiles.push(
   {
     id: "patrick-henry",
     name: "Patrick Henry",
@@ -655,6 +658,11 @@ figures.push(
     ]
   }
 );
+
+export const figures: Figure[] = figureProfiles.map((figure) => ({
+  ...figure,
+  ...portraitSources[figure.id],
+}));
 
 // Helper to get figure ID from name
 export function getFigureId(name: string): string | undefined {
