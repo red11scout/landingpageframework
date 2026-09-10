@@ -1,0 +1,668 @@
+// Key Figures of the American Revolution
+// Full biographical profiles written in Hemingway's voice
+
+export interface FigureEvent {
+  year: number;
+  title: string;
+  description: string;
+}
+
+export interface Figure {
+  id: string;
+  name: string;
+  born: string;
+  died: string;
+  role: string;
+  portrait: string;
+  narrative: string;
+  timeline: FigureEvent[];
+  keyFacts: string[];
+  lessonsAppearing: number[];
+  sources: { title: string; url: string }[];
+  quote?: string;
+}
+
+export const figures: Figure[] = [
+  {
+    id: "george-washington",
+    name: "George Washington",
+    born: "February 22, 1732",
+    died: "December 14, 1799",
+    role: "Commander-in-Chief of the Continental Army, First President",
+    portrait: "/manus-storage/figure-washington_d7735cf5.png",
+    quote: "I cannot tell a lie — but that is a myth. The truth about Washington is better than the legends.",
+    narrative: `He was not the smartest man in the room. He knew it. He was not the best general. He knew that too. But he was the one they trusted. That mattered more than brilliance.\n\nGeorge Washington was born in Virginia in 1732. His father died when he was eleven. He grew up tall — six foot two in an age when most men were five foot seven. He had enormous hands. He was the best horseman anyone had ever seen.\n\nAt twenty-two he started a world war by accident. At forty-three he took command of an army that barely existed. For eight years he held that army together through defeat after defeat. He lost more battles than he won. But he never lost the war.\n\nThe secret was simple. He would not quit. When his men starved at Valley Forge, he stayed. When Congress failed to pay them, he stayed. When generals plotted against him, he stayed. He was there every morning, on his horse, visible, calm, present.\n\nWhen the war ended, he did the thing that shocked the world. He gave up power. He went home to his farm. King George III said it made him "the greatest man in the world." He was right.\n\nThen they called him back. He served eight years as president and did it again — gave up power, went home. He died two years later, on a cold December night, at sixty-seven. His last words were: "'Tis well."`,
+    timeline: [
+      { year: 1732, title: "Born in Virginia", description: "Born in Westmoreland County, Virginia, to Augustine and Mary Washington" },
+      { year: 1743, title: "Father Dies", description: "Augustine Washington dies. George is eleven years old." },
+      { year: 1754, title: "Starts the French and Indian War", description: "At 22, leads an attack on French forces in the Ohio Valley" },
+      { year: 1759, title: "Marries Martha Custis", description: "Marries a wealthy widow and becomes one of Virginia's richest men" },
+      { year: 1775, title: "Named Commander-in-Chief", description: "Continental Congress appoints him to lead the Continental Army" },
+      { year: 1776, title: "Crosses the Delaware", description: "Christmas night surprise attack saves the Revolution" },
+      { year: 1777, title: "Valley Forge", description: "Holds the army together through the worst winter of the war" },
+      { year: 1781, title: "Victory at Yorktown", description: "Traps Cornwallis and wins the war" },
+      { year: 1783, title: "Resigns Commission", description: "Gives up power and returns to Mount Vernon" },
+      { year: 1789, title: "Inaugurated as President", description: "Becomes the first President of the United States" },
+      { year: 1797, title: "Retires Again", description: "Leaves the presidency after two terms, setting the precedent" },
+      { year: 1799, title: "Dies at Mount Vernon", description: "Dies at 67. His last words: ''Tis well.'" }
+    ],
+    keyFacts: [
+      "He was 6'2\" — a giant for his era",
+      "He lost more battles than he won but never lost the war",
+      "He freed his slaves in his will — the only Founding Father to do so",
+      "He had no biological children but raised Martha's two children",
+      "He was unanimously elected president — twice",
+      "His teeth were not wooden — they were ivory, metal, and human teeth"
+    ],
+    lessonsAppearing: [2, 14, 15, 26, 27, 29, 30, 34, 63, 64, 65, 66, 67, 79, 80, 81],
+    sources: [
+      { title: "Mount Vernon Digital Encyclopedia", url: "https://www.mountvernon.org/library/digitalhistory/digital-encyclopedia/" },
+      { title: "National Archives: Washington Papers", url: "https://founders.archives.gov/about/Washington" },
+      { title: "American Battlefield Trust: Washington", url: "https://www.battlefields.org/learn/biographies/george-washington" }
+    ]
+  },
+  {
+    id: "benjamin-franklin",
+    name: "Benjamin Franklin",
+    born: "January 17, 1706",
+    died: "April 17, 1790",
+    role: "Diplomat, Scientist, Printer, Philosopher",
+    portrait: "/manus-storage/figure-franklin_461276b7.png",
+    quote: "We must, indeed, all hang together or, most assuredly, we shall all hang separately.",
+    narrative: `He ran away from home at seventeen with nothing. He died at eighty-four as the most famous American in the world. In between, he invented everything.\n\nBenjamin Franklin was born in Boston in 1706, the fifteenth of seventeen children. His father made soap and candles. At twelve, Ben was apprenticed to his brother's print shop. He hated it. At seventeen he ran away to Philadelphia with one Dutch dollar and a copper shilling.\n\nHe became a printer. Then a publisher. Then a scientist. He proved that lightning was electricity — everyone knows that story. But he also invented bifocals, the Franklin stove, the lightning rod, the glass armonica, and the concept of the public library.\n\nBut his greatest invention was himself. He made himself into the perfect American — practical, witty, hardworking, curious about everything. Europe loved him for it.\n\nWhen the Revolution came, Franklin was seventy years old. They sent him to France to beg for help. He wore a fur cap and plain clothes among the powdered wigs of Versailles. The French adored him. He got them their alliance, their money, their navy. Without Franklin in Paris, there is no victory at Yorktown.\n\nHe was the only man who signed all four founding documents: the Declaration, the Treaty of Alliance with France, the Treaty of Paris, and the Constitution. He was eighty-one at the Constitutional Convention. Too weak to stand, he had his speeches read by others. But he was there. He was always there when it mattered.`,
+    timeline: [
+      { year: 1706, title: "Born in Boston", description: "Fifteenth of seventeen children of a candle maker" },
+      { year: 1718, title: "Apprenticed to Brother", description: "Begins working in his brother James's print shop at age 12" },
+      { year: 1723, title: "Runs Away to Philadelphia", description: "Arrives with almost nothing. Begins building his life." },
+      { year: 1729, title: "Buys the Pennsylvania Gazette", description: "Becomes Philadelphia's leading printer and publisher" },
+      { year: 1752, title: "Kite Experiment", description: "Proves lightning is electricity with a kite and a key" },
+      { year: 1757, title: "Goes to London", description: "Represents Pennsylvania in England for nearly two decades" },
+      { year: 1775, title: "Returns to America", description: "Comes home as war begins. Elected to Continental Congress." },
+      { year: 1776, title: "Signs the Declaration", description: "At 70, risks his life by signing" },
+      { year: 1778, title: "Secures French Alliance", description: "His diplomacy brings France into the war" },
+      { year: 1783, title: "Signs Treaty of Paris", description: "Negotiates the peace that ends the war" },
+      { year: 1787, title: "Constitutional Convention", description: "At 81, attends and helps forge compromises" },
+      { year: 1790, title: "Dies in Philadelphia", description: "Dies at 84. 20,000 attend his funeral." }
+    ],
+    keyFacts: [
+      "He had only two years of formal schooling",
+      "He was the oldest signer of the Declaration at age 70",
+      "He spent 27 years living in Europe as a diplomat",
+      "His autobiography is considered the first great American memoir",
+      "He was the only person to sign all four founding documents",
+      "20,000 people attended his funeral — the largest in Philadelphia's history"
+    ],
+    lessonsAppearing: [1, 3, 4, 17, 20, 21, 36, 37, 38, 68, 73, 82],
+    sources: [
+      { title: "Franklin Institute: About Ben", url: "https://www.fi.edu/en/benjamin-franklin" },
+      { title: "National Archives: Franklin Papers", url: "https://founders.archives.gov/about/Franklin" },
+      { title: "PBS: Benjamin Franklin", url: "https://www.pbs.org/benfranklin/" }
+    ]
+  },
+  {
+    id: "john-adams",
+    name: "John Adams",
+    born: "October 30, 1735",
+    died: "July 4, 1826",
+    role: "Lawyer, Diplomat, Second President",
+    portrait: "/manus-storage/figure-adams-john_ef7faedb.png",
+    quote: "Facts are stubborn things; and whatever may be our wishes, our inclinations, or the dictates of our passion, they cannot alter the state of facts and evidence.",
+    narrative: `He was short and stout and vain and brilliant. He argued with everyone. He was almost always right. Nobody liked him for it.\n\nJohn Adams was born in Braintree, Massachusetts, in 1735. His father was a farmer and a deacon. John went to Harvard at fifteen. He became a lawyer — the best in Boston.\n\nWhen the British soldiers killed five men in the Boston Massacre, no lawyer would defend them. Adams took the case. He won. He believed in justice more than popularity. It cost him clients. He did not care.\n\nIn Congress, he was the engine of independence. Jefferson wrote the Declaration, but Adams argued it through. He spoke for hours. He convinced the doubters. Without Adams pushing, the vote might never have come.\n\nThey sent him to France, then Holland, then England. He was a terrible diplomat — too honest, too blunt, too proud. But he got loans from the Dutch that kept the army alive. He negotiated the peace with Britain.\n\nHe became the first Vice President, then the second President. His presidency was difficult. He kept America out of war with France when everyone wanted to fight. It was the right decision. It destroyed his career.\n\nHe lived to ninety. He died on July 4, 1826 — the fiftieth anniversary of the Declaration. His last words were: "Thomas Jefferson survives." He was wrong. Jefferson had died hours earlier. They left the world on the same day — the day they had made together.`,
+    timeline: [
+      { year: 1735, title: "Born in Braintree, MA", description: "Son of a farmer and church deacon" },
+      { year: 1755, title: "Graduates Harvard", description: "Begins studying law" },
+      { year: 1770, title: "Defends British Soldiers", description: "Takes the Boston Massacre case. Wins acquittal." },
+      { year: 1774, title: "First Continental Congress", description: "Elected as Massachusetts delegate" },
+      { year: 1776, title: "Argues for Independence", description: "The driving force behind the Declaration vote" },
+      { year: 1778, title: "Diplomat in Europe", description: "Serves in France and Holland" },
+      { year: 1783, title: "Treaty of Paris", description: "Helps negotiate the peace with Britain" },
+      { year: 1789, title: "First Vice President", description: "Serves under Washington for eight years" },
+      { year: 1797, title: "Becomes President", description: "Elected second President of the United States" },
+      { year: 1800, title: "Loses Re-election", description: "Defeated by Jefferson. Leaves Washington in bitterness." },
+      { year: 1812, title: "Reconciles with Jefferson", description: "Begins a famous correspondence that lasts 14 years" },
+      { year: 1826, title: "Dies on July 4th", description: "Dies on the 50th anniversary of the Declaration" }
+    ],
+    keyFacts: [
+      "He defended the British soldiers after the Boston Massacre — and won",
+      "He and Jefferson both died on July 4, 1826 — the 50th anniversary of independence",
+      "He was the first president to live in the White House",
+      "His son John Quincy Adams became the 6th president",
+      "He and Abigail exchanged over 1,100 letters during their marriage",
+      "He was the longest-lived president until Reagan (90 years)"
+    ],
+    lessonsAppearing: [7, 8, 12, 17, 18, 20, 21, 36, 44, 68, 73, 79, 84],
+    sources: [
+      { title: "Massachusetts Historical Society: Adams Papers", url: "https://www.masshist.org/publications/adams-papers" },
+      { title: "White House: John Adams", url: "https://www.whitehouse.gov/about-the-white-house/presidents/john-adams/" },
+      { title: "American Battlefield Trust: John Adams", url: "https://www.battlefields.org/learn/biographies/john-adams" }
+    ]
+  },
+  {
+    id: "thomas-jefferson",
+    name: "Thomas Jefferson",
+    born: "April 13, 1743",
+    died: "July 4, 1826",
+    role: "Author of the Declaration of Independence, Third President",
+    portrait: "/manus-storage/figure-jefferson_9e258426.png",
+    quote: "We hold these truths to be self-evident, that all men are created equal.",
+    narrative: `He could do everything. He could write and ride and play the violin and design buildings and read in seven languages and grow things and invent things. He could do everything except free his own slaves. That failure haunts his legacy.\n\nThomas Jefferson was born in Virginia in 1743. His father was a planter and surveyor. Thomas went to William and Mary at sixteen. He read everything. He read more books than anyone in America.\n\nAt thirty-three, they asked him to write the Declaration of Independence. He did it in seventeen days, alone in a rented room in Philadelphia. The words came out clean and true: "We hold these truths to be self-evident, that all men are created equal."\n\nHe meant it. And he didn't. He owned six hundred human beings over his lifetime. He knew slavery was wrong — he wrote against it, argued against it, called it a "moral and political depravity." But he never freed them. He couldn't afford to. Or wouldn't. The contradiction was real and he lived inside it his whole life.\n\nAfter the war he went to France as ambassador. He came home and fought with Hamilton about everything — banks, cities, power, the future. He became president and doubled the size of the country with the Louisiana Purchase.\n\nHe died on July 4, 1826 — the same day as Adams. Fifty years to the day after his Declaration. He had written his own epitaph: "Author of the Declaration of Independence, of the Statute of Virginia for Religious Freedom, and Father of the University of Virginia." He did not mention being president. He had other things he was prouder of.`,
+    timeline: [
+      { year: 1743, title: "Born in Virginia", description: "Born at Shadwell plantation in Albemarle County" },
+      { year: 1762, title: "Graduates William & Mary", description: "Begins studying law under George Wythe" },
+      { year: 1769, title: "Begins Building Monticello", description: "Designs and constructs his mountaintop home" },
+      { year: 1776, title: "Writes the Declaration", description: "At 33, drafts the document in 17 days" },
+      { year: 1779, title: "Governor of Virginia", description: "Serves during the British invasion of Virginia" },
+      { year: 1785, title: "Ambassador to France", description: "Replaces Franklin as minister to France" },
+      { year: 1790, title: "Secretary of State", description: "Serves under Washington. Battles Hamilton." },
+      { year: 1797, title: "Vice President", description: "Serves under his rival John Adams" },
+      { year: 1801, title: "Becomes President", description: "Elected third President after a tied election" },
+      { year: 1803, title: "Louisiana Purchase", description: "Doubles the size of the nation for $15 million" },
+      { year: 1819, title: "Founds University of Virginia", description: "Designs the campus and curriculum himself" },
+      { year: 1826, title: "Dies on July 4th", description: "Dies on the 50th anniversary of his Declaration" }
+    ],
+    keyFacts: [
+      "He wrote the Declaration of Independence in 17 days at age 33",
+      "He owned over 600 enslaved people during his lifetime",
+      "He could read in seven languages",
+      "He and Adams died on the same day — July 4, 1826",
+      "He doubled the size of America with the Louisiana Purchase",
+      "He designed his own house, his own tombstone, and the University of Virginia"
+    ],
+    lessonsAppearing: [19, 20, 21, 22, 73, 74, 82, 84, 86, 87],
+    sources: [
+      { title: "Monticello: Thomas Jefferson Encyclopedia", url: "https://www.monticello.org/research-education/thomas-jefferson-encyclopedia/" },
+      { title: "National Archives: Jefferson Papers", url: "https://founders.archives.gov/about/Jefferson" },
+      { title: "Library of Congress: Jefferson", url: "https://www.loc.gov/exhibits/jefferson/" }
+    ]
+  },
+  {
+    id: "alexander-hamilton",
+    name: "Alexander Hamilton",
+    born: "January 11, 1755/57",
+    died: "July 12, 1804",
+    role: "Washington's Aide-de-Camp, First Secretary of the Treasury",
+    portrait: "/manus-storage/figure-hamilton_8a4788cf.png",
+    quote: "Those who stand for nothing fall for anything.",
+    narrative: `He came from nothing. A bastard orphan from a Caribbean island. He died at forty-nine in a field in New Jersey with a bullet in his spine. In between, he built the American economy.\n\nAlexander Hamilton was born on Nevis — a tiny island in the West Indies. His father abandoned the family. His mother died when he was thirteen. He was alone in the world.\n\nBut he could write. A hurricane destroyed his island and he wrote about it so beautifully that local merchants took up a collection to send him to New York for an education. He was seventeen.\n\nWhen the war came, he was twenty. He formed an artillery company. Washington noticed him — noticed his intelligence, his energy, his ability to write clear orders under fire. Hamilton became Washington's chief aide. He was the brain behind the general.\n\nHe wanted glory. He got it at Yorktown, leading the charge on Redoubt 10. Bayonets only. Ten minutes. The war was won.\n\nAfter the war, he imagined a country that didn't exist yet — industrial, commercial, powerful. He wrote most of the Federalist Papers. He created the national bank, the mint, the coast guard, the customs service. He built the financial system that still runs today.\n\nJefferson hated everything Hamilton stood for. Their fight shaped American politics forever — rural vs. urban, states vs. federal, agriculture vs. industry. We are still having that argument.\n\nAaron Burr shot him on July 11, 1804. Hamilton was forty-seven or forty-nine — no one knows his exact birth year. He left behind a wife, seven children, and a country that worked because he had built the machinery.`,
+    timeline: [
+      { year: 1755, title: "Born on Nevis", description: "Born in the Caribbean. Exact year disputed (1755 or 1757)." },
+      { year: 1768, title: "Orphaned", description: "Mother dies. Father already gone. Alone at 13." },
+      { year: 1772, title: "Arrives in New York", description: "Sent to America after writing about a hurricane" },
+      { year: 1776, title: "Forms Artillery Company", description: "Commands New York Provincial Company of Artillery" },
+      { year: 1777, title: "Becomes Washington's Aide", description: "Joins Washington's staff as chief aide-de-camp" },
+      { year: 1781, title: "Leads Charge at Yorktown", description: "Commands assault on Redoubt 10. Bayonets only." },
+      { year: 1787, title: "Constitutional Convention", description: "Argues for strong central government" },
+      { year: 1788, title: "The Federalist Papers", description: "Writes 51 of the 85 essays defending the Constitution" },
+      { year: 1789, title: "First Secretary of Treasury", description: "Creates the financial system of the United States" },
+      { year: 1791, title: "Creates National Bank", description: "Establishes the First Bank of the United States" },
+      { year: 1795, title: "Returns to Law Practice", description: "Leaves government. Practices law in New York." },
+      { year: 1804, title: "Killed by Aaron Burr", description: "Shot in a duel at Weehawken, New Jersey. Dies the next day." }
+    ],
+    keyFacts: [
+      "He was an orphan immigrant from the Caribbean",
+      "He wrote 51 of the 85 Federalist Papers",
+      "He created America's financial system — banks, mint, customs",
+      "He led the bayonet charge at Yorktown that won the war",
+      "He was killed in a duel by Vice President Aaron Burr",
+      "His face is on the $10 bill"
+    ],
+    lessonsAppearing: [27, 32, 64, 65, 66, 73, 74, 75, 76, 79, 83],
+    sources: [
+      { title: "National Archives: Hamilton Papers", url: "https://founders.archives.gov/about/Hamilton" },
+      { title: "Alexander Hamilton Awareness Society", url: "https://www.the-aha-society.com/" },
+      { title: "Mount Vernon: Alexander Hamilton", url: "https://www.mountvernon.org/library/digitalhistory/digital-encyclopedia/article/alexander-hamilton/" }
+    ]
+  },
+  {
+    id: "samuel-adams",
+    name: "Samuel Adams",
+    born: "September 27, 1722",
+    died: "October 2, 1803",
+    role: "Organizer, Agitator, Father of the Revolution",
+    portrait: "/manus-storage/figure-samuel-adams_236a0388.png",
+    quote: "It does not take a majority to prevail, but rather an irate, tireless minority keen to set brush fires in people's minds.",
+    narrative: `He was a terrible businessman and a brilliant revolutionary. He could not manage money but he could manage a mob. He was the man who made the Revolution happen before anyone else was ready.\n\nSamuel Adams was born in Boston in 1722. He tried brewing. He failed. He tried tax collecting. He failed at that too — he was too sympathetic to let people pay. He was always in debt.\n\nBut he could write. And he could organize. He founded the Committees of Correspondence — the network that connected the colonies. He organized the Sons of Liberty. He turned every British mistake into a propaganda victory.\n\nThe Boston Massacre? Adams named it. The Tea Party? Adams planned it. Every petition, every protest, every newspaper article that pushed Boston toward rebellion — Adams was behind it.\n\nThe British wanted him dead. When the Redcoats marched to Lexington, they were coming for Adams and Hancock. Paul Revere rode to warn them. The Revolution's first shots were fired to protect Samuel Adams.\n\nHe signed the Declaration. He served as governor of Massachusetts. But his real work was done before 1776. He was the spark. Others built the fire. But without the spark, there is no fire.`,
+    timeline: [
+      { year: 1722, title: "Born in Boston", description: "Born to a prosperous family that later loses its wealth" },
+      { year: 1740, title: "Graduates Harvard", description: "Studies political philosophy" },
+      { year: 1748, title: "Fails at Business", description: "His brewery and other ventures collapse" },
+      { year: 1764, title: "Opposes Sugar Act", description: "Begins writing against British taxation" },
+      { year: 1765, title: "Organizes Against Stamp Act", description: "Helps found the Sons of Liberty" },
+      { year: 1770, title: "Names the 'Boston Massacre'", description: "Turns a street fight into a propaganda victory" },
+      { year: 1772, title: "Committees of Correspondence", description: "Creates the communication network between colonies" },
+      { year: 1773, title: "Boston Tea Party", description: "Organizes the destruction of British tea" },
+      { year: 1774, title: "Continental Congress", description: "Represents Massachusetts" },
+      { year: 1776, title: "Signs the Declaration", description: "Signs with a bold hand" },
+      { year: 1794, title: "Governor of Massachusetts", description: "Serves as governor until 1797" },
+      { year: 1803, title: "Dies in Boston", description: "Dies at 81. The Revolution's spark goes out." }
+    ],
+    keyFacts: [
+      "He organized the Boston Tea Party",
+      "He named the 'Boston Massacre' for propaganda purposes",
+      "He created the Committees of Correspondence",
+      "The British marched to Lexington specifically to arrest him",
+      "He was John Adams's second cousin",
+      "He was a failed brewer and tax collector before becoming a revolutionary"
+    ],
+    lessonsAppearing: [4, 5, 6, 7, 9, 10, 11, 12, 13, 20],
+    sources: [
+      { title: "American Battlefield Trust: Samuel Adams", url: "https://www.battlefields.org/learn/biographies/samuel-adams" },
+      { title: "History.com: Samuel Adams", url: "https://www.history.com/topics/american-revolution/samuel-adams" },
+      { title: "NPS: Samuel Adams", url: "https://www.nps.gov/people/samuel-adams.htm" }
+    ]
+  },
+  {
+    id: "paul-revere",
+    name: "Paul Revere",
+    born: "December 21, 1734",
+    died: "May 10, 1818",
+    role: "Silversmith, Messenger, Patriot",
+    portrait: "/manus-storage/figure-paul-revere_b1265fc4.png",
+    quote: "The British are coming! — He never actually said this. What he said was: 'The Regulars are coming out.'",
+    narrative: `Everyone knows the ride. Almost no one knows the man.\n\nPaul Revere was a silversmith. He made beautiful things with his hands — teapots, bowls, church bells, copper fittings for ships. He was a craftsman first. A revolutionary second.\n\nHe was born in Boston in 1734. His father was a French Huguenot immigrant who changed his name from Rivoire to Revere because, he said, "the bumpkins could pronounce it easier." Paul learned the silver trade and became the best in Boston.\n\nBut he was also a joiner — a man who belonged to every organization, knew everyone, connected everyone. He was in the Masons. The Sons of Liberty. The North End Caucus. He was the man you sent when you needed a message delivered fast and secret.\n\nHis famous engraving of the Boston Massacre was propaganda — he copied it from another artist and made it more dramatic. It worked. The image spread through every colony.\n\nThe ride happened on April 18, 1775. He did not ride alone — William Dawes and Samuel Prescott rode too. He never shouted "The British are coming" — they were all British. He said "The Regulars are coming out." He was captured before reaching Concord. Prescott got through.\n\nBut Longfellow wrote the poem about Revere, not Prescott. And so Revere became the legend. The truth is more interesting than the legend. It usually is.`,
+    timeline: [
+      { year: 1734, title: "Born in Boston", description: "Son of a French Huguenot silversmith" },
+      { year: 1754, title: "Takes Over Father's Shop", description: "Becomes Boston's finest silversmith" },
+      { year: 1765, title: "Joins Sons of Liberty", description: "Becomes a key organizer and messenger" },
+      { year: 1770, title: "Boston Massacre Engraving", description: "Creates the famous propaganda image" },
+      { year: 1773, title: "Boston Tea Party", description: "Participates in dumping the tea" },
+      { year: 1774, title: "Rides to Philadelphia", description: "Carries news of the Boston Port Act to Congress" },
+      { year: 1775, title: "The Midnight Ride", description: "April 18 — rides to warn of British advance" },
+      { year: 1776, title: "Commands Castle Island", description: "Serves in the militia during the war" },
+      { year: 1788, title: "Returns to Crafts", description: "Opens a hardware store and foundry" },
+      { year: 1801, title: "Copper Rolling Mill", description: "Provides copper for the USS Constitution" },
+      { year: 1818, title: "Dies in Boston", description: "Dies at 83. A craftsman to the end." }
+    ],
+    keyFacts: [
+      "He never shouted 'The British are coming' — he said 'The Regulars are coming out'",
+      "He was captured during his famous ride and never reached Concord",
+      "His Boston Massacre engraving was copied from another artist",
+      "He provided the copper sheathing for the USS Constitution",
+      "He was a silversmith, engraver, dentist, and industrialist",
+      "Longfellow's poem (1861) made him famous — 86 years after the ride"
+    ],
+    lessonsAppearing: [7, 9, 13, 14, 43],
+    sources: [
+      { title: "Paul Revere House", url: "https://www.paulreverehouse.org/" },
+      { title: "NPS: Paul Revere", url: "https://www.nps.gov/people/paul-revere.htm" },
+      { title: "American Battlefield Trust: Paul Revere", url: "https://www.battlefields.org/learn/biographies/paul-revere" }
+    ]
+  },
+  {
+    id: "abigail-adams",
+    name: "Abigail Adams",
+    born: "November 22, 1744",
+    died: "October 28, 1818",
+    role: "First Lady, Political Advisor, Champion of Women's Rights",
+    portrait: "/manus-storage/figure-abigail-adams_224456fb.png",
+    quote: "Remember the Ladies, and be more generous and favorable to them than your ancestors.",
+    narrative: `She never went to school. She educated herself. She read everything her father's library contained. She became one of the sharpest political minds of her generation — and history remembers her mostly as someone's wife.\n\nAbigail Smith was born in 1744 in Weymouth, Massachusetts. Her father was a minister. Girls did not go to school, so she taught herself — literature, history, philosophy, French. When she married John Adams in 1764, she was nineteen and already his intellectual equal.\n\nFor most of their marriage, they were apart. John was in Philadelphia, in France, in Holland, in England. Abigail ran the farm, raised the children, managed the finances, and wrote letters. Over 1,100 letters survive. They are extraordinary.\n\n"Remember the Ladies," she wrote to John in 1776, as he helped write the new laws of the nation. "If particular care and attention is not paid to the Ladies, we are determined to foment a Rebellion." He laughed it off. She was not joking.\n\nShe was his closest advisor. He trusted her judgment above anyone else's. She told him when he was wrong — which was often. She told him when he was being vain — which was always. She was honest with him in a way no one else dared to be.\n\nShe became the first woman to be both wife and mother of a president. But she was more than that. She was proof that the Revolution's promise of equality was incomplete from the start — and she said so, clearly, in 1776, before anyone else had the courage.`,
+    timeline: [
+      { year: 1744, title: "Born in Weymouth, MA", description: "Daughter of a Congregational minister" },
+      { year: 1764, title: "Marries John Adams", description: "Begins a partnership that lasts 54 years" },
+      { year: 1774, title: "John Leaves for Congress", description: "Manages farm and family alone" },
+      { year: 1776, title: "'Remember the Ladies'", description: "Writes her famous letter to John" },
+      { year: 1778, title: "Manages Through War", description: "Runs the household through inflation and shortages" },
+      { year: 1784, title: "Joins John in Europe", description: "Travels to France and England" },
+      { year: 1789, title: "Second Lady", description: "Wife of the Vice President" },
+      { year: 1797, title: "First Lady", description: "First to live in the White House (briefly)" },
+      { year: 1801, title: "Returns to Massachusetts", description: "Retires to Quincy with John" },
+      { year: 1818, title: "Dies in Quincy", description: "Dies of typhoid fever at 73" }
+    ],
+    keyFacts: [
+      "She never attended school — entirely self-educated",
+      "She and John exchanged over 1,100 letters",
+      "She urged 'Remember the Ladies' in 1776 — decades before women's suffrage",
+      "She was both wife and mother of a president",
+      "She managed the family farm and investments during John's 10-year absence",
+      "Her letters are considered among the finest primary sources of the Revolution"
+    ],
+    lessonsAppearing: [8, 44, 45, 79, 84],
+    sources: [
+      { title: "Massachusetts Historical Society: Abigail Adams", url: "https://www.masshist.org/digitaladams/archive/letter/" },
+      { title: "National Women's History Museum: Abigail Adams", url: "https://www.womenshistory.org/education-resources/biographies/abigail-adams" },
+      { title: "White House: Abigail Adams", url: "https://www.whitehouse.gov/about-the-white-house/first-families/abigail-smith-adams/" }
+    ]
+  },
+  {
+    id: "marquis-de-lafayette",
+    name: "Marquis de Lafayette",
+    born: "September 6, 1757",
+    died: "May 20, 1834",
+    role: "French Volunteer, Major General in the Continental Army",
+    portrait: "/manus-storage/figure-lafayette_e87a4abf.png",
+    quote: "Humanity has won its battle. Liberty now has a country.",
+    narrative: `He was nineteen years old. He was one of the richest men in France. He had a pregnant wife and a baby daughter. He left it all to fight for a country he had never seen.\n\nThe Marquis de Lafayette was born into French aristocracy in 1757. His father died in battle when Lafayette was two. He inherited an enormous fortune at thirteen. He could have lived a life of ease in Versailles. Instead, he bought a ship and sailed to America.\n\nWhy? Because he believed in liberty. It was that simple. The idea of freedom lit a fire in him that never went out.\n\nHe arrived in 1777. He was nineteen. Congress made him a major general — mostly as a political gesture to please France. Washington expected a useless aristocrat. Instead he got a son.\n\nLafayette was wounded at Brandywine. He spent the winter at Valley Forge. He commanded troops in Virginia. He helped trap Cornwallis at Yorktown. He was brave and competent and utterly devoted to Washington and to the cause.\n\nHe went home to France and tried to bring the Revolution there. It went badly. He spent five years in an Austrian prison. When he finally returned to America in 1824, every city gave him a hero's welcome. He wept. America wept.\n\nHe named his son Georges Washington de Lafayette. He sent Washington the key to the Bastille. It still hangs at Mount Vernon. Two revolutions. One friendship. One idea — that people should be free.`,
+    timeline: [
+      { year: 1757, title: "Born in Auvergne, France", description: "Born into one of France's wealthiest families" },
+      { year: 1759, title: "Father Killed in Battle", description: "Becomes an orphan of war at age 2" },
+      { year: 1774, title: "Joins French Army", description: "Commissioned as an officer at 16" },
+      { year: 1777, title: "Sails to America", description: "At 19, buys a ship and crosses the Atlantic" },
+      { year: 1777, title: "Wounded at Brandywine", description: "Shot in the leg. Keeps fighting." },
+      { year: 1778, title: "Valley Forge", description: "Endures the winter with the army" },
+      { year: 1781, title: "Virginia Campaign", description: "Commands forces that help trap Cornwallis" },
+      { year: 1781, title: "Yorktown", description: "Plays key role in the final victory" },
+      { year: 1789, title: "French Revolution Begins", description: "Leads the National Guard. Sends Bastille key to Washington." },
+      { year: 1792, title: "Imprisoned", description: "Arrested and imprisoned for 5 years" },
+      { year: 1824, title: "Returns to America", description: "Triumphal tour of all 24 states" },
+      { year: 1834, title: "Dies in Paris", description: "Buried under soil from Bunker Hill" }
+    ],
+    keyFacts: [
+      "He was 19 when he sailed to America to fight",
+      "He bought his own ship to cross the Atlantic",
+      "Washington treated him like a son",
+      "He sent Washington the key to the Bastille — it still hangs at Mount Vernon",
+      "He spent 5 years in an Austrian prison for his revolutionary beliefs",
+      "He is buried under soil from Bunker Hill — American earth covers him"
+    ],
+    lessonsAppearing: [34, 36, 37, 38, 39, 63, 64, 65, 66, 67],
+    sources: [
+      { title: "Mount Vernon: Lafayette", url: "https://www.mountvernon.org/library/digitalhistory/digital-encyclopedia/article/marquis-de-lafayette/" },
+      { title: "American Battlefield Trust: Lafayette", url: "https://www.battlefields.org/learn/biographies/marquis-de-lafayette" },
+      { title: "NPS: Lafayette", url: "https://www.nps.gov/people/marquis-de-lafayette.htm" }
+    ]
+  },
+  {
+    id: "king-george-iii",
+    name: "King George III",
+    born: "June 4, 1738",
+    died: "January 29, 1820",
+    role: "King of Great Britain During the Revolution",
+    portrait: "/manus-storage/figure-king-george_74d6c6d1.png",
+    quote: "I desire what is good. Therefore, everyone who does not agree with me is a traitor.",
+    narrative: `He was not a tyrant. That is what they called him, but it was not true. He was a stubborn man who believed he was right. That is more dangerous than a tyrant.\n\nGeorge III became king in 1760 at twenty-two. He was the first of the Hanoverian kings born in England. He spoke English without a German accent. He wanted to be a good king. He tried.\n\nHe was religious, faithful to his wife, devoted to his children. He farmed. He collected books. He was interested in science. In another century, he would have been a beloved king.\n\nBut he could not let go. When the colonies protested, he could not bend. When they rebelled, he could not negotiate. He saw the war as a test of his authority. To give in was to fail. And George III would not fail.\n\nHe lost. It broke something in him. In his later years, his mind failed — probably porphyria, a blood disease. He went blind. He went deaf. He wandered the halls of Windsor Castle talking to people who were not there.\n\nHe reigned for sixty years. He lost an empire. He was not evil. He was simply unable to see what was happening until it was too late. That is the most common failure of kings.`,
+    timeline: [
+      { year: 1738, title: "Born in London", description: "First Hanoverian king born in England" },
+      { year: 1760, title: "Becomes King", description: "Crowned at age 22" },
+      { year: 1763, title: "Proclamation of 1763", description: "Forbids colonial settlement west of the Appalachians" },
+      { year: 1765, title: "Approves Stamp Act", description: "First direct tax on the colonies" },
+      { year: 1770, title: "Partial Repeal", description: "Repeals most Townshend duties but keeps tea tax" },
+      { year: 1775, title: "Declares Colonies in Rebellion", description: "Refuses the Olive Branch Petition" },
+      { year: 1776, title: "Hears the Declaration", description: "The colonies formally reject his authority" },
+      { year: 1781, title: "Yorktown", description: "Learns of Cornwallis's surrender" },
+      { year: 1783, title: "Accepts American Independence", description: "Signs the Treaty of Paris" },
+      { year: 1788, title: "First Episode of Madness", description: "Mental illness begins to manifest" },
+      { year: 1811, title: "Regency Begins", description: "Too ill to rule. Son takes over." },
+      { year: 1820, title: "Dies at Windsor", description: "Dies blind, deaf, and insane at 81" }
+    ],
+    keyFacts: [
+      "He reigned for 60 years — the longest of any British king at that time",
+      "He was not a tyrant — he was a constitutional monarch with limited power",
+      "He suffered from a disease that caused episodes of apparent madness",
+      "He said Washington was 'the greatest man in the world' for giving up power",
+      "He had 15 children with Queen Charlotte",
+      "Parliament, not the King, passed most of the taxes the colonists hated"
+    ],
+    lessonsAppearing: [1, 3, 4, 5, 6, 11, 15, 16, 23, 68, 85],
+    sources: [
+      { title: "Royal Collection Trust: George III", url: "https://www.rct.uk/collection/themes/trails/george-iii" },
+      { title: "Britannica: George III", url: "https://www.britannica.com/biography/George-III" },
+      { title: "History.com: King George III", url: "https://www.history.com/topics/british-history/george-iii" }
+    ]
+  },
+  {
+    id: "crispus-attucks",
+    name: "Crispus Attucks",
+    born: "c. 1723",
+    died: "March 5, 1770",
+    role: "First Casualty of the Revolution",
+    portrait: "/manus-storage/figure-crispus-attucks_5bcb878a.png",
+    quote: "He has no surviving words. He left only his death — and that was enough to change history.",
+    narrative: `We know almost nothing about him. We know how he died. That is enough.\n\nCrispus Attucks was probably born around 1723. He was of African and Wampanoag descent. He may have been enslaved — a 1750 advertisement in the Boston Gazette offers a reward for a runaway slave named "Crispas." If that was him, he escaped and lived free for twenty years.\n\nHe became a sailor and a rope-maker. He worked the docks of Boston. He was tall and strong. That is all we know of his life.\n\nOn March 5, 1770, he was at the front of the crowd on King Street. When the soldiers fired, he was the first to fall. He was forty-seven years old.\n\nHe became a symbol immediately. Samuel Adams made sure of that. Here was a man who was not white, not free-born, not wealthy — and he died first for liberty. What does that mean?\n\nIt means the Revolution belonged to everyone from the very first shot. It means the promise of "all men are created equal" had a witness before it was written. It means the first American to die for freedom was a Black man.\n\nA monument stands on Boston Common. Five names are carved in it. His is first.`,
+    timeline: [
+      { year: 1723, title: "Born (approximate)", description: "Of African and Native American descent" },
+      { year: 1750, title: "Escapes Slavery (probable)", description: "A runaway ad matches his description" },
+      { year: 1770, title: "Dies in Boston Massacre", description: "First to fall on March 5, 1770" },
+      { year: 1888, title: "Monument Erected", description: "Crispus Attucks monument placed on Boston Common" }
+    ],
+    keyFacts: [
+      "He was of African and Wampanoag (Native American) descent",
+      "He was likely an escaped slave who lived free for 20 years",
+      "He was the first person killed in the Boston Massacre",
+      "He is considered the first casualty of the American Revolution",
+      "A monument to him stands on Boston Common",
+      "We have no surviving words from him — only his sacrifice"
+    ],
+    lessonsAppearing: [7, 52, 53],
+    sources: [
+      { title: "NPS: Crispus Attucks", url: "https://www.nps.gov/people/crispus-attucks.htm" },
+      { title: "History.com: Crispus Attucks", url: "https://www.history.com/topics/american-revolution/crispus-attucks" },
+      { title: "Smithsonian: Crispus Attucks", url: "https://nmaahc.si.edu/explore/stories/crispus-attucks" }
+    ]
+  }
+];
+
+// Helper to find a figure by name (case-insensitive partial match)
+export function findFigure(name: string): Figure | undefined {
+  const lower = name.toLowerCase();
+  return figures.find(f => f.name.toLowerCase() === lower || f.id === lower);
+}
+
+// Add the 6 new figures to the array
+figures.push(
+  {
+    id: "patrick-henry",
+    name: "Patrick Henry",
+    born: "May 29, 1736",
+    died: "June 6, 1799",
+    role: "Orator, Governor of Virginia, Voice of Revolution",
+    portrait: "/manus-storage/figure-patrick-henry_b01c8f4d.png",
+    quote: "Give me liberty, or give me death!",
+    narrative: `He was not a good student. He was not a good farmer. He was not a good storekeeper. He failed at everything he tried until he opened his mouth in a courtroom. Then the world changed.\n\nPatrick Henry was born in Virginia in 1736. He tried farming. Failed. Tried keeping a store. Failed twice. At twenty-four, with a wife and children to feed, he taught himself law in six weeks and passed the bar.\n\nIn his first big case — the Parson's Cause in 1763 — he argued against the King's authority. The jury loved him. He won. He was twenty-seven and suddenly famous.\n\nHis voice was his weapon. When he spoke, men wept. When he argued, men changed their minds. In the Virginia House of Burgesses, he stood against the Stamp Act when others were afraid. "If this be treason," he said, "make the most of it."\n\nBut the speech everyone remembers came on March 23, 1775. In a church in Richmond, with war coming, he stood and spoke the words that made the Revolution inevitable: "Is life so dear, or peace so sweet, as to be purchased at the price of chains and slavery? Forbid it, Almighty God! I know not what course others may take; but as for me, give me liberty, or give me death!"\n\nThe room erupted. Men shouted "To arms! To arms!" Three weeks later, the shooting started at Lexington.\n\nHe served five terms as governor of Virginia. He refused to attend the Constitutional Convention because he "smelt a rat" — he feared too much central power. He was right to worry. He demanded the Bill of Rights. He got it.\n\nHe died in 1799, the same year as Washington. His voice was silent. But the words lived on.`,
+    timeline: [
+      { year: 1736, title: "Born in Virginia", description: "Born in Hanover County to a prosperous family" },
+      { year: 1754, title: "Marries at 18", description: "Marries Sarah Shelton. Tries farming. Fails." },
+      { year: 1760, title: "Passes the Bar", description: "Teaches himself law in six weeks" },
+      { year: 1763, title: "The Parson's Cause", description: "First famous case. Argues against royal authority." },
+      { year: 1765, title: "Stamp Act Speech", description: "'If this be treason, make the most of it'" },
+      { year: 1775, title: "'Give Me Liberty'", description: "The speech that launched the Revolution" },
+      { year: 1776, title: "First Governor of Virginia", description: "Elected governor of the new commonwealth" },
+      { year: 1787, title: "Refuses Constitutional Convention", description: "'I smelt a rat'" },
+      { year: 1788, title: "Demands Bill of Rights", description: "Fights for amendments to protect individual liberty" },
+      { year: 1799, title: "Dies in Virginia", description: "Dies at 63. The voice goes silent." }
+    ],
+    keyFacts: [
+      "He failed at farming and shopkeeping before becoming a lawyer",
+      "He taught himself law in just six weeks",
+      "'Give me liberty or give me death' was spoken March 23, 1775",
+      "He served five terms as Governor of Virginia",
+      "He refused to attend the Constitutional Convention",
+      "His demand for a Bill of Rights led to the first ten amendments"
+    ],
+    lessonsAppearing: [4, 11, 12, 13, 17, 74, 78],
+    sources: [
+      { title: "Colonial Williamsburg: Patrick Henry", url: "https://www.colonialwilliamsburg.org/learn/deep-dives/patrick-henry/" },
+      { title: "History.com: Patrick Henry", url: "https://www.history.com/topics/american-revolution/patrick-henry" },
+      { title: "NPS: Patrick Henry", url: "https://www.nps.gov/people/patrick-henry.htm" }
+    ]
+  },
+  {
+    id: "benedict-arnold",
+    name: "Benedict Arnold",
+    born: "January 14, 1741",
+    died: "June 14, 1801",
+    role: "Hero Turned Traitor",
+    portrait: "/manus-storage/figure-benedict-arnold_af659950.png",
+    quote: "Let me die in the old uniform in which I fought my battles for freedom. May God forgive me for putting on another.",
+    narrative: `He was the best general America had. Then he became the worst word in the American language. His name means traitor. It did not always.\n\nBenedict Arnold was born in Connecticut in 1741. He was brave to the point of recklessness. In the first year of the war, he marched an army through the Maine wilderness to attack Quebec. Half his men died on the march. He attacked anyway. He was shot in the leg. He kept fighting.\n\nAt Saratoga — the battle that won the war — Arnold was everywhere. He charged into the British lines without orders. He was shot in the same leg again. If he had died there, he would be remembered as the greatest hero of the Revolution.\n\nBut he lived. And he was bitter. Congress promoted others over him. They questioned his expenses. They gave him no credit. Washington defended him, but it was not enough.\n\nIn 1780, he made his choice. He offered to surrender West Point — the fortress that controlled the Hudson River — to the British. For money. For a commission in the British Army. For revenge.\n\nThe plot was discovered. Arnold escaped to the British lines. His co-conspirator, Major John André, was hanged. Arnold fought for the British for the rest of the war. He burned New London, Connecticut — his own home state.\n\nHe died in London in 1801, forgotten by both sides. On his deathbed, he asked to wear his old Continental Army uniform. "Let me die in the old uniform," he said. The tragedy of Benedict Arnold is not that he was evil. It is that he was great — and chose not to be.`,
+    timeline: [
+      { year: 1741, title: "Born in Connecticut", description: "Born in Norwich to a prominent family" },
+      { year: 1775, title: "Captures Fort Ticonderoga", description: "With Ethan Allen, takes the fort in a surprise attack" },
+      { year: 1775, title: "March to Quebec", description: "Leads 1,100 men through the Maine wilderness" },
+      { year: 1776, title: "Battle of Valcour Island", description: "Builds a fleet and delays British invasion" },
+      { year: 1777, title: "Hero of Saratoga", description: "Leads the charge that wins the battle. Shot in the leg." },
+      { year: 1778, title: "Military Governor of Philadelphia", description: "Begins living beyond his means" },
+      { year: 1779, title: "Begins Plotting", description: "Opens secret correspondence with the British" },
+      { year: 1780, title: "The Betrayal", description: "Offers to surrender West Point for money" },
+      { year: 1780, title: "Escapes to British", description: "Plot discovered. Arnold flees." },
+      { year: 1781, title: "Burns New London", description: "Leads British raid on his own home state" },
+      { year: 1801, title: "Dies in London", description: "Dies in poverty and obscurity at 60" }
+    ],
+    keyFacts: [
+      "He was America's best battlefield general before his betrayal",
+      "He was wounded twice in the same leg fighting for America",
+      "He offered to sell West Point for 20,000 pounds",
+      "His name became synonymous with 'traitor' in American English",
+      "He died in London, poor and forgotten by both sides",
+      "A monument at Saratoga honors his leg — but not his name"
+    ],
+    lessonsAppearing: [15, 33, 34, 40, 41, 42],
+    sources: [
+      { title: "Smithsonian: Benedict Arnold", url: "https://www.smithsonianmag.com/history/benedict-arnolds-treason/" },
+      { title: "American Battlefield Trust: Arnold", url: "https://www.battlefields.org/learn/biographies/benedict-arnold" },
+      { title: "Mount Vernon: Benedict Arnold", url: "https://www.mountvernon.org/library/digitalhistory/digital-encyclopedia/article/benedict-arnold/" }
+    ]
+  },
+  {
+    id: "mercy-otis-warren",
+    name: "Mercy Otis Warren",
+    born: "September 14, 1728",
+    died: "October 19, 1814",
+    role: "Writer, Historian, Political Satirist",
+    portrait: "/manus-storage/figure-mercy-warren_e4d479d3.png",
+    quote: "The origin of all civil government, justly established, must be a voluntary compact between the rulers and the ruled.",
+    narrative: `She could not vote. She could not hold office. She could not attend Harvard like her brother. So she picked up a pen and changed the world with words instead.\n\nMercy Otis Warren was born in 1728 in Barnstable, Massachusetts. Her brother James Otis was a famous patriot — until the British beat him so badly he went mad. Mercy watched. She remembered. She wrote it all down.\n\nShe wrote plays that mocked the British governor. They were published anonymously — everyone knew who wrote them. They were savage, funny, and effective. The royal governor was humiliated. The patriots laughed and grew bolder.\n\nShe was friends with everyone who mattered — Abigail Adams, John Adams, Samuel Adams, Thomas Jefferson, George Washington. They all wrote to her. They all respected her mind. In an age when women were expected to be silent, Mercy Otis Warren was the loudest voice in the room.\n\nAfter the war, she wrote a three-volume history of the Revolution — the first written by an American, and the first written by a woman. It was published in 1805. She was seventy-seven years old.\n\nShe opposed the Constitution because it lacked a Bill of Rights. She was right. When the Bill of Rights was added, she supported it. She lived to eighty-six — long enough to see the nation she helped create survive its first generation.\n\nHistory forgot her for two hundred years. It should not have.`,
+    timeline: [
+      { year: 1728, title: "Born in Barnstable, MA", description: "Daughter of a prominent political family" },
+      { year: 1754, title: "Marries James Warren", description: "Marries a farmer and politician" },
+      { year: 1769, title: "Brother Attacked", description: "James Otis beaten by British customs official" },
+      { year: 1772, title: "First Political Play", description: "The Adulateur satirizes Governor Hutchinson" },
+      { year: 1773, title: "The Defeat", description: "Another play mocking British authority" },
+      { year: 1776, title: "Corresponds with Leaders", description: "Advises Adams, Jefferson, and Washington by letter" },
+      { year: 1788, title: "Opposes Constitution", description: "Writes against ratification without a Bill of Rights" },
+      { year: 1805, title: "History of the Revolution", description: "Publishes her three-volume history at age 77" },
+      { year: 1814, title: "Dies in Plymouth", description: "Dies at 86. The first historian of the Revolution." }
+    ],
+    keyFacts: [
+      "She wrote the first American history of the Revolution",
+      "Her political plays helped turn public opinion against the British",
+      "She corresponded with Washington, Adams, and Jefferson as an equal",
+      "She opposed the Constitution until the Bill of Rights was added",
+      "She was largely forgotten for 200 years after her death",
+      "Her brother James Otis coined 'taxation without representation is tyranny'"
+    ],
+    lessonsAppearing: [9, 44, 45, 46, 78, 82],
+    sources: [
+      { title: "National Women's History Museum: Warren", url: "https://www.womenshistory.org/education-resources/biographies/mercy-otis-warren" },
+      { title: "NPS: Mercy Otis Warren", url: "https://www.nps.gov/people/mercy-otis-warren.htm" },
+      { title: "American Battlefield Trust: Warren", url: "https://www.battlefields.org/learn/biographies/mercy-otis-warren" }
+    ]
+  },
+  {
+    id: "phillis-wheatley",
+    name: "Phillis Wheatley",
+    born: "c. 1753",
+    died: "December 5, 1784",
+    role: "Poet, First Published African American Author",
+    portrait: "/manus-storage/figure-phillis-wheatley_2c85fc55.png",
+    quote: "In every human breast, God has implanted a principle, which we call love of freedom; it is impatient of oppression and pants for deliverance.",
+    narrative: `She was kidnapped from West Africa at seven years old. She arrived in Boston on a slave ship in 1761. She could not speak English. Within sixteen months, she was reading it. Within six years, she was writing poetry in it that amazed the world.\n\nPhillis Wheatley was purchased by John Wheatley, a Boston merchant. His wife Susanna noticed the child's intelligence and did something extraordinary for the time — she educated her. Phillis learned English, Latin, Greek, history, geography, and literature.\n\nAt fourteen, she published her first poem. At twenty, she published a book — "Poems on Various Subjects, Religious and Moral." It was the first book published by an African American. Before it could be printed, she had to prove to a panel of eighteen Boston men — including John Hancock — that she had actually written it. A Black woman writing poetry was unbelievable to them. She proved it.\n\nShe wrote to George Washington. He invited her to visit him. She went. He treated her with respect. She wrote about liberty and freedom in ways that challenged everyone who read her — how can you fight for freedom while holding people in chains?\n\nShe was freed after her owners died. But freedom without money is its own kind of prison. She married, had three children, and struggled in poverty. She died at thirty-one. All three of her children died young.\n\nHer life was short and hard and brilliant. She proved — in an age that denied it — that Black people were fully human, fully intelligent, fully capable of genius. She proved it with a pen.`,
+    timeline: [
+      { year: 1753, title: "Born in West Africa", description: "Kidnapped and sold into slavery at age 7" },
+      { year: 1761, title: "Arrives in Boston", description: "Purchased by John Wheatley" },
+      { year: 1767, title: "First Published Poem", description: "At 14, publishes in a Newport newspaper" },
+      { year: 1773, title: "Book Published in London", description: "First book by an African American author" },
+      { year: 1774, title: "Freed from Slavery", description: "Manumitted after the Wheatleys die" },
+      { year: 1775, title: "Writes to Washington", description: "Sends him a poem. He invites her to visit." },
+      { year: 1778, title: "Marries John Peters", description: "Marries a free Black man" },
+      { year: 1784, title: "Dies in Poverty", description: "Dies at about 31. All three children die young." }
+    ],
+    keyFacts: [
+      "She was the first African American to publish a book",
+      "She learned English in 16 months after arriving as a slave",
+      "She had to prove to 18 men that she wrote her own poetry",
+      "George Washington invited her to visit after she wrote to him",
+      "She died in poverty at about 31 years old",
+      "Her work proved Black intellectual equality in an age of slavery"
+    ],
+    lessonsAppearing: [47, 48, 53, 82, 86],
+    sources: [
+      { title: "Poetry Foundation: Phillis Wheatley", url: "https://www.poetryfoundation.org/poets/phillis-wheatley" },
+      { title: "NPS: Phillis Wheatley", url: "https://www.nps.gov/people/phillis-wheatley.htm" },
+      { title: "Smithsonian: Phillis Wheatley", url: "https://nmaahc.si.edu/explore/stories/phillis-wheatley" }
+    ]
+  },
+  {
+    id: "baron-von-steuben",
+    name: "Baron von Steuben",
+    born: "September 17, 1730",
+    died: "November 28, 1794",
+    role: "Prussian Drillmaster, Inspector General of the Continental Army",
+    portrait: "/manus-storage/figure-von-steuben_f703c019.png",
+    quote: "You say to your soldier, 'Do this,' and he does it. But I am obliged to say, 'This is the reason why you ought to do that,' and then he does it.",
+    narrative: `The Continental Army could not march in a straight line. They could not load their muskets in unison. They could not execute a bayonet charge. They were brave and they were willing but they were not soldiers. Then a loud Prussian arrived at Valley Forge and turned them into an army.\n\nFriedrich Wilhelm von Steuben was not actually a baron. He exaggerated his credentials to get the job. Benjamin Franklin helped with the exaggeration — he knew America needed a drillmaster, and Steuben was the best available.\n\nHe arrived at Valley Forge in February 1778. The army was starving, freezing, and demoralized. Steuben did not speak English. He spoke French and German. He swore in both languages — magnificently — when the soldiers could not follow his commands.\n\nHe started with a model company of 100 men. He trained them personally — something no European officer of his rank would do. He taught them to march, to wheel, to load in twelve counts instead of twenty, to use the bayonet as a weapon instead of a cooking spit.\n\nThe model company trained the next company. They trained the next. Within weeks, the entire army was transformed. When they marched out of Valley Forge in June 1778, they were a professional fighting force. At the Battle of Monmouth, they stood toe-to-toe with British regulars for the first time — and held.\n\nSteuben wrote the army's first drill manual — the "Blue Book." It was used for thirty-three years. He gave America something it desperately needed: discipline without destroying the spirit of free men. He understood that American soldiers needed to know why. And he told them.`,
+    timeline: [
+      { year: 1730, title: "Born in Prussia", description: "Son of a military engineer" },
+      { year: 1747, title: "Joins Prussian Army", description: "Serves under Frederick the Great" },
+      { year: 1763, title: "Leaves Prussian Service", description: "Discharged after the Seven Years' War" },
+      { year: 1777, title: "Meets Franklin in Paris", description: "Franklin recommends him to Washington" },
+      { year: 1778, title: "Arrives at Valley Forge", description: "February. Begins training the army." },
+      { year: 1778, title: "Battle of Monmouth", description: "His trained army fights the British to a standstill" },
+      { year: 1779, title: "Writes the Blue Book", description: "The army's first official drill manual" },
+      { year: 1781, title: "Yorktown", description: "Helps plan and execute the siege" },
+      { year: 1783, title: "Discharged with Honors", description: "War ends. Congress thanks him." },
+      { year: 1794, title: "Dies in New York", description: "Dies at 64 on his farm in New York" }
+    ],
+    keyFacts: [
+      "He was not actually a baron — he exaggerated his title",
+      "He did not speak English when he arrived at Valley Forge",
+      "He personally trained soldiers — unheard of for a general",
+      "His 'Blue Book' drill manual was used for 33 years",
+      "He understood Americans needed to know WHY they followed orders",
+      "He transformed a militia into a professional army in weeks"
+    ],
+    lessonsAppearing: [34, 35, 39, 63, 64],
+    sources: [
+      { title: "Mount Vernon: Von Steuben", url: "https://www.mountvernon.org/library/digitalhistory/digital-encyclopedia/article/friedrich-wilhelm-von-steuben/" },
+      { title: "American Battlefield Trust: Von Steuben", url: "https://www.battlefields.org/learn/biographies/baron-von-steuben" },
+      { title: "NPS: Valley Forge - Von Steuben", url: "https://www.nps.gov/vafo/learn/historyculture/vsteuben.htm" }
+    ]
+  },
+  {
+    id: "nathanael-greene",
+    name: "Nathanael Greene",
+    born: "August 7, 1742",
+    died: "June 19, 1786",
+    role: "Major General, Commander of the Southern Campaign",
+    portrait: "/manus-storage/figure-nathanael-greene_84fb5e9a.png",
+    quote: "We fight, get beat, rise, and fight again.",
+    narrative: `He had a limp. He had no military training. He had never fired a musket in anger. Within two years of joining the army, he was Washington's most trusted general. Within four years, he saved the South.\n\nNathanael Greene was born a Quaker in Rhode Island in 1742. Quakers do not fight. When Greene began reading military books, his congregation expelled him. He chose war over peace. He chose it deliberately.\n\nHe walked with a limp — a stiff knee from childhood. It should have disqualified him from command. Instead, he commanded from horseback and outthought every British general he faced.\n\nWashington saw his quality immediately. Greene became the youngest general in the army at thirty-four. He served at every major battle in the North — Boston, Trenton, Princeton, Brandywine, Germantown, Monmouth. He never held an independent command until 1780.\n\nThen the South collapsed. Gates lost at Camden — the worst American defeat of the war. Washington sent Greene to pick up the pieces. He had 1,500 men, most of them barefoot. The British had 8,000.\n\nGreene did something brilliant. He split his tiny army — against every rule of war — and forced the British to split theirs. He lost every battle he fought. And he won the campaign. "We fight, get beat, rise, and fight again," he wrote. Each battle cost the British more than they could afford. He bled them dry.\n\nBy 1782, the British held only Charleston and Savannah. Greene had liberated the South without winning a single battle. It was the most brilliant campaign of the war.\n\nHe died at forty-three — sunstroke on his Georgia plantation. Too young. Washington wept when he heard.`,
+    timeline: [
+      { year: 1742, title: "Born in Rhode Island", description: "Born into a Quaker family" },
+      { year: 1774, title: "Expelled by Quakers", description: "Kicked out for attending a military parade" },
+      { year: 1775, title: "Commands Rhode Island Army", description: "Leads the state militia to Boston" },
+      { year: 1776, title: "Youngest Brigadier General", description: "At 34, one of Washington's most trusted" },
+      { year: 1778, title: "Quartermaster General", description: "Feeds and supplies the army" },
+      { year: 1780, title: "Commands the South", description: "Sent to save the Southern campaign" },
+      { year: 1781, title: "Battle of Guilford Courthouse", description: "Loses the battle but breaks the British army" },
+      { year: 1781, title: "Battle of Eutaw Springs", description: "Last major battle in the South" },
+      { year: 1782, title: "Liberates the South", description: "British retreat to Charleston and Savannah" },
+      { year: 1786, title: "Dies in Georgia", description: "Dies of sunstroke at 43. Washington weeps." }
+    ],
+    keyFacts: [
+      "He was a Quaker who chose war — his church expelled him",
+      "He had a limp and no military training",
+      "He lost every battle in the South but won the campaign",
+      "Washington considered him the best general in the army",
+      "He liberated the entire South from British control",
+      "He died at just 43 years old from sunstroke"
+    ],
+    lessonsAppearing: [56, 57, 58, 59, 60, 61, 62, 63],
+    sources: [
+      { title: "American Battlefield Trust: Greene", url: "https://www.battlefields.org/learn/biographies/nathanael-greene" },
+      { title: "NPS: Nathanael Greene", url: "https://www.nps.gov/people/nathanael-greene.htm" },
+      { title: "Mount Vernon: Nathanael Greene", url: "https://www.mountvernon.org/library/digitalhistory/digital-encyclopedia/article/nathanael-greene/" }
+    ]
+  }
+);
+
+// Helper to get figure ID from name
+export function getFigureId(name: string): string | undefined {
+  const lower = name.toLowerCase();
+  const fig = figures.find(f => 
+    f.name.toLowerCase() === lower || 
+    f.name.toLowerCase().includes(lower) ||
+    lower.includes(f.name.toLowerCase().split(' ').pop() || '')
+  );
+  return fig?.id;
+}
