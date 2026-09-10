@@ -1,7 +1,9 @@
 import { AppShell } from "@/components/AppShell";
 import { useProgress } from "@/contexts/ProgressContext";
 import { lessons, themes } from "@/lib/lessons";
-import { ArrowRight, Check, Circle, LockKeyhole, Trophy } from "lucide-react";
+import { progressShareText, progressShareUrl } from "@/lib/progress-share";
+import { ArrowRight, Check, Circle, Copy, LockKeyhole, Share2, Trophy } from "lucide-react";
+import { useState } from "react";
 import { Link } from "wouter";
 
 const quizTitles = ["Seeds of Discontent", "The Breaking Point", "Declaring Freedom", "The Darkest Hours", "Allies and Enemies", "People of the Revolution", "The War in the South", "Victory", "Building the Republic"];
@@ -9,12 +11,29 @@ const quizTitles = ["Seeds of Discontent", "The Breaking Point", "Declaring Free
 export default function JourneyPage() {
   const { completedLessons, totalCompleted, percentComplete, isComplete, markComplete, markIncomplete } = useProgress();
   const nextLesson = lessons.find((lesson) => !completedLessons.includes(lesson.id)) ?? lessons[89];
+  const [shareComplete, setShareComplete] = useState(false);
+  const supportsNativeShare = typeof navigator.share === "function";
+
+  const shareProgress = async () => {
+    const url = progressShareUrl(completedLessons, window.location.origin);
+    const text = progressShareText(completedLessons);
+    try {
+      if (supportsNativeShare) await navigator.share({ title: "Our Revolution Nights journey", text, url });
+      else await navigator.clipboard.writeText(`${text} ${url}`);
+      setShareComplete(true);
+      window.setTimeout(() => setShareComplete(false), 2200);
+    } catch (error) {
+      if (error instanceof DOMException && error.name === "AbortError") return;
+      await navigator.clipboard.writeText(`${text} ${url}`);
+      setShareComplete(true);
+    }
+  };
 
   return (
     <AppShell>
       <div className="mx-auto max-w-6xl px-4 py-6 sm:px-6 sm:py-10 lg:px-8">
         <section className="relative overflow-hidden rounded-3xl border border-white/10 bg-[#0D2234]">
-          <img src="/manus-storage/journey-route_90ff1b85.jpg" alt="An illuminated route across a historical map" className="h-56 w-full object-cover sm:h-72" />
+          <img src="https://files.manuscdn.com/user_upload_by_module/session_file/90544947/vPeDhwCCQLSKeZoJ.jpg" alt="An illuminated route across a historical map" className="h-56 w-full object-cover sm:h-72" />
           <div className="absolute inset-0 bg-gradient-to-b from-transparent via-[#071522]/40 to-[#071522]" />
           <div className="absolute inset-x-0 bottom-0 p-5 sm:p-8"><p className="font-[var(--font-sans)] text-[10px] font-bold uppercase tracking-[.2em] text-[#D8B76C]">Your family journey</p><h1 className="mt-1 text-3xl font-bold sm:text-5xl">{90 - totalCompleted} nights remain</h1><p className="mt-2 max-w-lg text-sm text-[#C4CED6]">Small conversations become a lasting understanding of the American experiment.</p></div>
         </section>
@@ -22,7 +41,7 @@ export default function JourneyPage() {
         <section className="-mt-px rounded-b-3xl border border-t-0 border-white/10 bg-[#0D2234] p-5 sm:p-7">
           <div className="flex items-end justify-between"><div><strong className="text-3xl">{totalCompleted}</strong><p className="font-[var(--font-sans)] text-[10px] font-bold uppercase tracking-[.13em] text-[#8195A6]">of 90 complete</p></div><div className="flex h-16 w-16 flex-col items-center justify-center rounded-full bg-[#9D2D35] text-white"><strong className="text-lg">{percentComplete}%</strong><span className="font-[var(--font-sans)] text-[8px] uppercase tracking-[.12em]">Journey</span></div></div>
           <div className="mt-5 h-2 overflow-hidden rounded-full bg-[#17344C]"><div className="h-full rounded-full bg-[#B83B3F] transition-all" style={{ width: `${percentComplete}%` }} /></div>
-          <div className="mt-5 flex items-center justify-between gap-4 border-t border-white/10 pt-5"><div className="min-w-0"><p className="font-[var(--font-sans)] text-[9px] font-bold uppercase tracking-[.15em] text-[#D95A5F]">Up next</p><p className="mt-1 truncate text-sm font-bold">Night {nextLesson.id} · {nextLesson.title}</p></div><Link href={`/lesson/${nextLesson.id}`} className="flex min-h-11 shrink-0 items-center gap-2 rounded-xl bg-[#B83B3F] px-4 font-[var(--font-sans)] text-xs font-bold text-white transition active:scale-95">Continue <ArrowRight className="h-4 w-4" /></Link></div>
+          <div className="mt-5 flex items-center justify-between gap-4 border-t border-white/10 pt-5"><div className="min-w-0"><p className="font-[var(--font-sans)] text-[9px] font-bold uppercase tracking-[.15em] text-[#D95A5F]">Up next</p><p className="mt-1 truncate text-sm font-bold">Night {nextLesson.id} · {nextLesson.title}</p></div><div className="flex shrink-0 items-center gap-2"><button onClick={shareProgress} className="flex min-h-11 items-center gap-2 rounded-xl border border-white/15 px-3 font-[var(--font-sans)] text-xs font-bold text-[#E1E7EB] transition active:scale-95" aria-label="Share family progress" aria-live="polite">{shareComplete ? <Check className="h-4 w-4 text-[#78B087]" /> : supportsNativeShare ? <Share2 className="h-4 w-4" /> : <Copy className="h-4 w-4" />}<span className="hidden sm:inline">{shareComplete ? "Shared" : "Share"}</span></button><Link href={`/lesson/${nextLesson.id}`} className="flex min-h-11 items-center gap-2 rounded-xl bg-[#B83B3F] px-4 font-[var(--font-sans)] text-xs font-bold text-white transition active:scale-95">Continue <ArrowRight className="h-4 w-4" /></Link></div></div>
         </section>
 
         <section className="mt-10"><p className="font-[var(--font-sans)] text-[10px] font-bold uppercase tracking-[.18em] text-[#D95A5F]">Ten chapters</p><h2 className="mt-1 text-3xl font-bold">Milestones</h2><p className="mt-2 text-sm leading-6 text-[#93A4B5]">Open a chapter to review its nights or update your family’s progress directly.</p>

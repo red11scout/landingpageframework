@@ -2,13 +2,8 @@ import { useState, useRef } from "react";
 import { Volume2, VolumeX, Play, Pause } from "lucide-react";
 import { motion } from "framer-motion";
 
-// Audio narration available for all lessons
-// Lessons 1, 2, 7 have pre-generated audio; others use browser TTS as fallback
-const preGeneratedAudio: Record<number, string> = {
-  1: "/manus-storage/narration-lesson-1_d5bba0bd.wav",
-  2: "/manus-storage/narration-lesson-2_8b773119.wav",
-  7: "/manus-storage/narration-lesson-7_4af1630b.wav",
-};
+// Browser speech synthesis keeps narration available without network audio files.
+const preGeneratedAudio: Record<number, string> = {};
 
 interface AudioNarrationProps {
   lessonId: number;

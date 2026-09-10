@@ -1,6 +1,7 @@
 import type { ReactNode } from "react";
 import { Compass, Home, MapPinned, Milestone, Printer } from "lucide-react";
 import { Link, useLocation } from "wouter";
+import { PwaStatus } from "./PwaStatus";
 
 const nav = [
   { href: "/", label: "Today", icon: Home },
@@ -17,7 +18,7 @@ export function AppShell({ children }: { children: ReactNode }) {
       <header className="sticky top-0 z-50 border-b border-white/10 bg-[#071522]/92 backdrop-blur-xl">
         <div className="mx-auto flex h-16 max-w-6xl items-center justify-between px-4 sm:px-6 lg:px-8">
           <Link href="/" className="flex min-w-0 items-center gap-3" aria-label="Revolution Nights home">
-            <img src="/manus-storage/icon_727aa090.png" alt="" className="h-9 w-9 rounded-xl object-cover" />
+            <img src="https://files.manuscdn.com/user_upload_by_module/session_file/90544947/RzamISePlbcgDwAH.png" alt="" className="h-9 w-9 rounded-xl object-cover" />
             <span className="truncate font-[var(--font-sans)] text-xs font-bold tracking-[0.18em] text-[#F5EBDD] sm:text-sm">
               REVOLUTION NIGHTS
             </span>
@@ -68,6 +69,7 @@ export function AppShell({ children }: { children: ReactNode }) {
           );
         })}
       </nav>
+      <PwaStatus />
     </div>
   );
 }

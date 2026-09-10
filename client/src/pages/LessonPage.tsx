@@ -51,7 +51,7 @@ export default function LessonPage() {
           </Link>
           <span className="text-sm font-[var(--font-sans)] font-medium text-white">Night {lesson.id} of 90</span>
           <Link href="/" className="flex items-center gap-2">
-            <img src="/manus-storage/icon_727aa090.png" alt="" className="w-6 h-6" />
+            <img src="https://files.manuscdn.com/user_upload_by_module/session_file/90544947/RzamISePlbcgDwAH.png" alt="" className="w-6 h-6" />
           </Link>
         </div>
       </header>

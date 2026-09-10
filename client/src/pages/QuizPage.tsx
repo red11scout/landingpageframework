@@ -166,7 +166,7 @@ export default function QuizPage() {
             Progress
           </Link>
           <h1 className="text-sm font-[var(--font-display)] font-bold">Quiz Night {setNum}</h1>
-          <Link href="/"><img src="/manus-storage/icon_727aa090.png" alt="" className="w-6 h-6" /></Link>
+          <Link href="/"><img src="https://files.manuscdn.com/user_upload_by_module/session_file/90544947/RzamISePlbcgDwAH.png" alt="" className="w-6 h-6" /></Link>
         </div>
       </header>
 

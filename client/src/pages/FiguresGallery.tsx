@@ -1,4 +1,5 @@
 import { Link } from "wouter";
+import { FigurePortrait } from "@/components/FigurePortrait";
 import { figures } from "@/lib/figures";
 import { motion } from "framer-motion";
 import { ArrowLeft } from "lucide-react";
@@ -14,7 +15,7 @@ export default function FiguresGallery() {
           </Link>
           <h1 className="text-sm font-[var(--font-display)] font-bold text-white">Figures of the Revolution</h1>
           <Link href="/" className="flex items-center gap-2">
-            <img src="/manus-storage/icon_727aa090.png" alt="" className="w-6 h-6" />
+            <img src="https://files.manuscdn.com/user_upload_by_module/session_file/90544947/RzamISePlbcgDwAH.png" alt="" className="w-6 h-6" />
           </Link>
         </div>
       </header>
@@ -36,10 +37,7 @@ export default function FiguresGallery() {
             <motion.div key={figure.id} initial={{ opacity: 0, y: 12 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.4, delay: index * 0.04 }}>
               <Link href={`/figure/${figure.id}`}>
                 <div className="group text-center">
-                  <div className="relative w-full aspect-[3/4] overflow-hidden border-2 border-[oklch(1_0_0/0.1)] shadow-lg group-hover:shadow-xl group-hover:border-[oklch(0.6_0.25_25/0.5)] transition-all duration-300 mb-3">
-                    <img src={figure.portrait} alt={figure.name} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
-                    <div className="absolute inset-0 bg-gradient-to-t from-[oklch(0.1_0.03_250/0.5)] to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-                  </div>
+                  <FigurePortrait name={figure.name} src={figure.portrait} className="mb-3 aspect-[3/4] w-full border-2 border-[oklch(1_0_0/0.1)] shadow-lg transition-all duration-300 group-hover:border-[oklch(0.6_0.25_25/0.5)] group-hover:shadow-xl" imageClassName="transition-transform duration-500 group-hover:scale-105" />
                   <h3 className="font-[var(--font-display)] font-bold text-sm md:text-base text-white group-hover:text-[oklch(0.6_0.25_25)] transition-colors">{figure.name}</h3>
                   <p className="text-xs text-[oklch(0.55_0.02_250)] font-[var(--font-sans)] mt-0.5 line-clamp-1">{figure.role.split(',')[0]}</p>
                 </div>
@@ -57,4 +55,3 @@ export default function FiguresGallery() {
     </div>
   );
 }
-

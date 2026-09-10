@@ -19,7 +19,7 @@ export default function GlossaryPage() {
           </Link>
           <h1 className="text-sm font-[var(--font-display)] font-bold">Vocabulary</h1>
           <Link href="/" className="flex items-center gap-2">
-            <img src="/manus-storage/icon_727aa090.png" alt="" className="w-6 h-6" />
+            <img src="https://files.manuscdn.com/user_upload_by_module/session_file/90544947/RzamISePlbcgDwAH.png" alt="" className="w-6 h-6" />
           </Link>
         </div>
       </header>

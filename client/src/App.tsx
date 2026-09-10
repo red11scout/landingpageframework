@@ -17,6 +17,7 @@ const FiguresGallery = lazy(() => import("@/pages/FiguresGallery"));
 const GlossaryPage = lazy(() => import("@/pages/GlossaryPage"));
 const QuizPage = lazy(() => import("@/pages/QuizPage"));
 const ConnectionsPage = lazy(() => import("@/pages/ConnectionsPage"));
+const ShareProgressPage = lazy(() => import("@/pages/ShareProgressPage"));
 const NotFound = lazy(() => import("@/pages/NotFound"));
 
 function Router() {
@@ -36,6 +37,7 @@ function Router() {
     <Route path="/progress" component={JourneyPage} />
     <Route path="/quiz/:set" component={QuizPage} />
     <Route path="/connections" component={ConnectionsPage} />
+    <Route path="/share" component={ShareProgressPage} />
     <Route component={NotFound} />
   </Switch></Suspense>;
 }

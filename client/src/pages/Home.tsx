@@ -13,8 +13,8 @@ export default function Home() {
     <AppShell>
       <section className="relative min-h-[610px] overflow-hidden border-b border-white/10 sm:min-h-[650px] lg:min-h-[700px]">
         <picture className="absolute inset-0 block h-full w-full">
-          <source media="(max-width: 699px)" srcSet="/manus-storage/revolution-hero-mobile_310819aa.jpg" />
-          <img src="/manus-storage/revolution-hero_66c81fc0.jpg" alt="A family reading a Revolutionary-era letter together" className="h-full w-full object-cover object-center" />
+          <source media="(max-width: 699px)" srcSet="https://files.manuscdn.com/user_upload_by_module/session_file/90544947/cjgTPMYRaCxnlHwm.jpg" />
+          <img src="https://files.manuscdn.com/user_upload_by_module/session_file/90544947/JQjVHLGaEJfAbyxp.jpg" alt="A family reading a Revolutionary-era letter together" className="h-full w-full object-cover object-center" />
         </picture>
         <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(7,21,34,.03)_0%,rgba(7,21,34,.42)_53%,#071522_100%)] lg:bg-[linear-gradient(90deg,rgba(7,21,34,.96)_0%,rgba(7,21,34,.68)_38%,rgba(7,21,34,.1)_78%)]" />
         <div className="relative mx-auto flex min-h-[610px] max-w-6xl items-end px-5 pb-16 pt-20 sm:min-h-[650px] sm:px-8 lg:min-h-[700px] lg:items-center lg:pb-0">

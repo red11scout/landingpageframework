@@ -1,4 +1,5 @@
 import { AppShell } from "@/components/AppShell";
+import { FigurePortrait } from "@/components/FigurePortrait";
 import { figures } from "@/lib/figures";
 import { glossary } from "@/lib/glossary";
 import { lessons, timelineEvents } from "@/lib/lessons";
@@ -30,7 +31,7 @@ export default function DiscoverPage() {
     <AppShell>
       <div className="mx-auto max-w-6xl px-4 py-6 sm:px-6 sm:py-10 lg:px-8">
         <section className="relative overflow-hidden rounded-3xl border border-white/10 bg-[#0B1D2C] px-5 py-10 sm:px-8 sm:py-14 lg:px-10">
-          <img src="/manus-storage/discover-atlas_e42bd695.jpg" alt="A colonial map with compass and archival notes" className="absolute inset-y-0 right-0 h-full w-[74%] object-cover object-center" />
+          <img src="https://files.manuscdn.com/user_upload_by_module/session_file/90544947/JVYfuhuavlxnCmCW.jpg" alt="A colonial map with compass and archival notes" className="absolute inset-y-0 right-0 h-full w-[74%] object-cover object-center" />
           <div className="absolute inset-0 bg-[linear-gradient(90deg,#071522_0%,rgba(7,21,34,.9)_43%,rgba(7,21,34,.08)_100%)]" />
           <div className="relative max-w-xl"><p className="font-[var(--font-sans)] text-[10px] font-bold uppercase tracking-[.2em] text-[#D8B76C]">The field atlas</p><h1 className="mt-2 text-4xl font-bold leading-tight tracking-[-.02em] sm:text-5xl">Discover the connections</h1><p className="mt-3 max-w-md text-sm leading-6 text-[#D3C8BA] sm:text-base">Trace the people, places, words, and turning points behind every night.</p></div>
         </section>
@@ -48,7 +49,7 @@ export default function DiscoverPage() {
 
           {section === "places" && <div className="grid gap-3 sm:grid-cols-2">{places.filter(([place]) => place.toLowerCase().includes(needle)).map(([place, ids]) => <Link key={place} href={`/lesson/${ids[0]}`} className="group rounded-2xl border border-white/10 bg-[#0D2234] p-5 transition hover:border-[#6F9CCB]/50 active:scale-[.99]"><div className="flex items-center justify-between"><MapIcon className="h-5 w-5 text-[#6F9CCB]" /><span className="font-[var(--font-sans)] text-xs text-[#8195A6]">{ids.length} {ids.length === 1 ? "night" : "nights"}</span></div><h2 className="mt-5 text-xl font-bold">{place}</h2><p className="mt-2 text-sm text-[#93A4B5]">First appears in Night {ids[0]}</p></Link>)}</div>}
 
-          {section === "people" && <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-3">{figures.filter((figure) => `${figure.name} ${figure.role}`.toLowerCase().includes(needle)).map((figure) => <Link key={figure.id} href={`/figure/${figure.id}`} className="group overflow-hidden rounded-2xl border border-white/10 bg-[#0D2234] transition hover:border-[#B83B3F]/50 active:scale-[.99]"><div className="aspect-[16/9] overflow-hidden bg-[#10283B]"><img src={figure.portrait} alt={figure.name} className="h-full w-full object-cover object-top transition duration-300 group-hover:scale-[1.03]" /></div><div className="p-5"><h2 className="text-xl font-bold">{figure.name}</h2><p className="mt-2 text-xs leading-5 text-[#93A4B5]">{figure.role}</p></div></Link>)}</div>}
+          {section === "people" && <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-3">{figures.filter((figure) => `${figure.name} ${figure.role}`.toLowerCase().includes(needle)).map((figure) => <Link key={figure.id} href={`/figure/${figure.id}`} className="group overflow-hidden rounded-2xl border border-white/10 bg-[#0D2234] transition hover:border-[#B83B3F]/50 active:scale-[.99]"><FigurePortrait name={figure.name} src={figure.portrait} className="aspect-[16/9]" imageClassName="transition duration-300 group-hover:scale-[1.03]" /><div className="p-5"><h2 className="text-xl font-bold">{figure.name}</h2><p className="mt-2 text-xs leading-5 text-[#93A4B5]">{figure.role}</p></div></Link>)}</div>}
 
           {section === "words" && <div className="grid gap-3 sm:grid-cols-2">{glossary.filter((item) => `${item.term} ${item.definition}`.toLowerCase().includes(needle)).map((item) => <article key={item.term} className="rounded-2xl border border-white/10 bg-[#0D2234] p-5"><h2 className="text-xl font-bold capitalize text-[#F5EBDD]">{item.term}</h2><p className="mt-2 text-sm leading-6 text-[#B5C1CA]">{item.definition}</p>{item.example && <blockquote className="mt-4 border-l-2 border-[#B83B3F] pl-3 text-xs italic leading-5 text-[#8195A6]">{item.example}</blockquote>}</article>)}</div>}
 

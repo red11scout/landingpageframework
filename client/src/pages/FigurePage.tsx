@@ -4,6 +4,7 @@ import { lessons } from "@/lib/lessons";
 import { motion } from "framer-motion";
 import { ArrowLeft, BookOpen, ExternalLink, Quote } from "lucide-react";
 import { useProgress } from "@/contexts/ProgressContext";
+import { FigurePortrait } from "@/components/FigurePortrait";
 import { useEffect } from "react";
 
 export default function FigurePage() {
@@ -38,16 +39,14 @@ export default function FigurePage() {
             Figures
           </Link>
           <span className="text-sm font-[var(--font-display)] font-bold text-white">Key Figures</span>
-          <Link href="/" className="flex items-center gap-2"><img src="/manus-storage/icon_727aa090.png" alt="" className="w-6 h-6" /></Link>
+          <Link href="/" className="flex items-center gap-2"><img src="https://files.manuscdn.com/user_upload_by_module/session_file/90544947/RzamISePlbcgDwAH.png" alt="" className="w-6 h-6" /></Link>
         </div>
       </header>
 
       <section className="container pt-8 pb-6">
         <motion.div initial={{ opacity: 0, y: 16 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6, ease: [0.23, 1, 0.32, 1] }} className="flex flex-col md:flex-row gap-6 md:gap-10 items-start">
           <div className="shrink-0">
-            <div className="w-40 h-52 md:w-52 md:h-68 overflow-hidden border-4 border-[oklch(1_0_0/0.12)] shadow-lg shadow-[oklch(0_0_0/0.3)] relative">
-              <img src={figure.portrait} alt={`Portrait of ${figure.name}`} className="w-full h-full object-cover" />
-            </div>
+            <FigurePortrait name={figure.name} src={figure.portrait} className="h-52 w-40 border-4 border-[oklch(1_0_0/0.12)] shadow-lg shadow-[oklch(0_0_0/0.3)] md:h-68 md:w-52" />
           </div>
           <div className="flex-1">
             <h1 className="text-3xl md:text-4xl lg:text-5xl font-[var(--font-display)] font-bold leading-tight mb-2 text-white">{figure.name}</h1>
